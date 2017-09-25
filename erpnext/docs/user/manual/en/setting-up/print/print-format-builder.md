@@ -10,19 +10,31 @@ or Open the document for which you want to make a print format. Click the Printe
 
 ### Step 1: Make a new Format
 
+<<<<<<< HEAD
 <img class="screenshot" alt="Send Email" src="/docs/assets/img/setup/print/print-format-builder-1.gif">
+=======
+<img class="screenshot" alt="Send Email" src="{{docs_base_url}}/assets/img/setup/print/print-format-builder-1.gif">
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 
 ### Step 2: Add a new Field
 
 To add a field, just drag it from the left sidebar and add it in your layout. You can edit the layout by clicking on the settings <i class="octicon octicon-gear"></i> icon.
 
+<<<<<<< HEAD
 <img class="screenshot" alt="Send Email" src="/docs/assets/img/setup/print/print-format-builder-2.gif">
+=======
+<img class="screenshot" alt="Send Email" src="{{docs_base_url}}/assets/img/setup/print/print-format-builder-2.gif">
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 
 ### Step 3
 
 To remove a field, just drag it back into the fields sidebar.
 
+<<<<<<< HEAD
 <img class="screenshot" alt="Send Email" src="/docs/assets/img/setup/print/print-format-builder-3.gif">
+=======
+<img class="screenshot" alt="Send Email" src="{{docs_base_url}}/assets/img/setup/print/print-format-builder-3.gif">
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 
 ### Step 4
 
@@ -30,7 +42,11 @@ You can add customized text, HTML in your print format, just add the **Custom HT
 
 Then click on **Edit HTML** to edit your content.
 
+<<<<<<< HEAD
 <img class="screenshot" alt="Send Email" src="/docs/assets/img/setup/print/print-format-builder-4.gif">
+=======
+<img class="screenshot" alt="Send Email" src="{{docs_base_url}}/assets/img/setup/print/print-format-builder-4.gif">
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 
 To save your format, just click on the **Save** button on the top.
 

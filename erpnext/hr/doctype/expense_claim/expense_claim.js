@@ -4,6 +4,7 @@
 frappe.provide("erpnext.hr");
 
 erpnext.hr.ExpenseClaimController = frappe.ui.form.Controller.extend({
+<<<<<<< HEAD
 	expense_type: function(doc, cdt, cdn) {
 		var d = locals[cdt][cdn];
 		if(!doc.company) {
@@ -16,12 +17,34 @@ erpnext.hr.ExpenseClaimController = frappe.ui.form.Controller.extend({
 		if(!d.expense_type) {
 			return;
 		}
+=======
+	make_bank_entry: function() {
+		var me = this;
+		return frappe.call({
+			method: "erpnext.hr.doctype.expense_claim.expense_claim.make_bank_entry",
+			args: {
+				"docname": cur_frm.doc.name,
+			},
+			callback: function(r) {
+				var doc = frappe.model.sync(r.message);
+				frappe.set_route('Form', 'Journal Entry', r.message.name);
+			}
+		});
+	},
+	
+	expense_type: function(frm, cdt, cdn) {
+		var d = locals[cdt][cdn];
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 
 		return frappe.call({
 			method: "erpnext.hr.doctype.expense_claim.expense_claim.get_expense_claim_account",
 			args: {
 				"expense_claim_type": d.expense_type,
+<<<<<<< HEAD
 				"company": doc.company
+=======
+				"company": frm.company
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 			},
 			callback: function(r) {
 				if (r.message) {
@@ -30,6 +53,7 @@ erpnext.hr.ExpenseClaimController = frappe.ui.form.Controller.extend({
 			}
 		});
 	}
+<<<<<<< HEAD
 });
 
 $.extend(cur_frm.cscript, new erpnext.hr.ExpenseClaimController({frm: cur_frm}));
@@ -40,15 +64,39 @@ cur_frm.cscript.onload = function(doc) {
 
 	if (doc.__islocal) {
 		cur_frm.set_value("posting_date", frappe.datetime.get_today());
+=======
+})
+
+$.extend(cur_frm.cscript, new erpnext.hr.ExpenseClaimController({frm: cur_frm}));
+
+cur_frm.add_fetch('employee', 'company', 'company');
+cur_frm.add_fetch('employee','employee_name','employee_name');
+
+cur_frm.cscript.onload = function(doc,cdt,cdn) {
+	if(doc.__islocal)
+		cur_frm.set_value("approval_status", "Draft")
+	if(!doc.approval_status)
+		cur_frm.set_value("approval_status", "Draft")
+
+	if (doc.__islocal) {
+		cur_frm.set_value("posting_date", dateutil.get_today());
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 		if(doc.amended_from)
 			cur_frm.set_value("approval_status", "Draft");
 		cur_frm.cscript.clear_sanctioned(doc);
 	}
 
+<<<<<<< HEAD
 	cur_frm.fields_dict.employee.get_query = function() {
 		return {
 			query: "erpnext.controllers.queries.employee_query"
 		};
+=======
+	cur_frm.fields_dict.employee.get_query = function(doc,cdt,cdn) {
+		return{
+			query: "erpnext.controllers.queries.employee_query"
+		}
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 	};
 
 	cur_frm.set_query("exp_approver", function() {
@@ -56,7 +104,11 @@ cur_frm.cscript.onload = function(doc) {
 			query: "erpnext.hr.doctype.expense_claim.expense_claim.get_expense_approver"
 		};
 	});
+<<<<<<< HEAD
 };
+=======
+}
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 
 cur_frm.cscript.clear_sanctioned = function(doc) {
 	var val = doc.expenses || [];
@@ -66,6 +118,7 @@ cur_frm.cscript.clear_sanctioned = function(doc) {
 
 	doc.total_sanctioned_amount = '';
 	refresh_many(['sanctioned_amount', 'total_sanctioned_amount']);
+<<<<<<< HEAD
 };
 
 cur_frm.cscript.set_help = function(doc) {
@@ -75,12 +128,93 @@ cur_frm.cscript.set_help = function(doc) {
 	} else {
 		if(doc.docstatus==0 && doc.approval_status=="Draft") {
 			if(frappe.session.user==doc.exp_approver) {
+=======
+}
+
+cur_frm.cscript.refresh = function(doc,cdt,cdn){
+	//new addition
+	
+	if(cur_frm.doc.approval_status == "Draft" && cur_frm.doc.assigned == 0)
+	{
+		cur_frm.add_custom_button(__('Send for Approval'),
+		cur_frm.cscript['Send for Approval']);
+	}
+	
+	cur_frm.cscript.set_help(doc);
+	
+	cur_frm.set_query("expense_type", "expenses", function(doc, cdt, cdn) {
+	return{
+		filters: [
+			['Expense Claim Type', 'disable', '=', 'No'],
+		]
+	  }
+    });
+
+	if(!doc.__islocal) {
+		cur_frm.toggle_enable("exp_approver", doc.approval_status=="Draft");
+		cur_frm.toggle_enable("approval_status", (doc.exp_approver==user && doc.docstatus==0));
+
+		if (doc.docstatus==0 && doc.exp_approver==user && doc.approval_status=="Approved")
+			 cur_frm.savesubmit();
+
+		if (doc.docstatus==1 && doc.approval_status=="Approved" && frappe.user.has_role("Accounts User")) {
+			if (cint(doc.total_amount_reimbursed) < cint(doc.total_sanctioned_amount) && frappe.model.can_create("Journal Entry")) {
+				cur_frm.add_custom_button(__("Bank Entry"), cur_frm.cscript.make_bank_entry, __("Make"));
+				cur_frm.page.set_inner_btn_group_as_primary(__("Make"));
+			}
+
+			if (cint(doc.total_amount_reimbursed) > 0 && frappe.model.can_read("Journal Entry") && frappe.user.has_role("Accounts User")) 
+			{
+				cur_frm.add_custom_button(__('Bank Entries'), function() {
+					frappe.route_options = {
+						"Journal Entry Account.reference_type": me.frm.doc.doctype,
+						"Journal Entry Account.reference_name": me.frm.doc.name,
+						company: me.frm.doc.company
+					};
+					frappe.set_route("List", "Journal Entry");
+				}, __("View"));
+			}
+		}
+	}
+}
+
+//new addition
+cur_frm.cscript['Send for Approval'] = function(){
+	if(cur_frm.doc.status == cur_frm.doc.prev_status)
+	{	
+		cur_frm.timeline.insert_comment("Workflow", "Send for Approval");
+	}
+	cur_frm.call({
+			doc: cur_frm.doc,
+			method: "assign_to_expense_approver",
+			callback: function(r) {
+				if(r.exc) {
+					msgprint(__("There were errors."));
+				} else {
+					//cur_frm.timeline.insert_comment("Workflow", "Sent for Approval");
+					msgprint(__("Succesfully Send for Approval !!!!!"));
+					location.reload();
+				}
+			}
+		});
+	
+}
+
+cur_frm.cscript.set_help = function(doc) {
+	cur_frm.set_intro("");
+	if(doc.__islocal && !in_list(user_roles, "HR User")) {
+		cur_frm.set_intro(__("Fill the form and save it"))
+	} else {
+		if(doc.docstatus==0 && doc.approval_status=="Draft") {
+			if(user==doc.exp_approver) {
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 				cur_frm.set_intro(__("You are the Expense Approver for this record. Please Update the 'Status' and Save"));
 			} else {
 				cur_frm.set_intro(__("Expense Claim is pending approval. Only the Expense Approver can update status."));
 			}
 		}
 	}
+<<<<<<< HEAD
 };
 
 cur_frm.cscript.validate = function(doc) {
@@ -88,6 +222,15 @@ cur_frm.cscript.validate = function(doc) {
 };
 
 cur_frm.cscript.calculate_total = function(doc){
+=======
+}
+
+cur_frm.cscript.validate = function(doc) {
+	cur_frm.cscript.calculate_total(doc);
+}
+
+cur_frm.cscript.calculate_total = function(doc,cdt,cdn){
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 	doc.total_claimed_amount = 0;
 	doc.total_sanctioned_amount = 0;
 	$.each((doc.expenses || []), function(i, d) {
@@ -97,6 +240,7 @@ cur_frm.cscript.calculate_total = function(doc){
 
 	refresh_field("total_claimed_amount");
 	refresh_field('total_sanctioned_amount');
+<<<<<<< HEAD
 };
 
 cur_frm.cscript.calculate_total_amount = function(doc,cdt,cdn){
@@ -108,6 +252,20 @@ cur_frm.cscript.on_submit = function() {
 		cur_frm.email_doc(frappe.boot.notification_settings.expense_claim_message);
 	}
 };
+=======
+
+}
+
+cur_frm.cscript.calculate_total_amount = function(doc,cdt,cdn){
+	cur_frm.cscript.calculate_total(doc,cdt,cdn);
+}
+
+cur_frm.cscript.on_submit = function(doc, cdt, cdn) {
+	if(cint(frappe.boot.notification_settings && frappe.boot.notification_settings.expense_claim)) {
+		cur_frm.email_doc(frappe.boot.notification_settings.expense_claim_message);
+	}
+}
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 
 erpnext.expense_claim = {
 	set_title :function(frm) {
@@ -118,6 +276,7 @@ erpnext.expense_claim = {
 			frm.set_value("title", frm.doc.employee_name + " for "+ frm.doc.task);
 		}
 	}
+<<<<<<< HEAD
 };
 
 frappe.ui.form.on("Expense Claim", {
@@ -266,6 +425,9 @@ frappe.ui.form.on("Expense Claim", {
 		erpnext.expense_claim.set_title(frm);
 	}
 });
+=======
+}
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 
 frappe.ui.form.on("Expense Claim Detail", {
 	claim_amount: function(frm, cdt, cdn) {
@@ -273,7 +435,11 @@ frappe.ui.form.on("Expense Claim Detail", {
 		var doc = frm.doc;
 
 		if(!child.sanctioned_amount){
+<<<<<<< HEAD
 			frappe.model.set_value(cdt, cdn, 'sanctioned_amount', child.claim_amount);
+=======
+			frappe.model.set_value(cdt, cdn, 'sanctioned_amount', child.claim_amount)
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 		}
 
 		cur_frm.cscript.calculate_total(doc,cdt,cdn);
@@ -283,6 +449,18 @@ frappe.ui.form.on("Expense Claim Detail", {
 		var doc = frm.doc;
 		cur_frm.cscript.calculate_total(doc,cdt,cdn);
 	}
+<<<<<<< HEAD
+=======
+})
+
+
+frappe.ui.form.on("Expense Claim", "employee_name", function(frm) {
+	erpnext.expense_claim.set_title(frm);
+});
+
+frappe.ui.form.on("Expense Claim", "task", function(frm) {
+	erpnext.expense_claim.set_title(frm);
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 });
 
 cur_frm.fields_dict['task'].get_query = function(doc) {
@@ -290,5 +468,10 @@ cur_frm.fields_dict['task'].get_query = function(doc) {
 		filters:{
 			'project': doc.project
 		}
+<<<<<<< HEAD
 	};
 };
+=======
+	}
+}
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347

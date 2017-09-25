@@ -16,6 +16,10 @@ Um einen Lead zu generieren, gehen Sie zu:
 
 > CRM > Dokumente > Lead > Neu
 
+<<<<<<< HEAD
 <img class="screenshot" alt="Lead" src="/docs/assets/img/crm/lead.png">
+=======
+<img class="screenshot" alt="Lead" src="{{docs_base_url}}/assets/img/crm/lead.png">
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 
 {next}

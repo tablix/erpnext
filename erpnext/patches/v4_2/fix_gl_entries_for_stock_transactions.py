@@ -1,7 +1,11 @@
 # Copyright (c) 2015, Frappe Technologies Pvt. Ltd. and Contributors
 # License: GNU General Public License v3. See license.txt
 
+<<<<<<< HEAD
 from __future__ import print_function, unicode_literals
+=======
+from __future__ import unicode_literals
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 import frappe
 from frappe.utils import flt
 
@@ -37,7 +41,11 @@ def execute():
 
 			if stock_bal and account_bal and abs(flt(stock_bal[0][0]) - flt(account_bal[0][0])) > 0.1:
 				try:
+<<<<<<< HEAD
 					print(voucher_type, voucher_no, stock_bal[0][0], account_bal[0][0])
+=======
+					print voucher_type, voucher_no, stock_bal[0][0], account_bal[0][0]
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 
 					frappe.db.sql("""delete from `tabGL Entry`
 						where voucher_type=%s and voucher_no=%s""", (voucher_type, voucher_no))
@@ -45,6 +53,7 @@ def execute():
 					voucher = frappe.get_doc(voucher_type, voucher_no)
 					voucher.make_gl_entries(repost_future_gle=False)
 					frappe.db.commit()
+<<<<<<< HEAD
 				except Exception as e:
 					print(frappe.get_traceback())
 					rejected.append([voucher_type, voucher_no])
@@ -52,3 +61,12 @@ def execute():
 
 		print("Failed to repost: ")
 		print(rejected)
+=======
+				except Exception, e:
+					print frappe.get_traceback()
+					rejected.append([voucher_type, voucher_no])
+					frappe.db.rollback()
+
+		print "Failed to repost: "
+		print rejected
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347

@@ -1,5 +1,8 @@
+<<<<<<< HEAD
 # Projected Quantity
 
+=======
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 Projected Quantity is the level of stock that is predicted for a particular
 Item, based on the current stock levels and other requirements. It is the
 quantity of gross inventory that includes supply and demand in the past which
@@ -13,7 +16,11 @@ maintained to serve unexpected demands.
 Having a tight control of the projected inventory is crucial to determine
 shortages and to calculate the right order quantity.
 
+<<<<<<< HEAD
 <img class="screenshot" alt="Projected Quantity" src="/docs/assets/img/stock/projected_quantity.png">
+=======
+![Projected Quantity Stock Report]({{docs_base_url}}/assets/old_images/erpnext/projected-quantity-stock-report.png)
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 
 
 > Projected Qty = Actual Qty + Planned Qty + Requested Qty + Ordered Qty -

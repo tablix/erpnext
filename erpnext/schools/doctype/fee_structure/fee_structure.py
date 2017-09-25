@@ -5,8 +5,11 @@
 from __future__ import unicode_literals
 import frappe
 from frappe.model.document import Document
+<<<<<<< HEAD
 from frappe.model.mapper import get_mapped_doc
 
+=======
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 
 class FeeStructure(Document):
 	def validate(self):
@@ -18,6 +21,7 @@ class FeeStructure(Document):
 		for d in self.components:
 			self.total_amount += d.amount
 	
+<<<<<<< HEAD
 
 @frappe.whitelist()
 def make_fee_schedule(source_name, target_doc=None):
@@ -32,3 +36,5 @@ def make_fee_schedule(source_name, target_doc=None):
 			"doctype": "Fee Component"
 		}
 	}, target_doc)
+=======
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347

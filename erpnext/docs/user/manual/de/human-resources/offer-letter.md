@@ -7,6 +7,7 @@ Ein ERPNext können Sie einen Datensatz zu den Angebotsschreiben, die Sie an Bew
 
 > Personalwesen > Dokumente > Angebotsschreiben > Neu
 
+<<<<<<< HEAD
 <img class="screenshot" alt="Angebotsschreiben" src="/docs/assets/img/human-resources/offer-letter.png">
 
 > Anmerkung: Angebotsschreiben kann nur zu einem [Bewerber](/docs/user/manual/de/human-resources/job-applicant.html) erstellt werden.
@@ -14,5 +15,14 @@ Ein ERPNext können Sie einen Datensatz zu den Angebotsschreiben, die Sie an Bew
 Es gibt ein vordefiniertes Druckformat zum Angebotsschreiben.
 
 <img class="screenshot" alt="Angebotsschreiben" src="/docs/assets/img/human-resources/offer-letter-print.png">
+=======
+<img class="screenshot" alt="Angebotsschreiben" src="{{docs_base_url}}/assets/img/human-resources/offer-letter.png">
+
+> Anmerkung: Angebotsschreiben kann nur zu einem [Bewerber]({{docs_base_url}}/user/manual/de/human-resources/job-applicant.html) erstellt werden.
+
+Es gibt ein vordefiniertes Druckformat zum Angebotsschreiben.
+
+<img class="screenshot" alt="Angebotsschreiben" src="{{docs_base_url}}/assets/img/human-resources/offer-letter-print.png">
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 
 {next}

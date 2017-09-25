@@ -1,5 +1,8 @@
+<<<<<<< HEAD
 # Using Custom Domain On Erpnext
 
+=======
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 <!-- markdown -->
 
 If you have subscribed to any of the plans at [ERPNext](https://erpnext.com), you can have us serve your site on your custom domain (for example at http://example.com). This enables your website to be served on a custom domain.

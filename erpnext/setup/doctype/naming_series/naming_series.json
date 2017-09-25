@@ -1,14 +1,20 @@
 {
  "allow_copy": 0, 
+<<<<<<< HEAD
  "allow_guest_to_view": 0, 
  "allow_import": 0, 
  "allow_rename": 0, 
  "beta": 0, 
+=======
+ "allow_import": 0, 
+ "allow_rename": 0, 
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
  "creation": "2013-01-25 11:35:08", 
  "custom": 0, 
  "description": "Set prefix for numbering series on your transactions", 
  "docstatus": 0, 
  "doctype": "DocType", 
+<<<<<<< HEAD
  "editable_grid": 0, 
  "fields": [
   {
@@ -17,11 +23,19 @@
    "bold": 0, 
    "collapsible": 0, 
    "columns": 0, 
+=======
+ "fields": [
+  {
+   "allow_on_submit": 0, 
+   "bold": 0, 
+   "collapsible": 0, 
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
    "description": "Set prefix for numbering series on your transactions", 
    "fieldname": "setup_series", 
    "fieldtype": "Section Break", 
    "hidden": 0, 
    "ignore_user_permissions": 0, 
+<<<<<<< HEAD
    "ignore_xss_filter": 0, 
    "in_filter": 0, 
    "in_global_search": 0, 
@@ -35,6 +49,15 @@
    "print_hide_if_no_value": 0, 
    "read_only": 0, 
    "remember_last_selected_value": 0, 
+=======
+   "in_filter": 0, 
+   "in_list_view": 0, 
+   "label": "Setup Series", 
+   "no_copy": 0, 
+   "permlevel": 0, 
+   "print_hide": 0, 
+   "read_only": 0, 
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
    "report_hide": 0, 
    "reqd": 0, 
    "search_index": 0, 
@@ -42,15 +65,22 @@
    "unique": 0
   }, 
   {
+<<<<<<< HEAD
    "allow_bulk_edit": 0, 
    "allow_on_submit": 0, 
    "bold": 0, 
    "collapsible": 0, 
    "columns": 0, 
+=======
+   "allow_on_submit": 0, 
+   "bold": 0, 
+   "collapsible": 0, 
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
    "fieldname": "select_doc_for_series", 
    "fieldtype": "Select", 
    "hidden": 0, 
    "ignore_user_permissions": 0, 
+<<<<<<< HEAD
    "ignore_xss_filter": 0, 
    "in_filter": 0, 
    "in_global_search": 0, 
@@ -64,6 +94,15 @@
    "print_hide_if_no_value": 0, 
    "read_only": 0, 
    "remember_last_selected_value": 0, 
+=======
+   "in_filter": 0, 
+   "in_list_view": 0, 
+   "label": "Select Transaction", 
+   "no_copy": 0, 
+   "permlevel": 0, 
+   "print_hide": 0, 
+   "read_only": 0, 
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
    "report_hide": 0, 
    "reqd": 0, 
    "search_index": 0, 
@@ -71,16 +110,23 @@
    "unique": 0
   }, 
   {
+<<<<<<< HEAD
    "allow_bulk_edit": 0, 
    "allow_on_submit": 0, 
    "bold": 0, 
    "collapsible": 0, 
    "columns": 0, 
    "depends_on": "select_doc_for_series", 
+=======
+   "allow_on_submit": 0, 
+   "bold": 0, 
+   "collapsible": 0, 
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
    "fieldname": "help_html", 
    "fieldtype": "HTML", 
    "hidden": 0, 
    "ignore_user_permissions": 0, 
+<<<<<<< HEAD
    "ignore_xss_filter": 0, 
    "in_filter": 0, 
    "in_global_search": 0, 
@@ -88,13 +134,22 @@
    "in_standard_filter": 0, 
    "label": "Help HTML", 
    "length": 0, 
+=======
+   "in_filter": 0, 
+   "in_list_view": 0, 
+   "label": "Help HTML", 
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
    "no_copy": 0, 
    "options": "<div class=\"well\">\nEdit list of Series in the box below. Rules:\n<ul>\n<li>Each Series Prefix on a new line.</li>\n<li>Allowed special characters are \"/\" and \"-\"</li>\n<li>Optionally, set the number of digits in the series using dot (.) followed by hashes (#). For example, \".####\" means that the series will have four digits. Default is five digits.</li>\n</ul>\nExamples:<br>\nINV-<br>\nINV-10-<br>\nINVK-<br>\nINV-.####<br>\n</div>", 
    "permlevel": 0, 
    "print_hide": 0, 
+<<<<<<< HEAD
    "print_hide_if_no_value": 0, 
    "read_only": 0, 
    "remember_last_selected_value": 0, 
+=======
+   "read_only": 0, 
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
    "report_hide": 0, 
    "reqd": 0, 
    "search_index": 0, 
@@ -102,16 +157,23 @@
    "unique": 0
   }, 
   {
+<<<<<<< HEAD
    "allow_bulk_edit": 0, 
    "allow_on_submit": 0, 
    "bold": 0, 
    "collapsible": 0, 
    "columns": 0, 
    "depends_on": "select_doc_for_series", 
+=======
+   "allow_on_submit": 0, 
+   "bold": 0, 
+   "collapsible": 0, 
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
    "fieldname": "set_options", 
    "fieldtype": "Text", 
    "hidden": 0, 
    "ignore_user_permissions": 0, 
+<<<<<<< HEAD
    "ignore_xss_filter": 0, 
    "in_filter": 0, 
    "in_global_search": 0, 
@@ -125,6 +187,15 @@
    "print_hide_if_no_value": 0, 
    "read_only": 0, 
    "remember_last_selected_value": 0, 
+=======
+   "in_filter": 0, 
+   "in_list_view": 0, 
+   "label": "Series List for this Transaction", 
+   "no_copy": 0, 
+   "permlevel": 0, 
+   "print_hide": 0, 
+   "read_only": 0, 
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
    "report_hide": 0, 
    "reqd": 0, 
    "search_index": 0, 
@@ -132,17 +203,24 @@
    "unique": 0
   }, 
   {
+<<<<<<< HEAD
    "allow_bulk_edit": 0, 
    "allow_on_submit": 0, 
    "bold": 0, 
    "collapsible": 0, 
    "columns": 0, 
    "depends_on": "select_doc_for_series", 
+=======
+   "allow_on_submit": 0, 
+   "bold": 0, 
+   "collapsible": 0, 
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
    "description": "Check this if you want to force the user to select a series before saving. There will be no default if you check this.", 
    "fieldname": "user_must_always_select", 
    "fieldtype": "Check", 
    "hidden": 0, 
    "ignore_user_permissions": 0, 
+<<<<<<< HEAD
    "ignore_xss_filter": 0, 
    "in_filter": 0, 
    "in_global_search": 0, 
@@ -156,6 +234,15 @@
    "print_hide_if_no_value": 0, 
    "read_only": 0, 
    "remember_last_selected_value": 0, 
+=======
+   "in_filter": 0, 
+   "in_list_view": 0, 
+   "label": "User must always select", 
+   "no_copy": 0, 
+   "permlevel": 0, 
+   "print_hide": 0, 
+   "read_only": 0, 
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
    "report_hide": 0, 
    "reqd": 0, 
    "search_index": 0, 
@@ -163,16 +250,23 @@
    "unique": 0
   }, 
   {
+<<<<<<< HEAD
    "allow_bulk_edit": 0, 
    "allow_on_submit": 0, 
    "bold": 0, 
    "collapsible": 0, 
    "columns": 0, 
    "depends_on": "select_doc_for_series", 
+=======
+   "allow_on_submit": 0, 
+   "bold": 0, 
+   "collapsible": 0, 
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
    "fieldname": "update", 
    "fieldtype": "Button", 
    "hidden": 0, 
    "ignore_user_permissions": 0, 
+<<<<<<< HEAD
    "ignore_xss_filter": 0, 
    "in_filter": 0, 
    "in_global_search": 0, 
@@ -187,6 +281,15 @@
    "print_hide_if_no_value": 0, 
    "read_only": 0, 
    "remember_last_selected_value": 0, 
+=======
+   "in_filter": 0, 
+   "in_list_view": 0, 
+   "label": "Update", 
+   "no_copy": 0, 
+   "permlevel": 0, 
+   "print_hide": 0, 
+   "read_only": 0, 
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
    "report_hide": 0, 
    "reqd": 0, 
    "search_index": 0, 
@@ -194,16 +297,23 @@
    "unique": 0
   }, 
   {
+<<<<<<< HEAD
    "allow_bulk_edit": 0, 
    "allow_on_submit": 0, 
    "bold": 0, 
    "collapsible": 0, 
    "columns": 0, 
+=======
+   "allow_on_submit": 0, 
+   "bold": 0, 
+   "collapsible": 0, 
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
    "description": "Change the starting / current sequence number of an existing series.", 
    "fieldname": "update_series", 
    "fieldtype": "Section Break", 
    "hidden": 0, 
    "ignore_user_permissions": 0, 
+<<<<<<< HEAD
    "ignore_xss_filter": 0, 
    "in_filter": 0, 
    "in_global_search": 0, 
@@ -217,6 +327,15 @@
    "print_hide_if_no_value": 0, 
    "read_only": 0, 
    "remember_last_selected_value": 0, 
+=======
+   "in_filter": 0, 
+   "in_list_view": 0, 
+   "label": "Update Series", 
+   "no_copy": 0, 
+   "permlevel": 0, 
+   "print_hide": 0, 
+   "read_only": 0, 
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
    "report_hide": 0, 
    "reqd": 0, 
    "search_index": 0, 
@@ -224,15 +343,22 @@
    "unique": 0
   }, 
   {
+<<<<<<< HEAD
    "allow_bulk_edit": 0, 
    "allow_on_submit": 0, 
    "bold": 0, 
    "collapsible": 0, 
    "columns": 0, 
+=======
+   "allow_on_submit": 0, 
+   "bold": 0, 
+   "collapsible": 0, 
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
    "fieldname": "prefix", 
    "fieldtype": "Select", 
    "hidden": 0, 
    "ignore_user_permissions": 0, 
+<<<<<<< HEAD
    "ignore_xss_filter": 0, 
    "in_filter": 0, 
    "in_global_search": 0, 
@@ -246,6 +372,15 @@
    "print_hide_if_no_value": 0, 
    "read_only": 0, 
    "remember_last_selected_value": 0, 
+=======
+   "in_filter": 0, 
+   "in_list_view": 0, 
+   "label": "Prefix", 
+   "no_copy": 0, 
+   "permlevel": 0, 
+   "print_hide": 0, 
+   "read_only": 0, 
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
    "report_hide": 0, 
    "reqd": 0, 
    "search_index": 0, 
@@ -253,16 +388,23 @@
    "unique": 0
   }, 
   {
+<<<<<<< HEAD
    "allow_bulk_edit": 0, 
    "allow_on_submit": 0, 
    "bold": 0, 
    "collapsible": 0, 
    "columns": 0, 
+=======
+   "allow_on_submit": 0, 
+   "bold": 0, 
+   "collapsible": 0, 
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
    "description": "This is the number of the last created transaction with this prefix", 
    "fieldname": "current_value", 
    "fieldtype": "Int", 
    "hidden": 0, 
    "ignore_user_permissions": 0, 
+<<<<<<< HEAD
    "ignore_xss_filter": 0, 
    "in_filter": 0, 
    "in_global_search": 0, 
@@ -276,6 +418,15 @@
    "print_hide_if_no_value": 0, 
    "read_only": 0, 
    "remember_last_selected_value": 0, 
+=======
+   "in_filter": 0, 
+   "in_list_view": 0, 
+   "label": "Current Value", 
+   "no_copy": 0, 
+   "permlevel": 0, 
+   "print_hide": 0, 
+   "read_only": 0, 
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
    "report_hide": 0, 
    "reqd": 0, 
    "search_index": 0, 
@@ -283,15 +434,22 @@
    "unique": 0
   }, 
   {
+<<<<<<< HEAD
    "allow_bulk_edit": 0, 
    "allow_on_submit": 0, 
    "bold": 0, 
    "collapsible": 0, 
    "columns": 0, 
+=======
+   "allow_on_submit": 0, 
+   "bold": 0, 
+   "collapsible": 0, 
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
    "fieldname": "update_series_start", 
    "fieldtype": "Button", 
    "hidden": 0, 
    "ignore_user_permissions": 0, 
+<<<<<<< HEAD
    "ignore_xss_filter": 0, 
    "in_filter": 0, 
    "in_global_search": 0, 
@@ -299,13 +457,22 @@
    "in_standard_filter": 0, 
    "label": "Update Series Number", 
    "length": 0, 
+=======
+   "in_filter": 0, 
+   "in_list_view": 0, 
+   "label": "Update Series Number", 
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
    "no_copy": 0, 
    "options": "update_series_start", 
    "permlevel": 0, 
    "print_hide": 0, 
+<<<<<<< HEAD
    "print_hide_if_no_value": 0, 
    "read_only": 0, 
    "remember_last_selected_value": 0, 
+=======
+   "read_only": 0, 
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
    "report_hide": 0, 
    "reqd": 0, 
    "search_index": 0, 
@@ -313,6 +480,7 @@
    "unique": 0
   }
  ], 
+<<<<<<< HEAD
  "has_web_view": 0, 
  "hide_heading": 0, 
  "hide_toolbar": 1, 
@@ -325,6 +493,18 @@
  "istable": 0, 
  "max_attachments": 0, 
  "modified": "2017-08-17 03:41:37.685910", 
+=======
+ "hide_heading": 0, 
+ "hide_toolbar": 1, 
+ "icon": "icon-sort-by-order", 
+ "idx": 1, 
+ "in_create": 0, 
+ "in_dialog": 0, 
+ "is_submittable": 0, 
+ "issingle": 1, 
+ "istable": 0, 
+ "modified": "2015-02-05 05:11:41.473793", 
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
  "modified_by": "Administrator", 
  "module": "Setup", 
  "name": "Naming Series", 
@@ -351,10 +531,15 @@
    "write": 1
   }
  ], 
+<<<<<<< HEAD
  "quick_entry": 0, 
  "read_only": 1, 
  "read_only_onload": 0, 
  "show_name_in_global_search": 0, 
  "track_changes": 0, 
  "track_seen": 0
+=======
+ "read_only": 1, 
+ "read_only_onload": 0
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 }

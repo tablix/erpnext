@@ -1,18 +1,23 @@
 # Copyright (c) 2015, Frappe Technologies Pvt. Ltd. and Contributors
 # License: GNU General Public License v3. See license.txt
 from __future__ import unicode_literals
+<<<<<<< HEAD
 from frappe.model.rename_doc import rename_doc
 from erpnext.stock.doctype.stock_entry.stock_entry_utils import make_stock_entry
 from frappe.utils import cint
 from erpnext import set_perpetual_inventory
 from frappe.test_runner import make_test_records
 from erpnext.accounts.doctype.account.test_account import get_inventory_account, create_account
+=======
+
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 
 import frappe
 import unittest
 test_records = frappe.get_test_records('Warehouse')
 
 class TestWarehouse(unittest.TestCase):
+<<<<<<< HEAD
 	def setUp(self):
 		if not frappe.get_value('Item', '_Test Item'):
 			make_test_records('Item')
@@ -106,3 +111,20 @@ def make_account_for_warehouse(warehouse_name, warehouse_obj):
 			{'company': warehouse_obj.company, 'is_group':1, 'account_type': 'Stock'},'name')
 		account = create_account(account_name=warehouse_name, \
 				account_type="Stock", parent_account= parent_account, company=warehouse_obj.company)
+=======
+	def test_parent_warehouse(self):
+		parent_warehouse = frappe.get_doc("Warehouse", "_Test Warehouse Group - _TC")
+		self.assertEquals(parent_warehouse.is_group, 1)
+		
+	def test_warehouse_hierarchy(self):
+		p_warehouse = frappe.get_doc("Warehouse", "_Test Warehouse Group - _TC")
+		
+		child_warehouses =  frappe.db.sql("""select name, is_group, parent_warehouse from `tabWarehouse` wh
+			where wh.lft > %s and wh.rgt < %s""", (p_warehouse.lft, p_warehouse.rgt), as_dict=1)
+		
+		for child_warehouse in child_warehouses:
+			self.assertEquals(p_warehouse.name, child_warehouse.parent_warehouse)
+			self.assertEquals(child_warehouse.is_group, 0)
+		
+		
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347

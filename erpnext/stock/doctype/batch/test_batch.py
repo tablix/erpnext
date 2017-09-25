@@ -6,15 +6,20 @@ import frappe
 from frappe.exceptions import ValidationError
 import unittest
 
+<<<<<<< HEAD
 from erpnext.stock.doctype.batch.batch import get_batch_qty, UnableToSelectBatchError
 
 class TestBatch(unittest.TestCase):
 
+=======
+class TestBatch(unittest.TestCase):
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 	def test_item_has_batch_enabled(self):
 		self.assertRaises(ValidationError, frappe.get_doc({
 			"doctype": "Batch",
 			"name": "_test Batch",
 			"item": "_Test Item"
+<<<<<<< HEAD
 		}).save)
 
 	@classmethod
@@ -192,3 +197,6 @@ class TestBatch(unittest.TestCase):
 			]
 		)).insert()
 		stock_entry.submit()
+=======
+		}).save)
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347

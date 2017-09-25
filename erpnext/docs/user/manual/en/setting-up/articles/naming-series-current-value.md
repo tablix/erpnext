@@ -1,6 +1,10 @@
 #Setting the Current Value for Naming Series
 
+<<<<<<< HEAD
 Naming Series feature allows you to define prefix for naming of a documents. For example, if a Sales Order has prefix "SO", then the series will be generated as SO-00001, SO-00002... and so on. Click [here](/docs/user/manual/en/setting-up/settings/naming-series.html) to learn how you can customize Number Series for a transaction/master in ERPNext.
+=======
+Naming Series feature allows you to define prefix for naming of a documents. For example, if a Sales Order has prefix "SO", then the series will be generated as SO-00001, SO-00002... and so on. Click [here]({{docs_base_url}}/user/manual/en/setting-up/settings/naming-series.html) to learn how you can customize Number Series for a transaction/master in ERPNext.
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 
 ### 1. Setting the Current Value
 
@@ -14,19 +18,31 @@ For example, you have 322 Sales Orders created in your old system with SO00322 a
 
 #### Update Series Section
 
+<<<<<<< HEAD
 <img alt="Update Series Section" class="screenshot" src="/docs/assets/img/articles/current-no-1.png">
+=======
+<img alt="Update Series Section" class="screenshot" src="{{docs_base_url}}/assets/img/articles/current-no-1.png">
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 
 #### Select Prefix
 
 Considering our scenario, prefix for Sales Order will be "SO".
 
+<<<<<<< HEAD
 <img alt="Series Prefix" class="screenshot" src="/docs/assets/img/articles/current-no-2.png">
+=======
+<img alt="Series Prefix" class="screenshot" src="{{docs_base_url}}/assets/img/articles/current-no-2.png">
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 
 #### Current Value
 
 If you have currently 12 Sales Orders created in your account, then current value updated will be 12. You can edit Current Value to 322, and then click on Update Series Number.
 
+<<<<<<< HEAD
 <img alt="Series Current Value" class="screenshot" src="/docs/assets/img/articles/current-no-3.png">
+=======
+<img alt="Series Current Value" class="screenshot" src="{{docs_base_url}}/assets/img/articles/current-no-3.png">
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 
 With this setting, you will have numbering for the New Sales Orders starting with #323.
 

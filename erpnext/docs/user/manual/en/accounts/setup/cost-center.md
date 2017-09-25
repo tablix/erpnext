@@ -1,5 +1,8 @@
+<<<<<<< HEAD
 # Cost Center
 
+=======
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 Your Chart of Accounts is mainly designed to provide reports to the government
 and tax authorities. Most businesses have multiple activities like different
 product lines, market segments, areas of business, etc that share some common
@@ -34,6 +37,10 @@ To setup your Chart of Cost Centers go to:
 
 > Accounts > Setup > Chart of Cost Centers
 
+<<<<<<< HEAD
 <img class="screenshot" alt="Cost Center" src="/docs/assets/img/chart-of-cost-center.png">
+=======
+![Chart of Cost Center]({{docs_base_url}}/assets/old_images/erpnext/chart-of-cost-centers.png)
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 
 {next}

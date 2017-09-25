@@ -5,10 +5,16 @@ import frappe
 from frappe.utils import flt, add_days
 import frappe.permissions
 import unittest
+<<<<<<< HEAD
 from erpnext.stock.doctype.item.test_item import get_total_projected_qty
 from erpnext.selling.doctype.sales_order.sales_order \
 	import make_material_request, make_delivery_note, make_sales_invoice, WarehouseRequired
 from erpnext.stock.doctype.stock_entry.stock_entry_utils import make_stock_entry
+=======
+from erpnext.selling.doctype.sales_order.sales_order \
+	import make_material_request, make_delivery_note, make_sales_invoice, WarehouseRequired
+
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 from frappe.tests.test_permissions import set_user_permission_doctypes
 
 class TestSalesOrder(unittest.TestCase):
@@ -16,7 +22,11 @@ class TestSalesOrder(unittest.TestCase):
 		frappe.set_user("Administrator")
 
 		for role in ("Stock User", "Sales User"):
+<<<<<<< HEAD
 			set_user_permission_doctypes(doctypes="Sales Order", role=role,
+=======
+			set_user_permission_doctypes(doctype="Sales Order", role=role,
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 				apply_user_permissions=0, user_permission_doctypes=None)
 
 	def test_make_material_request(self):
@@ -86,7 +96,10 @@ class TestSalesOrder(unittest.TestCase):
 		self.assertEquals(so.get("items")[0].delivered_qty, 9)
 
 	def test_reserved_qty_for_partial_delivery(self):
+<<<<<<< HEAD
 		make_stock_entry(target="_Test Warehouse - _TC", qty=10, rate=100)
+=======
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 		existing_reserved_qty = get_reserved_qty()
 
 		so = make_sales_order()
@@ -114,7 +127,10 @@ class TestSalesOrder(unittest.TestCase):
 		self.assertEqual(get_reserved_qty(), existing_reserved_qty)
 
 	def test_reserved_qty_for_over_delivery(self):
+<<<<<<< HEAD
 		make_stock_entry(target="_Test Warehouse - _TC", qty=10, rate=100)
+=======
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 		# set over-delivery tolerance
 		frappe.db.set_value('Item', "_Test Item", 'tolerance', 50)
 
@@ -127,6 +143,7 @@ class TestSalesOrder(unittest.TestCase):
 		dn = create_dn_against_so(so.name, 15)
 		self.assertEqual(get_reserved_qty(), existing_reserved_qty)
 
+<<<<<<< HEAD
 		total_projected_qty = get_total_projected_qty('_Test Item')
 		item_doc_before_cancel = frappe.get_doc('Item', '_Test Item')
 		self.assertEqual(total_projected_qty,  item_doc_before_cancel.total_projected_qty)
@@ -141,6 +158,12 @@ class TestSalesOrder(unittest.TestCase):
 	def test_reserved_qty_for_over_delivery_via_sales_invoice(self):
 		make_stock_entry(target="_Test Warehouse - _TC", qty=10, rate=100)
 
+=======
+		dn.cancel()
+		self.assertEqual(get_reserved_qty(), existing_reserved_qty + 10)
+		
+	def test_reserved_qty_for_over_delivery_via_sales_invoice(self):
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 		# set over-delivery tolerance
 		frappe.db.set_value('Item', "_Test Item", 'tolerance', 50)
 
@@ -154,6 +177,7 @@ class TestSalesOrder(unittest.TestCase):
 		si.get("items")[0].qty = 12
 		si.insert()
 		si.submit()
+<<<<<<< HEAD
 
 		total_projected_qty = get_total_projected_qty('_Test Item')
 		item_doc = frappe.get_doc('Item', '_Test Item')
@@ -161,25 +185,37 @@ class TestSalesOrder(unittest.TestCase):
 
 		self.assertEqual(get_reserved_qty(), existing_reserved_qty)
 
+=======
+		
+		self.assertEqual(get_reserved_qty(), existing_reserved_qty)
+		
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 		so.load_from_db()
 		self.assertEqual(so.get("items")[0].delivered_qty, 12)
 		self.assertEqual(so.per_delivered, 100)
 
 		si.cancel()
 		self.assertEqual(get_reserved_qty(), existing_reserved_qty + 10)
+<<<<<<< HEAD
 		total_projected_qty = get_total_projected_qty('_Test Item')
 		item_doc = frappe.get_doc('Item', '_Test Item')
 		self.assertEqual(total_projected_qty,  item_doc.total_projected_qty)
 
+=======
+		
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 		so.load_from_db()
 		self.assertEqual(so.get("items")[0].delivered_qty, 0)
 		self.assertEqual(so.per_delivered, 0)
 
 	def test_reserved_qty_for_partial_delivery_with_packing_list(self):
+<<<<<<< HEAD
 		make_stock_entry(target="_Test Warehouse - _TC", qty=10, rate=100)
 		make_stock_entry(item="_Test Item Home Desktop 100", target="_Test Warehouse - _TC", qty=10, rate=100)
 
 
+=======
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 		existing_reserved_qty_item1 = get_reserved_qty("_Test Item")
 		existing_reserved_qty_item2 = get_reserved_qty("_Test Item Home Desktop 100")
 
@@ -202,10 +238,13 @@ class TestSalesOrder(unittest.TestCase):
 		self.assertEqual(get_reserved_qty("_Test Item"), existing_reserved_qty_item1)
 		self.assertEqual(get_reserved_qty("_Test Item Home Desktop 100"), existing_reserved_qty_item2)
 
+<<<<<<< HEAD
 		total_projected_qty = get_total_projected_qty('_Test Item')
 		item_doc = frappe.get_doc('Item', '_Test Item')
 		self.assertEqual(total_projected_qty,  item_doc.total_projected_qty)
 
+=======
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 		# unclose so
 		so.load_from_db()
 		so.update_status('Draft')
@@ -225,9 +264,12 @@ class TestSalesOrder(unittest.TestCase):
 		self.assertEqual(get_reserved_qty("_Test Item Home Desktop 100"), existing_reserved_qty_item2)
 
 	def test_reserved_qty_for_over_delivery_with_packing_list(self):
+<<<<<<< HEAD
 		make_stock_entry(target="_Test Warehouse - _TC", qty=10, rate=100)
 		make_stock_entry(item="_Test Item Home Desktop 100", target="_Test Warehouse - _TC", qty=10, rate=100)
 
+=======
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 		# set over-delivery tolerance
 		frappe.db.set_value('Item', "_Test Product Bundle Item", 'tolerance', 50)
 
@@ -242,10 +284,13 @@ class TestSalesOrder(unittest.TestCase):
 
 		dn = create_dn_against_so(so.name, 15)
 
+<<<<<<< HEAD
 		total_projected_qty = get_total_projected_qty('_Test Item')
 		item_doc = frappe.get_doc('Item', '_Test Item')
 		self.assertEqual(total_projected_qty,  item_doc.total_projected_qty)
 
+=======
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 		self.assertEqual(get_reserved_qty("_Test Item"), existing_reserved_qty_item1)
 		self.assertEqual(get_reserved_qty("_Test Item Home Desktop 100"),
 			existing_reserved_qty_item2)
@@ -257,7 +302,11 @@ class TestSalesOrder(unittest.TestCase):
 
 	def test_warehouse_user(self):
 		for role in ("Stock User", "Sales User"):
+<<<<<<< HEAD
 			set_user_permission_doctypes(doctypes="Sales Order", role=role,
+=======
+			set_user_permission_doctypes(doctype="Sales Order", role=role,
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 				apply_user_permissions=1, user_permission_doctypes=["Warehouse"])
 
 		frappe.permissions.add_user_permission("Warehouse", "_Test Warehouse 1 - _TC", "test@example.com")
@@ -283,7 +332,10 @@ class TestSalesOrder(unittest.TestCase):
 		frappe.set_user("test2@example.com")
 		so.insert()
 
+<<<<<<< HEAD
 		frappe.set_user("Administrator")
+=======
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 		frappe.permissions.remove_user_permission("Warehouse", "_Test Warehouse 1 - _TC", "test@example.com")
 		frappe.permissions.remove_user_permission("Warehouse", "_Test Warehouse 2 - _TC1", "test2@example.com")
 		frappe.permissions.remove_user_permission("Company", "_Test Company 1", "test2@example.com")
@@ -363,8 +415,11 @@ class TestSalesOrder(unittest.TestCase):
 		from erpnext.stock.doctype.item.test_item import make_item
 		from erpnext.buying.doctype.purchase_order.purchase_order import update_status
 
+<<<<<<< HEAD
 		make_stock_entry(target="_Test Warehouse - _TC", qty=10, rate=100)
 
+=======
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 		po_item = make_item("_Test Item for Drop Shipping", {"is_stock_item": 1, "delivered_by_supplier": 1,
         'default_supplier': '_Test Supplier',
 		    "expense_account": "_Test Account Cost for Goods Sold - _TC",
@@ -392,9 +447,12 @@ class TestSalesOrder(unittest.TestCase):
 			}
 		]
 
+<<<<<<< HEAD
 		if frappe.db.get_value("Item", "_Test Regular Item", "is_stock_item")==1:
 			make_stock_entry(item="_Test Regular Item", target="_Test Warehouse - _TC", qty=10, rate=100)
 
+=======
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 		#setuo existing qty from bin
 		bin = frappe.get_all("Bin", filters={"item_code": po_item.item_code, "warehouse": "_Test Warehouse - _TC"},
 			fields=["ordered_qty", "reserved_qty"])
@@ -468,6 +526,7 @@ class TestSalesOrder(unittest.TestCase):
 
 		self.assertEquals(abs(flt(reserved_qty)), existing_reserved_qty_for_dn_item)
 
+<<<<<<< HEAD
 	def test_total_projected_qty_against_sales_order(self):
 		so = make_sales_order(item = '_Test Item')
 		total_projected_qty = get_total_projected_qty('_Test Item')
@@ -475,6 +534,8 @@ class TestSalesOrder(unittest.TestCase):
 		item_doc = frappe.get_doc('Item', '_Test Item')
 		self.assertEqual(total_projected_qty,  item_doc.total_projected_qty)
 
+=======
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 	def test_reserved_qty_for_closing_so(self):
 		bin = frappe.get_all("Bin", filters={"item_code": "_Test Item", "warehouse": "_Test Warehouse - _TC"},
 			fields=["reserved_qty"])
@@ -513,6 +574,10 @@ def make_sales_order(**args):
 
 	so.company = args.company or "_Test Company"
 	so.customer = args.customer or "_Test Customer"
+<<<<<<< HEAD
+=======
+	so.delivery_date = add_days(so.transaction_date, 10)
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 	so.currency = args.currency or "INR"
 	if args.selling_price_list:
 		so.selling_price_list = args.selling_price_list
@@ -529,12 +594,19 @@ def make_sales_order(**args):
 			"item_code": args.item or args.item_code or "_Test Item",
 			"warehouse": args.warehouse,
 			"qty": args.qty or 10,
+<<<<<<< HEAD
 			"uom": args.uom or None,
 			"rate": args.rate or 100
 		})
 
 	so.delivery_date = add_days(so.transaction_date, 10)
 
+=======
+			"rate": args.rate or 100,
+			"conversion_factor": 1.0,
+		})
+
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 	if not args.do_not_save:
 		so.insert()
 		if not args.do_not_submit:

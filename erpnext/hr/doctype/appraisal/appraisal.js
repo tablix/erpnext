@@ -46,11 +46,19 @@ cur_frm.cscript.score = function(doc,cdt,cdn){
 	var d = locals[cdt][cdn];
 	if (d.score){
 		if (flt(d.score) > 5) {
+<<<<<<< HEAD
 			frappe.msgprint(__("Score must be less than or equal to 5"));
 			d.score = 0;
 			refresh_field('score', d.name, 'goals');
 		}
 		var total = flt(d.per_weightage*d.score)/100;
+=======
+			msgprint(__("Score must be less than or equal to 5"));
+			d.score = 0;
+			refresh_field('score', d.name, 'goals');
+		}
+		total = flt(d.per_weightage*d.score)/100;
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 		d.score_earned = total.toPrecision(2);
 		refresh_field('score_earned', d.name, 'goals');
 	}

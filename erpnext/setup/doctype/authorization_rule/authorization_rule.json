@@ -3,28 +3,42 @@
  "allow_import": 1, 
  "allow_rename": 0, 
  "autoname": "AR.####", 
+<<<<<<< HEAD
  "beta": 0, 
+=======
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
  "creation": "2013-01-10 16:34:22", 
  "custom": 0, 
  "docstatus": 0, 
  "doctype": "DocType", 
  "document_type": "Setup", 
+<<<<<<< HEAD
  "editable_grid": 0, 
+=======
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
  "fields": [
   {
    "allow_on_submit": 0, 
    "bold": 0, 
    "collapsible": 0, 
+<<<<<<< HEAD
    "columns": 0, 
+=======
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
    "fieldname": "transaction", 
    "fieldtype": "Select", 
    "hidden": 0, 
    "ignore_user_permissions": 0, 
+<<<<<<< HEAD
    "ignore_xss_filter": 0, 
    "in_filter": 0, 
    "in_global_search": 0, 
    "in_list_view": 1, 
    "in_standard_filter": 1, 
+=======
+   "in_filter": 0, 
+   "in_list_view": 1, 
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
    "label": "Transaction", 
    "length": 0, 
    "no_copy": 0, 
@@ -33,9 +47,13 @@
    "options": "\nSales Order\nPurchase Order\nQuotation\nDelivery Note\nSales Invoice\nPurchase Invoice\nPurchase Receipt\nAppraisal", 
    "permlevel": 0, 
    "print_hide": 0, 
+<<<<<<< HEAD
    "print_hide_if_no_value": 0, 
    "read_only": 0, 
    "remember_last_selected_value": 0, 
+=======
+   "read_only": 0, 
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
    "report_hide": 0, 
    "reqd": 1, 
    "search_index": 0, 
@@ -46,16 +64,24 @@
    "allow_on_submit": 0, 
    "bold": 0, 
    "collapsible": 0, 
+<<<<<<< HEAD
    "columns": 0, 
+=======
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
    "fieldname": "based_on", 
    "fieldtype": "Select", 
    "hidden": 0, 
    "ignore_user_permissions": 0, 
+<<<<<<< HEAD
    "ignore_xss_filter": 0, 
    "in_filter": 0, 
    "in_global_search": 0, 
    "in_list_view": 1, 
    "in_standard_filter": 1, 
+=======
+   "in_filter": 0, 
+   "in_list_view": 1, 
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
    "label": "Based On", 
    "length": 0, 
    "no_copy": 0, 
@@ -64,9 +90,13 @@
    "options": "\nGrand Total\nAverage Discount\nCustomerwise Discount\nItemwise Discount\nNot Applicable", 
    "permlevel": 0, 
    "print_hide": 0, 
+<<<<<<< HEAD
    "print_hide_if_no_value": 0, 
    "read_only": 0, 
    "remember_last_selected_value": 0, 
+=======
+   "read_only": 0, 
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
    "report_hide": 0, 
    "reqd": 1, 
    "search_index": 0, 
@@ -77,16 +107,24 @@
    "allow_on_submit": 0, 
    "bold": 0, 
    "collapsible": 0, 
+<<<<<<< HEAD
    "columns": 0, 
+=======
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
    "fieldname": "customer_or_item", 
    "fieldtype": "Select", 
    "hidden": 1, 
    "ignore_user_permissions": 0, 
+<<<<<<< HEAD
    "ignore_xss_filter": 0, 
    "in_filter": 0, 
    "in_global_search": 0, 
    "in_list_view": 0, 
    "in_standard_filter": 0, 
+=======
+   "in_filter": 0, 
+   "in_list_view": 0, 
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
    "label": "Customer or Item", 
    "length": 0, 
    "no_copy": 0, 
@@ -94,9 +132,13 @@
    "permlevel": 0, 
    "precision": "", 
    "print_hide": 0, 
+<<<<<<< HEAD
    "print_hide_if_no_value": 0, 
    "read_only": 1, 
    "remember_last_selected_value": 0, 
+=======
+   "read_only": 1, 
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
    "report_hide": 0, 
    "reqd": 0, 
    "search_index": 0, 
@@ -107,16 +149,24 @@
    "allow_on_submit": 0, 
    "bold": 0, 
    "collapsible": 0, 
+<<<<<<< HEAD
    "columns": 0, 
+=======
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
    "fieldname": "master_name", 
    "fieldtype": "Dynamic Link", 
    "hidden": 0, 
    "ignore_user_permissions": 0, 
+<<<<<<< HEAD
    "ignore_xss_filter": 0, 
    "in_filter": 0, 
    "in_global_search": 0, 
    "in_list_view": 1, 
    "in_standard_filter": 0, 
+=======
+   "in_filter": 0, 
+   "in_list_view": 1, 
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
    "label": "Customer / Item Name", 
    "length": 0, 
    "no_copy": 0, 
@@ -125,9 +175,13 @@
    "options": "customer_or_item", 
    "permlevel": 0, 
    "print_hide": 0, 
+<<<<<<< HEAD
    "print_hide_if_no_value": 0, 
    "read_only": 0, 
    "remember_last_selected_value": 0, 
+=======
+   "read_only": 0, 
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
    "report_hide": 0, 
    "reqd": 0, 
    "search_index": 0, 
@@ -138,24 +192,36 @@
    "allow_on_submit": 0, 
    "bold": 0, 
    "collapsible": 0, 
+<<<<<<< HEAD
    "columns": 0, 
+=======
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
    "fieldname": "column_break_3", 
    "fieldtype": "Column Break", 
    "hidden": 0, 
    "ignore_user_permissions": 0, 
+<<<<<<< HEAD
    "ignore_xss_filter": 0, 
    "in_filter": 0, 
    "in_global_search": 0, 
    "in_list_view": 0, 
    "in_standard_filter": 0, 
+=======
+   "in_filter": 0, 
+   "in_list_view": 0, 
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
    "length": 0, 
    "no_copy": 0, 
    "permlevel": 0, 
    "precision": "", 
    "print_hide": 0, 
+<<<<<<< HEAD
    "print_hide_if_no_value": 0, 
    "read_only": 0, 
    "remember_last_selected_value": 0, 
+=======
+   "read_only": 0, 
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
    "report_hide": 0, 
    "reqd": 0, 
    "search_index": 0, 
@@ -166,16 +232,24 @@
    "allow_on_submit": 0, 
    "bold": 0, 
    "collapsible": 0, 
+<<<<<<< HEAD
    "columns": 0, 
+=======
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
    "fieldname": "company", 
    "fieldtype": "Link", 
    "hidden": 0, 
    "ignore_user_permissions": 0, 
+<<<<<<< HEAD
    "ignore_xss_filter": 0, 
    "in_filter": 0, 
    "in_global_search": 0, 
    "in_list_view": 1, 
    "in_standard_filter": 0, 
+=======
+   "in_filter": 0, 
+   "in_list_view": 1, 
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
    "label": "Company", 
    "length": 0, 
    "no_copy": 0, 
@@ -184,9 +258,13 @@
    "options": "Company", 
    "permlevel": 0, 
    "print_hide": 0, 
+<<<<<<< HEAD
    "print_hide_if_no_value": 0, 
    "read_only": 0, 
    "remember_last_selected_value": 1, 
+=======
+   "read_only": 0, 
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
    "report_hide": 0, 
    "reqd": 0, 
    "search_index": 0, 
@@ -197,24 +275,36 @@
    "allow_on_submit": 0, 
    "bold": 0, 
    "collapsible": 0, 
+<<<<<<< HEAD
    "columns": 0, 
+=======
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
    "fieldname": "section_break_17", 
    "fieldtype": "Section Break", 
    "hidden": 0, 
    "ignore_user_permissions": 0, 
+<<<<<<< HEAD
    "ignore_xss_filter": 0, 
    "in_filter": 0, 
    "in_global_search": 0, 
    "in_list_view": 0, 
    "in_standard_filter": 0, 
+=======
+   "in_filter": 0, 
+   "in_list_view": 0, 
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
    "length": 0, 
    "no_copy": 0, 
    "permlevel": 0, 
    "precision": "", 
    "print_hide": 0, 
+<<<<<<< HEAD
    "print_hide_if_no_value": 0, 
    "read_only": 0, 
    "remember_last_selected_value": 0, 
+=======
+   "read_only": 0, 
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
    "report_hide": 0, 
    "reqd": 0, 
    "search_index": 0, 
@@ -225,16 +315,24 @@
    "allow_on_submit": 0, 
    "bold": 0, 
    "collapsible": 0, 
+<<<<<<< HEAD
    "columns": 0, 
+=======
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
    "fieldname": "value", 
    "fieldtype": "Float", 
    "hidden": 0, 
    "ignore_user_permissions": 0, 
+<<<<<<< HEAD
    "ignore_xss_filter": 0, 
    "in_filter": 0, 
    "in_global_search": 0, 
    "in_list_view": 0, 
    "in_standard_filter": 0, 
+=======
+   "in_filter": 0, 
+   "in_list_view": 0, 
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
    "label": "Authorized Value", 
    "length": 0, 
    "no_copy": 0, 
@@ -242,9 +340,13 @@
    "oldfieldtype": "Currency", 
    "permlevel": 0, 
    "print_hide": 0, 
+<<<<<<< HEAD
    "print_hide_if_no_value": 0, 
    "read_only": 0, 
    "remember_last_selected_value": 0, 
+=======
+   "read_only": 0, 
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
    "report_hide": 0, 
    "reqd": 0, 
    "search_index": 0, 
@@ -255,24 +357,36 @@
    "allow_on_submit": 0, 
    "bold": 0, 
    "collapsible": 0, 
+<<<<<<< HEAD
    "columns": 0, 
+=======
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
    "fieldname": "section_break_7", 
    "fieldtype": "Section Break", 
    "hidden": 0, 
    "ignore_user_permissions": 0, 
+<<<<<<< HEAD
    "ignore_xss_filter": 0, 
    "in_filter": 0, 
    "in_global_search": 0, 
    "in_list_view": 0, 
    "in_standard_filter": 0, 
+=======
+   "in_filter": 0, 
+   "in_list_view": 0, 
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
    "length": 0, 
    "no_copy": 0, 
    "permlevel": 0, 
    "precision": "", 
    "print_hide": 0, 
+<<<<<<< HEAD
    "print_hide_if_no_value": 0, 
    "read_only": 0, 
    "remember_last_selected_value": 0, 
+=======
+   "read_only": 0, 
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
    "report_hide": 0, 
    "reqd": 0, 
    "search_index": 0, 
@@ -283,16 +397,24 @@
    "allow_on_submit": 0, 
    "bold": 0, 
    "collapsible": 0, 
+<<<<<<< HEAD
    "columns": 0, 
+=======
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
    "fieldname": "system_role", 
    "fieldtype": "Link", 
    "hidden": 0, 
    "ignore_user_permissions": 0, 
+<<<<<<< HEAD
    "ignore_xss_filter": 0, 
    "in_filter": 0, 
    "in_global_search": 0, 
    "in_list_view": 1, 
    "in_standard_filter": 1, 
+=======
+   "in_filter": 0, 
+   "in_list_view": 1, 
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
    "label": "Applicable To (Role)", 
    "length": 0, 
    "no_copy": 0, 
@@ -301,9 +423,13 @@
    "options": "Role", 
    "permlevel": 0, 
    "print_hide": 0, 
+<<<<<<< HEAD
    "print_hide_if_no_value": 0, 
    "read_only": 0, 
    "remember_last_selected_value": 0, 
+=======
+   "read_only": 0, 
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
    "report_hide": 0, 
    "reqd": 0, 
    "search_index": 0, 
@@ -314,17 +440,25 @@
    "allow_on_submit": 0, 
    "bold": 0, 
    "collapsible": 0, 
+<<<<<<< HEAD
    "columns": 0, 
+=======
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
    "description": "", 
    "fieldname": "to_emp", 
    "fieldtype": "Link", 
    "hidden": 0, 
    "ignore_user_permissions": 0, 
+<<<<<<< HEAD
    "ignore_xss_filter": 0, 
    "in_filter": 0, 
    "in_global_search": 0, 
    "in_list_view": 0, 
    "in_standard_filter": 0, 
+=======
+   "in_filter": 0, 
+   "in_list_view": 0, 
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
    "label": "Applicable To (Employee)", 
    "length": 0, 
    "no_copy": 0, 
@@ -333,9 +467,13 @@
    "options": "Employee", 
    "permlevel": 0, 
    "print_hide": 0, 
+<<<<<<< HEAD
    "print_hide_if_no_value": 0, 
    "read_only": 0, 
    "remember_last_selected_value": 0, 
+=======
+   "read_only": 0, 
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
    "report_hide": 0, 
    "reqd": 0, 
    "search_index": 0, 
@@ -346,24 +484,36 @@
    "allow_on_submit": 0, 
    "bold": 0, 
    "collapsible": 0, 
+<<<<<<< HEAD
    "columns": 0, 
+=======
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
    "fieldname": "column_break_10", 
    "fieldtype": "Column Break", 
    "hidden": 0, 
    "ignore_user_permissions": 0, 
+<<<<<<< HEAD
    "ignore_xss_filter": 0, 
    "in_filter": 0, 
    "in_global_search": 0, 
    "in_list_view": 0, 
    "in_standard_filter": 0, 
+=======
+   "in_filter": 0, 
+   "in_list_view": 0, 
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
    "length": 0, 
    "no_copy": 0, 
    "permlevel": 0, 
    "precision": "", 
    "print_hide": 0, 
+<<<<<<< HEAD
    "print_hide_if_no_value": 0, 
    "read_only": 0, 
    "remember_last_selected_value": 0, 
+=======
+   "read_only": 0, 
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
    "report_hide": 0, 
    "reqd": 0, 
    "search_index": 0, 
@@ -374,16 +524,24 @@
    "allow_on_submit": 0, 
    "bold": 0, 
    "collapsible": 0, 
+<<<<<<< HEAD
    "columns": 0, 
+=======
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
    "fieldname": "system_user", 
    "fieldtype": "Link", 
    "hidden": 0, 
    "ignore_user_permissions": 0, 
+<<<<<<< HEAD
    "ignore_xss_filter": 0, 
    "in_filter": 0, 
    "in_global_search": 0, 
    "in_list_view": 0, 
    "in_standard_filter": 0, 
+=======
+   "in_filter": 0, 
+   "in_list_view": 0, 
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
    "label": "Applicable To (User)", 
    "length": 0, 
    "no_copy": 0, 
@@ -392,9 +550,13 @@
    "options": "User", 
    "permlevel": 0, 
    "print_hide": 0, 
+<<<<<<< HEAD
    "print_hide_if_no_value": 0, 
    "read_only": 0, 
    "remember_last_selected_value": 0, 
+=======
+   "read_only": 0, 
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
    "report_hide": 0, 
    "reqd": 0, 
    "search_index": 0, 
@@ -405,17 +567,25 @@
    "allow_on_submit": 0, 
    "bold": 0, 
    "collapsible": 0, 
+<<<<<<< HEAD
    "columns": 0, 
+=======
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
    "description": "", 
    "fieldname": "to_designation", 
    "fieldtype": "Link", 
    "hidden": 0, 
    "ignore_user_permissions": 0, 
+<<<<<<< HEAD
    "ignore_xss_filter": 0, 
    "in_filter": 0, 
    "in_global_search": 0, 
    "in_list_view": 0, 
    "in_standard_filter": 0, 
+=======
+   "in_filter": 0, 
+   "in_list_view": 0, 
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
    "label": "Applicable To (Designation)", 
    "length": 0, 
    "no_copy": 0, 
@@ -424,9 +594,13 @@
    "options": "Designation", 
    "permlevel": 0, 
    "print_hide": 0, 
+<<<<<<< HEAD
    "print_hide_if_no_value": 0, 
    "read_only": 0, 
    "remember_last_selected_value": 0, 
+=======
+   "read_only": 0, 
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
    "report_hide": 0, 
    "reqd": 0, 
    "search_index": 0, 
@@ -437,24 +611,36 @@
    "allow_on_submit": 0, 
    "bold": 0, 
    "collapsible": 0, 
+<<<<<<< HEAD
    "columns": 0, 
+=======
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
    "fieldname": "section_break_13", 
    "fieldtype": "Section Break", 
    "hidden": 0, 
    "ignore_user_permissions": 0, 
+<<<<<<< HEAD
    "ignore_xss_filter": 0, 
    "in_filter": 0, 
    "in_global_search": 0, 
    "in_list_view": 0, 
    "in_standard_filter": 0, 
+=======
+   "in_filter": 0, 
+   "in_list_view": 0, 
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
    "length": 0, 
    "no_copy": 0, 
    "permlevel": 0, 
    "precision": "", 
    "print_hide": 0, 
+<<<<<<< HEAD
    "print_hide_if_no_value": 0, 
    "read_only": 0, 
    "remember_last_selected_value": 0, 
+=======
+   "read_only": 0, 
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
    "report_hide": 0, 
    "reqd": 0, 
    "search_index": 0, 
@@ -465,16 +651,24 @@
    "allow_on_submit": 0, 
    "bold": 0, 
    "collapsible": 0, 
+<<<<<<< HEAD
    "columns": 0, 
+=======
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
    "fieldname": "approving_role", 
    "fieldtype": "Link", 
    "hidden": 0, 
    "ignore_user_permissions": 0, 
+<<<<<<< HEAD
    "ignore_xss_filter": 0, 
    "in_filter": 0, 
    "in_global_search": 0, 
    "in_list_view": 0, 
    "in_standard_filter": 0, 
+=======
+   "in_filter": 0, 
+   "in_list_view": 0, 
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
    "label": "Approving Role (above authorized value)", 
    "length": 0, 
    "no_copy": 0, 
@@ -483,9 +677,13 @@
    "options": "Role", 
    "permlevel": 0, 
    "print_hide": 0, 
+<<<<<<< HEAD
    "print_hide_if_no_value": 0, 
    "read_only": 0, 
    "remember_last_selected_value": 0, 
+=======
+   "read_only": 0, 
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
    "report_hide": 0, 
    "reqd": 0, 
    "search_index": 0, 
@@ -496,24 +694,36 @@
    "allow_on_submit": 0, 
    "bold": 0, 
    "collapsible": 0, 
+<<<<<<< HEAD
    "columns": 0, 
+=======
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
    "fieldname": "column_break_15", 
    "fieldtype": "Column Break", 
    "hidden": 0, 
    "ignore_user_permissions": 0, 
+<<<<<<< HEAD
    "ignore_xss_filter": 0, 
    "in_filter": 0, 
    "in_global_search": 0, 
    "in_list_view": 0, 
    "in_standard_filter": 0, 
+=======
+   "in_filter": 0, 
+   "in_list_view": 0, 
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
    "length": 0, 
    "no_copy": 0, 
    "permlevel": 0, 
    "precision": "", 
    "print_hide": 0, 
+<<<<<<< HEAD
    "print_hide_if_no_value": 0, 
    "read_only": 0, 
    "remember_last_selected_value": 0, 
+=======
+   "read_only": 0, 
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
    "report_hide": 0, 
    "reqd": 0, 
    "search_index": 0, 
@@ -524,16 +734,24 @@
    "allow_on_submit": 0, 
    "bold": 0, 
    "collapsible": 0, 
+<<<<<<< HEAD
    "columns": 0, 
+=======
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
    "fieldname": "approving_user", 
    "fieldtype": "Link", 
    "hidden": 0, 
    "ignore_user_permissions": 0, 
+<<<<<<< HEAD
    "ignore_xss_filter": 0, 
    "in_filter": 0, 
    "in_global_search": 0, 
    "in_list_view": 0, 
    "in_standard_filter": 0, 
+=======
+   "in_filter": 0, 
+   "in_list_view": 0, 
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
    "label": "Approving User  (above authorized value)", 
    "length": 0, 
    "no_copy": 0, 
@@ -542,9 +760,13 @@
    "options": "User", 
    "permlevel": 0, 
    "print_hide": 0, 
+<<<<<<< HEAD
    "print_hide_if_no_value": 0, 
    "read_only": 0, 
    "remember_last_selected_value": 0, 
+=======
+   "read_only": 0, 
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
    "report_hide": 0, 
    "reqd": 0, 
    "search_index": 0, 
@@ -554,16 +776,25 @@
  ], 
  "hide_heading": 0, 
  "hide_toolbar": 0, 
+<<<<<<< HEAD
  "icon": "fa fa-shield", 
  "idx": 1, 
  "image_view": 0, 
+=======
+ "icon": "icon-shield", 
+ "idx": 1, 
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
  "in_create": 0, 
  "in_dialog": 0, 
  "is_submittable": 0, 
  "issingle": 0, 
  "istable": 0, 
  "max_attachments": 0, 
+<<<<<<< HEAD
  "modified": "2017-02-20 13:25:52.751381", 
+=======
+ "modified": "2015-11-16 06:29:42.164233", 
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
  "modified_by": "Administrator", 
  "module": "Setup", 
  "name": "Authorization Rule", 
@@ -590,6 +821,7 @@
    "write": 1
   }
  ], 
+<<<<<<< HEAD
  "quick_entry": 0, 
  "read_only": 0, 
  "read_only_onload": 0, 
@@ -598,4 +830,9 @@
  "sort_order": "DESC", 
  "track_changes": 0, 
  "track_seen": 0
+=======
+ "read_only": 0, 
+ "read_only_onload": 0, 
+ "search_fields": "transaction,based_on,system_user,system_role,approving_user,approving_role"
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 }

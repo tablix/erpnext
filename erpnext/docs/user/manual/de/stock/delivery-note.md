@@ -11,7 +11,11 @@ Die Buchung zum Lieferschein ist derjenigen zum Kaufbeleg sehr ähnlich. Sie kö
 
 oder aber über eine "übertragene" Kundenbestellung (die noch nicht versandt wurde) indem Sie auf "Lieferschein erstellen" klicken.
 
+<<<<<<< HEAD
 <img class="screenshot" alt="Lieferschein" src="/docs/assets/img/stock/delivery-note.png">
+=======
+<img class="screenshot" alt="Lieferschein" src="{{docs_base_url}}/assets/img/stock/delivery-note.png">
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 
 Sie können die Details auch aus einer noch nicht gelieferten Kundenbestellung "herausziehen".
 
@@ -19,7 +23,11 @@ Sie werden bemerken, dass alle Informationen über nicht gelieferte Artikel und 
 
 ### Pakete oder Artikel mit Produkt-Bundles versenden
 
+<<<<<<< HEAD
 Wenn Sie Artikel, die ein [Produkt-Bundle](/docs/user/manual/de/selling/setup/product-bundle.html), ERPNext will automatically beinhalten, versenden, erstellt Ihnen ERPNext automatisch eine Tabelle "Packliste" basierend auf den Unterartikeln dieses Artikels.
+=======
+Wenn Sie Artikel, die ein [Produkt-Bundle]({{docs_base_url}}/user/manual/de/selling/setup/product-bundle.html), ERPNext will automatically beinhalten, versenden, erstellt Ihnen ERPNext automatisch eine Tabelle "Packliste" basierend auf den Unterartikeln dieses Artikels.
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 
 Wenn Ihre Artikel serialisiert sind, dann müssen Sie für Artikel vom Typ Produkt-Bundle die Seriennummer in der Tabelle "Packliste" aktualisieren.
 

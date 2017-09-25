@@ -1,7 +1,11 @@
 # Copyright (c) 2015, Frappe Technologies Pvt. Ltd. and Contributors
 # License: GNU General Public License v3. See license.txt
 
+<<<<<<< HEAD
 from __future__ import print_function, unicode_literals
+=======
+from __future__ import unicode_literals
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 import unittest
 import frappe
 from frappe.utils.nestedset import NestedSetRecursionError, NestedSetMultipleRootsError, \
@@ -112,7 +116,11 @@ class TestItem(unittest.TestCase):
 
 	def print_tree(self):
 		import json
+<<<<<<< HEAD
 		print(json.dumps(frappe.db.sql("select name, lft, rgt from `tabItem Group` order by lft"), indent=1))
+=======
+		print json.dumps(frappe.db.sql("select name, lft, rgt from `tabItem Group` order by lft"), indent=1)
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 
 	def test_move_leaf_into_another_group(self):
 		# before move

@@ -1,6 +1,13 @@
 email-account
+<<<<<<< HEAD
 email-inbox
 email-alerts
 email-digest
 email-reports
 sending-email
+=======
+email-alerts
+email-digest
+sending-email
+setting-up-email
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347

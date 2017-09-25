@@ -7,7 +7,11 @@ Um eine neue Aufwandsabrechnung zu erstellen, gehen Sie zu:
 
 > Personalwesen > Dokumente > Aufwandsabrechnung > Neu
 
+<<<<<<< HEAD
 <img class="screenshot" alt="Aufwandsabrechnung" src="/docs/assets/img/human-resources/expense_claim.png">
+=======
+<img class="screenshot" alt="Aufwandsabrechnung" src="{{docs_base_url}}/assets/img/human-resources/expense_claim.png">
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 
 Geben Sie die Mitarbeiter-ID, das Datum und die Auflistung der Ausgaben, die Sie zurückerstattet haben möchten, ein und "übertragen" Sie den Datensatz.
 
@@ -27,6 +31,10 @@ Die genehmigte Aufwandsabrechnung muss in eine Journalbuchung umgewandelt werden
 
 * Um eine Aufwandsabrechnung mit einer Aufgabe oder einem Projekt zu verknüpfen, geben Sie die Aufgabe oder das Projekt an, während Sie eine Aufwandsabrechnung erstellen.
 
+<<<<<<< HEAD
 <img class="screenshot" alt="Aufwandsabrechnung - Verknüpfung zum Projekt" src="/docs/assets/img/project/project_expense_claim_link.png">
+=======
+<img class="screenshot" alt="Aufwandsabrechnung - Verknüpfung zum Projekt" src="{{docs_base_url}}/assets/img/project/project_expense_claim_link.png">
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 
 {next}

@@ -8,11 +8,17 @@ import frappe
 from frappe.utils import flt, time_diff_in_hours, now, add_days, cint
 from erpnext.stock.doctype.purchase_receipt.test_purchase_receipt import set_perpetual_inventory
 from erpnext.manufacturing.doctype.production_order.production_order \
+<<<<<<< HEAD
 	import make_stock_entry, ItemHasVariantError, stop_unstop
 from erpnext.stock.doctype.stock_entry import test_stock_entry
 from erpnext.stock.doctype.item.test_item import get_total_projected_qty
 from erpnext.stock.utils import get_bin
 from erpnext.selling.doctype.sales_order.test_sales_order import make_sales_order
+=======
+	import make_stock_entry, ItemHasVariantError
+from erpnext.stock.doctype.stock_entry import test_stock_entry
+from erpnext.stock.utils import get_bin
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 
 class TestProductionOrder(unittest.TestCase):
 	def setUp(self):
@@ -87,13 +93,20 @@ class TestProductionOrder(unittest.TestCase):
 
 		name = frappe.db.get_value('Timesheet', {'production_order': prod_order.name}, 'name')
 		time_sheet_doc = frappe.get_doc('Timesheet', name)
+<<<<<<< HEAD
 		self.assertEqual(prod_order.company, time_sheet_doc.company)
+=======
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 		time_sheet_doc.submit()
 		
 
 		self.assertEqual(prod_order.name, time_sheet_doc.production_order)
+<<<<<<< HEAD
 		self.assertEqual((prod_order.qty - d.completed_qty),
 			sum([d.completed_qty for d in time_sheet_doc.time_logs]))
+=======
+		self.assertEqual((prod_order.qty - d.completed_qty), sum([d.completed_qty for d in time_sheet_doc.time_logs]))
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 
 		manufacturing_settings = frappe.get_doc({
 			"doctype": "Manufacturing Settings",
@@ -107,9 +120,15 @@ class TestProductionOrder(unittest.TestCase):
 		self.assertEqual(prod_order.operations[0].completed_qty, prod_order.qty)
 
 		self.assertEqual(prod_order.operations[0].actual_operation_time, 60)
+<<<<<<< HEAD
 		self.assertEqual(prod_order.operations[0].actual_operating_cost, 6000)
 		
 		time_sheet_doc1 = make_timesheet(prod_order.name, prod_order.company)
+=======
+		self.assertEqual(prod_order.operations[0].actual_operating_cost, 100)
+		
+		time_sheet_doc1 = make_timesheet(prod_order.name)
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 		self.assertEqual(len(time_sheet_doc1.get('time_logs')), 0)
 
 		time_sheet_doc.cancel()
@@ -176,6 +195,7 @@ class TestProductionOrder(unittest.TestCase):
 		self.assertEqual(self.bin1_at_start.projected_qty,
 			cint(bin1_on_cancel.projected_qty))
 
+<<<<<<< HEAD
 	def test_projected_qty_for_production_and_sales_order(self):
 		before_production_order = get_bin(self.item, self.warehouse)
 		before_production_order.update_reserved_qty_for_production()
@@ -198,6 +218,8 @@ class TestProductionOrder(unittest.TestCase):
 		item_doc = frappe.get_doc('Item', self.item)
 		self.assertEqual(total_projected_qty,  item_doc.total_projected_qty)
 
+=======
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 	def test_reserved_qty_for_production_on_stock_entry(self):
 		test_stock_entry.make_stock_entry(item_code="_Test Item",
 			target= self.warehouse, qty=100, basic_rate=100)
@@ -230,6 +252,7 @@ class TestProductionOrder(unittest.TestCase):
 			cint(bin1_on_start_production.reserved_qty_for_production))
 		self.assertEqual(cint(bin1_on_end_production.projected_qty),
 			cint(bin1_on_end_production.projected_qty))
+<<<<<<< HEAD
 			
 	def test_reserved_qty_for_stopped_production(self):
 		test_stock_entry.make_stock_entry(item_code="_Test Item",
@@ -309,6 +332,12 @@ def get_scrap_item_details(bom_no):
 		scrap_items[item.item_code] = item.stock_qty
 
 	return scrap_items
+=======
+
+		# required_items removed
+		self.pro_order.reload()
+		self.assertEqual(len(self.pro_order.required_items), 0)
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 
 def make_prod_order_test_record(**args):
 	args = frappe._dict(args)
@@ -320,6 +349,7 @@ def make_prod_order_test_record(**args):
 	pro_order.qty = args.qty or 10
 	pro_order.wip_warehouse = args.wip_warehouse or "_Test Warehouse - _TC"
 	pro_order.fg_warehouse = args.fg_warehouse or "_Test Warehouse 1 - _TC"
+<<<<<<< HEAD
 	pro_order.scrap_warehouse = args.fg_warehouse or "_Test Scrap Warehouse - _TC"
 	pro_order.company = args.company or "_Test Company"
 	pro_order.stock_uom = args.stock_uom or "_Test UOM"
@@ -329,13 +359,24 @@ def make_prod_order_test_record(**args):
 	if args.source_warehouse:
 		for item in pro_order.get("required_items"):
 			item.source_warehouse = args.source_warehouse
+=======
+	pro_order.company = args.company or "_Test Company"
+	pro_order.stock_uom = args.stock_uom or "_Test UOM"
+	pro_order.set_production_order_operations()
+
+	if args.source_warehouse:
+		pro_order.source_warehouse = args.source_warehouse
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 
 	if args.planned_start_date:
 		pro_order.planned_start_date = args.planned_start_date
 
 	if not args.do_not_save:
 		pro_order.insert()
+<<<<<<< HEAD
 
+=======
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 		if not args.do_not_submit:
 			pro_order.submit()
 	return pro_order

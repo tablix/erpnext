@@ -1,16 +1,26 @@
 {%- set compact = doc.flags.compact_item_print -%}
 {%- set compact_fields = doc.flags.compact_item_fields -%}
+<<<<<<< HEAD
 {%- set display_columns = visible_columns|map(attribute="fieldname")| list -%}
 {%- set columns = doc.flags.format_columns(display_columns, compact_fields) -%}
 
 {% if doc.in_format_data("image") and doc.get("image") and "image" in display_columns -%}
 <div class="pull-left" style="max-width: 40%; margin-right: 10px;">
+=======
+
+{% if doc.in_format_data("image") and doc.get("image") and not doc.is_print_hide("image")-%}
+<div class="pull-left" style="width: 20%; margin-right: 10px;">
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 	<img class="print-item-image" src="{{ doc.image }}" alt="">
 </div>
 {%- endif %}
 
 <div>
+<<<<<<< HEAD
 	{% if doc.in_format_data("item_code") and "item_code" in display_columns -%}
+=======
+	{% if doc.in_format_data("item_code") and not doc.is_print_hide("item_code") -%}
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 		<div class="primary">
 			{% if compact %}<strong>{% endif %}
 				{{ _(doc.item_code) }}
@@ -18,8 +28,14 @@
 		</div>
 	{%- endif %}
 
+<<<<<<< HEAD
 	{%- if doc.in_format_data("item_name") and "item_name" in display_columns and
 		not (doc.in_format_data("item_code") and doc.item_code == doc.item_name) -%}
+=======
+	{% if (doc.in_format_data("item_name") and not doc.is_print_hide("item_name") and
+		(not doc.in_format_data("item_code") or doc.is_print_hide("item_code")
+			or doc.item_code != doc.item_name)) -%}
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 		<div class="primary">{{ doc.get_formatted("item_name", translated=True) }}</div>
 	{%- endif %}
 
@@ -35,7 +51,11 @@
 	{%- endif %}
 
 	{% if compact -%}
+<<<<<<< HEAD
 		{%- for fieldname in columns -%}
+=======
+		{%- for fieldname in doc.flags.show_in_description -%}
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 			{% if doc.get(fieldname) and doc.in_format_data(fieldname) -%}
 			<p>
 				<strong>{{ _(doc.meta.get_label(fieldname)) }}:</strong>

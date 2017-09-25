@@ -9,9 +9,15 @@ manufacturing
 projects
 support
 human-resources
+<<<<<<< HEAD
 subscription
 customer-portal
 website
 using-erpnext
 regional
+=======
+customer-portal
+website
+using-erpnext
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 customize-erpnext

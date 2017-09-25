@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 from __future__ import print_function, unicode_literals
+=======
+from __future__ import unicode_literals
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 import frappe
 import os
 from frappe.utils import get_files_path
@@ -45,7 +49,11 @@ def fix_files_for_item(files_path, unlinked_files):
 		try:
 			file_data.save()
 		except IOError:
+<<<<<<< HEAD
 			print("File {0} does not exist".format(new_file_url))
+=======
+			print "File {0} does not exist".format(new_file_url)
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 
 			# marking fix to prevent further errors
 			fixed_files.append(file_url)

@@ -2,7 +2,11 @@ frappe.ui.form.on("Issue", {
 	"onload": function(frm) {
 		frm.email_field = "raised_by";
 	},
+<<<<<<< HEAD
 
+=======
+	
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 	"refresh": function(frm) {
 		if(frm.doc.status==="Open") {
 			frm.add_custom_button(__("Close"), function() {
@@ -11,10 +15,15 @@ frappe.ui.form.on("Issue", {
 			});
 		} else {
 			frm.add_custom_button(__("Reopen"), function() {
+<<<<<<< HEAD
+=======
+			//frm.set_df_property("date_time_closed", "default", "2017-01-01 00:00:01");
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 				frm.set_value("status", "Open");
 				frm.save();
 			});
 		}
+<<<<<<< HEAD
 	},
 
 	timeline_refresh: function(frm) {
@@ -33,5 +42,7 @@ frappe.ui.form.on("Issue", {
 					frappe.set_route('Form', 'Help Article', doc.name);
 				});
 		}
+=======
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 	}
 });

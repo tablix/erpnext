@@ -4,11 +4,17 @@
 from __future__ import unicode_literals
 
 import frappe
+<<<<<<< HEAD
 from frappe.utils import cint, fmt_money, flt
 from erpnext.shopping_cart.cart import _get_cart_quotation
 from erpnext.shopping_cart.doctype.shopping_cart_settings.shopping_cart_settings \
 	import is_cart_enabled, get_shopping_cart_settings, show_quantity_in_website
 from erpnext.accounts.doctype.pricing_rule.pricing_rule import get_pricing_rule_for_item
+=======
+from frappe.utils import cint, fmt_money
+from erpnext.shopping_cart.cart import _get_cart_quotation
+from erpnext.shopping_cart.doctype.shopping_cart_settings.shopping_cart_settings import is_cart_enabled
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 
 @frappe.whitelist(allow_guest=True)
 def get_product_info(item_code):
@@ -19,9 +25,13 @@ def get_product_info(item_code):
 	qty = 0
 	cart_quotation = _get_cart_quotation()
 	template_item_code = frappe.db.get_value("Item", item_code, "variant_of")
+<<<<<<< HEAD
 	stock_status = get_qty_in_stock(item_code, template_item_code)
 	in_stock = stock_status.in_stock
 	stock_qty = stock_status.stock_qty
+=======
+	in_stock = get_qty_in_stock(item_code, template_item_code)
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 	price = get_price(item_code, template_item_code, cart_quotation.selling_price_list)
 
 	if price:
@@ -38,6 +48,7 @@ def get_product_info(item_code):
 
 	return {
 		"price": price,
+<<<<<<< HEAD
 		"stock_qty": stock_qty,
 		"in_stock": in_stock,
 		"uom": frappe.db.get_value("Item", item_code, "stock_uom"),
@@ -47,11 +58,20 @@ def get_product_info(item_code):
 
 def get_qty_in_stock(item_code, template_item_code):
 	in_stock, stock_qty = 0, ''
+=======
+		"stock": in_stock,
+		"uom": frappe.db.get_value("Item", item_code, "stock_uom"),
+		"qty": qty
+	}
+
+def get_qty_in_stock(item_code, template_item_code):
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 	warehouse = frappe.db.get_value("Item", item_code, "website_warehouse")
 	if not warehouse and template_item_code and template_item_code != item_code:
 		warehouse = frappe.db.get_value("Item", template_item_code, "website_warehouse")
 
 	if warehouse:
+<<<<<<< HEAD
 		stock_qty = frappe.db.sql("""select actual_qty from tabBin where
 			item_code=%s and warehouse=%s""", (item_code, warehouse))
 		if stock_qty:
@@ -67,10 +87,29 @@ def get_price(item_code, template_item_code, price_list, qty=1):
 			filters={"price_list": price_list, "item_code": item_code})
 
 		if template_item_code and not price:
+=======
+		in_stock = frappe.db.sql("""select actual_qty from tabBin where
+			item_code=%s and warehouse=%s""", (item_code, warehouse))
+		if in_stock:
+			in_stock = in_stock[0][0] > 0 and 1 or 0
+
+	else:
+		in_stock = -1
+
+	return in_stock
+
+def get_price(item_code, template_item_code, price_list):
+	if price_list:
+		price = frappe.get_all("Item Price", fields=["price_list_rate", "currency"],
+			filters={"price_list": price_list, "item_code": item_code})
+
+		if not price:
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 			price = frappe.get_all("Item Price", fields=["price_list_rate", "currency"],
 				filters={"price_list": price_list, "item_code": template_item_code})
 
 		if price:
+<<<<<<< HEAD
 			pricing_rule = get_pricing_rule_for_item(frappe._dict({
 				"item_code": item_code,
 				"qty": qty,
@@ -89,4 +128,6 @@ def get_price(item_code, template_item_code, price_list, qty=1):
 				if pricing_rule.pricing_rule_for == "Price":
 					price[0].price_list_rate = pricing_rule.price_list_rate
 
+=======
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 			return price[0]

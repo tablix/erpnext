@@ -18,9 +18,12 @@ def work():
 		# fixed_asset.work() already run
 		return
 		
+<<<<<<< HEAD
 	# Enable booking asset depreciation entry automatically
 	frappe.db.set_value("Accounts Settings", None, "book_asset_depreciation_entry_automatically", 1)
 		
+=======
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 	# post depreciation entries as on today
 	post_depreciation_entries()
 	

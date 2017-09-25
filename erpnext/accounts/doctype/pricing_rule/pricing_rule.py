@@ -11,7 +11,10 @@ from frappe import throw, _
 from frappe.utils import flt, cint
 from frappe.model.document import Document
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 class MultiplePricingRuleConflict(frappe.ValidationError): pass
 
 class PricingRule(Document):
@@ -23,8 +26,11 @@ class PricingRule(Document):
 		self.validate_price_or_discount()
 		self.validate_max_discount()
 
+<<<<<<< HEAD
 		if not self.margin_type: self.margin_rate_or_amount = 0.0
 
+=======
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 	def validate_mandatory(self):
 		for field in ["apply_on", "applicable_for"]:
 			tocheck = frappe.scrub(self.get(field) or "")
@@ -111,14 +117,18 @@ def apply_pricing_rule(args):
 
 	item_list = args.get("items")
 	args.pop("items")
+<<<<<<< HEAD
 	
 	set_serial_nos_based_on_fifo = frappe.db.get_single_value("Stock Settings", 
 		"automatically_set_serial_nos_based_on_fifo")
+=======
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 
 	for item in item_list:
 		args_copy = copy.deepcopy(args)
 		args_copy.update(item)
 		out.append(get_pricing_rule_for_item(args_copy))
+<<<<<<< HEAD
 		if set_serial_nos_based_on_fifo and not args.get('is_return'):
 			out.append(get_serial_no_for_item(args_copy))
 	return out
@@ -134,6 +144,10 @@ def get_serial_no_for_item(args):
 	if args.get("parenttype") in ("Sales Invoice", "Delivery Note") and args.stock_qty > 0:
 		item_details.serial_no = get_serial_no(args)
 	return item_details
+=======
+
+	return out
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 
 def get_pricing_rule_for_item(args):
 	if args.get("parenttype") == "Material Request": return {}
@@ -145,8 +159,11 @@ def get_pricing_rule_for_item(args):
 	})
 	
 	if args.ignore_pricing_rule or not args.item_code:
+<<<<<<< HEAD
 		if frappe.db.exists(args.doctype, args.name) and args.get("pricing_rule"):
 			item_details = remove_pricing_rule_for_item(args.get("pricing_rule"), item_details)
+=======
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 		return item_details
 
 	if not (args.item_group and args.brand):
@@ -180,11 +197,16 @@ def get_pricing_rule_for_item(args):
 		item_details.margin_rate_or_amount = pricing_rule.margin_rate_or_amount
 		if pricing_rule.price_or_discount == "Price":
 			item_details.update({
+<<<<<<< HEAD
 				"price_list_rate": (pricing_rule.price/flt(args.conversion_rate)) * args.conversion_factor or 1.0 \
+=======
+				"price_list_rate": pricing_rule.price/flt(args.conversion_rate) \
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 					if args.conversion_rate else 0.0,
 				"discount_percentage": 0.0
 			})
 		else:
+<<<<<<< HEAD
 			item_details.discount_percentage = pricing_rule.discount_percentage or args.discount_percentage
 	elif args.get('pricing_rule'):
 		item_details = remove_pricing_rule_for_item(args.get("pricing_rule"), item_details)
@@ -217,6 +239,11 @@ def remove_pricing_rules(item_list):
 		
 	return out
 	
+=======
+			item_details.discount_percentage = pricing_rule.discount_percentage
+	return item_details
+
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 def get_pricing_rules(args):
 	def _get_tree_conditions(parenttype, allow_blank=True):
 		field = frappe.scrub(parenttype)
@@ -286,10 +313,15 @@ def get_pricing_rules(args):
 def filter_pricing_rules(args, pricing_rules):
 	# filter for qty
 	if pricing_rules:
+<<<<<<< HEAD
 		stock_qty = flt(args.get('qty')) * args.get('conversion_factor', 1)
 
 		pricing_rules = filter(lambda x: (flt(stock_qty)>=flt(x.min_qty)
 			and (flt(stock_qty)<=x.max_qty if x.max_qty else True)), pricing_rules)
+=======
+		pricing_rules = filter(lambda x: (flt(args.get("qty"))>=flt(x.min_qty)
+			and (flt(args.get("qty"))<=x.max_qty if x.max_qty else True)), pricing_rules)
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 
 		# add variant_of property in pricing rule
 		for p in pricing_rules:
@@ -322,7 +354,11 @@ def filter_pricing_rules(args, pricing_rules):
 			pricing_rules = filter(lambda x: x.for_price_list==args.price_list, pricing_rules) \
 				or pricing_rules
 
+<<<<<<< HEAD
 	if len(pricing_rules) > 1 and not args.for_shopping_cart:
+=======
+	if len(pricing_rules) > 1:
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 		frappe.throw(_("Multiple Price Rules exists with same criteria, please resolve conflict by assigning priority. Price Rules: {0}")
 			.format("\n".join([d.name for d in pricing_rules])), MultiplePricingRuleConflict)
 	elif pricing_rules:
@@ -356,4 +392,8 @@ def set_transaction_type(args):
 	elif args.customer:
 		args.transaction_type = "selling"
 	else:
+<<<<<<< HEAD
 		args.transaction_type = "buying"
+=======
+		args.transaction_type = "buying"
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347

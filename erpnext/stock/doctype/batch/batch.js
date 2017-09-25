@@ -1,6 +1,7 @@
 // Copyright (c) 2015, Frappe Technologies Pvt. Ltd. and Contributors
 // License: GNU General Public License v3. See license.txt
 
+<<<<<<< HEAD
 frappe.ui.form.on('Batch', {
 	setup: (frm) => {
 		frm.fields_dict['item'].get_query = function(doc, cdt, cdn) {
@@ -135,3 +136,14 @@ frappe.ui.form.on('Batch', {
 	}
 })
 
+=======
+cur_frm.fields_dict['item'].get_query = function(doc, cdt, cdn) {
+	return {
+		query: "erpnext.controllers.queries.item_query",
+		filters:{
+			'is_stock_item': 1,
+			'has_batch_no': 1
+		}
+	}
+}
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347

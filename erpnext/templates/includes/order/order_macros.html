@@ -4,7 +4,11 @@
     <div class="row item_name_and_description">
         <div class="col-xs-4 col-sm-2 order-image-col">
             <div class="order-image">
+<<<<<<< HEAD
                 {{ product_image_square(d.thumbnail or d.image) }}
+=======
+                {{ product_image_square(d.image) }}
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
             </div>
         </div>
         <div class="col-xs-8 col-sm-10">
@@ -13,24 +17,41 @@
         </div>
     </div>
 {% endmacro %}
+<<<<<<< HEAD
 
+=======
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 {% macro item_name_and_description_cart(d) %}
     <div class="row item_name_dropdown">
         <div class="col-xs-4 col-sm-4 order-image-col">
             <div class="order-image">
+<<<<<<< HEAD
              {{ product_image_square(d.thumbnail or d.image) }}
             </div>
         </div>
         <div class="col-xs-8 col-sm-8">
            {{ d.item_code|truncate(25) }}
+=======
+             {{ product_image_square(d.image) }}
+            </div>
+        </div>
+        <div class="col-xs-8 col-sm-8">
+           {{ d.item_code|truncate(25) }}			
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 			<div class="input-group number-spinner">
                 <span class="input-group-btn">
                     <button class="btn btn-default cart-btn" data-dir="dwn">
                         –</button>
                 </span>
+<<<<<<< HEAD
 	            <input class="form-control text-right cart-qty"
 		            value = "{{ d.get_formatted('qty') }}"
 		            data-item-code="{{ d.item_code }}">
+=======
+            <input class="form-control text-right cart-qty"
+            value = "{{ d.get_formatted('qty') }}"
+            data-item-code="{{ d.item_code }}">
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
                 <span class="input-group-btn">
                     <button class="btn btn-default cart-btn" data-dir="up">
                         +</button>

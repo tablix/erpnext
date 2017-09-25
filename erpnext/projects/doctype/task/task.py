@@ -4,8 +4,15 @@
 from __future__ import unicode_literals
 import frappe, json
 
+<<<<<<< HEAD
 from frappe.utils import getdate, date_diff, add_days, cstr
 from frappe import _
+=======
+from frappe.desk.form import assign_to
+from frappe.utils import getdate, date_diff, add_days, cstr
+from frappe import _
+from frappe.utils import get_link_to_form, cint
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 
 from frappe.model.document import Document
 
@@ -28,9 +35,13 @@ class Task(Document):
 
 	def validate(self):
 		self.validate_dates()
+<<<<<<< HEAD
 		self.validate_progress()
 		self.validate_status()
 		self.update_depends_on()
+=======
+		self.validate_status()
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 
 	def validate_dates(self):
 		if self.exp_start_date and self.exp_end_date and getdate(self.exp_start_date) > getdate(self.exp_end_date):
@@ -47,6 +58,7 @@ class Task(Document):
 
 			from frappe.desk.form.assign_to import clear
 			clear(self.doctype, self.name)
+<<<<<<< HEAD
 			
 	def validate_progress(self):
 		if self.progress > 100:
@@ -58,12 +70,64 @@ class Task(Document):
 			if d.task and not d.task in depends_on_tasks:
 				depends_on_tasks += d.task + ","
 		self.depends_on_tasks = depends_on_tasks
+=======
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 
 	def on_update(self):
 		self.check_recursion()
 		self.reschedule_dependent_tasks()
 		self.update_project()
+<<<<<<< HEAD
 
+=======
+		if self.assigned_by != self.assigned_to:
+			self.assignment()
+		
+		
+	def assignment(self):
+		msg = ""
+		if self.assigned_by != self.owner:
+			recipient = self.assigned_by
+		else:
+			recipient = self.assigned_to
+
+		self.notify({
+			# for post in messages
+			"message": self._get_message(url=True),
+			"message_to": recipient,
+			# for email
+			"subject": self._get_message()
+		})
+		
+		#assign_to.add({
+		#	"assign_to": self.assigned_to,
+		#	"doctype": self.doctype,
+		#	"name": self.name,
+		#	"description": "New task Assignment"
+		#})
+		#frappe.permissions.add_user_permission("Task", self.name, self.assigned_to)
+		#frappe.db.set_value("Task", self.name, "owner", self.assigned_to)
+		
+	def _get_message(self,url=False):
+		name = self.name
+		employee_name1 = self.assigned_by
+		employee_name2 = self.assigned_to
+		if url:
+			name = get_link_to_form(self.doctype, self.name)
+			#employee_name = get_link_to_form("User", self.assigned_to, label=employee_name)
+
+		return (_("New Task Assignment") + ": %s - " + _(" By Employee") + ": %s " + _(" To Employee") + ": %s") % (name, employee_name1, employee_name2)
+		
+		
+	def notify(self, args):
+		args = frappe._dict(args)
+		from frappe.desk.page.chat.chat import post
+		post(**{"txt": args.message, "contact": args.message_to, "subject": args.subject,
+			"notify": 1})
+		
+		
+		
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 	def update_total_expense_claim(self):
 		self.total_expense_claim = frappe.db.sql("""select sum(total_sanctioned_amount) from `tabExpense Claim`
 			where project = %s and task = %s and approval_status = "Approved" and docstatus=1""",(self.project, self.name))[0][0]
@@ -105,18 +169,29 @@ class Task(Document):
 	def reschedule_dependent_tasks(self):
 		end_date = self.exp_end_date or self.act_end_date
 		if end_date:
+<<<<<<< HEAD
 			for task_name in frappe.db.sql("""select name from `tabTask` as parent where parent.project = %(project)s and parent.name in \
 				(select parent from `tabTask Depends On` as child where child.task = %(task)s and child.project = %(project)s)""",
 				{'project': self.project, 'task':self.name }, as_dict=1):
 
 				task = frappe.get_doc("Task", task_name.name)
 				if task.exp_start_date and task.exp_end_date and task.exp_start_date < getdate(end_date) and task.status == "Open":
+=======
+			for task_name in frappe.db.sql("select name from `tabTask` as parent where %s in \
+				(select task from `tabTask Depends On` as child where parent.name = child.parent )", self.name, as_dict=1):
+				task = frappe.get_doc("Task", task_name.name)
+				if task.exp_start_date and task.exp_end_date and task.exp_start_date < getdate(end_date) and task.status == "Open" :
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 					task_duration = date_diff(task.exp_end_date, task.exp_start_date)
 					task.exp_start_date = add_days(end_date, 1)
 					task.exp_end_date = add_days(task.exp_start_date, task_duration)
 					task.flags.ignore_recursion_check = True
 					task.save()
+<<<<<<< HEAD
 
+=======
+					
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 	def has_webform_permission(doc):
 		project_user = frappe.db.get_value("Project User", {"parent": doc.project, "user":frappe.session.user} , "user")
 		if project_user:
@@ -136,9 +211,15 @@ def get_events(start, end, filters=None):
 	data = frappe.db.sql("""select name, exp_start_date, exp_end_date,
 		subject, status, project from `tabTask`
 		where ((ifnull(exp_start_date, '0000-00-00')!= '0000-00-00') \
+<<<<<<< HEAD
 				and (exp_start_date <= %(end)s) \
 			or ((ifnull(exp_end_date, '0000-00-00')!= '0000-00-00') \
 				and exp_end_date >= %(start)s))
+=======
+				and (exp_start_date between %(start)s and %(end)s) \
+			or ((ifnull(exp_start_date, '0000-00-00')!= '0000-00-00') \
+				and exp_end_date between %(start)s and %(end)s))
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 		{conditions}""".format(conditions=conditions), {
 			"start": start,
 			"end": end
@@ -171,3 +252,8 @@ def set_tasks_as_overdue():
 		and exp_end_date < CURDATE()
 		and `status` not in ('Closed', 'Cancelled')""")
 		
+<<<<<<< HEAD
+=======
+
+		
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347

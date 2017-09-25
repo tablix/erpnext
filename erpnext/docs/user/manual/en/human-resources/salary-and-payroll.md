@@ -1,5 +1,8 @@
+<<<<<<< HEAD
 # Salary And Payroll
 
+=======
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 Salary is a fixed amount of money or compensation paid to an employee by an employer in return for the work performed . 
 
 Payroll is the administration of financial records of employees' salaries, wages, bonuses, net pay, and deductions.
@@ -18,9 +21,15 @@ and Deductions.
 Salary structures are used to help organizations:
   1. Maintain pay levels that are competitive with the external labor market,
   2. Maintain internal pay relationships among jobs,
+<<<<<<< HEAD
   3. Recognize and reward differences in the level of responsibility, skill, and performance, and manage pay expenditures.
 
 The usual components of the salary structure (in India) include:
+=======
+  3. Recognize and reward differences in level of responsibility, skill, and performance, and manage pay expenditures.
+
+The usual components of the salary structure (in india) include:
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 
 __Basic Salary:__ It is the taxable base income and generally not more than 40% of CTC.
 
@@ -34,7 +43,11 @@ __Gratuity:__ It is basically a lump sum amount paid by the employer when the em
 
 __PF:__ Fund collected during emergency or old age. 12% of the basic salary is automatically deducted and goes to the employee provident fund.
 
+<<<<<<< HEAD
 __Medical Allowance:__ The employer pays the employee for the medical expenditures incurred. It is tax-free up to Rs.15,000.
+=======
+__Medical Allowance:__ The employer pays the employee for the medical expenditures incurred. It is tax free up to Rs.15,000.
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 
 __Bonus:__ Taxable part of the CTC, usually a once a year lump sum amount, given to the employee based on the individual’s as well as the organizational performance for the year.
 
@@ -44,6 +57,7 @@ To create a new Salary Structure go to:
 
 > Human Resources > Setup > Salary Structure > New Salary Structure
 
+<<<<<<< HEAD
 #### Figure 1.1:Salary Structure
 
 <img class="screenshot" alt="Salary Structure" src="/docs/assets/img/human-resources/salary-structure.png">
@@ -96,6 +110,17 @@ In conditions and formulas,
   * Use field "base" for using base salary of the Employee
   * Use Salary Component abbreviations. For example: BS for Basic Salary
   * Use field name for employee details. For example: Employment Type for employment_type
+=======
+#### Figure 1:Salary Structure
+
+<img class="screenshot" alt="Salary Structure" src="{{docs_base_url}}/assets/img/human-resources/salary-structure.png">
+
+### In the Salary Structure,
+
+  * Select the Employee
+  * Set the starting date from which this is valid (Note: There can only be one Salary Structure that can be “Active” for an Employee during any period)
+  * In the “Earnings” and “Deductions” table all your defined Earning Type and Deductions Type will be auto-populated. Set the values of the Earnings and Deductions and save the Salary Structure.
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 
 ### Leave Without Pay (LWP)
 
@@ -109,7 +134,10 @@ days for the month (based on the Holiday List).
 If you don’t want ERPNext to manage LWP, just don’t click on LWP in any of the
 Earning Types and Deduction Types.
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 * * *
 
 ### Creating Salary Slips
@@ -117,6 +145,7 @@ Earning Types and Deduction Types.
 Once the Salary Structure is created, you can make a salary slip from the same
 form or you can process your payroll for the month using Process Payroll.
 
+<<<<<<< HEAD
 To create a new Salary Slip go to:
 
 > Human Resources > Setup > Salary Slip > New Salary Slip
@@ -124,6 +153,14 @@ To create a new Salary Slip go to:
 #### Figure 2: Salary Slip
 
 <img class="screenshot" alt="Salary Slip" src="/docs/assets/img/human-resources/salary-slip.png">
+=======
+To create a salary slip from Salary Structure, click on the button Make Salary
+Slip.
+
+#### Figure 2: Salary Slip
+
+<img class="screenshot" alt="Salary Slip" src="{{docs_base_url}}/assets/img/human-resources/salary-slip.png">
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 
 You can also create salary slip for multiple employees using Process Payroll:
 
@@ -131,15 +168,24 @@ You can also create salary slip for multiple employees using Process Payroll:
 
 #### Figure 3: Process Payroll
 
+<<<<<<< HEAD
 <img class="screenshot" alt="Process Payroll" src="/docs/assets/img/human-resources/process-payroll.png">
+=======
+<img class="screenshot" alt="Process Payroll" src="{{docs_base_url}}/assets/img/human-resources/process-payroll.png">
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 
 In Process Payroll,
 
   1. Select the Company for which you want to create the Salary Slips.
+<<<<<<< HEAD
   2. Check "Salary Slip based on Timesheet" if you want to process timesheet based Salary Slips.
   3. Select the From Date and To Date or Fiscal year and month for which you want to create the Salary Slips.
   3. Select the Payment Account.
   3. Click on “Create Salary Slips”. This will create Salary Slip records for each active Employee for the time period selected. If the Salary Slips are created, the system will not create any more Salary Slips. All updates will be shown in the “Activity Log” section.
+=======
+  2. Select the Month and the Year for which you want to create the Salary Slips.
+  3. Click on “Create Salary Slips”. This will create Salary Slip records for each active Employee for the month selected. If the Salary Slips are created, the system will not create any more Salary Slips. All updates will be shown in the “Activity Log” section.
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
   4. Once all Salary Slips are created, you can check if they are created correctly or edit it if you want to deduct Leave Without Pay (LWP).
   5. After checking, you can “Submit” them all together by clicking on “Submit Salary Slips”. 1. If you want them to be automatically emailed to the Employee, make sure to check the “Send Email” box.
 
@@ -154,6 +200,7 @@ there is only one payment entry in the company’s books of accounts and anyone
 with access to the company’s accounts will not have access to the individual
 salaries.
 
+<<<<<<< HEAD
 The salary payment entry is a Journal Entry that debits the total of the
 earning type salary component and credits the total of deduction type salary 
 component of all Employees to the default account set at Salary Component level 
@@ -169,4 +216,14 @@ created.
 <img class="screenshot" alt="Process Payroll" src="/docs/assets/img/human-resources/bank-entry.png">
 
 
+=======
+The salary payment entry is a Journal Entry entry that debits the total
+salary of all Employees to the Salary Account and credits the company’s bank
+Account.
+
+To generate your salary payment voucher from Process Payroll, click on
+“Make Bank Voucher” and a new Journal Entry with the total salaries will be
+created.
+
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 {next}

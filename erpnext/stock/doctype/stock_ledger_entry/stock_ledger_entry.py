@@ -27,6 +27,12 @@ class StockLedgerEntry(Document):
 		self.validate_and_set_fiscal_year()
 		self.block_transactions_against_group_warehouse()
 
+<<<<<<< HEAD
+=======
+		from erpnext.accounts.utils import validate_fiscal_year
+		validate_fiscal_year(self.posting_date, self.fiscal_year, self.meta.get_label("posting_date"), self)
+
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 	def on_submit(self):
 		self.check_stock_frozen_date()
 		self.actual_amt_check()
@@ -58,7 +64,11 @@ class StockLedgerEntry(Document):
 
 	def validate_item(self):
 		item_det = frappe.db.sql("""select name, has_batch_no, docstatus,
+<<<<<<< HEAD
 			is_stock_item, has_variants, stock_uom, create_new_batch
+=======
+			is_stock_item, has_variants, stock_uom
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 			from tabItem where name=%s""", self.item_code, as_dict=True)
 
 		if not item_det:
@@ -75,7 +85,11 @@ class StockLedgerEntry(Document):
 				if not self.batch_no:
 					frappe.throw(_("Batch number is mandatory for Item {0}").format(self.item_code))
 				elif not frappe.db.get_value("Batch",{"item": self.item_code, "name": self.batch_no}):
+<<<<<<< HEAD
 					frappe.throw(_("{0} is not a valid Batch Number for Item {1}").format(self.batch_no, self.item_code))
+=======
+						frappe.throw(_("{0} is not a valid Batch Number for Item {1}").format(self.batch_no, self.item_code))
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 
 			elif item_det.has_batch_no ==0 and self.batch_no:
 					frappe.throw(_("The Item {0} cannot have Batch").format(self.item_code))
@@ -114,10 +128,13 @@ class StockLedgerEntry(Document):
 	def validate_and_set_fiscal_year(self):
 		if not self.fiscal_year:
 			self.fiscal_year = get_fiscal_year(self.posting_date, company=self.company)[0]
+<<<<<<< HEAD
 		else:
 			from erpnext.accounts.utils import validate_fiscal_year
 			validate_fiscal_year(self.posting_date, self.fiscal_year, self.company,
 				self.meta.get_label("posting_date"), self)
+=======
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 
 	def block_transactions_against_group_warehouse(self):
 		from erpnext.stock.utils import is_group_warehouse
@@ -129,5 +146,8 @@ def on_doctype_update():
 		frappe.db.commit()
 		frappe.db.sql("""alter table `tabStock Ledger Entry`
 			add index posting_sort_index(posting_date, posting_time, name)""")
+<<<<<<< HEAD
 
 	frappe.db.add_index("Stock Ledger Entry", ["voucher_no", "voucher_type"])
+=======
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347

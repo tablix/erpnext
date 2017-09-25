@@ -1,7 +1,13 @@
 student
+<<<<<<< HEAD
 admission
 Attendance
 schedule
 fees
 setup
 Assessment
+=======
+schedule
+fees
+setup
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347

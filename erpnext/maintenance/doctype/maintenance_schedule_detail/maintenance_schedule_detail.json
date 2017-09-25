@@ -10,22 +10,33 @@
  "doctype": "DocType", 
  "document_type": "Document", 
  "editable_grid": 1, 
+<<<<<<< HEAD
  "engine": "InnoDB", 
+=======
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
  "fields": [
   {
    "allow_on_submit": 0, 
    "bold": 0, 
    "collapsible": 0, 
+<<<<<<< HEAD
    "columns": 0, 
+=======
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
    "fieldname": "item_code", 
    "fieldtype": "Link", 
    "hidden": 0, 
    "ignore_user_permissions": 0, 
    "ignore_xss_filter": 0, 
+<<<<<<< HEAD
    "in_filter": 0, 
    "in_global_search": 0, 
    "in_list_view": 1, 
    "in_standard_filter": 0, 
+=======
+   "in_filter": 1, 
+   "in_list_view": 1, 
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
    "label": "Item Code", 
    "length": 0, 
    "no_copy": 0, 
@@ -36,7 +47,10 @@
    "print_hide": 0, 
    "print_hide_if_no_value": 0, 
    "read_only": 1, 
+<<<<<<< HEAD
    "remember_last_selected_value": 0, 
+=======
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
    "report_hide": 0, 
    "reqd": 0, 
    "search_index": 1, 
@@ -47,16 +61,23 @@
    "allow_on_submit": 0, 
    "bold": 0, 
    "collapsible": 0, 
+<<<<<<< HEAD
    "columns": 0, 
+=======
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
    "fieldname": "item_name", 
    "fieldtype": "Data", 
    "hidden": 0, 
    "ignore_user_permissions": 0, 
    "ignore_xss_filter": 0, 
    "in_filter": 0, 
+<<<<<<< HEAD
    "in_global_search": 1, 
    "in_list_view": 1, 
    "in_standard_filter": 0, 
+=======
+   "in_list_view": 1, 
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
    "label": "Item Name", 
    "length": 0, 
    "no_copy": 0, 
@@ -66,7 +87,10 @@
    "print_hide": 0, 
    "print_hide_if_no_value": 0, 
    "read_only": 1, 
+<<<<<<< HEAD
    "remember_last_selected_value": 0, 
+=======
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
    "report_hide": 0, 
    "reqd": 0, 
    "search_index": 0, 
@@ -77,16 +101,24 @@
    "allow_on_submit": 0, 
    "bold": 0, 
    "collapsible": 0, 
+<<<<<<< HEAD
    "columns": 0, 
+=======
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
    "fieldname": "scheduled_date", 
    "fieldtype": "Date", 
    "hidden": 0, 
    "ignore_user_permissions": 0, 
    "ignore_xss_filter": 0, 
+<<<<<<< HEAD
    "in_filter": 0, 
    "in_global_search": 0, 
    "in_list_view": 1, 
    "in_standard_filter": 0, 
+=======
+   "in_filter": 1, 
+   "in_list_view": 1, 
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
    "label": "Scheduled Date", 
    "length": 0, 
    "no_copy": 0, 
@@ -96,7 +128,10 @@
    "print_hide": 0, 
    "print_hide_if_no_value": 0, 
    "read_only": 0, 
+<<<<<<< HEAD
    "remember_last_selected_value": 0, 
+=======
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
    "report_hide": 0, 
    "reqd": 1, 
    "search_index": 1, 
@@ -107,16 +142,23 @@
    "allow_on_submit": 0, 
    "bold": 0, 
    "collapsible": 0, 
+<<<<<<< HEAD
    "columns": 0, 
+=======
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
    "fieldname": "actual_date", 
    "fieldtype": "Date", 
    "hidden": 1, 
    "ignore_user_permissions": 0, 
    "ignore_xss_filter": 0, 
    "in_filter": 0, 
+<<<<<<< HEAD
    "in_global_search": 0, 
    "in_list_view": 0, 
    "in_standard_filter": 0, 
+=======
+   "in_list_view": 0, 
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
    "label": "Actual Date", 
    "length": 0, 
    "no_copy": 1, 
@@ -126,7 +168,10 @@
    "print_hide": 1, 
    "print_hide_if_no_value": 0, 
    "read_only": 0, 
+<<<<<<< HEAD
    "remember_last_selected_value": 0, 
+=======
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
    "report_hide": 1, 
    "reqd": 0, 
    "search_index": 0, 
@@ -137,16 +182,24 @@
    "allow_on_submit": 0, 
    "bold": 0, 
    "collapsible": 0, 
+<<<<<<< HEAD
    "columns": 0, 
+=======
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
    "fieldname": "sales_person", 
    "fieldtype": "Link", 
    "hidden": 0, 
    "ignore_user_permissions": 0, 
    "ignore_xss_filter": 0, 
+<<<<<<< HEAD
    "in_filter": 0, 
    "in_global_search": 0, 
    "in_list_view": 1, 
    "in_standard_filter": 0, 
+=======
+   "in_filter": 1, 
+   "in_list_view": 1, 
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
    "label": "Sales Person", 
    "length": 0, 
    "no_copy": 0, 
@@ -157,7 +210,10 @@
    "print_hide": 0, 
    "print_hide_if_no_value": 0, 
    "read_only": 0, 
+<<<<<<< HEAD
    "remember_last_selected_value": 0, 
+=======
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
    "report_hide": 0, 
    "reqd": 1, 
    "search_index": 0, 
@@ -168,16 +224,24 @@
    "allow_on_submit": 0, 
    "bold": 0, 
    "collapsible": 0, 
+<<<<<<< HEAD
    "columns": 0, 
+=======
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
    "fieldname": "serial_no", 
    "fieldtype": "Small Text", 
    "hidden": 0, 
    "ignore_user_permissions": 0, 
    "ignore_xss_filter": 0, 
+<<<<<<< HEAD
    "in_filter": 0, 
    "in_global_search": 0, 
    "in_list_view": 1, 
    "in_standard_filter": 0, 
+=======
+   "in_filter": 1, 
+   "in_list_view": 1, 
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
    "label": "Serial No", 
    "length": 0, 
    "no_copy": 0, 
@@ -188,7 +252,10 @@
    "print_hide_if_no_value": 0, 
    "print_width": "160px", 
    "read_only": 1, 
+<<<<<<< HEAD
    "remember_last_selected_value": 0, 
+=======
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
    "report_hide": 0, 
    "reqd": 0, 
    "search_index": 0, 
@@ -207,7 +274,11 @@
  "issingle": 0, 
  "istable": 1, 
  "max_attachments": 0, 
+<<<<<<< HEAD
  "modified": "2017-02-17 17:05:44.644663", 
+=======
+ "modified": "2016-07-11 03:28:02.171375", 
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
  "modified_by": "Administrator", 
  "module": "Maintenance", 
  "name": "Maintenance Schedule Detail", 
@@ -216,7 +287,10 @@
  "quick_entry": 0, 
  "read_only": 0, 
  "read_only_onload": 0, 
+<<<<<<< HEAD
  "show_name_in_global_search": 0, 
  "track_changes": 1, 
+=======
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
  "track_seen": 0
 }

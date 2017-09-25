@@ -18,6 +18,7 @@ class TransactionBase(StatusUpdater):
 				frappe.db.get_value("Notification Control", None, dt + "_message"))
 
 	def validate_posting_time(self):
+<<<<<<< HEAD
 		# set Edit Posting Date and Time to 1 while data import
 		if frappe.flags.in_import and self.posting_date:
 			self.set_posting_time = 1
@@ -26,6 +27,10 @@ class TransactionBase(StatusUpdater):
 			now = now_datetime()
 			self.posting_date = now.strftime('%Y-%m-%d')
 			self.posting_time = now.strftime('%H:%M:%S')
+=======
+		if not self.posting_time:
+			self.posting_time = now_datetime().strftime('%H:%M:%S')
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 
 	def add_calendar_event(self, opts, force=False):
 		if cstr(self.contact_by) != cstr(self._prev.contact_by) or \
@@ -41,6 +46,12 @@ class TransactionBase(StatusUpdater):
 			frappe.db.sql("delete from `tabEvent` where name in (%s)"
 				.format(", ".join(['%s']*len(events))), tuple(events))
 
+<<<<<<< HEAD
+=======
+			frappe.db.sql("delete from `tabEvent Role` where parent in (%s)"
+				.format(", ".join(['%s']*len(events))), tuple(events))
+
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 	def _add_calendar_event(self, opts):
 		opts = frappe._dict(opts)
 
@@ -113,7 +124,11 @@ class TransactionBase(StatusUpdater):
 	def get_link_filters(self, for_doctype):
 		if hasattr(self, "prev_link_mapper") and self.prev_link_mapper.get(for_doctype):
 			fieldname = self.prev_link_mapper[for_doctype]["fieldname"]
+<<<<<<< HEAD
 
+=======
+			
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 			values = filter(None, tuple([item.as_dict()[fieldname] for item in self.items]))
 
 			if values:
@@ -126,7 +141,11 @@ class TransactionBase(StatusUpdater):
 				ret = None
 		else:
 			ret = None
+<<<<<<< HEAD
 
+=======
+		
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 		return ret
 
 def delete_events(ref_type, ref_name):
@@ -147,7 +166,13 @@ def validate_uom_is_integer(doc, uom_field, qty_fields, child_dt=None):
 	for d in doc.get_all_children(parenttype=child_dt):
 		if d.get(uom_field) in integer_uoms:
 			for f in qty_fields:
+<<<<<<< HEAD
 				qty = d.get(f)
 				if qty:
 					if abs(cint(qty) - flt(qty)) > 0.0000001:
 						frappe.throw(_("Quantity ({0}) cannot be a fraction in row {1}").format(qty, d.idx), UOMMustBeIntegerError)
+=======
+				if d.get(f):
+					if cint(d.get(f))!=d.get(f):
+						frappe.throw(_("Quantity cannot be a fraction in row {0}").format(d.idx), UOMMustBeIntegerError)
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347

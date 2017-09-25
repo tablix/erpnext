@@ -39,8 +39,12 @@ drop-ship
 file-manager
 publish-items-on-website
 shopping-cart
+<<<<<<< HEAD
 report-builder
 services
 distributors
 manufacturing-make-to-order
 manufacturing-enigneer-to-order
+=======
+report-builder
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347

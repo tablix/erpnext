@@ -1,3 +1,7 @@
+<<<<<<< HEAD
+=======
+#CRM
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 # CRM
 
 ERPNext helps you track business **Opportunities** from **Leads** and

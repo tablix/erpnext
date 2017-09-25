@@ -5,6 +5,7 @@ from __future__ import unicode_literals
 
 import frappe
 import unittest
+<<<<<<< HEAD
 from frappe.utils.make_random import get_random
 
 class TestStudentGroup(unittest.TestCase):
@@ -25,3 +26,10 @@ class TestStudentGroup(unittest.TestCase):
 		doc.save()
 		self.assertEquals(max([d.group_roll_number for d in doc.students]), 3)
 
+=======
+
+# test_records = frappe.get_test_records('Student Group')
+
+class TestStudentGroup(unittest.TestCase):
+	pass
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347

@@ -1,5 +1,8 @@
+<<<<<<< HEAD
 # Support
 
+=======
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 Great customer support and maintenance is at the heart of any successful small
 business. ERPNext gives you the tools to track all incoming requests and issues
 from your customers so that you can respond quickly. Your database of incoming

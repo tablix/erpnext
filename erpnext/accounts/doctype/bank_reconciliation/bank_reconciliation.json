@@ -1,6 +1,9 @@
 {
  "allow_copy": 1, 
+<<<<<<< HEAD
  "allow_guest_to_view": 0, 
+=======
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
  "allow_import": 0, 
  "allow_rename": 0, 
  "beta": 0, 
@@ -8,6 +11,7 @@
  "custom": 0, 
  "docstatus": 0, 
  "doctype": "DocType", 
+<<<<<<< HEAD
  "document_type": "Document", 
  "editable_grid": 0, 
  "fields": [
@@ -17,6 +21,13 @@
    "bold": 0, 
    "collapsible": 0, 
    "columns": 0, 
+=======
+ "fields": [
+  {
+   "allow_on_submit": 0, 
+   "bold": 0, 
+   "collapsible": 0, 
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
    "description": "Select account head of the bank where cheque was deposited.", 
    "fieldname": "bank_account", 
    "fieldtype": "Link", 
@@ -24,9 +35,13 @@
    "ignore_user_permissions": 0, 
    "ignore_xss_filter": 0, 
    "in_filter": 0, 
+<<<<<<< HEAD
    "in_global_search": 0, 
    "in_list_view": 1, 
    "in_standard_filter": 0, 
+=======
+   "in_list_view": 1, 
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
    "label": "Bank Account", 
    "length": 0, 
    "no_copy": 0, 
@@ -35,7 +50,10 @@
    "print_hide": 0, 
    "print_hide_if_no_value": 0, 
    "read_only": 0, 
+<<<<<<< HEAD
    "remember_last_selected_value": 0, 
+=======
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
    "report_hide": 0, 
    "reqd": 1, 
    "search_index": 0, 
@@ -43,20 +61,30 @@
    "unique": 0
   }, 
   {
+<<<<<<< HEAD
    "allow_bulk_edit": 0, 
    "allow_on_submit": 0, 
    "bold": 0, 
    "collapsible": 0, 
    "columns": 0, 
+=======
+   "allow_on_submit": 0, 
+   "bold": 0, 
+   "collapsible": 0, 
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
    "fieldname": "account_currency", 
    "fieldtype": "Link", 
    "hidden": 1, 
    "ignore_user_permissions": 0, 
    "ignore_xss_filter": 0, 
    "in_filter": 0, 
+<<<<<<< HEAD
    "in_global_search": 0, 
    "in_list_view": 0, 
    "in_standard_filter": 0, 
+=======
+   "in_list_view": 0, 
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
    "label": "Account Currency", 
    "length": 0, 
    "no_copy": 0, 
@@ -65,7 +93,10 @@
    "print_hide": 1, 
    "print_hide_if_no_value": 0, 
    "read_only": 0, 
+<<<<<<< HEAD
    "remember_last_selected_value": 0, 
+=======
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
    "report_hide": 0, 
    "reqd": 0, 
    "search_index": 0, 
@@ -73,20 +104,30 @@
    "unique": 0
   }, 
   {
+<<<<<<< HEAD
    "allow_bulk_edit": 0, 
    "allow_on_submit": 0, 
    "bold": 0, 
    "collapsible": 0, 
    "columns": 0, 
+=======
+   "allow_on_submit": 0, 
+   "bold": 0, 
+   "collapsible": 0, 
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
    "fieldname": "from_date", 
    "fieldtype": "Date", 
    "hidden": 0, 
    "ignore_user_permissions": 0, 
    "ignore_xss_filter": 0, 
    "in_filter": 0, 
+<<<<<<< HEAD
    "in_global_search": 0, 
    "in_list_view": 1, 
    "in_standard_filter": 0, 
+=======
+   "in_list_view": 1, 
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
    "label": "From Date", 
    "length": 0, 
    "no_copy": 0, 
@@ -94,7 +135,10 @@
    "print_hide": 0, 
    "print_hide_if_no_value": 0, 
    "read_only": 0, 
+<<<<<<< HEAD
    "remember_last_selected_value": 0, 
+=======
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
    "report_hide": 0, 
    "reqd": 1, 
    "search_index": 0, 
@@ -102,20 +146,30 @@
    "unique": 0
   }, 
   {
+<<<<<<< HEAD
    "allow_bulk_edit": 0, 
    "allow_on_submit": 0, 
    "bold": 0, 
    "collapsible": 0, 
    "columns": 0, 
+=======
+   "allow_on_submit": 0, 
+   "bold": 0, 
+   "collapsible": 0, 
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
    "fieldname": "to_date", 
    "fieldtype": "Date", 
    "hidden": 0, 
    "ignore_user_permissions": 0, 
    "ignore_xss_filter": 0, 
    "in_filter": 0, 
+<<<<<<< HEAD
    "in_global_search": 0, 
    "in_list_view": 1, 
    "in_standard_filter": 0, 
+=======
+   "in_list_view": 1, 
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
    "label": "To Date", 
    "length": 0, 
    "no_copy": 0, 
@@ -123,7 +177,10 @@
    "print_hide": 0, 
    "print_hide_if_no_value": 0, 
    "read_only": 0, 
+<<<<<<< HEAD
    "remember_last_selected_value": 0, 
+=======
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
    "report_hide": 0, 
    "reqd": 1, 
    "search_index": 0, 
@@ -131,20 +188,30 @@
    "unique": 0
   }, 
   {
+<<<<<<< HEAD
    "allow_bulk_edit": 0, 
    "allow_on_submit": 0, 
    "bold": 0, 
    "collapsible": 0, 
    "columns": 0, 
+=======
+   "allow_on_submit": 0, 
+   "bold": 0, 
+   "collapsible": 0, 
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
    "fieldname": "include_reconciled_entries", 
    "fieldtype": "Check", 
    "hidden": 0, 
    "ignore_user_permissions": 0, 
    "ignore_xss_filter": 0, 
    "in_filter": 0, 
+<<<<<<< HEAD
    "in_global_search": 0, 
    "in_list_view": 1, 
    "in_standard_filter": 0, 
+=======
+   "in_list_view": 1, 
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
    "label": "Include Reconciled Entries", 
    "length": 0, 
    "no_copy": 0, 
@@ -152,7 +219,10 @@
    "print_hide": 0, 
    "print_hide_if_no_value": 0, 
    "read_only": 0, 
+<<<<<<< HEAD
    "remember_last_selected_value": 0, 
+=======
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
    "report_hide": 0, 
    "reqd": 0, 
    "search_index": 0, 
@@ -160,20 +230,30 @@
    "unique": 0
   }, 
   {
+<<<<<<< HEAD
    "allow_bulk_edit": 0, 
    "allow_on_submit": 0, 
    "bold": 0, 
    "collapsible": 0, 
    "columns": 0, 
+=======
+   "allow_on_submit": 0, 
+   "bold": 0, 
+   "collapsible": 0, 
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
    "fieldname": "get_payment_entries", 
    "fieldtype": "Button", 
    "hidden": 0, 
    "ignore_user_permissions": 0, 
    "ignore_xss_filter": 0, 
    "in_filter": 0, 
+<<<<<<< HEAD
    "in_global_search": 0, 
    "in_list_view": 0, 
    "in_standard_filter": 0, 
+=======
+   "in_list_view": 0, 
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
    "label": "Get Payment Entries", 
    "length": 0, 
    "no_copy": 0, 
@@ -182,7 +262,10 @@
    "print_hide": 0, 
    "print_hide_if_no_value": 0, 
    "read_only": 0, 
+<<<<<<< HEAD
    "remember_last_selected_value": 0, 
+=======
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
    "report_hide": 0, 
    "reqd": 0, 
    "search_index": 0, 
@@ -190,20 +273,30 @@
    "unique": 0
   }, 
   {
+<<<<<<< HEAD
    "allow_bulk_edit": 1, 
    "allow_on_submit": 0, 
    "bold": 0, 
    "collapsible": 0, 
    "columns": 0, 
+=======
+   "allow_on_submit": 0, 
+   "bold": 0, 
+   "collapsible": 0, 
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
    "fieldname": "payment_entries", 
    "fieldtype": "Table", 
    "hidden": 0, 
    "ignore_user_permissions": 0, 
    "ignore_xss_filter": 0, 
    "in_filter": 0, 
+<<<<<<< HEAD
    "in_global_search": 0, 
    "in_list_view": 0, 
    "in_standard_filter": 0, 
+=======
+   "in_list_view": 0, 
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
    "label": "Payment Entries", 
    "length": 0, 
    "no_copy": 0, 
@@ -212,7 +305,10 @@
    "print_hide": 0, 
    "print_hide_if_no_value": 0, 
    "read_only": 0, 
+<<<<<<< HEAD
    "remember_last_selected_value": 0, 
+=======
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
    "report_hide": 0, 
    "reqd": 0, 
    "search_index": 0, 
@@ -220,20 +316,30 @@
    "unique": 0
   }, 
   {
+<<<<<<< HEAD
    "allow_bulk_edit": 0, 
    "allow_on_submit": 0, 
    "bold": 0, 
    "collapsible": 0, 
    "columns": 0, 
+=======
+   "allow_on_submit": 0, 
+   "bold": 0, 
+   "collapsible": 0, 
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
    "fieldname": "update_clearance_date", 
    "fieldtype": "Button", 
    "hidden": 0, 
    "ignore_user_permissions": 0, 
    "ignore_xss_filter": 0, 
    "in_filter": 0, 
+<<<<<<< HEAD
    "in_global_search": 0, 
    "in_list_view": 0, 
    "in_standard_filter": 0, 
+=======
+   "in_list_view": 0, 
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
    "label": "Update Clearance Date", 
    "length": 0, 
    "no_copy": 0, 
@@ -242,7 +348,10 @@
    "print_hide": 0, 
    "print_hide_if_no_value": 0, 
    "read_only": 0, 
+<<<<<<< HEAD
    "remember_last_selected_value": 0, 
+=======
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
    "report_hide": 0, 
    "reqd": 0, 
    "search_index": 0, 
@@ -250,20 +359,30 @@
    "unique": 0
   }, 
   {
+<<<<<<< HEAD
    "allow_bulk_edit": 0, 
    "allow_on_submit": 0, 
    "bold": 0, 
    "collapsible": 0, 
    "columns": 0, 
+=======
+   "allow_on_submit": 0, 
+   "bold": 0, 
+   "collapsible": 0, 
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
    "fieldname": "total_amount", 
    "fieldtype": "Currency", 
    "hidden": 0, 
    "ignore_user_permissions": 0, 
    "ignore_xss_filter": 0, 
    "in_filter": 0, 
+<<<<<<< HEAD
    "in_global_search": 0, 
    "in_list_view": 0, 
    "in_standard_filter": 0, 
+=======
+   "in_list_view": 0, 
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
    "label": "Total Amount", 
    "length": 0, 
    "no_copy": 0, 
@@ -272,7 +391,10 @@
    "print_hide": 0, 
    "print_hide_if_no_value": 0, 
    "read_only": 1, 
+<<<<<<< HEAD
    "remember_last_selected_value": 0, 
+=======
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
    "report_hide": 0, 
    "reqd": 0, 
    "search_index": 0, 
@@ -280,6 +402,7 @@
    "unique": 0
   }
  ], 
+<<<<<<< HEAD
  "has_web_view": 0, 
  "hide_heading": 1, 
  "hide_toolbar": 1, 
@@ -287,12 +410,25 @@
  "idx": 1, 
  "image_view": 0, 
  "in_create": 0, 
+=======
+ "hide_heading": 1, 
+ "hide_toolbar": 1, 
+ "icon": "icon-check", 
+ "idx": 1, 
+ "image_view": 0, 
+ "in_create": 0, 
+ "in_dialog": 0, 
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
  "is_submittable": 0, 
  "issingle": 1, 
  "istable": 0, 
  "max_attachments": 0, 
  "menu_index": 0, 
+<<<<<<< HEAD
  "modified": "2017-04-21 16:58:26.902732", 
+=======
+ "modified": "2016-06-28 13:11:09.396353", 
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
  "modified_by": "Administrator", 
  "module": "Accounts", 
  "name": "Bank Reconciliation", 
@@ -322,8 +458,14 @@
  "quick_entry": 1, 
  "read_only": 1, 
  "read_only_onload": 0, 
+<<<<<<< HEAD
  "show_name_in_global_search": 0, 
  "sort_order": "ASC", 
  "track_changes": 0, 
  "track_seen": 0
+=======
+ "sort_order": "ASC", 
+ "track_seen": 0, 
+ "version": 0
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 }

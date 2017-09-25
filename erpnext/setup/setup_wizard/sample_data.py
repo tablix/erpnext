@@ -6,6 +6,7 @@ from __future__ import unicode_literals
 import frappe
 from frappe.utils.make_random import add_random_children
 import frappe.utils
+<<<<<<< HEAD
 import random, os, json
 from frappe import _
 from markdown2 import markdown
@@ -30,6 +31,28 @@ def make_sample_data(domain, make_dependent = False):
 
 	make_projects(domain)
 	import_email_alert()
+=======
+import random
+
+def make_sample_data():
+	"""Create a few opportunities, quotes, material requests, issues, todos, projects
+	to help the user get started"""
+	items = frappe.get_all("Item", {'is_sales_item': 1})
+
+	customers = frappe.get_all("Customer")
+	warehouses = frappe.get_all("Warehouse")
+
+	if items and customers:
+		for i in range(3):
+			customer = random.choice(customers).name
+			make_opportunity(items, customer)
+			make_quote(items, customer)
+
+	make_projects()
+
+	if items and warehouses:
+		make_material_request(frappe.get_all("Item"))
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 
 	frappe.db.commit()
 
@@ -88,12 +111,17 @@ def make_material_request(items):
 def make_issue():
 	pass
 
+<<<<<<< HEAD
 def make_projects(domain):
 	current_date = frappe.utils.nowdate()
+=======
+def make_projects():
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 	project = frappe.get_doc({
 		"doctype": "Project",
 		"project_name": "ERPNext Implementation",
 	})
+<<<<<<< HEAD
 
 	tasks = [
 		{
@@ -176,3 +204,39 @@ def test_sample():
 	frappe.db.sql('delete from tabTask')
 	make_projects('Education')
 	import_email_alert()
+=======
+	current_date = frappe.utils.nowdate()
+	project.set("tasks", [
+			{
+				"title": "Explore ERPNext",
+				"start_date": frappe.utils.add_days(current_date, 1),
+				"end_date": frappe.utils.add_days(current_date, 2)
+			},
+			{
+				"title": "Run Sales Cycle",
+				"start_date": frappe.utils.add_days(current_date, 2),
+				"end_date": frappe.utils.add_days(current_date, 3)
+			},
+			{
+				"title": "Run Billing Cycle",
+				"start_date": frappe.utils.add_days(current_date, 3),
+				"end_date": frappe.utils.add_days(current_date, 4)
+			},
+			{
+				"title": "Run Purchase Cycle",
+				"start_date": frappe.utils.add_days(current_date, 4),
+				"end_date": frappe.utils.add_days(current_date, 5)
+			},
+			{
+				"title": "Import Data",
+				"start_date": frappe.utils.add_days(current_date, 5),
+				"end_date": frappe.utils.add_days(current_date, 6)
+			},
+			{
+				"title": "Go Live!",
+				"start_date": frappe.utils.add_days(current_date, 6),
+				"end_date": frappe.utils.add_days(current_date, 7)
+			}])
+
+	project.insert(ignore_permissions=True)
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347

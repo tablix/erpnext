@@ -10,15 +10,25 @@ Create following Groups and Ledgers in Chart of Accounts if not there.
       
 #### 1.1  Employee Loan Account
 
+<<<<<<< HEAD
 Create Group as 'Employees Loans' under Current Assets and create employee loan A/C (Ledger) under it. [Check this link for new account creation](/docs/user/manual/en/setting-up/articles/managing-tree-structure-masters)
 
 ![CoA](/docs/assets/img/articles/Selection_433.png)
+=======
+Create Group as 'Employees Loans' under Current Assets and create employee loan A/C (Ledger) under it. [Check this link for new account creation](https://erpnext.com/kb/setup/managing-tree-structure-masters)
+
+![CoA]({{docs_base_url}}/assets/img/articles/Selection_433.png)
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 
 #### 1.2 Salaries Account
 
 Create Group as 'Salaries' under Current Liabilities and create employee salary loan A/C (Ledger) under it.
 
+<<<<<<< HEAD
 ![CoA](/docs/assets/img/articles/Selection_434.png)
+=======
+![CoA]({{docs_base_url}}/assets/img/articles/Selection_434.png)
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 
 #### 1.3 Interest Account
 
@@ -28,7 +38,11 @@ Create Ledger as 'Interest on Loan' under Indirect Income.
 
 Once loan amount is finalized, make journal voucher to book loan payment entry. You should Credit Loan amount to Bank/Cash account and Debit Loan amount employee loan account.  
 
+<<<<<<< HEAD
 ![Loan Entry](/docs/assets/img/articles/Selection_435.png)
+=======
+![Loan Entry]({{docs_base_url}}/assets/img/articles/Selection_435.png)
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 
 ### 3. Book Loan Recovery and Interest
 
@@ -36,13 +50,21 @@ Once loan amount is finalized, make journal voucher to book loan payment entry. 
 
 If your employee pays separately for his/her loan installment and loan interest, then create journal voucher. 
 
+<<<<<<< HEAD
 ![Loan Reco](/docs/assets/img/articles/Selection_436.png)
+=======
+![Loan Reco]({{docs_base_url}}/assets/img/articles/Selection_436.png)
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 
 #### 3.2 Loan Adjustment in Salary
 
 And if you deduct loan installment and interest from employees salary, then book journal entry for the same.
 
+<<<<<<< HEAD
 ![Loan Reco](/docs/assets/img/articles/Selection_437.png)
+=======
+![Loan Reco]({{docs_base_url}}/assets/img/articles/Selection_437.png)
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 
 In the Salary Slip of an employee, then create two Deduction Types in Salary Structure. One as 'Loan Installment' and other one as 'Loan Interest'. So that you can update those values under this deduction heads.
 
@@ -50,6 +72,12 @@ In the Salary Slip of an employee, then create two Deduction Types in Salary Str
 
 After recovering loan and loan interest, General Ledger report will show the loan account details as follows.
 
+<<<<<<< HEAD
 ![Loan Reco](/docs/assets/img/articles/Selection_439.png)
 
 <!-- markdown -->
+=======
+![Loan Reco]({{docs_base_url}}/assets/img/articles/Selection_439.png)
+
+<!-- markdown -->
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347

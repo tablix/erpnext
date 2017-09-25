@@ -12,11 +12,14 @@ data = {
 	},
 	'Services': {
 		'company_name': 'Acme Consulting'
+<<<<<<< HEAD
 	},
 	'Education': {
 		'company_name': 'Whitmore College'
 	},
 	'Healthcare': {
 		'company_name': 'ABC Hospital Ltd.'
+=======
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 	}
 }

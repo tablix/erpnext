@@ -1,6 +1,9 @@
 {
  "allow_copy": 0, 
+<<<<<<< HEAD
  "allow_guest_to_view": 0, 
+=======
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
  "allow_import": 1, 
  "allow_rename": 0, 
  "autoname": "naming_series:", 
@@ -13,20 +16,30 @@
  "editable_grid": 0, 
  "fields": [
   {
+<<<<<<< HEAD
    "allow_bulk_edit": 0, 
    "allow_on_submit": 0, 
    "bold": 0, 
    "collapsible": 0, 
    "columns": 0, 
+=======
+   "allow_on_submit": 0, 
+   "bold": 0, 
+   "collapsible": 0, 
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
    "fieldname": "naming_series", 
    "fieldtype": "Select", 
    "hidden": 0, 
    "ignore_user_permissions": 0, 
    "ignore_xss_filter": 0, 
    "in_filter": 0, 
+<<<<<<< HEAD
    "in_global_search": 0, 
    "in_list_view": 1, 
    "in_standard_filter": 0, 
+=======
+   "in_list_view": 0, 
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
    "label": "Series", 
    "length": 0, 
    "no_copy": 1, 
@@ -38,6 +51,7 @@
    "print_hide": 1, 
    "print_hide_if_no_value": 0, 
    "read_only": 0, 
+<<<<<<< HEAD
    "remember_last_selected_value": 0, 
    "report_hide": 0, 
    "reqd": 1, 
@@ -51,16 +65,33 @@
    "bold": 0, 
    "collapsible": 0, 
    "columns": 0, 
+=======
+   "report_hide": 0, 
+   "reqd": 1, 
+   "search_index": 0, 
+   "set_only_once": 0, 
+   "unique": 0
+  }, 
+  {
+   "allow_on_submit": 0, 
+   "bold": 0, 
+   "collapsible": 0, 
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
    "description": "", 
    "fieldname": "company", 
    "fieldtype": "Link", 
    "hidden": 0, 
    "ignore_user_permissions": 0, 
    "ignore_xss_filter": 0, 
+<<<<<<< HEAD
    "in_filter": 0, 
    "in_global_search": 0, 
    "in_list_view": 1, 
    "in_standard_filter": 0, 
+=======
+   "in_filter": 1, 
+   "in_list_view": 0, 
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
    "label": "Company", 
    "length": 0, 
    "no_copy": 0, 
@@ -72,7 +103,10 @@
    "print_hide": 1, 
    "print_hide_if_no_value": 0, 
    "read_only": 0, 
+<<<<<<< HEAD
    "remember_last_selected_value": 1, 
+=======
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
    "report_hide": 0, 
    "reqd": 1, 
    "search_index": 1, 
@@ -80,11 +114,17 @@
    "unique": 0
   }, 
   {
+<<<<<<< HEAD
    "allow_bulk_edit": 0, 
    "allow_on_submit": 0, 
    "bold": 0, 
    "collapsible": 0, 
    "columns": 0, 
+=======
+   "allow_on_submit": 0, 
+   "bold": 0, 
+   "collapsible": 0, 
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
    "description": "For individual supplier", 
    "fieldname": "vendor", 
    "fieldtype": "Link", 
@@ -92,9 +132,13 @@
    "ignore_user_permissions": 0, 
    "ignore_xss_filter": 0, 
    "in_filter": 0, 
+<<<<<<< HEAD
    "in_global_search": 0, 
    "in_list_view": 0, 
    "in_standard_filter": 1, 
+=======
+   "in_list_view": 0, 
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
    "label": "Supplier", 
    "length": 0, 
    "no_copy": 1, 
@@ -104,7 +148,10 @@
    "print_hide": 0, 
    "print_hide_if_no_value": 0, 
    "read_only": 1, 
+<<<<<<< HEAD
    "remember_last_selected_value": 0, 
+=======
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
    "report_hide": 0, 
    "reqd": 0, 
    "search_index": 0, 
@@ -112,20 +159,30 @@
    "unique": 0
   }, 
   {
+<<<<<<< HEAD
    "allow_bulk_edit": 0, 
    "allow_on_submit": 0, 
    "bold": 0, 
    "collapsible": 0, 
    "columns": 0, 
+=======
+   "allow_on_submit": 0, 
+   "bold": 0, 
+   "collapsible": 0, 
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
    "fieldname": "column_break1", 
    "fieldtype": "Column Break", 
    "hidden": 0, 
    "ignore_user_permissions": 0, 
    "ignore_xss_filter": 0, 
    "in_filter": 0, 
+<<<<<<< HEAD
    "in_global_search": 0, 
    "in_list_view": 0, 
    "in_standard_filter": 0, 
+=======
+   "in_list_view": 0, 
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
    "length": 0, 
    "no_copy": 0, 
    "oldfieldtype": "Column Break", 
@@ -135,7 +192,10 @@
    "print_hide_if_no_value": 0, 
    "print_width": "50%", 
    "read_only": 0, 
+<<<<<<< HEAD
    "remember_last_selected_value": 0, 
+=======
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
    "report_hide": 0, 
    "reqd": 0, 
    "search_index": 0, 
@@ -144,20 +204,31 @@
    "width": "50%"
   }, 
   {
+<<<<<<< HEAD
    "allow_bulk_edit": 0, 
    "allow_on_submit": 0, 
    "bold": 0, 
    "collapsible": 0, 
    "columns": 0, 
+=======
+   "allow_on_submit": 0, 
+   "bold": 0, 
+   "collapsible": 0, 
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
    "fieldname": "transaction_date", 
    "fieldtype": "Date", 
    "hidden": 0, 
    "ignore_user_permissions": 0, 
    "ignore_xss_filter": 0, 
+<<<<<<< HEAD
    "in_filter": 0, 
    "in_global_search": 0, 
    "in_list_view": 1, 
    "in_standard_filter": 0, 
+=======
+   "in_filter": 1, 
+   "in_list_view": 0, 
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
    "label": "Date", 
    "length": 0, 
    "no_copy": 0, 
@@ -168,7 +239,10 @@
    "print_hide": 0, 
    "print_hide_if_no_value": 0, 
    "read_only": 0, 
+<<<<<<< HEAD
    "remember_last_selected_value": 0, 
+=======
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
    "report_hide": 0, 
    "reqd": 1, 
    "search_index": 1, 
@@ -176,20 +250,30 @@
    "unique": 0
   }, 
   {
+<<<<<<< HEAD
    "allow_bulk_edit": 0, 
    "allow_on_submit": 0, 
    "bold": 0, 
    "collapsible": 0, 
    "columns": 0, 
+=======
+   "allow_on_submit": 0, 
+   "bold": 0, 
+   "collapsible": 0, 
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
    "fieldname": "suppliers_section", 
    "fieldtype": "Section Break", 
    "hidden": 0, 
    "ignore_user_permissions": 0, 
    "ignore_xss_filter": 0, 
    "in_filter": 0, 
+<<<<<<< HEAD
    "in_global_search": 0, 
    "in_list_view": 0, 
    "in_standard_filter": 0, 
+=======
+   "in_list_view": 0, 
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
    "label": "", 
    "length": 0, 
    "no_copy": 0, 
@@ -198,7 +282,10 @@
    "print_hide": 0, 
    "print_hide_if_no_value": 0, 
    "read_only": 0, 
+<<<<<<< HEAD
    "remember_last_selected_value": 0, 
+=======
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
    "report_hide": 0, 
    "reqd": 0, 
    "search_index": 0, 
@@ -206,20 +293,30 @@
    "unique": 0
   }, 
   {
+<<<<<<< HEAD
    "allow_bulk_edit": 0, 
    "allow_on_submit": 0, 
    "bold": 0, 
    "collapsible": 0, 
    "columns": 0, 
+=======
+   "allow_on_submit": 0, 
+   "bold": 0, 
+   "collapsible": 0, 
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
    "fieldname": "suppliers", 
    "fieldtype": "Table", 
    "hidden": 0, 
    "ignore_user_permissions": 0, 
    "ignore_xss_filter": 0, 
    "in_filter": 0, 
+<<<<<<< HEAD
    "in_global_search": 0, 
    "in_list_view": 0, 
    "in_standard_filter": 0, 
+=======
+   "in_list_view": 0, 
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
    "label": "Supplier Detail", 
    "length": 0, 
    "no_copy": 0, 
@@ -229,7 +326,10 @@
    "print_hide": 1, 
    "print_hide_if_no_value": 0, 
    "read_only": 0, 
+<<<<<<< HEAD
    "remember_last_selected_value": 0, 
+=======
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
    "report_hide": 0, 
    "reqd": 1, 
    "search_index": 0, 
@@ -237,6 +337,7 @@
    "unique": 0
   }, 
   {
+<<<<<<< HEAD
    "allow_bulk_edit": 0, 
    "allow_on_submit": 0, 
    "bold": 0, 
@@ -272,26 +373,42 @@
    "bold": 0, 
    "collapsible": 0, 
    "columns": 0, 
+=======
+   "allow_on_submit": 0, 
+   "bold": 0, 
+   "collapsible": 0, 
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
    "fieldname": "items_section", 
    "fieldtype": "Section Break", 
    "hidden": 0, 
    "ignore_user_permissions": 0, 
    "ignore_xss_filter": 0, 
    "in_filter": 0, 
+<<<<<<< HEAD
    "in_global_search": 0, 
    "in_list_view": 0, 
    "in_standard_filter": 0, 
+=======
+   "in_list_view": 0, 
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
    "label": "", 
    "length": 0, 
    "no_copy": 0, 
    "oldfieldtype": "Section Break", 
+<<<<<<< HEAD
    "options": "fa fa-shopping-cart", 
+=======
+   "options": "icon-shopping-cart", 
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
    "permlevel": 0, 
    "precision": "", 
    "print_hide": 0, 
    "print_hide_if_no_value": 0, 
    "read_only": 0, 
+<<<<<<< HEAD
    "remember_last_selected_value": 0, 
+=======
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
    "report_hide": 0, 
    "reqd": 0, 
    "search_index": 0, 
@@ -299,20 +416,30 @@
    "unique": 0
   }, 
   {
+<<<<<<< HEAD
    "allow_bulk_edit": 0, 
    "allow_on_submit": 0, 
    "bold": 0, 
    "collapsible": 0, 
    "columns": 0, 
+=======
+   "allow_on_submit": 0, 
+   "bold": 0, 
+   "collapsible": 0, 
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
    "fieldname": "items", 
    "fieldtype": "Table", 
    "hidden": 0, 
    "ignore_user_permissions": 0, 
    "ignore_xss_filter": 0, 
    "in_filter": 0, 
+<<<<<<< HEAD
    "in_global_search": 0, 
    "in_list_view": 0, 
    "in_standard_filter": 0, 
+=======
+   "in_list_view": 0, 
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
    "label": "Items", 
    "length": 0, 
    "no_copy": 0, 
@@ -324,7 +451,10 @@
    "print_hide": 0, 
    "print_hide_if_no_value": 0, 
    "read_only": 0, 
+<<<<<<< HEAD
    "remember_last_selected_value": 0, 
+=======
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
    "report_hide": 0, 
    "reqd": 1, 
    "search_index": 0, 
@@ -332,6 +462,7 @@
    "unique": 0
   }, 
   {
+<<<<<<< HEAD
    "allow_bulk_edit": 0, 
    "allow_on_submit": 0, 
    "bold": 0, 
@@ -368,15 +499,24 @@
    "bold": 0, 
    "collapsible": 0, 
    "columns": 0, 
+=======
+   "allow_on_submit": 0, 
+   "bold": 0, 
+   "collapsible": 0, 
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
    "fieldname": "supplier_response_section", 
    "fieldtype": "Section Break", 
    "hidden": 0, 
    "ignore_user_permissions": 0, 
    "ignore_xss_filter": 0, 
    "in_filter": 0, 
+<<<<<<< HEAD
    "in_global_search": 0, 
    "in_list_view": 0, 
    "in_standard_filter": 0, 
+=======
+   "in_list_view": 0, 
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
    "label": "", 
    "length": 0, 
    "no_copy": 0, 
@@ -385,7 +525,10 @@
    "print_hide": 0, 
    "print_hide_if_no_value": 0, 
    "read_only": 0, 
+<<<<<<< HEAD
    "remember_last_selected_value": 0, 
+=======
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
    "report_hide": 0, 
    "reqd": 0, 
    "search_index": 0, 
@@ -393,20 +536,30 @@
    "unique": 0
   }, 
   {
+<<<<<<< HEAD
    "allow_bulk_edit": 0, 
    "allow_on_submit": 0, 
    "bold": 0, 
    "collapsible": 0, 
    "columns": 0, 
+=======
+   "allow_on_submit": 0, 
+   "bold": 0, 
+   "collapsible": 0, 
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
    "fieldname": "standard_reply", 
    "fieldtype": "Link", 
    "hidden": 0, 
    "ignore_user_permissions": 0, 
    "ignore_xss_filter": 0, 
    "in_filter": 0, 
+<<<<<<< HEAD
    "in_global_search": 0, 
    "in_list_view": 0, 
    "in_standard_filter": 0, 
+=======
+   "in_list_view": 0, 
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
    "label": "Standard Reply", 
    "length": 0, 
    "no_copy": 0, 
@@ -416,7 +569,10 @@
    "print_hide": 1, 
    "print_hide_if_no_value": 0, 
    "read_only": 0, 
+<<<<<<< HEAD
    "remember_last_selected_value": 0, 
+=======
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
    "report_hide": 0, 
    "reqd": 0, 
    "search_index": 0, 
@@ -424,20 +580,30 @@
    "unique": 0
   }, 
   {
+<<<<<<< HEAD
    "allow_bulk_edit": 0, 
    "allow_on_submit": 0, 
    "bold": 0, 
    "collapsible": 0, 
    "columns": 0, 
+=======
+   "allow_on_submit": 0, 
+   "bold": 0, 
+   "collapsible": 0, 
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
    "fieldname": "message_for_supplier", 
    "fieldtype": "Text Editor", 
    "hidden": 0, 
    "ignore_user_permissions": 0, 
    "ignore_xss_filter": 0, 
    "in_filter": 0, 
+<<<<<<< HEAD
    "in_global_search": 0, 
    "in_list_view": 1, 
    "in_standard_filter": 0, 
+=======
+   "in_list_view": 0, 
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
    "label": "Message for Supplier", 
    "length": 0, 
    "no_copy": 0, 
@@ -446,7 +612,10 @@
    "print_hide": 1, 
    "print_hide_if_no_value": 0, 
    "read_only": 0, 
+<<<<<<< HEAD
    "remember_last_selected_value": 0, 
+=======
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
    "report_hide": 0, 
    "reqd": 1, 
    "search_index": 0, 
@@ -454,32 +623,49 @@
    "unique": 0
   }, 
   {
+<<<<<<< HEAD
    "allow_bulk_edit": 0, 
+=======
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
    "allow_on_submit": 0, 
    "bold": 0, 
    "collapsible": 1, 
    "collapsible_depends_on": "terms", 
+<<<<<<< HEAD
    "columns": 0, 
+=======
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
    "fieldname": "terms_section_break", 
    "fieldtype": "Section Break", 
    "hidden": 0, 
    "ignore_user_permissions": 0, 
    "ignore_xss_filter": 0, 
    "in_filter": 0, 
+<<<<<<< HEAD
    "in_global_search": 0, 
    "in_list_view": 0, 
    "in_standard_filter": 0, 
+=======
+   "in_list_view": 0, 
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
    "label": "Terms and Conditions", 
    "length": 0, 
    "no_copy": 0, 
    "oldfieldtype": "Section Break", 
+<<<<<<< HEAD
    "options": "fa fa-legal", 
+=======
+   "options": "icon-legal", 
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
    "permlevel": 0, 
    "precision": "", 
    "print_hide": 0, 
    "print_hide_if_no_value": 0, 
    "read_only": 0, 
+<<<<<<< HEAD
    "remember_last_selected_value": 0, 
+=======
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
    "report_hide": 0, 
    "reqd": 0, 
    "search_index": 0, 
@@ -487,20 +673,30 @@
    "unique": 0
   }, 
   {
+<<<<<<< HEAD
    "allow_bulk_edit": 0, 
    "allow_on_submit": 0, 
    "bold": 0, 
    "collapsible": 0, 
    "columns": 0, 
+=======
+   "allow_on_submit": 0, 
+   "bold": 0, 
+   "collapsible": 0, 
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
    "fieldname": "tc_name", 
    "fieldtype": "Link", 
    "hidden": 0, 
    "ignore_user_permissions": 0, 
    "ignore_xss_filter": 0, 
    "in_filter": 0, 
+<<<<<<< HEAD
    "in_global_search": 0, 
    "in_list_view": 0, 
    "in_standard_filter": 0, 
+=======
+   "in_list_view": 0, 
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
    "label": "Terms", 
    "length": 0, 
    "no_copy": 0, 
@@ -512,7 +708,10 @@
    "print_hide": 1, 
    "print_hide_if_no_value": 0, 
    "read_only": 0, 
+<<<<<<< HEAD
    "remember_last_selected_value": 0, 
+=======
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
    "report_hide": 0, 
    "reqd": 0, 
    "search_index": 0, 
@@ -520,20 +719,30 @@
    "unique": 0
   }, 
   {
+<<<<<<< HEAD
    "allow_bulk_edit": 0, 
    "allow_on_submit": 0, 
    "bold": 0, 
    "collapsible": 0, 
    "columns": 0, 
+=======
+   "allow_on_submit": 0, 
+   "bold": 0, 
+   "collapsible": 0, 
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
    "fieldname": "terms", 
    "fieldtype": "Text Editor", 
    "hidden": 0, 
    "ignore_user_permissions": 0, 
    "ignore_xss_filter": 0, 
    "in_filter": 0, 
+<<<<<<< HEAD
    "in_global_search": 0, 
    "in_list_view": 0, 
    "in_standard_filter": 0, 
+=======
+   "in_list_view": 0, 
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
    "label": "Terms and Conditions", 
    "length": 0, 
    "no_copy": 0, 
@@ -544,7 +753,10 @@
    "print_hide": 0, 
    "print_hide_if_no_value": 0, 
    "read_only": 0, 
+<<<<<<< HEAD
    "remember_last_selected_value": 0, 
+=======
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
    "report_hide": 0, 
    "reqd": 0, 
    "search_index": 0, 
@@ -552,20 +764,30 @@
    "unique": 0
   }, 
   {
+<<<<<<< HEAD
    "allow_bulk_edit": 0, 
    "allow_on_submit": 0, 
    "bold": 0, 
    "collapsible": 1, 
    "columns": 0, 
+=======
+   "allow_on_submit": 0, 
+   "bold": 0, 
+   "collapsible": 1, 
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
    "fieldname": "printing_settings", 
    "fieldtype": "Section Break", 
    "hidden": 0, 
    "ignore_user_permissions": 0, 
    "ignore_xss_filter": 0, 
    "in_filter": 0, 
+<<<<<<< HEAD
    "in_global_search": 0, 
    "in_list_view": 0, 
    "in_standard_filter": 0, 
+=======
+   "in_list_view": 0, 
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
    "label": "Printing Settings", 
    "length": 0, 
    "no_copy": 0, 
@@ -574,7 +796,10 @@
    "print_hide": 0, 
    "print_hide_if_no_value": 0, 
    "read_only": 0, 
+<<<<<<< HEAD
    "remember_last_selected_value": 0, 
+=======
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
    "report_hide": 0, 
    "reqd": 0, 
    "search_index": 0, 
@@ -582,20 +807,30 @@
    "unique": 0
   }, 
   {
+<<<<<<< HEAD
    "allow_bulk_edit": 0, 
    "allow_on_submit": 1, 
    "bold": 0, 
    "collapsible": 0, 
    "columns": 0, 
+=======
+   "allow_on_submit": 1, 
+   "bold": 0, 
+   "collapsible": 0, 
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
    "fieldname": "select_print_heading", 
    "fieldtype": "Link", 
    "hidden": 0, 
    "ignore_user_permissions": 0, 
    "ignore_xss_filter": 0, 
    "in_filter": 0, 
+<<<<<<< HEAD
    "in_global_search": 0, 
    "in_list_view": 0, 
    "in_standard_filter": 0, 
+=======
+   "in_list_view": 0, 
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
    "label": "Print Heading", 
    "length": 0, 
    "no_copy": 1, 
@@ -607,7 +842,10 @@
    "print_hide": 1, 
    "print_hide_if_no_value": 0, 
    "read_only": 0, 
+<<<<<<< HEAD
    "remember_last_selected_value": 0, 
+=======
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
    "report_hide": 1, 
    "reqd": 0, 
    "search_index": 0, 
@@ -615,20 +853,30 @@
    "unique": 0
   }, 
   {
+<<<<<<< HEAD
    "allow_bulk_edit": 0, 
    "allow_on_submit": 1, 
    "bold": 0, 
    "collapsible": 0, 
    "columns": 0, 
+=======
+   "allow_on_submit": 1, 
+   "bold": 0, 
+   "collapsible": 0, 
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
    "fieldname": "letter_head", 
    "fieldtype": "Link", 
    "hidden": 0, 
    "ignore_user_permissions": 0, 
    "ignore_xss_filter": 0, 
    "in_filter": 0, 
+<<<<<<< HEAD
    "in_global_search": 0, 
    "in_list_view": 0, 
    "in_standard_filter": 0, 
+=======
+   "in_list_view": 0, 
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
    "label": "Letter Head", 
    "length": 0, 
    "no_copy": 0, 
@@ -640,7 +888,10 @@
    "print_hide": 1, 
    "print_hide_if_no_value": 0, 
    "read_only": 0, 
+<<<<<<< HEAD
    "remember_last_selected_value": 0, 
+=======
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
    "report_hide": 0, 
    "reqd": 0, 
    "search_index": 0, 
@@ -648,31 +899,48 @@
    "unique": 0
   }, 
   {
+<<<<<<< HEAD
    "allow_bulk_edit": 0, 
    "allow_on_submit": 0, 
    "bold": 0, 
    "collapsible": 1, 
    "columns": 0, 
+=======
+   "allow_on_submit": 0, 
+   "bold": 0, 
+   "collapsible": 1, 
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
    "fieldname": "more_info", 
    "fieldtype": "Section Break", 
    "hidden": 0, 
    "ignore_user_permissions": 0, 
    "ignore_xss_filter": 0, 
    "in_filter": 0, 
+<<<<<<< HEAD
    "in_global_search": 0, 
    "in_list_view": 0, 
    "in_standard_filter": 0, 
+=======
+   "in_list_view": 0, 
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
    "label": "More Information", 
    "length": 0, 
    "no_copy": 0, 
    "oldfieldtype": "Section Break", 
+<<<<<<< HEAD
    "options": "fa fa-file-text", 
+=======
+   "options": "icon-file-text", 
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
    "permlevel": 0, 
    "precision": "", 
    "print_hide": 0, 
    "print_hide_if_no_value": 0, 
    "read_only": 0, 
+<<<<<<< HEAD
    "remember_last_selected_value": 0, 
+=======
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
    "report_hide": 0, 
    "reqd": 0, 
    "search_index": 0, 
@@ -680,20 +948,31 @@
    "unique": 0
   }, 
   {
+<<<<<<< HEAD
    "allow_bulk_edit": 0, 
    "allow_on_submit": 0, 
    "bold": 0, 
    "collapsible": 0, 
    "columns": 0, 
+=======
+   "allow_on_submit": 0, 
+   "bold": 0, 
+   "collapsible": 0, 
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
    "fieldname": "status", 
    "fieldtype": "Select", 
    "hidden": 0, 
    "ignore_user_permissions": 0, 
    "ignore_xss_filter": 0, 
+<<<<<<< HEAD
    "in_filter": 0, 
    "in_global_search": 0, 
    "in_list_view": 0, 
    "in_standard_filter": 0, 
+=======
+   "in_filter": 1, 
+   "in_list_view": 0, 
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
    "label": "Status", 
    "length": 0, 
    "no_copy": 1, 
@@ -705,7 +984,10 @@
    "print_hide": 1, 
    "print_hide_if_no_value": 0, 
    "read_only": 1, 
+<<<<<<< HEAD
    "remember_last_selected_value": 0, 
+=======
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
    "report_hide": 0, 
    "reqd": 1, 
    "search_index": 1, 
@@ -713,20 +995,31 @@
    "unique": 0
   }, 
   {
+<<<<<<< HEAD
    "allow_bulk_edit": 0, 
    "allow_on_submit": 0, 
    "bold": 0, 
    "collapsible": 0, 
    "columns": 0, 
+=======
+   "allow_on_submit": 0, 
+   "bold": 0, 
+   "collapsible": 0, 
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
    "fieldname": "fiscal_year", 
    "fieldtype": "Link", 
    "hidden": 0, 
    "ignore_user_permissions": 0, 
    "ignore_xss_filter": 0, 
+<<<<<<< HEAD
    "in_filter": 0, 
    "in_global_search": 0, 
    "in_list_view": 0, 
    "in_standard_filter": 0, 
+=======
+   "in_filter": 1, 
+   "in_list_view": 0, 
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
    "label": "Fiscal Year", 
    "length": 0, 
    "no_copy": 0, 
@@ -738,7 +1031,10 @@
    "print_hide": 1, 
    "print_hide_if_no_value": 0, 
    "read_only": 0, 
+<<<<<<< HEAD
    "remember_last_selected_value": 0, 
+=======
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
    "report_hide": 0, 
    "reqd": 1, 
    "search_index": 1, 
@@ -746,20 +1042,30 @@
    "unique": 0
   }, 
   {
+<<<<<<< HEAD
    "allow_bulk_edit": 0, 
    "allow_on_submit": 0, 
    "bold": 0, 
    "collapsible": 0, 
    "columns": 0, 
+=======
+   "allow_on_submit": 0, 
+   "bold": 0, 
+   "collapsible": 0, 
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
    "fieldname": "column_break3", 
    "fieldtype": "Column Break", 
    "hidden": 0, 
    "ignore_user_permissions": 0, 
    "ignore_xss_filter": 0, 
    "in_filter": 0, 
+<<<<<<< HEAD
    "in_global_search": 0, 
    "in_list_view": 0, 
    "in_standard_filter": 0, 
+=======
+   "in_list_view": 0, 
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
    "length": 0, 
    "no_copy": 0, 
    "permlevel": 0, 
@@ -767,7 +1073,10 @@
    "print_hide": 0, 
    "print_hide_if_no_value": 0, 
    "read_only": 0, 
+<<<<<<< HEAD
    "remember_last_selected_value": 0, 
+=======
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
    "report_hide": 0, 
    "reqd": 0, 
    "search_index": 0, 
@@ -775,20 +1084,30 @@
    "unique": 0
   }, 
   {
+<<<<<<< HEAD
    "allow_bulk_edit": 0, 
    "allow_on_submit": 0, 
    "bold": 0, 
    "collapsible": 0, 
    "columns": 0, 
+=======
+   "allow_on_submit": 0, 
+   "bold": 0, 
+   "collapsible": 0, 
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
    "fieldname": "amended_from", 
    "fieldtype": "Link", 
    "hidden": 0, 
    "ignore_user_permissions": 0, 
    "ignore_xss_filter": 0, 
    "in_filter": 0, 
+<<<<<<< HEAD
    "in_global_search": 0, 
    "in_list_view": 0, 
    "in_standard_filter": 0, 
+=======
+   "in_list_view": 0, 
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
    "label": "Amended From", 
    "length": 0, 
    "no_copy": 1, 
@@ -797,7 +1116,10 @@
    "print_hide": 1, 
    "print_hide_if_no_value": 0, 
    "read_only": 1, 
+<<<<<<< HEAD
    "remember_last_selected_value": 0, 
+=======
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
    "report_hide": 0, 
    "reqd": 0, 
    "search_index": 0, 
@@ -805,6 +1127,7 @@
    "unique": 0
   }
  ], 
+<<<<<<< HEAD
  "has_web_view": 0, 
  "hide_heading": 0, 
  "hide_toolbar": 0, 
@@ -812,11 +1135,24 @@
  "idx": 0, 
  "image_view": 0, 
  "in_create": 0, 
+=======
+ "hide_heading": 0, 
+ "hide_toolbar": 0, 
+ "icon": "icon-shopping-cart", 
+ "idx": 0, 
+ "image_view": 0, 
+ "in_create": 0, 
+ "in_dialog": 0, 
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
  "is_submittable": 1, 
  "issingle": 0, 
  "istable": 0, 
  "max_attachments": 0, 
+<<<<<<< HEAD
  "modified": "2017-07-21 14:06:46.309322", 
+=======
+ "modified": "2016-08-01 08:45:39.777405", 
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
  "modified_by": "Administrator", 
  "module": "Buying", 
  "name": "Request for Quotation", 
@@ -968,11 +1304,17 @@
  "read_only": 0, 
  "read_only_onload": 1, 
  "search_fields": "status, transaction_date", 
+<<<<<<< HEAD
  "show_name_in_global_search": 1, 
+=======
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
  "sort_field": "modified", 
  "sort_order": "DESC", 
  "timeline_field": "", 
  "title_field": "", 
+<<<<<<< HEAD
  "track_changes": 0, 
+=======
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
  "track_seen": 0
 }

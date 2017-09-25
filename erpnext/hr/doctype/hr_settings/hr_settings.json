@@ -8,13 +8,19 @@
  "docstatus": 0, 
  "doctype": "DocType", 
  "document_type": "Other", 
+<<<<<<< HEAD
  "editable_grid": 1, 
+=======
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
  "fields": [
   {
    "allow_on_submit": 0, 
    "bold": 0, 
    "collapsible": 0, 
+<<<<<<< HEAD
    "columns": 0, 
+=======
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
    "fieldname": "employee_settings", 
    "fieldtype": "Section Break", 
    "hidden": 0, 
@@ -22,7 +28,10 @@
    "ignore_xss_filter": 0, 
    "in_filter": 0, 
    "in_list_view": 0, 
+<<<<<<< HEAD
    "in_standard_filter": 0, 
+=======
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
    "label": "Employee Settings", 
    "length": 0, 
    "no_copy": 0, 
@@ -30,7 +39,10 @@
    "print_hide": 0, 
    "print_hide_if_no_value": 0, 
    "read_only": 0, 
+<<<<<<< HEAD
    "remember_last_selected_value": 0, 
+=======
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
    "report_hide": 0, 
    "reqd": 0, 
    "search_index": 0, 
@@ -41,7 +53,10 @@
    "allow_on_submit": 0, 
    "bold": 0, 
    "collapsible": 0, 
+<<<<<<< HEAD
    "columns": 0, 
+=======
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
    "default": "", 
    "description": "Enter retirement age in years", 
    "fieldname": "retirement_age", 
@@ -51,7 +66,10 @@
    "ignore_xss_filter": 0, 
    "in_filter": 0, 
    "in_list_view": 0, 
+<<<<<<< HEAD
    "in_standard_filter": 0, 
+=======
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
    "label": "Retirement Age", 
    "length": 0, 
    "no_copy": 0, 
@@ -60,7 +78,10 @@
    "print_hide": 0, 
    "print_hide_if_no_value": 0, 
    "read_only": 0, 
+<<<<<<< HEAD
    "remember_last_selected_value": 0, 
+=======
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
    "report_hide": 0, 
    "reqd": 0, 
    "search_index": 0, 
@@ -71,7 +92,10 @@
    "allow_on_submit": 0, 
    "bold": 0, 
    "collapsible": 0, 
+<<<<<<< HEAD
    "columns": 0, 
+=======
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
    "default": "Naming Series", 
    "description": "Employee record is created using selected field. ", 
    "fieldname": "emp_created_by", 
@@ -81,16 +105,26 @@
    "ignore_xss_filter": 0, 
    "in_filter": 0, 
    "in_list_view": 0, 
+<<<<<<< HEAD
    "in_standard_filter": 0, 
    "label": "Employee Records to be created by", 
    "length": 0, 
    "no_copy": 0, 
    "options": "Naming Series\nEmployee Number\nFull Name", 
+=======
+   "label": "Employee Records to be created by", 
+   "length": 0, 
+   "no_copy": 0, 
+   "options": "Naming Series\nEmployee Number", 
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
    "permlevel": 0, 
    "print_hide": 0, 
    "print_hide_if_no_value": 0, 
    "read_only": 0, 
+<<<<<<< HEAD
    "remember_last_selected_value": 0, 
+=======
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
    "report_hide": 0, 
    "reqd": 0, 
    "search_index": 0, 
@@ -101,6 +135,7 @@
    "allow_on_submit": 0, 
    "bold": 0, 
    "collapsible": 0, 
+<<<<<<< HEAD
    "columns": 0, 
    "fieldname": "column_break_4", 
    "fieldtype": "Column Break", 
@@ -129,6 +164,8 @@
    "bold": 0, 
    "collapsible": 0, 
    "columns": 0, 
+=======
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
    "description": "Don't send Employee Birthday Reminders", 
    "fieldname": "stop_birthday_reminders", 
    "fieldtype": "Check", 
@@ -137,7 +174,10 @@
    "ignore_xss_filter": 0, 
    "in_filter": 0, 
    "in_list_view": 0, 
+<<<<<<< HEAD
    "in_standard_filter": 0, 
+=======
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
    "label": "Stop Birthday Reminders", 
    "length": 0, 
    "no_copy": 0, 
@@ -145,7 +185,10 @@
    "print_hide": 0, 
    "print_hide_if_no_value": 0, 
    "read_only": 0, 
+<<<<<<< HEAD
    "remember_last_selected_value": 0, 
+=======
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
    "report_hide": 0, 
    "reqd": 0, 
    "search_index": 0, 
@@ -156,6 +199,7 @@
    "allow_on_submit": 0, 
    "bold": 0, 
    "collapsible": 0, 
+<<<<<<< HEAD
    "columns": 0, 
    "fieldname": "maintain_bill_work_hours_same", 
    "fieldtype": "Check", 
@@ -185,6 +229,8 @@
    "bold": 0, 
    "collapsible": 0, 
    "columns": 0, 
+=======
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
    "fieldname": "payroll_settings", 
    "fieldtype": "Section Break", 
    "hidden": 0, 
@@ -192,7 +238,10 @@
    "ignore_xss_filter": 0, 
    "in_filter": 0, 
    "in_list_view": 0, 
+<<<<<<< HEAD
    "in_standard_filter": 0, 
+=======
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
    "label": "Payroll Settings", 
    "length": 0, 
    "no_copy": 0, 
@@ -200,7 +249,10 @@
    "print_hide": 0, 
    "print_hide_if_no_value": 0, 
    "read_only": 0, 
+<<<<<<< HEAD
    "remember_last_selected_value": 0, 
+=======
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
    "report_hide": 0, 
    "reqd": 0, 
    "search_index": 0, 
@@ -211,7 +263,10 @@
    "allow_on_submit": 0, 
    "bold": 0, 
    "collapsible": 0, 
+<<<<<<< HEAD
    "columns": 0, 
+=======
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
    "description": "If checked, Total no. of Working Days will include holidays, and this will reduce the value of Salary Per Day", 
    "fieldname": "include_holidays_in_total_working_days", 
    "fieldtype": "Check", 
@@ -220,7 +275,10 @@
    "ignore_xss_filter": 0, 
    "in_filter": 0, 
    "in_list_view": 0, 
+<<<<<<< HEAD
    "in_standard_filter": 0, 
+=======
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
    "label": "Include holidays in Total no. of Working Days", 
    "length": 0, 
    "no_copy": 0, 
@@ -228,7 +286,10 @@
    "print_hide": 0, 
    "print_hide_if_no_value": 0, 
    "read_only": 0, 
+<<<<<<< HEAD
    "remember_last_selected_value": 0, 
+=======
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
    "report_hide": 0, 
    "reqd": 0, 
    "search_index": 0, 
@@ -239,9 +300,14 @@
    "allow_on_submit": 0, 
    "bold": 0, 
    "collapsible": 0, 
+<<<<<<< HEAD
    "columns": 0, 
    "default": "1", 
    "description": "Emails salary slip to employee based on preferred email selected in Employee", 
+=======
+   "default": "1", 
+   "description": "", 
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
    "fieldname": "email_salary_slip_to_employee", 
    "fieldtype": "Check", 
    "hidden": 0, 
@@ -249,7 +315,10 @@
    "ignore_xss_filter": 0, 
    "in_filter": 0, 
    "in_list_view": 0, 
+<<<<<<< HEAD
    "in_standard_filter": 0, 
+=======
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
    "label": "Email Salary Slip to Employee", 
    "length": 0, 
    "no_copy": 0, 
@@ -258,6 +327,7 @@
    "print_hide": 0, 
    "print_hide_if_no_value": 0, 
    "read_only": 0, 
+<<<<<<< HEAD
    "remember_last_selected_value": 0, 
    "report_hide": 0, 
    "reqd": 0, 
@@ -287,6 +357,8 @@
    "print_hide_if_no_value": 0, 
    "read_only": 0, 
    "remember_last_selected_value": 0, 
+=======
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
    "report_hide": 0, 
    "reqd": 0, 
    "search_index": 0, 
@@ -296,7 +368,11 @@
  ], 
  "hide_heading": 0, 
  "hide_toolbar": 0, 
+<<<<<<< HEAD
  "icon": "fa fa-cog", 
+=======
+ "icon": "icon-cog", 
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
  "idx": 1, 
  "image_view": 0, 
  "in_create": 0, 
@@ -305,8 +381,13 @@
  "issingle": 1, 
  "istable": 0, 
  "max_attachments": 0, 
+<<<<<<< HEAD
  "modified": "2017-01-16 14:01:31.183485", 
  "modified_by": "anastasiadis.st00@gmail.com", 
+=======
+ "modified": "2016-06-27 16:20:59.737869", 
+ "modified_by": "Administrator", 
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
  "module": "HR", 
  "name": "HR Settings", 
  "owner": "Administrator", 
@@ -321,7 +402,10 @@
    "export": 0, 
    "if_owner": 0, 
    "import": 0, 
+<<<<<<< HEAD
    "is_custom": 0, 
+=======
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
    "permlevel": 0, 
    "print": 1, 
    "read": 1, 
@@ -337,6 +421,9 @@
  "read_only": 0, 
  "read_only_onload": 0, 
  "sort_order": "ASC", 
+<<<<<<< HEAD
  "track_changes": 0, 
+=======
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
  "track_seen": 0
 }

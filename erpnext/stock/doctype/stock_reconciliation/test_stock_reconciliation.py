@@ -37,7 +37,11 @@ class TestStockReconciliation(unittest.TestCase):
 
 		for d in input_data:
 			set_valuation_method("_Test Item", valuation_method)
+<<<<<<< HEAD
 
+=======
+			
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 			last_sle = get_previous_sle({
 				"item_code": "_Test Item",
 				"warehouse": "_Test Warehouse - _TC",
@@ -96,7 +100,10 @@ def create_stock_reconciliation(**args):
 	sr = frappe.new_doc("Stock Reconciliation")
 	sr.posting_date = args.posting_date or nowdate()
 	sr.posting_time = args.posting_time or nowtime()
+<<<<<<< HEAD
 	sr.set_posting_time = 1
+=======
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 	sr.company = args.company or "_Test Company"
 	sr.expense_account = args.expense_account or \
 		("Stock Adjustment - _TC" if frappe.get_all("Stock Ledger Entry") else "Temporary Opening - _TC")

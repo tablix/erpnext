@@ -2,7 +2,11 @@
 # License: GNU General Public License v3. See license.txt
 from __future__ import unicode_literals
 
+<<<<<<< HEAD
 import frappe, erpnext
+=======
+import frappe
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 from frappe import _
 from frappe.utils import cint, flt, cstr, now
 from erpnext.stock.utils import get_valuation_method
@@ -259,6 +263,7 @@ class update_entries_after(object):
 			if not self.valuation_rate and actual_qty > 0:
 				self.valuation_rate = sle.incoming_rate
 
+<<<<<<< HEAD
 			# Get valuation rate from previous SLE or Item master, if item does not have the
 			# allow zero valuration rate flag set
 			if not self.valuation_rate and sle.voucher_detail_no:
@@ -268,6 +273,8 @@ class update_entries_after(object):
 						sle.voucher_type, sle.voucher_no, self.allow_zero_rate,
 						currency=erpnext.get_company_currency(sle.company))
 
+=======
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 	def get_fifo_values(self, sle):
 		incoming_rate = flt(sle.incoming_rate)
 		actual_qty = flt(sle.actual_qty)
@@ -290,6 +297,7 @@ class update_entries_after(object):
 			qty_to_pop = abs(actual_qty)
 			while qty_to_pop:
 				if not self.stock_queue:
+<<<<<<< HEAD
 					# Get valuation rate from last sle if exists or from valuation rate field in item master
 					allow_zero_valuation_rate = self.check_if_allow_zero_valuation_rate(sle.voucher_type, sle.voucher_detail_no)
 					if not allow_zero_valuation_rate:
@@ -299,6 +307,12 @@ class update_entries_after(object):
 					else:
 						_rate = 0
 
+=======
+					if self.qty_after_transaction > 0:
+						_rate = get_valuation_rate(sle.item_code, sle.warehouse, self.allow_zero_rate)
+					else:
+						_rate = 0
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 					self.stock_queue.append([0, _rate])
 
 				index = None
@@ -345,10 +359,13 @@ class update_entries_after(object):
 		if not self.stock_queue:
 			self.stock_queue.append([0, sle.incoming_rate or sle.outgoing_rate or self.valuation_rate])
 
+<<<<<<< HEAD
 	def check_if_allow_zero_valuation_rate(self, voucher_type, voucher_detail_no):
 		ref_item_dt = voucher_type + (" Detail" if voucher_type == "Stock Entry" else " Item")
 		return frappe.db.get_value(ref_item_dt, voucher_detail_no, "allow_zero_valuation_rate")
 
+=======
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 	def get_sle_before_datetime(self):
 		"""get previous stock ledger entry before current time-bucket"""
 		return get_stock_ledger_entries(self.args, "<", "desc", "limit 1", for_update=False)
@@ -378,7 +395,11 @@ class update_entries_after(object):
 		if self.verbose:
 			frappe.throw(msg, NegativeStockError, title='Insufficent Stock')
 		else:
+<<<<<<< HEAD
 			raise NegativeStockError(msg)
+=======
+			raise NegativeStockError, msg
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 
 def get_previous_sle(args, for_update=False):
 	"""
@@ -422,12 +443,16 @@ def get_stock_ledger_entries(previous_sle, operator=None, order="desc", limit=No
 			"order": order
 		}, previous_sle, as_dict=1, debug=debug)
 
+<<<<<<< HEAD
 def get_valuation_rate(item_code, warehouse, voucher_type, voucher_no,
 	allow_zero_rate=False, currency=None, company=None):
 	# Get valuation rate from last sle for the same item and warehouse
 	if not company:
 		company = erpnext.get_default_company()
 
+=======
+def get_valuation_rate(item_code, warehouse, allow_zero_rate=False):
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 	last_valuation_rate = frappe.db.sql("""select valuation_rate
 		from `tabStock Ledger Entry`
 		where item_code = %s and warehouse = %s
@@ -435,7 +460,10 @@ def get_valuation_rate(item_code, warehouse, voucher_type, voucher_no,
 		order by posting_date desc, posting_time desc, name desc limit 1""", (item_code, warehouse))
 
 	if not last_valuation_rate:
+<<<<<<< HEAD
 		# Get valuation rate from last sle for the item against any warehouse
+=======
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 		last_valuation_rate = frappe.db.sql("""select valuation_rate
 			from `tabStock Ledger Entry`
 			where item_code = %s and valuation_rate > 0
@@ -444,6 +472,7 @@ def get_valuation_rate(item_code, warehouse, voucher_type, voucher_no,
 	valuation_rate = flt(last_valuation_rate[0][0]) if last_valuation_rate else 0
 
 	if not valuation_rate:
+<<<<<<< HEAD
 		# If negative stock allowed, and item delivered without any incoming entry,
 		# syste does not found any SLE, then take valuation rate from Item
 		valuation_rate = frappe.db.get_value("Item", item_code, "valuation_rate")
@@ -462,5 +491,11 @@ def get_valuation_rate(item_code, warehouse, voucher_type, voucher_no,
 			and cint(erpnext.is_perpetual_inventory_enabled(company)):
 		frappe.local.message_log = []
 		frappe.throw(_("Valuation rate not found for the Item {0}, which is required to do accounting entries for {1} {2}. If the item is transacting as a sample item in the {1}, please mention that in the {1} Item table. Otherwise, please create an incoming stock transaction for the item or mention valuation rate in the Item record, and then try submiting/cancelling this entry").format(item_code, voucher_type, voucher_no))
+=======
+		valuation_rate = frappe.db.get_value("Item Price", {"item_code": item_code, "buying": 1}, "price_list_rate")
+
+	if not allow_zero_rate and not valuation_rate and cint(frappe.db.get_value("Accounts Settings", None, "auto_accounting_for_stock")):
+		frappe.throw(_("Purchase rate for item: {0} not found, which is required to book accounting entry (expense). Please mention item price against a buying price list.").format(item_code))
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 
 	return valuation_rate

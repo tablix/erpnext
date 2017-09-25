@@ -4,10 +4,15 @@
 from __future__ import unicode_literals
 import frappe
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 from frappe.utils import flt, cint
 
 from frappe import msgprint, _
 import frappe.defaults
+<<<<<<< HEAD
 from frappe.model.utils import get_fetch_values
 from frappe.model.mapper import get_mapped_doc
 from erpnext.controllers.selling_controller import SellingController
@@ -15,6 +20,12 @@ from frappe.desk.notifications import clear_doctype_notifications
 from erpnext.stock.doctype.batch.batch import set_batch_nos
 from frappe.contacts.doctype.address.address import get_company_address
 from erpnext.stock.doctype.serial_no.serial_no import get_delivery_note_serial_no
+=======
+from frappe.model.mapper import get_mapped_doc
+from erpnext.controllers.selling_controller import SellingController
+from frappe.desk.notifications import clear_doctype_notifications
+
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 
 form_grid_templates = {
 	"items": "templates/form_grid/item_grid.html"
@@ -92,12 +103,20 @@ class DeliveryNote(SellingController):
 	def so_required(self):
 		"""check in manage account if sales order required or not"""
 		if frappe.db.get_value("Selling Settings", None, 'so_required') == 'Yes':
+<<<<<<< HEAD
 			for d in self.get('items'):
 				if not d.against_sales_order:
 					frappe.throw(_("Sales Order required for Item {0}").format(d.item_code))
 
 	def validate(self):
 		self.validate_posting_time()
+=======
+			 for d in self.get('items'):
+				 if not d.against_sales_order:
+					 frappe.throw(_("Sales Order required for Item {0}").format(d.item_code))
+
+	def validate(self):
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 		super(DeliveryNote, self).validate()
 		self.set_status()
 		self.so_required()
@@ -105,12 +124,115 @@ class DeliveryNote(SellingController):
 		self.check_close_sales_order("against_sales_order")
 		self.validate_for_items()
 		self.validate_warehouse()
+<<<<<<< HEAD
 		self.validate_uom_is_integer("stock_uom", "stock_qty")
 		self.validate_uom_is_integer("uom", "qty")
 		self.validate_with_previous_doc()
 
 		if self._action != 'submit' and not self.is_return:
 			set_batch_nos(self, 'warehouse', True)
+=======
+		self.validate_uom_is_integer("stock_uom", "qty")
+		self.validate_with_previous_doc()
+		# new addition
+		self.validate_so()
+		if self.customer is not None:
+			cust = frappe.db.sql("""SELECT name, customer_name, first_name, user_last_name FROM `tabContact` where customer = %s and is_primary_contact = 1""", self.customer)
+			#msgprint(_("Cust: {0}").format(cust))
+			# str(cust) == '()':
+			#	msgprint(_("Cust is None"))
+			#	cust = frappe.db.sql("""SELECT name, customer_name, first_name, last_name FROM `tabContact` where customer = %s """, self.customer)
+			if str(cust) != '()':
+				self.contact_person = cust[0][0]
+				#msgprint(_("Contact Person: {0}").format(self.contact_person))
+				#self.territory = cust[0][4]
+				#msgprint(_("Territory").format(cust[0][4]))
+				self.contact_display = str(cust[0][2]) + ' ' + str(cust[0][3])
+				#msgprint(_("Contact Display: {0}").format(self.contact_display))
+			add = frappe.db.sql("""SELECT name, address_line1, address_line2, city, country, pincode, phone, fax FROM `tabAddress` where customer = %s and is_primary_address = 1""", self.customer)
+			#if str(add) == '()':
+			#	add = frappe.db.sql("""SELECT name, address_line1, address_line2, city, country, pincode FROM `tabAddress` where customer = %s """, self.customer)
+			if str(add) != '()':	
+				self.customer_address = add[0][0]
+				#msgprint(_("Address: {0}").format(add))
+				add1 = add[0][1]
+				add2 = add[0][2]
+				city = add[0][3]
+				country = add[0][4]
+				pincode = add[0][5]
+				phone = add[0][6]
+				fax = add[0][7]
+				
+				
+				address = ''
+				if add1 is not None: 
+					if add1.encode('utf-8') != '':
+						add1_str = add1.encode('ascii', 'ignore')
+						self.instruction = type(add1_str)
+						address += add1_str + ','
+				if add2 is not None: 
+					if add2.encode('utf-8') != '':
+						add2_str = add2.encode('ascii', 'ignore')
+						address += ' ' + add2_str + ','
+				if city is not None and str(city) != '':
+					address += ' \n ' + str(city) + ','
+				if country is not None and str(country) != '':
+					address  += ' ' + str(country) 
+				if pincode is not None and str(pincode) != '':
+					address += ' \n ' + str(pincode)
+				if phone is not None and str(phone) != '':
+					address += ' \n Phone:' + str(phone)
+				if fax is not None and str(fax) != '':
+					address += ' \n Fax:' + str(fax)
+				self.address_display = address
+				#msgprint(_("Address Display: {0}").format(self.address_display))
+				
+		if self.customer is not None and self.shipping_address_name is None:
+			ship_add = frappe.db.sql("""SELECT name, address_line1, address_line2, city, country, pincode, phone, fax FROM `tabAddress` where customer = %s and is_shipping_address = 1""", self.customer)
+			#if str(add) == '()':
+			#	add = frappe.db.sql("""SELECT name, address_line1, address_line2, city, country, pincode, phone, fax FROM `tabAddress` where customer = %s """, self.customer)
+			if str(ship_add) != '()':	
+				self.shipping_address_name = ship_add[0][0]
+				#msgprint(_("Shipping Address: {0}").format(ship_add))
+				add1 = ship_add[0][1]
+				add2 = ship_add[0][2]
+				city = ship_add[0][3]
+				country = ship_add[0][4]
+				pincode = ship_add[0][5]
+				phone = ship_add[0][6]
+				fax = ship_add[0][7]
+				
+				address = ''
+				if add1 is not None: 
+					if add1.encode('utf-8') != '':
+						add1_str = add1.encode('ascii', 'ignore')
+						address += add1_str + ','
+				if add2 is not None:
+					if add2.encode('utf-8') != '':
+						add2_str = add2.encode('ascii', 'ignore')
+						address += ' ' + add2_str + ','
+				if city is not None and str(city) != '':
+					address += ' \n ' + str(city) + ','
+				if country is not None and str(country) != '':
+					address  += ' ' + str(country)
+				if pincode is not None and str(pincode) != '':
+					address += ' \n ' + str(pincode)
+				if phone is not None and str(phone) != '':
+					address += ' \n Phone:' + str(phone)
+				if fax is not None and str(fax) != '':
+					address += ' \n Fax:' +str(fax)
+				self.shipping_address = address
+				#msgprint(_("Shipping Address Display: {0}").format(self.shipping_address))
+
+			self.territory = frappe.get_value("Customer", self.customer, "territory")
+		total_qty=0 
+		for i in self.get("items"):
+			total_qty += i.qty
+		self.total_qty = total_qty
+					
+				
+				
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 
 		from erpnext.stock.doctype.packed_item.packed_item import make_packing_list
 		make_packing_list(self)
@@ -118,6 +240,7 @@ class DeliveryNote(SellingController):
 		self.update_current_stock()
 
 		if not self.installation_status: self.installation_status = 'Not Installed'
+<<<<<<< HEAD
 
 	def validate_with_previous_doc(self):
 		super(DeliveryNote, self).validate_with_previous_doc({
@@ -145,6 +268,33 @@ class DeliveryNote(SellingController):
 
 		if cint(frappe.db.get_single_value('Selling Settings', 'maintain_same_sales_rate')) \
 				and not self.is_return:
+=======
+		
+	#new addition
+	def validate_so(self):
+		if self.sales_order_no is None:
+			so = frappe.db.get_value("Sales Order", {"po_no": self.po_no, "docstatus": 1})
+			if so is not None:
+				self.sales_order_no = so
+				
+		for data in self.items:
+			if data.against_sales_order is None or data.against_sales_order == "":
+				data.against_sales_order = self.sales_order_no
+
+	def validate_with_previous_doc(self):
+		for fn in (("Sales Order", "against_sales_order", "so_detail"),
+				("Sales Invoice", "against_sales_invoice", "si_detail")):
+			if filter(None, [getattr(d, fn[1], None) for d in self.get("items")]):
+				super(DeliveryNote, self).validate_with_previous_doc({
+					fn[0]: {
+						"ref_dn_field": fn[1],
+						"compare_fields": [["customer", "="], ["company", "="], ["project", "="],
+							["currency", "="]],
+					},
+				})
+
+		if cint(frappe.db.get_single_value('Selling Settings', 'maintain_same_sales_rate')) and not self.is_return:
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 			self.validate_rate_with_reference_doc([["Sales Order", "against_sales_order", "so_detail"],
 				["Sales Invoice", "against_sales_invoice", "si_detail"]])
 
@@ -303,6 +453,10 @@ class DeliveryNote(SellingController):
 			dn_doc.update_billing_percentage(update_modified=update_modified)
 
 		self.load_from_db()
+<<<<<<< HEAD
+=======
+		
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 
 def update_billed_amount_based_on_so(so_detail, update_modified=True):
 	# Billed against Sales Order directly
@@ -374,7 +528,11 @@ def get_invoiced_qty_map(delivery_note):
 def make_sales_invoice(source_name, target_doc=None):
 	invoiced_qty_map = get_invoiced_qty_map(source_name)
 
+<<<<<<< HEAD
 	def set_missing_values(source, target):
+=======
+	def update_accounts(source, target):
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 		target.is_pos = 0
 		target.ignore_pricing_rule = 1
 		target.run_method("set_missing_values")
@@ -384,6 +542,7 @@ def make_sales_invoice(source_name, target_doc=None):
 
 		target.run_method("calculate_taxes_and_totals")
 
+<<<<<<< HEAD
 		# set company address
 		target.update(get_company_address(target.company))
 		if target.company_address:
@@ -394,6 +553,10 @@ def make_sales_invoice(source_name, target_doc=None):
 		if source_doc.serial_no and source_parent.per_billed > 0:
 			target_doc.serial_no = get_delivery_note_serial_no(source_doc.item_code,
 				target_doc.qty, source_parent.name)
+=======
+	def update_item(source_doc, target_doc, source_parent):
+		target_doc.qty = source_doc.qty - invoiced_qty_map.get(source_doc.name, 0)
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 
 	doc = get_mapped_doc("Delivery Note", source_name, 	{
 		"Delivery Note": {
@@ -409,8 +572,12 @@ def make_sales_invoice(source_name, target_doc=None):
 				"parent": "delivery_note",
 				"so_detail": "so_detail",
 				"against_sales_order": "sales_order",
+<<<<<<< HEAD
 				"serial_no": "serial_no",
 				"cost_center": "cost_center"
+=======
+				"serial_no": "serial_no"
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 			},
 			"postprocess": update_item,
 			"filter": lambda d: abs(d.qty) - abs(invoiced_qty_map.get(d.name, 0))<=0
@@ -426,7 +593,11 @@ def make_sales_invoice(source_name, target_doc=None):
 			},
 			"add_if_empty": True
 		}
+<<<<<<< HEAD
 	}, target_doc, set_missing_values)
+=======
+	}, target_doc, update_accounts)
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 
 	return doc
 

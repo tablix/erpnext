@@ -3,12 +3,18 @@
 
 from __future__ import unicode_literals
 import frappe
+<<<<<<< HEAD
 from frappe import _
 from frappe.utils import flt
 from frappe.model.mapper import get_mapped_doc
 
 from erpnext.controllers.buying_controller import BuyingController
 from erpnext.buying.utils import validate_for_items
+=======
+from frappe.model.mapper import get_mapped_doc
+
+from erpnext.controllers.buying_controller import BuyingController
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 
 form_grid_templates = {
 	"items": "templates/form_grid/item_grid.html"
@@ -25,17 +31,27 @@ class SupplierQuotation(BuyingController):
 		validate_status(self.status, ["Draft", "Submitted", "Stopped",
 			"Cancelled"])
 
+<<<<<<< HEAD
 		validate_for_items(self)
+=======
+		self.validate_common()
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 		self.validate_with_previous_doc()
 		self.validate_uom_is_integer("uom", "qty")
 
 	def on_submit(self):
 		frappe.db.set(self, "status", "Submitted")
+<<<<<<< HEAD
 		self.update_rfq_supplier_status(1)
 
 	def on_cancel(self):
 		frappe.db.set(self, "status", "Cancelled")
 		self.update_rfq_supplier_status(0)
+=======
+
+	def on_cancel(self):
+		frappe.db.set(self, "status", "Cancelled")
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 
 	def on_trash(self):
 		pass
@@ -52,6 +68,7 @@ class SupplierQuotation(BuyingController):
 				"is_child_table": True
 			}
 		})
+<<<<<<< HEAD
 	def update_rfq_supplier_status(self, include_me):
 		rfq_list = set([])
 		for item in self.items:
@@ -99,6 +116,13 @@ def get_list_context(context=None):
 	})
 
 	return list_context
+=======
+
+
+	def validate_common(self):
+		pc = frappe.get_doc('Purchase Common')
+		pc.validate_for_items(self)
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 
 @frappe.whitelist()
 def make_purchase_order(source_name, target_doc=None):
@@ -109,7 +133,11 @@ def make_purchase_order(source_name, target_doc=None):
 		target.run_method("calculate_taxes_and_totals")
 
 	def update_item(obj, target, source_parent):
+<<<<<<< HEAD
 		target.stock_qty = flt(obj.qty) * flt(obj.conversion_factor)
+=======
+		target.conversion_factor = 1
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 
 	doclist = get_mapped_doc("Supplier Quotation", source_name,		{
 		"Supplier Quotation": {
@@ -123,6 +151,11 @@ def make_purchase_order(source_name, target_doc=None):
 			"field_map": [
 				["name", "supplier_quotation_item"],
 				["parent", "supplier_quotation"],
+<<<<<<< HEAD
+=======
+				["uom", "stock_uom"],
+				["uom", "uom"],
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 				["material_request", "material_request"],
 				["material_request_item", "material_request_item"]
 			],
@@ -130,10 +163,15 @@ def make_purchase_order(source_name, target_doc=None):
 		},
 		"Purchase Taxes and Charges": {
 			"doctype": "Purchase Taxes and Charges",
+<<<<<<< HEAD
+=======
+			"add_if_empty": True
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 		},
 	}, target_doc, set_missing_values)
 
 	return doclist
+<<<<<<< HEAD
 
 @frappe.whitelist()
 def make_quotation(source_name, target_doc=None):
@@ -153,3 +191,5 @@ def make_quotation(source_name, target_doc=None):
 
 	return doclist
 
+=======
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347

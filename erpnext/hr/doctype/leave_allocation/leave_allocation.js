@@ -5,12 +5,17 @@ cur_frm.add_fetch('employee','employee_name','employee_name');
 
 frappe.ui.form.on("Leave Allocation", {
 	onload: function(frm) {
+<<<<<<< HEAD
 		if(!frm.doc.from_date) frm.set_value("from_date", frappe.datetime.get_today());
+=======
+		if(!frm.doc.from_date) frm.set_value("from_date", get_today());
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 
 		frm.set_query("employee", function() {
 			return {
 				query: "erpnext.controllers.queries.employee_query"
 			}
+<<<<<<< HEAD
 		});
 		frm.set_query("leave_type", function() {
 			return {
@@ -18,6 +23,8 @@ frappe.ui.form.on("Leave Allocation", {
 					is_lwp: 0
 				}
 			}
+=======
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 		})
 	},
 

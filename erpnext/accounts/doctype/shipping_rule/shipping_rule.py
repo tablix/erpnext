@@ -4,10 +4,18 @@
 # For license information, please see license.txt
 
 from __future__ import unicode_literals
+<<<<<<< HEAD
 import frappe, erpnext
 from frappe import _, msgprint, throw
 from frappe.utils import flt, fmt_money
 from frappe.model.document import Document
+=======
+import frappe
+from frappe import _, msgprint, throw
+from frappe.utils import flt, fmt_money
+from frappe.model.document import Document
+from erpnext.setup.utils import get_company_currency
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 
 class OverlappingConditionError(frappe.ValidationError): pass
 class FromGreaterThanToError(frappe.ValidationError): pass
@@ -54,6 +62,7 @@ class ShippingRule(Document):
 			d.idx = i + 1
 
 	def validate_overlapping_shipping_rule_conditions(self):
+<<<<<<< HEAD
 		def overlap_exists_between(num_range1, num_range2):
 			"""
 				num_range1 and num_range2 are two ranges
@@ -63,6 +72,15 @@ class ShippingRule(Document):
 				hence, non-overlapping condition = (x1 <= x2 < y1 <= y2) or (y1 <= y2 < x1 <= x2)
 			"""
 			(x1, x2), (y1, y2) = num_range1, num_range2
+=======
+		def overlap_exists_between((x1, x2), (y1, y2)):
+			"""
+				(x1, x2) and (y1, y2) are two ranges
+				if condition x = 100 to 300
+				then condition y can only be like 50 to 99 or 301 to 400
+				hence, non-overlapping condition = (x1 <= x2 < y1 <= y2) or (y1 <= y2 < x1 <= x2)
+			"""
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 			separate = (x1 <= x2 <= y1 <= y2) or (y1 <= y2 <= x1 <= x2)
 			return (not separate)
 
@@ -78,7 +96,11 @@ class ShippingRule(Document):
 						overlaps.append([d1, d2])
 
 		if overlaps:
+<<<<<<< HEAD
 			company_currency = erpnext.get_company_currency(self.company)
+=======
+			company_currency = get_company_currency(self.company)
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 			msgprint(_("Overlapping conditions found between:"))
 			messages = []
 			for d1, d2 in overlaps:

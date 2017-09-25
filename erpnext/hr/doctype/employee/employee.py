@@ -6,11 +6,23 @@ import frappe
 
 from frappe.utils import getdate, validate_email_add, today, add_years
 from frappe.model.naming import make_autoname
+<<<<<<< HEAD
 from frappe import throw, _, scrub
 import frappe.permissions
 from frappe.model.document import Document
 from erpnext.utilities.transaction_base import delete_events
 
+=======
+from frappe import throw, _
+import frappe.permissions
+from frappe.model.document import Document
+from frappe.model.mapper import get_mapped_doc
+from erpnext.utilities.transaction_base import delete_events
+
+from calendar import monthrange
+import datetime 
+
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 
 class EmployeeUserDisabledError(frappe.ValidationError):
 	pass
@@ -26,8 +38,11 @@ class Employee(Document):
 				self.name = make_autoname(self.naming_series + '.####')
 			elif naming_method == 'Employee Number':
 				self.name = self.employee_number
+<<<<<<< HEAD
 			elif naming_method == 'Full Name':
 				self.name = self.employee_name
+=======
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 
 		self.employee = self.name
 
@@ -41,7 +56,11 @@ class Employee(Document):
 		self.validate_status()
 		self.validate_employee_leave_approver()
 		self.validate_reports_to()
+<<<<<<< HEAD
 		self.validate_prefered_email()
+=======
+		#exp_doc()
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 
 		if self.user_id:
 			self.validate_for_enabled_user_id()
@@ -53,6 +72,30 @@ class Employee(Document):
 					"Employee", self.name, existing_user_id)
 
 	def on_update(self):
+<<<<<<< HEAD
+=======
+		# add allocated & balance leaves			
+		doj=str(self.date_of_joining)
+		doj=datetime.datetime.strptime(doj, "%Y-%m-%d")
+		d2=datetime.datetime.strptime(today(),"%Y-%m-%d")
+		delta = 0
+		while True:
+			mdays = monthrange(doj.year, doj.month)[1]
+			doj += datetime.timedelta(days=mdays)
+			if doj <= d2:
+				delta += 1
+			else:
+				break
+				
+		leaves_alloc = delta*2.5
+		self.total_leaves_allocated = leaves_alloc
+		self.balance_leave = leaves_alloc - self.total_leaves_consumed
+		frappe.db.set_value("Employee", self.employee, "total_leaves_allocated" , self.total_leaves_allocated)
+		frappe.db.set_value("Employee", self.employee, "total_leaves_consumed" , self.total_leaves_consumed)
+		frappe.db.set_value("Employee", self.employee, "balance_leave", self.balance_leave)
+		frappe.db.commit()	
+		
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 		if self.user_id:
 			self.update_user()
 			self.update_user_permissions()
@@ -66,7 +109,11 @@ class Employee(Document):
 		user = frappe.get_doc("User", self.user_id)
 		user.flags.ignore_permissions = True
 
+<<<<<<< HEAD
 		if "Employee" not in user.get("roles"):
+=======
+		if "Employee" not in user.get("user_roles"):
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 			user.add_roles("Employee")
 
 		# copy details like Fullname, DOB and Image to User
@@ -100,6 +147,10 @@ class Employee(Document):
 					# already exists
 					pass
 
+<<<<<<< HEAD
+=======
+		
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 		user.save()
 
 	def validate_date(self):
@@ -156,6 +207,7 @@ class Employee(Document):
 	def on_trash(self):
 		delete_events(self.doctype, self.name)
 
+<<<<<<< HEAD
 	def validate_prefered_email(self):
 		if self.prefered_contact_email and not self.get(scrub(self.prefered_contact_email)):
 			frappe.msgprint(_("Please enter " + self.prefered_contact_email))
@@ -171,6 +223,19 @@ def get_timeline_data(doctype, name):
 
 @frappe.whitelist()
 def get_retirement_date(date_of_birth=None):
+=======
+def get_timeline_data(doctype, name):
+	'''Return timeline for attendance'''
+	return dict(frappe.db.sql('''select unix_timestamp(att_date), count(*)
+		from `tabAttendance` where employee=%s
+			and att_date > date_sub(curdate(), interval 1 year)
+			and status in ('Present', 'Half Day')
+			group by att_date''', name))
+
+@frappe.whitelist()
+def get_retirement_date(date_of_birth=None):
+	import datetime
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 	ret = {}
 	if date_of_birth:
 		try:
@@ -184,6 +249,7 @@ def get_retirement_date(date_of_birth=None):
 	return ret
 
 
+<<<<<<< HEAD
 def validate_employee_role(doc, method):
 	# called via User hook
 	if "Employee" in [d.role for d in doc.get("roles")]:
@@ -194,6 +260,31 @@ def validate_employee_role(doc, method):
 def update_user_permissions(doc, method):
 	# called via User hook
 	if "Employee" in [d.role for d in doc.get("roles")]:
+=======
+@frappe.whitelist()
+def make_salary_structure(source_name, target=None):
+	target = get_mapped_doc("Employee", source_name, {
+		"Employee": {
+			"doctype": "Salary Structure",
+			"field_map": {
+				"name": "employee",
+			}
+		}
+	})
+	target.make_earn_ded_table()
+	return target
+
+def validate_employee_role(doc, method):
+	# called via User hook
+	if "Employee" in [d.role for d in doc.get("user_roles")]:
+		if not frappe.db.get_value("Employee", {"user_id": doc.name}):
+			frappe.msgprint(_("Please set User ID field in an Employee record to set Employee Role"))
+			doc.get("user_roles").remove(doc.get("user_roles", {"role": "Employee"})[0])
+
+def update_user_permissions(doc, method):
+	# called via User hook
+	if "Employee" in [d.role for d in doc.get("user_roles")]:
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 		employee = frappe.get_doc("Employee", {"user_id": doc.name})
 		employee.update_user_permissions()
 
@@ -216,6 +307,373 @@ def send_birthday_reminders():
 				subject=_("Birthday Reminder for {0}").format(e.employee_name),
 				message=_("""Today is {0}'s birthday!""").format(e.employee_name),
 				reply_to=e.company_email or e.personal_email or e.user_id)
+<<<<<<< HEAD
+=======
+				
+def send_passport_expiry_reminders():
+	"""Send Employee Passport Expiry reminders."""
+	
+	from frappe.utils.user import get_enabled_system_users
+	users = None
+	expiry_date = get_passport_expiry()
+	frappe.msgprint(expiry_date);
+	html = ""
+	e = []
+	if expiry_date:
+		html = """\
+				<html>
+  					<head></head>
+  						<body>"""
+		for e in expiry_date:
+			html += """<p>"""+ e[0] + """ 's Passport going to expire on """ + e[1]+ """</p>"""
+    	html += """</body></html>"""
+    	if e is not None and e != []:
+    		month = datetime.datetime.strptime(e[1],"%Y-%m-%d")
+    		month = month.strftime("%B")
+    		frappe.sendmail(recipients = "anushree.gireeshkumar@tablix.ae",
+				subject=_("Passport Expiry Reminder for the Month of {0}").format(month),
+				message=_("""{0}""").format(html),
+				reply_to= "anushree.gireeshkumar@tablix.ae")
+				
+	
+		
+def get_passport_expiry():
+	cur_date=datetime.datetime.now()
+	curr_month = cur_date.strftime("%m")
+	#frappe.msgprint(curr_month)
+	if curr_month != "10" :
+		curr_month = curr_month.replace("0","")
+		#frappe.msgprint(curr_month)
+	next_month = int(curr_month) + 1
+	days=monthrange(cur_date.year,next_month)
+	from_date = datetime.date(cur_date.year,next_month,1)
+	to_date =  datetime.date(cur_date.year,next_month,days[1])
+	from_date=from_date.strftime("%Y-%m-%d")
+	#frappe.msgprint("current date " + from_date)
+	to_date=to_date.strftime("%Y-%m-%d")
+	#frappe.msgprint("next date " + to_date)
+	return frappe.db.sql("""select employee_name , DATE_FORMAT(valid_upto, '%%Y-%%m-%%d') AS date , user_id from `tabEmployee` where valid_upto >= '2017-07-01' and valid_upto <= %s""",(to_date))
+    	
+
+def send_labour_card_expiry_reminders():
+	"""Send Employee Labour Card Expiry reminders."""
+	
+	from frappe.utils.user import get_enabled_system_users
+	users = None
+	expiry_date = get_labour_card_expiry()
+	frappe.msgprint(expiry_date);
+	html = ""
+	e = []
+	if expiry_date:
+		html = """\
+				<html>
+  					<head></head>
+  						<body>"""
+		for e in expiry_date:
+			html += """<p>"""+ e[0] + """ 's Labour Card going to expire on """ + e[1]+ """</p>"""
+    	html += """</body></html>"""
+    	if e is not None and e != []:
+    		month = datetime.datetime.strptime(e[1],"%Y-%m-%d")
+    		month = month.strftime("%B")
+    		frappe.sendmail(recipients = "anushree.gireeshkumar@tablix.ae",
+				subject=_("Labour Card Expiry Reminder for {0}").format(month),
+				message=_("""{0}""").format(html),
+				reply_to= "anushree.gireeshkumar@tablix.ae")
+				
+		
+def get_labour_card_expiry():
+	#curr_date = datetime.date.today().isoformat()
+	cur_date=datetime.datetime.now()
+	curr_month = cur_date.strftime("%m")
+	#frappe.msgprint(curr_month)
+	if curr_month != "10" :
+		curr_month = curr_month.replace("0","")
+		#frappe.msgprint(curr_month)
+	next_month = int(curr_month) + 1
+	days=monthrange(cur_date.year,next_month)
+	from_date = datetime.date(cur_date.year,next_month,1)
+	to_date =  datetime.date(cur_date.year,next_month,days[1])
+	from_date=from_date.strftime("%Y-%m-%d")
+	#frappe.msgprint("current date " + from_date)
+	to_date=to_date.strftime("%Y-%m-%d")
+	#frappe.msgprint("next date " + to_date)
+	return frappe.db.sql("""select employee_name , DATE_FORMAT(labour_card_expiry_date, '%%Y-%%m-%%d') AS date , user_id from `tabEmployee` where labour_card_expiry_date >= '2017-07-01' and labour_card_expiry_date <= %s""",( to_date))
+   
+def send_e_id_expiry_reminders():
+	"""Send Employee Emirates Id Expiry reminders."""
+	
+	from frappe.utils.user import get_enabled_system_users
+	users = None
+	expiry_date = get_e_id_expiry()
+	frappe.msgprint(expiry_date);
+	html = ""
+	e = []
+	if expiry_date:
+		html = """\
+				<html>
+  					<head></head>
+  						<body>"""
+		for e in expiry_date:
+			html += """<p>"""+ e[0] + """ 's Emirates Id going to expire on """ + e[1]+ """</p>"""
+    	html += """</body></html>"""
+    	if e is not None and e != []:
+    		month = datetime.datetime.strptime(e[1],"%Y-%m-%d")
+    		month = month.strftime("%B")
+    		frappe.sendmail(recipients = "anushree.gireeshkumar@tablix.ae",
+				subject=_("Emirates Id Expiry Reminder for {0}").format(month),
+				message=_("""{0}""").format(html),
+				reply_to= "anushree.gireeshkumar@tablix.ae")
+				
+		
+def get_e_id_expiry():
+	#curr_date = datetime.date.today().isoformat()
+	cur_date=datetime.datetime.now()
+	curr_month = cur_date.strftime("%m")
+	#frappe.msgprint(curr_month)
+	if curr_month != "10" :
+		curr_month = curr_month.replace("0","")
+		#frappe.msgprint(curr_month)
+	next_month = int(curr_month) + 1
+	days=monthrange(cur_date.year,next_month)
+	from_date = datetime.date(cur_date.year,next_month,1)
+	to_date =  datetime.date(cur_date.year,next_month,days[1])
+	from_date=from_date.strftime("%Y-%m-%d")
+	#frappe.msgprint("current date " + from_date)
+	to_date=to_date.strftime("%Y-%m-%d")
+	#frappe.msgprint("next date " + to_date)
+	return frappe.db.sql("""select employee_name , DATE_FORMAT(eid_expiry, '%%Y-%%m-%%d') AS date , user_id from `tabEmployee` where eid_expiry >= '2017-07-01' and eid_expiry <= %s""",( to_date))
+   
+def send_visa_expiry_reminders():
+	"""Send Employee Visa Expiry reminders."""
+	
+	from frappe.utils.user import get_enabled_system_users
+	users = None
+	expiry_date = get_visa_expiry()
+	frappe.msgprint(expiry_date);
+	html = ""
+	e = []
+	if expiry_date:
+		html = """\
+				<html>
+  					<head></head>
+  						<body>"""
+		for e in expiry_date:
+			html += """<p>"""+ e[0] + """ 's Visa going to expire on """ + e[1]+ """</p>"""
+    	html += """</body></html>"""
+    	if e is not None and e != []:
+    		month = datetime.datetime.strptime(e[1],"%Y-%m-%d")
+    		month = month.strftime("%B")
+    		frappe.sendmail(recipients = "anushree.gireeshkumar@tablix.ae",
+				subject=_("Visa Expiry Reminder for {0}").format(month),
+				message=_("""{0}""").format(html),
+				reply_to= "anushree.gireeshkumar@tablix.ae")
+				
+		
+def get_visa_expiry():
+	#curr_date = datetime.date.today().isoformat()
+	cur_date=datetime.datetime.now()
+	curr_month = cur_date.strftime("%m")
+	#frappe.msgprint(curr_month)
+	if curr_month != "10" :
+		curr_month = curr_month.replace("0","")
+		#frappe.msgprint(curr_month)
+	next_month = int(curr_month) + 1
+	days=monthrange(cur_date.year,next_month)
+	from_date = datetime.date(cur_date.year,next_month,1)
+	to_date =  datetime.date(cur_date.year,next_month,days[1])
+	from_date=from_date.strftime("%Y-%m-%d")
+	#frappe.msgprint("current date " + from_date)
+	to_date=to_date.strftime("%Y-%m-%d")
+	#frappe.msgprint("next date " + to_date)
+	return frappe.db.sql("""select employee_name , DATE_FORMAT(visa_expiry, '%%Y-%%m-%%d') AS date , user_id from `tabEmployee` where visa_expiry >= '2017-07-01' and visa_expiry <= %s""",( to_date))
+   
+def send_health_card_reminders():
+	"""Send Employee HealthCard Expiry reminders."""
+	
+	from frappe.utils.user import get_enabled_system_users
+	users = None
+	expiry_date = get_health_card_expiry()
+	frappe.msgprint(expiry_date);
+	html = ""
+	e = []
+	if expiry_date:
+		html = """\
+				<html>
+  					<head></head>
+  						<body>"""
+		for e in expiry_date:
+			html += """<p>"""+ e[0] + """ 's Health Card going to expire on """ + e[1]+ """</p>"""
+    	html += """</body></html>"""
+    	if e is not None and e != []:
+    		month = datetime.datetime.strptime(e[1],"%Y-%m-%d")
+    		month = month.strftime("%B")
+    		frappe.sendmail(recipients = "anushree.gireeshkumar@tablix.ae",
+				subject=_("Health Card Expiry Reminder for {0}").format(month),
+				message=_("""{0}""").format(html),
+				reply_to= "anushree.gireeshkumar@tablix.ae")
+				
+		
+def get_health_card_expiry():
+	#curr_date = datetime.date.today().isoformat()
+	cur_date=datetime.datetime.now()
+	curr_month = cur_date.strftime("%m")
+	#frappe.msgprint(curr_month)
+	if curr_month != "10" :
+		curr_month = curr_month.replace("0","")
+		#frappe.msgprint(curr_month)
+	next_month = int(curr_month) + 1
+	days=monthrange(cur_date.year,next_month)
+	from_date = datetime.date(cur_date.year,next_month,1)
+	to_date =  datetime.date(cur_date.year,next_month,days[1])
+	from_date=from_date.strftime("%Y-%m-%d")
+	#frappe.msgprint("current date " + from_date)
+	to_date=to_date.strftime("%Y-%m-%d")
+	#frappe.msgprint("next date " + to_date)
+	return frappe.db.sql("""select employee_name , DATE_FORMAT(expiry_date, '%%Y-%%m-%%d') AS date , user_id from `tabEmployee` where expiry_date >= '2017-07-01' and expiry_date <= %s""",(to_date))
+   
+   
+def send_vehicle_insurance_expiry_reminders():
+	"""Send Employee Vehicle Insurance Expiry reminders."""
+	
+	from frappe.utils.user import get_enabled_system_users
+	users = None
+	expiry_date = get_vehicle_insurance_expiry()
+	frappe.msgprint(expiry_date);
+	html = ""
+	e = []
+	if expiry_date:
+		html = """\
+				<html>
+  					<head></head>
+  						<body>"""
+		for e in expiry_date:
+			html += """<p>"""+ e[0] + """ 's Vehicle No.""" + e[2]+ """ Insurance going to expire on """ + e[1]+ """</p>"""
+    	html += """</body></html>"""
+    	if e is not None and e != []:
+    		month = datetime.datetime.strptime(e[1],"%Y-%m-%d")
+    		month = month.strftime("%B")
+    		frappe.sendmail(recipients = "anushree.gireeshkumar@tablix.ae",
+				subject=_("Vehicle Insurance Expiry Reminder for {0}").format(month),
+				message=_("""{0}""").format(html),
+				reply_to= "anushree.gireeshkumar@tablix.ae")
+				
+		
+def get_vehicle_insurance_expiry():
+	cur_date=datetime.datetime.now()
+	curr_month = cur_date.strftime("%m")
+	#frappe.msgprint(curr_month)
+	if curr_month != "10" :
+		curr_month = curr_month.replace("0","")
+		#frappe.msgprint(curr_month)
+	next_month = int(curr_month) + 1
+	days=monthrange(cur_date.year,next_month)
+	from_date = datetime.date(cur_date.year,next_month,1)
+	to_date =  datetime.date(cur_date.year,next_month,days[1])
+	from_date=from_date.strftime("%Y-%m-%d")
+	#frappe.msgprint("current date " + from_date)
+	to_date=to_date.strftime("%Y-%m-%d")
+	#frappe.msgprint("next date " + to_date)
+	return frappe.db.sql("""select emp_name ,  DATE_FORMAT(insurance_exp, '%%Y-%%m-%%d') AS date , IFNULL(vehicle_number, ""	) from `tabVehicle Detail` where insurance_exp >= '2017-07-01' and insurance_exp <= %s""",(to_date))
+
+
+def exp_doc():
+	passport_date = get_passport_expiry()
+	#frappe.msgprint(passport_date)
+	
+	labour_card_date = get_labour_card_expiry()
+	#frappe.msgprint(labour_card_date);
+	e_id_date = get_e_id_expiry()
+	#frappe.msgprint(e_id_date);
+	visa_date = get_visa_expiry()
+	#frappe.msgprint(visa_date);
+	health_card_date = get_health_card_expiry()
+	#frappe.msgprint(health_card_date);
+	
+	vehicle_date = get_vehicle_insurance_expiry()
+	#frappe.msgprint(vehicle_date);
+	
+	html = """<html><head><style>
+table, th, td {
+    border: 1px solid black;
+}
+</style></head><body><table style="width:100%"><tr><th>Type</th><th>Employee Name </th><th>Expiry Date</th><th>Days Remaining</th><th>Vehicle No.</th></tr>"""
+	e = []
+	for e in passport_date:
+		fmt = '%Y-%m-%d'
+		exp_date = datetime.datetime.strptime(e[1], fmt)
+		exp_date = datetime.datetime.strftime(exp_date, fmt)
+		date2 = datetime.datetime.now()
+		date2 = datetime.datetime.strftime(date2, fmt)
+		datediff = frappe.utils.data.time_diff(exp_date, date2)
+		datediff = datediff.__str__()
+		html += """<tr><td>Passport</td><td>"""+e[0]+"""</td><td>"""+e[1]+"""</td><td>"""+datediff+"""</td><td></td></tr>"""
+					
+	for e in labour_card_date:
+		fmt = '%Y-%m-%d'
+		exp_date = datetime.datetime.strptime(e[1], fmt)
+		exp_date = datetime.datetime.strftime(exp_date, fmt)
+		date2 = datetime.datetime.now()
+		date2 = datetime.datetime.strftime(date2, fmt)
+		datediff = frappe.utils.data.time_diff(exp_date, date2)
+		datediff = datediff.__str__()
+		html += """<tr><td>Labour Card</td><td>"""+e[0]+"""</td><td>"""+e[1]+"""</td><td>"""+datediff+"""</td><td></td></tr>"""
+	
+		
+  	for e in e_id_date:
+		fmt = '%Y-%m-%d'
+		exp_date = datetime.datetime.strptime(e[1], fmt)
+		exp_date = datetime.datetime.strftime(exp_date, fmt)
+		date2 = datetime.datetime.now()
+		date2 = datetime.datetime.strftime(date2, fmt)
+		datediff = frappe.utils.data.time_diff(exp_date, date2)
+		datediff = datediff.__str__()
+		html += """<tr><td>Emirates Id</td><td>"""+e[0]+"""</td><td>"""+e[1]+"""</td><td>"""+datediff+"""</td><td></td></tr>"""	
+  
+  	for e in visa_date:
+		fmt = '%Y-%m-%d'
+		exp_date = datetime.datetime.strptime(e[1], fmt)
+		exp_date = datetime.datetime.strftime(exp_date, fmt)
+		date2 = datetime.datetime.now()
+		date2 = datetime.datetime.strftime(date2, fmt)
+		datediff = frappe.utils.data.time_diff(exp_date, date2)
+		datediff = datediff.__str__()
+		html += """<tr><td>Visa</td><td>"""+e[0]+"""</td><td>"""+e[1]+"""</td><td>"""+datediff+"""</td><td></td></tr>"""
+ 
+ 	for e in health_card_date:
+		fmt = '%Y-%m-%d'
+		exp_date = datetime.datetime.strptime(e[1], fmt)
+		exp_date = datetime.datetime.strftime(exp_date, fmt)
+		date2 = datetime.datetime.now()
+		date2 = datetime.datetime.strftime(date2, fmt)
+		datediff = frappe.utils.data.time_diff(exp_date, date2)
+		datediff = datediff.__str__()
+		html += """<tr><td>Health Card</td><td>"""+e[0]+"""</td><td>"""+e[1]+"""</td><td>"""+datediff+"""</td><td></td></tr>"""
+		
+	for e in vehicle_date:
+		fmt = '%Y-%m-%d'
+		exp_date = datetime.datetime.strptime(e[1], fmt)
+		exp_date = datetime.datetime.strftime(exp_date, fmt)
+		date2 = datetime.datetime.now()
+		date2 = datetime.datetime.strftime(date2, fmt)
+		datediff = frappe.utils.data.time_diff(exp_date, date2)
+		datediff = datediff.__str__()
+		html += """<tr><td>Vehicle Insurance</td><td>"""+e[0]+"""</td><td>"""+e[1]+"""</td><td>"""+datediff+"""</td><td>"""+e[2]+"""</td></tr>"""
+  		
+	if e is not None and e != []:
+		html += """</table></body></html>"""
+		month = datetime.datetime.strptime(e[1],"%Y-%m-%d")
+		month = month.strftime("%B")
+		#frappe.sendmail(recipients = ("anushree.gireeshkumar@tablix.ae","varna.manoj@tablix.ae","deepak.agarwal@tablix.ae"),
+		frappe.sendmail(recipients = "anushree.gireeshkumar@tablix.ae",
+			subject=_("Document Expiry Reminder for {0}").format(month),
+			message=_("""{0}""").format(html),
+			reply_to= "anushree.gireeshkumar@tablix.ae")			
+
+
+
+
+
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 
 def get_employees_who_are_born_today():
 	"""Get Employee properties whose birthday is today."""
@@ -225,11 +683,15 @@ def get_employees_who_are_born_today():
 		and status = 'Active'""", {"date": today()}, as_dict=True)
 
 def get_holiday_list_for_employee(employee, raise_exception=True):
+<<<<<<< HEAD
 	if employee:
 		holiday_list, company = frappe.db.get_value("Employee", employee, ["holiday_list", "company"])
 	else:
 		holiday_list=''
 		company=frappe.db.get_value("Global Defaults", None, "default_company")
+=======
+	holiday_list, company = frappe.db.get_value("Employee", employee, ["holiday_list", "company"])
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 
 	if not holiday_list:
 		holiday_list = frappe.db.get_value("Company", company, "default_holiday_list")
@@ -239,6 +701,7 @@ def get_holiday_list_for_employee(employee, raise_exception=True):
 
 	return holiday_list
 
+<<<<<<< HEAD
 def is_holiday(employee, date=None):
 	'''Returns True if given Employee has an holiday on the given date
 
@@ -301,3 +764,5 @@ def get_employee_emails(employee_list):
 			employee_emails.append(user or email)
 
 	return employee_emails
+=======
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347

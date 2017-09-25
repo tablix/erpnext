@@ -1,10 +1,17 @@
+<<<<<<< HEAD
 # The Champion
 
+=======
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 <!-- no-heading -->
 
 <h1 class="white">The Champion</h1>
 
+<<<<<<< HEAD
 <img alt="Champion" class="screenshot" src="/docs/assets/img/setup/implementation-image.png">
+=======
+<img class="cover" src="{{docs_base_url}}/assets/old_images/erpnext/implementation-image.png">
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 
 We have seen dozens of ERP implementations over the past few years and we
 realize that successful implementation is a lot about intangibles and
@@ -14,7 +21,11 @@ attitude.
 
 Like exercise.
 
+<<<<<<< HEAD
 The human body may seem like it does not require exercise today or even tomorrow,
+=======
+Human body may seem like it does not require exercise today or even tomorrow,
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 but in the long run, if you wish to maintain your body and its health, you
 should get on the treadmill.
 

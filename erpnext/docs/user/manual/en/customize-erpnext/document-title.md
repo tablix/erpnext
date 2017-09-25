@@ -1,5 +1,8 @@
+<<<<<<< HEAD
 # Document Title
 
+=======
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 You can customize the title of documents based on properties so that you have meaningful information for the list views.
 
 For example the default title on **Quotation** is the customer name, but if you are dealing a few customers and sending lots of quotes to the same customer, you may want to customize.
@@ -23,14 +26,22 @@ You can define the title by setting document properties in braces `{}`. For exam
     {customer_name} for {project}
 
 <img class="screenshot" alt = "Customize Title"
+<<<<<<< HEAD
     src="/docs/assets/img/customize/customize-title.gif">
+=======
+    src="{{docs_base_url}}/assets/img/customize/customize-title.gif">
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 
 #### Fixed or Editable Titles
 
 If your title is generated as a default title, it can be edited by the user by clicking on the heading of the document.
 
 <img class="screenshot" alt = "Editable Title"
+<<<<<<< HEAD
     src="/docs/assets/img/customize/editable-title.gif">
+=======
+    src="{{docs_base_url}}/assets/img/customize/editable-title.gif">
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 
 If you want a fixed title, you can set the rule in the **Options** property. In this way, the title will be automatically updated everytime the document is updated.
 

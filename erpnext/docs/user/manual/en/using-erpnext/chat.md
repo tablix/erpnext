@@ -1,5 +1,8 @@
+<<<<<<< HEAD
 # Chat
 
+=======
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 You can send and receive messages from the system by using the Messages tool. 
 
 `Explore > Tools > Chat`
@@ -7,10 +10,18 @@ You can send and receive messages from the system by using the Messages tool.
 If you send a message to a user, and the user is logged in, it will appear as a popup message and the unread messages counter in the top toolbar will be
 updated.
 
+<<<<<<< HEAD
 <img class="screenshot" alt="Assign" src="/docs/assets/img/collaboration-tools/chat-1.png">
 
 You can choose to send message to all the users, or to specific user.
 
 <img class="screenshot" alt="Assign" src="/docs/assets/img/collaboration-tools/chat-2.png">
+=======
+<img class="screenshot" alt="Assign" src="{{docs_base_url}}/assets/img/collaboration-tools/chat-1.png">
+
+You can choose to send message to all the users, or to specific user.
+
+<img class="screenshot" alt="Assign" src="{{docs_base_url}}/assets/img/collaboration-tools/chat-2.png">
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 
 {next}

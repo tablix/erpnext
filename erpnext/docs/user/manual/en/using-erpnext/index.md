@@ -1,5 +1,8 @@
+<<<<<<< HEAD
 # Using Erpnext
 
+=======
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 We live in an era when people are very comfortable communicating, discussing,
 asking, assigning work and getting feedback electronically. The Internet acts
 as a great medium to collaborate on work too. Taking this concept into ERP

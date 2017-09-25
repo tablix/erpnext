@@ -1,5 +1,8 @@
+<<<<<<< HEAD
 frappe.provide("frappe.treeview_settings")
 
+=======
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 frappe.treeview_settings["Account"] = {
 	breadcrumbs: "Accounts",
 	title: __("Chart Of Accounts"),
@@ -27,6 +30,7 @@ frappe.treeview_settings["Account"] = {
 		{fieldtype:'Check', fieldname:'is_group', label:__('Is Group'),
 			description: __('Further accounts can be made under Groups, but entries can be made against non-Groups')},
 		{fieldtype:'Select', fieldname:'root_type', label:__('Root Type'),
+<<<<<<< HEAD
 			options: ['Asset', 'Liability', 'Equity', 'Income', 'Expense'].join('\n'),
 			depends_on: 'eval:doc.is_group && !doc.parent_account'},
 		{fieldtype:'Select', fieldname:'account_type', label:__('Account Type'),
@@ -41,6 +45,20 @@ frappe.treeview_settings["Account"] = {
 			description: __("Optional. Sets company's default currency, if not specified.")}
 	],
 	ignore_fields:["parent_account"],
+=======
+			options: ['Asset', 'Liability', 'Equity', 'Income', 'Expense'].join('\n')},
+		{fieldtype:'Select', fieldname:'account_type', label:__('Account Type'),
+			options: ['', 'Bank', 'Cash', 'Stock', 'Tax', 'Chargeable', 'Fixed Asset'].join('\n'),
+			description: __("Optional. This setting will be used to filter in various transactions.")
+		},
+		{fieldtype:'Float', fieldname:'tax_rate', label:__('Tax Rate'),
+			depends_on: 'eval:doc.is_group==1&&doc.account_type=="Tax"'},
+		{fieldtype:'Link', fieldname:'warehouse', label:__('Warehouse'), options:"Warehouse",
+			depends_on: 'eval:(!doc.is_group&&doc.account_type=="Warehouse")'},
+		{fieldtype:'Link', fieldname:'account_currency', label:__('Currency'), options:"Currency",
+			description: __("Optional. Sets company's default currency, if not specified.")}
+	],
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 	onrender: function(node) {
 		var dr_or_cr = node.data.balance < 0 ? "Cr" : "Dr";
 		if (node.data && node.data.balance!==undefined) {
@@ -62,8 +80,13 @@ frappe.treeview_settings["Account"] = {
 			click: function(node, btn) {
 				frappe.route_options = {
 					"account": node.label,
+<<<<<<< HEAD
 					"from_date": frappe.sys_defaults.year_start_date,
 					"to_date": frappe.sys_defaults.year_end_date,
+=======
+					"from_date": sys_defaults.year_start_date,
+					"to_date": sys_defaults.year_end_date,
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 					"company": frappe.defaults.get_default('company') ? frappe.defaults.get_default('company'): ""
 				};
 				frappe.set_route("query-report", "General Ledger");
@@ -72,4 +95,8 @@ frappe.treeview_settings["Account"] = {
 		}
 	],
 	extend_toolbar: true
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347

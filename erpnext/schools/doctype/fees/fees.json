@@ -1,16 +1,24 @@
 {
  "allow_copy": 0, 
+<<<<<<< HEAD
  "allow_guest_to_view": 0, 
  "allow_import": 0, 
  "allow_rename": 0, 
  "autoname": "naming_series:", 
  "beta": 1, 
+=======
+ "allow_import": 0, 
+ "allow_rename": 0, 
+ "autoname": "naming_series:", 
+ "beta": 0, 
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
  "creation": "2015-09-22 16:57:22.143710", 
  "custom": 0, 
  "docstatus": 0, 
  "doctype": "DocType", 
  "document_type": "Document", 
  "editable_grid": 0, 
+<<<<<<< HEAD
  "engine": "InnoDB", 
  "fields": [
   {
@@ -572,11 +580,20 @@
    "collapsible": 0, 
    "columns": 0, 
    "fieldname": "student_category", 
+=======
+ "fields": [
+  {
+   "allow_on_submit": 0, 
+   "bold": 0, 
+   "collapsible": 0, 
+   "fieldname": "student", 
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
    "fieldtype": "Link", 
    "hidden": 0, 
    "ignore_user_permissions": 0, 
    "ignore_xss_filter": 0, 
    "in_filter": 0, 
+<<<<<<< HEAD
    "in_global_search": 0, 
    "in_list_view": 0, 
    "in_standard_filter": 0, 
@@ -584,33 +601,55 @@
    "length": 0, 
    "no_copy": 0, 
    "options": "Student Category", 
+=======
+   "in_list_view": 0, 
+   "label": "Student", 
+   "length": 0, 
+   "no_copy": 0, 
+   "options": "Student", 
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
    "permlevel": 0, 
    "precision": "", 
    "print_hide": 0, 
    "print_hide_if_no_value": 0, 
    "read_only": 0, 
+<<<<<<< HEAD
    "remember_last_selected_value": 0, 
    "report_hide": 0, 
    "reqd": 0, 
+=======
+   "report_hide": 0, 
+   "reqd": 1, 
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
    "search_index": 0, 
    "set_only_once": 0, 
    "unique": 0
   }, 
   {
+<<<<<<< HEAD
    "allow_bulk_edit": 0, 
    "allow_on_submit": 0, 
    "bold": 0, 
    "collapsible": 0, 
    "columns": 0, 
+=======
+   "allow_on_submit": 0, 
+   "bold": 0, 
+   "collapsible": 0, 
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
    "fieldname": "academic_term", 
    "fieldtype": "Link", 
    "hidden": 0, 
    "ignore_user_permissions": 0, 
    "ignore_xss_filter": 0, 
    "in_filter": 0, 
+<<<<<<< HEAD
    "in_global_search": 0, 
    "in_list_view": 0, 
    "in_standard_filter": 0, 
+=======
+   "in_list_view": 0, 
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
    "label": "Academic Term", 
    "length": 0, 
    "no_copy": 0, 
@@ -620,7 +659,10 @@
    "print_hide": 0, 
    "print_hide_if_no_value": 0, 
    "read_only": 0, 
+<<<<<<< HEAD
    "remember_last_selected_value": 0, 
+=======
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
    "report_hide": 0, 
    "reqd": 0, 
    "search_index": 0, 
@@ -628,20 +670,30 @@
    "unique": 0
   }, 
   {
+<<<<<<< HEAD
    "allow_bulk_edit": 0, 
    "allow_on_submit": 0, 
    "bold": 0, 
    "collapsible": 0, 
    "columns": 0, 
+=======
+   "allow_on_submit": 0, 
+   "bold": 0, 
+   "collapsible": 0, 
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
    "fieldname": "academic_year", 
    "fieldtype": "Link", 
    "hidden": 0, 
    "ignore_user_permissions": 0, 
    "ignore_xss_filter": 0, 
    "in_filter": 0, 
+<<<<<<< HEAD
    "in_global_search": 0, 
    "in_list_view": 0, 
    "in_standard_filter": 0, 
+=======
+   "in_list_view": 0, 
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
    "label": "Academic Year", 
    "length": 0, 
    "no_copy": 0, 
@@ -651,6 +703,7 @@
    "print_hide": 0, 
    "print_hide_if_no_value": 0, 
    "read_only": 0, 
+<<<<<<< HEAD
    "remember_last_selected_value": 0, 
    "report_hide": 0, 
    "reqd": 0, 
@@ -712,6 +765,8 @@
    "print_hide_if_no_value": 0, 
    "read_only": 1, 
    "remember_last_selected_value": 0, 
+=======
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
    "report_hide": 0, 
    "reqd": 0, 
    "search_index": 0, 
@@ -719,20 +774,30 @@
    "unique": 0
   }, 
   {
+<<<<<<< HEAD
    "allow_bulk_edit": 0, 
    "allow_on_submit": 0, 
    "bold": 0, 
    "collapsible": 0, 
    "columns": 0, 
+=======
+   "allow_on_submit": 0, 
+   "bold": 0, 
+   "collapsible": 0, 
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
    "fieldname": "fee_structure", 
    "fieldtype": "Link", 
    "hidden": 0, 
    "ignore_user_permissions": 0, 
    "ignore_xss_filter": 0, 
    "in_filter": 0, 
+<<<<<<< HEAD
    "in_global_search": 0, 
    "in_list_view": 0, 
    "in_standard_filter": 0, 
+=======
+   "in_list_view": 0, 
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
    "label": "Fee Structure", 
    "length": 0, 
    "no_copy": 0, 
@@ -742,7 +807,10 @@
    "print_hide": 0, 
    "print_hide_if_no_value": 0, 
    "read_only": 0, 
+<<<<<<< HEAD
    "remember_last_selected_value": 0, 
+=======
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
    "report_hide": 0, 
    "reqd": 0, 
    "search_index": 0, 
@@ -750,6 +818,7 @@
    "unique": 0
   }, 
   {
+<<<<<<< HEAD
    "allow_bulk_edit": 0, 
    "allow_on_submit": 0, 
    "bold": 0, 
@@ -757,10 +826,18 @@
    "columns": 0, 
    "fieldname": "components", 
    "fieldtype": "Table", 
+=======
+   "allow_on_submit": 0, 
+   "bold": 0, 
+   "collapsible": 0, 
+   "fieldname": "column_break_4", 
+   "fieldtype": "Column Break", 
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
    "hidden": 0, 
    "ignore_user_permissions": 0, 
    "ignore_xss_filter": 0, 
    "in_filter": 0, 
+<<<<<<< HEAD
    "in_global_search": 0, 
    "in_list_view": 0, 
    "in_standard_filter": 0, 
@@ -768,19 +845,30 @@
    "length": 0, 
    "no_copy": 0, 
    "options": "Fee Component", 
+=======
+   "in_list_view": 0, 
+   "length": 0, 
+   "no_copy": 0, 
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
    "permlevel": 0, 
    "precision": "", 
    "print_hide": 0, 
    "print_hide_if_no_value": 0, 
    "read_only": 0, 
+<<<<<<< HEAD
    "remember_last_selected_value": 0, 
    "report_hide": 0, 
    "reqd": 1, 
+=======
+   "report_hide": 0, 
+   "reqd": 0, 
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
    "search_index": 0, 
    "set_only_once": 0, 
    "unique": 0
   }, 
   {
+<<<<<<< HEAD
    "allow_bulk_edit": 0, 
    "allow_on_submit": 0, 
    "bold": 0, 
@@ -788,19 +876,32 @@
    "columns": 0, 
    "fieldname": "section_break_10", 
    "fieldtype": "Section Break", 
+=======
+   "allow_on_submit": 0, 
+   "bold": 0, 
+   "collapsible": 0, 
+   "fieldname": "student_name", 
+   "fieldtype": "Data", 
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
    "hidden": 0, 
    "ignore_user_permissions": 0, 
    "ignore_xss_filter": 0, 
    "in_filter": 0, 
+<<<<<<< HEAD
    "in_global_search": 0, 
    "in_list_view": 0, 
    "in_standard_filter": 0, 
+=======
+   "in_list_view": 0, 
+   "label": "Student Name", 
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
    "length": 0, 
    "no_copy": 0, 
    "permlevel": 0, 
    "precision": "", 
    "print_hide": 0, 
    "print_hide_if_no_value": 0, 
+<<<<<<< HEAD
    "read_only": 0, 
    "remember_last_selected_value": 0, 
    "report_hide": 0, 
@@ -833,6 +934,9 @@
    "print_hide_if_no_value": 0, 
    "read_only": 1, 
    "remember_last_selected_value": 0, 
+=======
+   "read_only": 1, 
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
    "report_hide": 0, 
    "reqd": 0, 
    "search_index": 0, 
@@ -840,6 +944,7 @@
    "unique": 0
   }, 
   {
+<<<<<<< HEAD
    "allow_bulk_edit": 0, 
    "allow_on_submit": 0, 
    "bold": 0, 
@@ -847,21 +952,39 @@
    "columns": 0, 
    "fieldname": "column_break_11", 
    "fieldtype": "Column Break", 
+=======
+   "allow_on_submit": 0, 
+   "bold": 0, 
+   "collapsible": 0, 
+   "fieldname": "naming_series", 
+   "fieldtype": "Select", 
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
    "hidden": 0, 
    "ignore_user_permissions": 0, 
    "ignore_xss_filter": 0, 
    "in_filter": 0, 
+<<<<<<< HEAD
    "in_global_search": 0, 
    "in_list_view": 0, 
    "in_standard_filter": 0, 
    "length": 0, 
    "no_copy": 0, 
+=======
+   "in_list_view": 0, 
+   "label": "Naming Series", 
+   "length": 0, 
+   "no_copy": 0, 
+   "options": "FEE.", 
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
    "permlevel": 0, 
    "precision": "", 
    "print_hide": 0, 
    "print_hide_if_no_value": 0, 
    "read_only": 0, 
+<<<<<<< HEAD
    "remember_last_selected_value": 0, 
+=======
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
    "report_hide": 0, 
    "reqd": 0, 
    "search_index": 0, 
@@ -869,6 +992,7 @@
    "unique": 0
   }, 
   {
+<<<<<<< HEAD
    "allow_bulk_edit": 0, 
    "allow_on_submit": 0, 
    "bold": 0, 
@@ -877,22 +1001,41 @@
    "default": "0", 
    "fieldname": "grand_total", 
    "fieldtype": "Currency", 
+=======
+   "allow_on_submit": 0, 
+   "bold": 0, 
+   "collapsible": 0, 
+   "fieldname": "program", 
+   "fieldtype": "Link", 
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
    "hidden": 0, 
    "ignore_user_permissions": 0, 
    "ignore_xss_filter": 0, 
    "in_filter": 0, 
+<<<<<<< HEAD
    "in_global_search": 0, 
    "in_list_view": 0, 
    "in_standard_filter": 0, 
    "label": "Grand Total", 
    "length": 0, 
    "no_copy": 0, 
+=======
+   "in_list_view": 1, 
+   "label": "Program", 
+   "length": 0, 
+   "no_copy": 0, 
+   "options": "Program", 
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
    "permlevel": 0, 
    "precision": "", 
    "print_hide": 0, 
    "print_hide_if_no_value": 0, 
+<<<<<<< HEAD
    "read_only": 1, 
    "remember_last_selected_value": 0, 
+=======
+   "read_only": 0, 
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
    "report_hide": 0, 
    "reqd": 0, 
    "search_index": 0, 
@@ -900,6 +1043,7 @@
    "unique": 0
   }, 
   {
+<<<<<<< HEAD
    "allow_bulk_edit": 0, 
    "allow_on_submit": 0, 
    "bold": 0, 
@@ -907,20 +1051,36 @@
    "columns": 0, 
    "fieldname": "grand_total_in_words", 
    "fieldtype": "Data", 
+=======
+   "allow_on_submit": 0, 
+   "bold": 0, 
+   "collapsible": 0, 
+   "fieldname": "program_enrollment", 
+   "fieldtype": "Link", 
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
    "hidden": 0, 
    "ignore_user_permissions": 0, 
    "ignore_xss_filter": 0, 
    "in_filter": 0, 
+<<<<<<< HEAD
    "in_global_search": 0, 
    "in_list_view": 0, 
    "in_standard_filter": 0, 
    "label": "In Words", 
    "length": 0, 
    "no_copy": 0, 
+=======
+   "in_list_view": 0, 
+   "label": "Program Enrollment", 
+   "length": 0, 
+   "no_copy": 0, 
+   "options": "Program Enrollment", 
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
    "permlevel": 0, 
    "precision": "", 
    "print_hide": 0, 
    "print_hide_if_no_value": 0, 
+<<<<<<< HEAD
    "read_only": 1, 
    "remember_last_selected_value": 0, 
    "report_hide": 0, 
@@ -954,6 +1114,9 @@
    "print_hide_if_no_value": 0, 
    "read_only": 1, 
    "remember_last_selected_value": 0, 
+=======
+   "read_only": 0, 
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
    "report_hide": 0, 
    "reqd": 0, 
    "search_index": 0, 
@@ -961,6 +1124,7 @@
    "unique": 0
   }, 
   {
+<<<<<<< HEAD
    "allow_bulk_edit": 0, 
    "allow_on_submit": 0, 
    "bold": 0, 
@@ -969,22 +1133,40 @@
    "default": "0", 
    "fieldname": "outstanding_amount", 
    "fieldtype": "Currency", 
+=======
+   "allow_on_submit": 0, 
+   "bold": 0, 
+   "collapsible": 0, 
+   "fieldname": "due_date", 
+   "fieldtype": "Date", 
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
    "hidden": 0, 
    "ignore_user_permissions": 0, 
    "ignore_xss_filter": 0, 
    "in_filter": 0, 
+<<<<<<< HEAD
    "in_global_search": 0, 
    "in_list_view": 0, 
    "in_standard_filter": 0, 
    "label": "Outstanding Amount", 
    "length": 0, 
    "no_copy": 1, 
+=======
+   "in_list_view": 0, 
+   "label": "Due Date", 
+   "length": 0, 
+   "no_copy": 0, 
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
    "permlevel": 0, 
    "precision": "", 
    "print_hide": 0, 
    "print_hide_if_no_value": 0, 
+<<<<<<< HEAD
    "read_only": 1, 
    "remember_last_selected_value": 0, 
+=======
+   "read_only": 0, 
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
    "report_hide": 0, 
    "reqd": 0, 
    "search_index": 0, 
@@ -992,21 +1174,32 @@
    "unique": 0
   }, 
   {
+<<<<<<< HEAD
    "allow_bulk_edit": 0, 
    "allow_on_submit": 0, 
    "bold": 0, 
    "collapsible": 1, 
    "columns": 0, 
    "fieldname": "edit_printing_settings", 
+=======
+   "allow_on_submit": 0, 
+   "bold": 0, 
+   "collapsible": 0, 
+   "fieldname": "section_break_7", 
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
    "fieldtype": "Section Break", 
    "hidden": 0, 
    "ignore_user_permissions": 0, 
    "ignore_xss_filter": 0, 
    "in_filter": 0, 
+<<<<<<< HEAD
    "in_global_search": 0, 
    "in_list_view": 0, 
    "in_standard_filter": 0, 
    "label": "Printing Settings", 
+=======
+   "in_list_view": 0, 
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
    "length": 0, 
    "no_copy": 0, 
    "permlevel": 0, 
@@ -1014,7 +1207,10 @@
    "print_hide": 0, 
    "print_hide_if_no_value": 0, 
    "read_only": 0, 
+<<<<<<< HEAD
    "remember_last_selected_value": 0, 
+=======
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
    "report_hide": 0, 
    "reqd": 0, 
    "search_index": 0, 
@@ -1022,6 +1218,7 @@
    "unique": 0
   }, 
   {
+<<<<<<< HEAD
    "allow_bulk_edit": 0, 
    "allow_on_submit": 1, 
    "bold": 0, 
@@ -1029,10 +1226,18 @@
    "columns": 0, 
    "fieldname": "letter_head", 
    "fieldtype": "Link", 
+=======
+   "allow_on_submit": 0, 
+   "bold": 0, 
+   "collapsible": 0, 
+   "fieldname": "components", 
+   "fieldtype": "Table", 
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
    "hidden": 0, 
    "ignore_user_permissions": 0, 
    "ignore_xss_filter": 0, 
    "in_filter": 0, 
+<<<<<<< HEAD
    "in_global_search": 0, 
    "in_list_view": 0, 
    "in_standard_filter": 0, 
@@ -1048,11 +1253,26 @@
    "remember_last_selected_value": 0, 
    "report_hide": 0, 
    "reqd": 0, 
+=======
+   "in_list_view": 0, 
+   "label": "Components", 
+   "length": 0, 
+   "no_copy": 0, 
+   "options": "Fee Component", 
+   "permlevel": 0, 
+   "precision": "", 
+   "print_hide": 0, 
+   "print_hide_if_no_value": 0, 
+   "read_only": 0, 
+   "report_hide": 0, 
+   "reqd": 1, 
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
    "search_index": 0, 
    "set_only_once": 0, 
    "unique": 0
   }, 
   {
+<<<<<<< HEAD
    "allow_bulk_edit": 0, 
    "allow_on_submit": 0, 
    "bold": 0, 
@@ -1060,13 +1280,24 @@
    "columns": 0, 
    "fieldname": "column_break_32", 
    "fieldtype": "Column Break", 
+=======
+   "allow_on_submit": 0, 
+   "bold": 0, 
+   "collapsible": 0, 
+   "fieldname": "section_break_10", 
+   "fieldtype": "Section Break", 
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
    "hidden": 0, 
    "ignore_user_permissions": 0, 
    "ignore_xss_filter": 0, 
    "in_filter": 0, 
+<<<<<<< HEAD
    "in_global_search": 0, 
    "in_list_view": 0, 
    "in_standard_filter": 0, 
+=======
+   "in_list_view": 0, 
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
    "length": 0, 
    "no_copy": 0, 
    "permlevel": 0, 
@@ -1074,7 +1305,10 @@
    "print_hide": 0, 
    "print_hide_if_no_value": 0, 
    "read_only": 0, 
+<<<<<<< HEAD
    "remember_last_selected_value": 0, 
+=======
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
    "report_hide": 0, 
    "reqd": 0, 
    "search_index": 0, 
@@ -1082,17 +1316,25 @@
    "unique": 0
   }, 
   {
+<<<<<<< HEAD
    "allow_bulk_edit": 0, 
    "allow_on_submit": 1, 
    "bold": 0, 
    "collapsible": 0, 
    "columns": 0, 
    "fieldname": "select_print_heading", 
+=======
+   "allow_on_submit": 0, 
+   "bold": 0, 
+   "collapsible": 0, 
+   "fieldname": "amended_from", 
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
    "fieldtype": "Link", 
    "hidden": 0, 
    "ignore_user_permissions": 0, 
    "ignore_xss_filter": 0, 
    "in_filter": 0, 
+<<<<<<< HEAD
    "in_global_search": 0, 
    "in_list_view": 0, 
    "in_standard_filter": 0, 
@@ -1136,6 +1378,17 @@
    "print_hide_if_no_value": 0, 
    "read_only": 0, 
    "remember_last_selected_value": 0, 
+=======
+   "in_list_view": 0, 
+   "label": "Amended From", 
+   "length": 0, 
+   "no_copy": 1, 
+   "options": "Fees", 
+   "permlevel": 0, 
+   "print_hide": 1, 
+   "print_hide_if_no_value": 0, 
+   "read_only": 1, 
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
    "report_hide": 0, 
    "reqd": 0, 
    "search_index": 0, 
@@ -1143,6 +1396,7 @@
    "unique": 0
   }, 
   {
+<<<<<<< HEAD
    "allow_bulk_edit": 0, 
    "allow_on_submit": 0, 
    "bold": 0, 
@@ -1150,10 +1404,18 @@
    "columns": 0, 
    "fieldname": "receivable_account", 
    "fieldtype": "Link", 
+=======
+   "allow_on_submit": 0, 
+   "bold": 0, 
+   "collapsible": 0, 
+   "fieldname": "column_break_11", 
+   "fieldtype": "Column Break", 
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
    "hidden": 0, 
    "ignore_user_permissions": 0, 
    "ignore_xss_filter": 0, 
    "in_filter": 0, 
+<<<<<<< HEAD
    "in_global_search": 0, 
    "in_list_view": 0, 
    "in_standard_filter": 0, 
@@ -1161,19 +1423,30 @@
    "length": 0, 
    "no_copy": 0, 
    "options": "Account", 
+=======
+   "in_list_view": 0, 
+   "length": 0, 
+   "no_copy": 0, 
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
    "permlevel": 0, 
    "precision": "", 
    "print_hide": 0, 
    "print_hide_if_no_value": 0, 
    "read_only": 0, 
+<<<<<<< HEAD
    "remember_last_selected_value": 0, 
    "report_hide": 0, 
    "reqd": 1, 
+=======
+   "report_hide": 0, 
+   "reqd": 0, 
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
    "search_index": 0, 
    "set_only_once": 0, 
    "unique": 0
   }, 
   {
+<<<<<<< HEAD
    "allow_bulk_edit": 0, 
    "allow_on_submit": 0, 
    "bold": 0, 
@@ -1181,10 +1454,19 @@
    "columns": 0, 
    "fieldname": "income_account", 
    "fieldtype": "Link", 
+=======
+   "allow_on_submit": 0, 
+   "bold": 0, 
+   "collapsible": 0, 
+   "default": "0", 
+   "fieldname": "total_amount", 
+   "fieldtype": "Currency", 
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
    "hidden": 0, 
    "ignore_user_permissions": 0, 
    "ignore_xss_filter": 0, 
    "in_filter": 0, 
+<<<<<<< HEAD
    "in_global_search": 0, 
    "in_list_view": 0, 
    "in_standard_filter": 0, 
@@ -1192,12 +1474,22 @@
    "length": 0, 
    "no_copy": 0, 
    "options": "Account", 
+=======
+   "in_list_view": 0, 
+   "label": "Total Amount", 
+   "length": 0, 
+   "no_copy": 0, 
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
    "permlevel": 0, 
    "precision": "", 
    "print_hide": 0, 
    "print_hide_if_no_value": 0, 
+<<<<<<< HEAD
    "read_only": 0, 
    "remember_last_selected_value": 0, 
+=======
+   "read_only": 1, 
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
    "report_hide": 0, 
    "reqd": 0, 
    "search_index": 0, 
@@ -1205,6 +1497,7 @@
    "unique": 0
   }, 
   {
+<<<<<<< HEAD
    "allow_bulk_edit": 0, 
    "allow_on_submit": 0, 
    "bold": 0, 
@@ -1212,21 +1505,40 @@
    "columns": 0, 
    "fieldname": "column_break_39", 
    "fieldtype": "Column Break", 
+=======
+   "allow_on_submit": 0, 
+   "bold": 0, 
+   "collapsible": 0, 
+   "default": "0", 
+   "fieldname": "paid_amount", 
+   "fieldtype": "Currency", 
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
    "hidden": 0, 
    "ignore_user_permissions": 0, 
    "ignore_xss_filter": 0, 
    "in_filter": 0, 
+<<<<<<< HEAD
    "in_global_search": 0, 
    "in_list_view": 0, 
    "in_standard_filter": 0, 
    "length": 0, 
    "no_copy": 0, 
+=======
+   "in_list_view": 0, 
+   "label": "Paid Amount", 
+   "length": 0, 
+   "no_copy": 1, 
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
    "permlevel": 0, 
    "precision": "", 
    "print_hide": 0, 
    "print_hide_if_no_value": 0, 
+<<<<<<< HEAD
    "read_only": 0, 
    "remember_last_selected_value": 0, 
+=======
+   "read_only": 1, 
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
    "report_hide": 0, 
    "reqd": 0, 
    "search_index": 0, 
@@ -1234,6 +1546,7 @@
    "unique": 0
   }, 
   {
+<<<<<<< HEAD
    "allow_bulk_edit": 0, 
    "allow_on_submit": 0, 
    "bold": 0, 
@@ -1241,10 +1554,19 @@
    "columns": 0, 
    "fieldname": "cost_center", 
    "fieldtype": "Link", 
+=======
+   "allow_on_submit": 0, 
+   "bold": 0, 
+   "collapsible": 0, 
+   "default": "0", 
+   "fieldname": "outstanding_amount", 
+   "fieldtype": "Currency", 
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
    "hidden": 0, 
    "ignore_user_permissions": 0, 
    "ignore_xss_filter": 0, 
    "in_filter": 0, 
+<<<<<<< HEAD
    "in_global_search": 0, 
    "in_list_view": 0, 
    "in_standard_filter": 0, 
@@ -1252,12 +1574,22 @@
    "length": 0, 
    "no_copy": 0, 
    "options": "Cost Center", 
+=======
+   "in_list_view": 0, 
+   "label": "Outstanding Amount", 
+   "length": 0, 
+   "no_copy": 1, 
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
    "permlevel": 0, 
    "precision": "", 
    "print_hide": 0, 
    "print_hide_if_no_value": 0, 
+<<<<<<< HEAD
    "read_only": 0, 
    "remember_last_selected_value": 0, 
+=======
+   "read_only": 1, 
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
    "report_hide": 0, 
    "reqd": 0, 
    "search_index": 0, 
@@ -1265,18 +1597,29 @@
    "unique": 0
   }
  ], 
+<<<<<<< HEAD
  "has_web_view": 0, 
+=======
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
  "hide_heading": 0, 
  "hide_toolbar": 0, 
  "idx": 0, 
  "image_view": 0, 
  "in_create": 0, 
+<<<<<<< HEAD
+=======
+ "in_dialog": 0, 
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
  "is_submittable": 1, 
  "issingle": 0, 
  "istable": 0, 
  "max_attachments": 0, 
  "menu_index": 0, 
+<<<<<<< HEAD
  "modified": "2017-09-20 23:17:09.819606", 
+=======
+ "modified": "2016-07-27 03:52:28.509757", 
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
  "modified_by": "Administrator", 
  "module": "Schools", 
  "name": "Fees", 
@@ -1307,11 +1650,17 @@
  "quick_entry": 0, 
  "read_only": 0, 
  "read_only_onload": 0, 
+<<<<<<< HEAD
  "restrict_to_domain": "Education", 
  "show_name_in_global_search": 0, 
  "sort_field": "modified", 
  "sort_order": "DESC", 
  "title_field": "student_name", 
  "track_changes": 0, 
+=======
+ "sort_field": "modified", 
+ "sort_order": "DESC", 
+ "title_field": "student_name", 
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
  "track_seen": 0
 }

@@ -20,14 +20,22 @@ frappe.treeview_settings["BOM"] = {
 		}
 	},
 	toolbar: [
+<<<<<<< HEAD
 		{ toggle_btn: true },
+=======
+		{toggle_btn: true},
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 		{
 			label:__("Edit"),
 			condition: function(node) {
 				return node.expandable;
 			},
 			click: function(node) {
+<<<<<<< HEAD
 
+=======
+				
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 				frappe.set_route("Form", "BOM", node.data.value);
 			}
 		}
@@ -40,6 +48,10 @@ frappe.treeview_settings["BOM"] = {
 			},
 			condition: 'frappe.boot.user.can_create.indexOf("BOM") !== -1'
 		}
+<<<<<<< HEAD
 	],
 	view_template: 'bom_item_preview'
+=======
+	]
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 }

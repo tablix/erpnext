@@ -146,6 +146,7 @@ def get_data():
 					"name": "Appraisal Template",
 					"description": _("Template for performance appraisals.")
 				},
+<<<<<<< HEAD
 				{
 					"type": "page",
 					"name": "team-updates",
@@ -188,10 +189,13 @@ def get_data():
 					"type": "doctype",
 					"name": "Training Feedback"
 				},
+=======
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 			]
 		},
 
 		{
+<<<<<<< HEAD
 			"label": _("Fleet Management"),
 			"items": [
 				{
@@ -202,11 +206,21 @@ def get_data():
 					"type": "doctype",
 					"name": "Vehicle Log"
 				},
+=======
+			"label": _("Tools"),
+			"icon": "icon-wrench",
+			"items": [
+
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 			]
 		},
 		{
 			"label": _("Setup"),
+<<<<<<< HEAD
 			"icon": "fa fa-cog",
+=======
+			"icon": "icon-cog",
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 			"items": [
 				{
 					"type": "doctype",
@@ -233,15 +247,22 @@ def get_data():
 					"name": "Designation",
 					"description": _("Employee designation (e.g. CEO, Director etc.).")
 				},
+<<<<<<< HEAD
 				{
 					"type": "doctype",
 					"name": "Daily Work Summary Settings"
 				},
+=======
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 			]
 		},
 		{
 			"label": _("Reports"),
+<<<<<<< HEAD
 			"icon": "fa fa-list",
+=======
+			"icon": "icon-list",
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 			"items": [
 				{
 					"type": "report",
@@ -269,7 +290,11 @@ def get_data():
 				{
 					"type": "report",
 					"is_query_report": True,
+<<<<<<< HEAD
 					"name": "Salary Register",
+=======
+					"name": "Monthly Salary Register",
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 					"doctype": "Salary Slip"
 				},
 				{
@@ -278,18 +303,25 @@ def get_data():
 					"name": "Monthly Attendance Sheet",
 					"doctype": "Attendance"
 				},
+<<<<<<< HEAD
 				{
 					"type": "report",
 					"is_query_report": True,
 					"name": "Vehicle Expenses",
 					"doctype": "Vehicle"
 				},
+=======
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 
 			]
 		},
 		{
 			"label": _("Help"),
+<<<<<<< HEAD
 			"icon": "fa fa-facetime-video",
+=======
+			"icon": "icon-facetime-video",
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 			"items": [
 				{
 					"type": "help",

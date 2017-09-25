@@ -1,9 +1,15 @@
 {
  "allow_copy": 0, 
+<<<<<<< HEAD
  "allow_guest_to_view": 0, 
  "allow_import": 0, 
  "allow_rename": 0, 
  "autoname": "field:route", 
+=======
+ "allow_import": 0, 
+ "allow_rename": 0, 
+ "autoname": "field:job_title", 
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
  "beta": 0, 
  "creation": "2013-01-15 16:13:36", 
  "custom": 0, 
@@ -11,23 +17,33 @@
  "docstatus": 0, 
  "doctype": "DocType", 
  "document_type": "Document", 
+<<<<<<< HEAD
  "editable_grid": 0, 
  "engine": "InnoDB", 
+=======
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
  "fields": [
   {
    "allow_on_submit": 0, 
    "bold": 0, 
    "collapsible": 0, 
+<<<<<<< HEAD
    "columns": 0, 
+=======
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
    "fieldname": "job_title", 
    "fieldtype": "Data", 
    "hidden": 0, 
    "ignore_user_permissions": 0, 
    "ignore_xss_filter": 0, 
    "in_filter": 0, 
+<<<<<<< HEAD
    "in_global_search": 0, 
    "in_list_view": 1, 
    "in_standard_filter": 0, 
+=======
+   "in_list_view": 1, 
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
    "label": "Job Title", 
    "length": 0, 
    "no_copy": 0, 
@@ -35,7 +51,10 @@
    "print_hide": 0, 
    "print_hide_if_no_value": 0, 
    "read_only": 0, 
+<<<<<<< HEAD
    "remember_last_selected_value": 0, 
+=======
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
    "report_hide": 0, 
    "reqd": 1, 
    "search_index": 0, 
@@ -46,16 +65,23 @@
    "allow_on_submit": 0, 
    "bold": 0, 
    "collapsible": 0, 
+<<<<<<< HEAD
    "columns": 0, 
+=======
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
    "fieldname": "publish", 
    "fieldtype": "Check", 
    "hidden": 0, 
    "ignore_user_permissions": 0, 
    "ignore_xss_filter": 0, 
    "in_filter": 0, 
+<<<<<<< HEAD
    "in_global_search": 0, 
    "in_list_view": 0, 
    "in_standard_filter": 0, 
+=======
+   "in_list_view": 0, 
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
    "label": "Publish on website", 
    "length": 0, 
    "no_copy": 0, 
@@ -64,7 +90,10 @@
    "print_hide": 0, 
    "print_hide_if_no_value": 0, 
    "read_only": 0, 
+<<<<<<< HEAD
    "remember_last_selected_value": 0, 
+=======
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
    "report_hide": 0, 
    "reqd": 0, 
    "search_index": 0, 
@@ -75,7 +104,10 @@
    "allow_on_submit": 0, 
    "bold": 0, 
    "collapsible": 0, 
+<<<<<<< HEAD
    "columns": 0, 
+=======
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
    "depends_on": "publish", 
    "fieldname": "route", 
    "fieldtype": "Data", 
@@ -83,9 +115,13 @@
    "ignore_user_permissions": 0, 
    "ignore_xss_filter": 0, 
    "in_filter": 0, 
+<<<<<<< HEAD
    "in_global_search": 0, 
    "in_list_view": 0, 
    "in_standard_filter": 0, 
+=======
+   "in_list_view": 0, 
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
    "label": "Route", 
    "length": 0, 
    "no_copy": 0, 
@@ -94,7 +130,10 @@
    "print_hide": 0, 
    "print_hide_if_no_value": 0, 
    "read_only": 0, 
+<<<<<<< HEAD
    "remember_last_selected_value": 0, 
+=======
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
    "report_hide": 0, 
    "reqd": 0, 
    "search_index": 0, 
@@ -105,16 +144,23 @@
    "allow_on_submit": 0, 
    "bold": 0, 
    "collapsible": 0, 
+<<<<<<< HEAD
    "columns": 0, 
+=======
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
    "fieldname": "status", 
    "fieldtype": "Select", 
    "hidden": 0, 
    "ignore_user_permissions": 0, 
    "ignore_xss_filter": 0, 
    "in_filter": 0, 
+<<<<<<< HEAD
    "in_global_search": 0, 
    "in_list_view": 1, 
    "in_standard_filter": 1, 
+=======
+   "in_list_view": 1, 
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
    "label": "Status", 
    "length": 0, 
    "no_copy": 0, 
@@ -123,7 +169,10 @@
    "print_hide": 0, 
    "print_hide_if_no_value": 0, 
    "read_only": 0, 
+<<<<<<< HEAD
    "remember_last_selected_value": 0, 
+=======
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
    "report_hide": 0, 
    "reqd": 0, 
    "search_index": 0, 
@@ -134,7 +183,10 @@
    "allow_on_submit": 0, 
    "bold": 0, 
    "collapsible": 0, 
+<<<<<<< HEAD
    "columns": 0, 
+=======
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
    "description": "Job profile, qualifications required etc.", 
    "fieldname": "description", 
    "fieldtype": "Text Editor", 
@@ -142,9 +194,13 @@
    "ignore_user_permissions": 0, 
    "ignore_xss_filter": 0, 
    "in_filter": 0, 
+<<<<<<< HEAD
    "in_global_search": 0, 
    "in_list_view": 1, 
    "in_standard_filter": 0, 
+=======
+   "in_list_view": 1, 
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
    "label": "Description", 
    "length": 0, 
    "no_copy": 0, 
@@ -152,7 +208,10 @@
    "print_hide": 0, 
    "print_hide_if_no_value": 0, 
    "read_only": 0, 
+<<<<<<< HEAD
    "remember_last_selected_value": 0, 
+=======
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
    "report_hide": 0, 
    "reqd": 0, 
    "search_index": 0, 
@@ -160,6 +219,7 @@
    "unique": 0
   }
  ], 
+<<<<<<< HEAD
  "has_web_view": 0, 
  "hide_heading": 0, 
  "hide_toolbar": 0, 
@@ -167,11 +227,24 @@
  "idx": 1, 
  "image_view": 0, 
  "in_create": 0, 
+=======
+ "hide_heading": 0, 
+ "hide_toolbar": 0, 
+ "icon": "icon-bookmark", 
+ "idx": 1, 
+ "image_view": 0, 
+ "in_create": 0, 
+ "in_dialog": 0, 
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
  "is_submittable": 0, 
  "issingle": 0, 
  "istable": 0, 
  "max_attachments": 0, 
+<<<<<<< HEAD
  "modified": "2017-03-22 12:36:26.807200", 
+=======
+ "modified": "2016-06-23 14:45:46.102129", 
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
  "modified_by": "Administrator", 
  "module": "HR", 
  "name": "Job Opening", 
@@ -196,6 +269,7 @@
    "share": 1, 
    "submit": 0, 
    "write": 1
+<<<<<<< HEAD
   }, 
   {
    "amend": 0, 
@@ -216,13 +290,19 @@
    "share": 0, 
    "submit": 0, 
    "write": 0
+=======
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
   }
  ], 
  "quick_entry": 0, 
  "read_only": 0, 
  "read_only_onload": 0, 
+<<<<<<< HEAD
  "show_name_in_global_search": 0, 
  "sort_order": "ASC", 
  "track_changes": 0, 
+=======
+ "sort_order": "ASC", 
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
  "track_seen": 0
 }

@@ -11,7 +11,11 @@ Ein Barcode-Lesegerät liest die Nummer des Aufklebers eines Artikels ein. Um mi
 
 ### Abbildung 1: Markieren Sie das Feld "Artikelbarcode"
 
+<<<<<<< HEAD
 <img class="screenshot" alt="Barcode" src="/docs/assets/img/setup/barcode-1.png">
+=======
+<img class="screenshot" alt="Barcode" src="{{docs_base_url}}/assets/img/setup/barcode-1.png">
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 
 Wenn Sie einen Barcode einlesen wollen, gehen Sie zu:
 
@@ -25,7 +29,11 @@ Gehen Sie dann zu "Rechnungswesen" und klicken Sie auf Ausgangsrechnung. Aktivie
 
 ### Abbildung 2: Aktivieren Sie das Feld "Ist POS"
 
+<<<<<<< HEAD
 <img class="screenshot" alt="Barcode" src="/docs/assets/img/setup/barcode-2.png">
+=======
+<img class="screenshot" alt="Barcode" src="{{docs_base_url}}/assets/img/setup/barcode-2.png">
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 
 Gehen Sie zu "Artikel" und klicken Sie auf "Neue Zeile einfügen".
 

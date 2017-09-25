@@ -1,4 +1,8 @@
 nested-bom-structure
 production-planning-subassembly
+<<<<<<< HEAD
 valuation-based-on-field-in-bom
 capacity-planning
+=======
+valuation-based-on-field-in-bom
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347

@@ -4,7 +4,11 @@
 Fügen Sie einen Firmenbriefkopf und ein Firmenlogo hinzu.
 
 <img alt="Firmenlogo und Briefkopf" class="screenshot"
+<<<<<<< HEAD
 src="/docs/assets/img/setup-wizard/step-5.png">
+=======
+src="{{docs_base_url}}/assets/img/setup-wizard/step-5.png">
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 
 ---
 
@@ -15,7 +19,11 @@ Klicken Sie die Box "Briefkopf anhängen" an. Wählen Sie eine Bilddatei aus und
 
 Wenn Ihr Briefkopf noch nicht fertig ist, können Sie diesen Schritt auch überspringen.
 
+<<<<<<< HEAD
 Um später einen Briefkopf über das Modul "Einstellungen" auszuwählen, lesen Sie im Bereich [Briefkopf](/docs/user/manual/de/setting-up/print/letter-head.html) weiter.
+=======
+Um später einen Briefkopf über das Modul "Einstellungen" auszuwählen, lesen Sie im Bereich [Briefkopf]({{docs_base_url}}/user/manual/de/setting-up/print/letter-head.html) weiter.
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 
 ### Anhang als Internetverknüpfung
 

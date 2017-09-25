@@ -2,12 +2,22 @@
 # License: GNU General Public License v3. See license.txt
 
 from __future__ import unicode_literals
+<<<<<<< HEAD
 import frappe, erpnext
 from frappe import _, throw
 from frappe.utils import today, flt, cint, fmt_money, formatdate, getdate
 from erpnext.setup.utils import get_exchange_rate
 from erpnext.accounts.utils import get_fiscal_years, validate_fiscal_year, get_account_currency
 from erpnext.utilities.transaction_base import TransactionBase
+=======
+import frappe
+from frappe import _, throw
+from frappe.utils import today, flt, cint, fmt_money, formatdate, getdate
+from erpnext.setup.utils import get_company_currency, get_exchange_rate
+from erpnext.accounts.utils import get_fiscal_years, validate_fiscal_year, get_account_currency
+from erpnext.utilities.transaction_base import TransactionBase
+from erpnext.controllers.recurring_document import convert_to_recurring, validate_recurring_document
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 from erpnext.controllers.sales_and_purchase_return import validate_return
 from erpnext.accounts.party import get_party_account_currency, validate_party_frozen_disabled
 from erpnext.exceptions import InvalidCurrency
@@ -21,7 +31,11 @@ class AccountsController(TransactionBase):
 	@property
 	def company_currency(self):
 		if not hasattr(self, "__company_currency"):
+<<<<<<< HEAD
 			self.__company_currency = erpnext.get_company_currency(self.company)
+=======
+			self.__company_currency = get_company_currency(self.company)
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 
 		return self.__company_currency
 
@@ -52,6 +66,7 @@ class AccountsController(TransactionBase):
 		self.validate_party()
 		self.validate_currency()
 
+<<<<<<< HEAD
 		if self.doctype == 'Purchase Invoice':
 			self.validate_paid_amount()
 
@@ -60,6 +75,18 @@ class AccountsController(TransactionBase):
 			if self.get("group_same_items"):
 				self.group_similar_items()
 
+=======
+		if self.meta.get_field("is_recurring"):
+			if self.amended_from and self.recurring_id:
+				self.recurring_id = None
+			if not self.get("__islocal"):
+				validate_recurring_document(self)
+				convert_to_recurring(self, self.get("posting_date") or self.get("transaction_date"))
+
+		if self.doctype == 'Purchase Invoice':
+			self.validate_paid_amount()
+
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 	def validate_paid_amount(self):
 		if hasattr(self, "is_pos") or hasattr(self, "is_paid"):
 			is_paid = self.get("is_pos") or self.get("is_paid")
@@ -76,6 +103,14 @@ class AccountsController(TransactionBase):
 			else:
 				frappe.db.set(self,'paid_amount',0)
 
+<<<<<<< HEAD
+=======
+	def on_update_after_submit(self):
+		if self.meta.get_field("is_recurring"):
+			validate_recurring_document(self)
+			convert_to_recurring(self, self.get("posting_date") or self.get("transaction_date"))
+
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 	def set_missing_values(self, for_validate=False):
 		if frappe.flags.in_test:
 			for fieldname in ["posting_date","transaction_date"]:
@@ -100,7 +135,11 @@ class AccountsController(TransactionBase):
 				date_field = "transaction_date"
 
 			if date_field and self.get(date_field):
+<<<<<<< HEAD
 				validate_fiscal_year(self.get(date_field), self.fiscal_year, self.company,
+=======
+				validate_fiscal_year(self.get(date_field), self.fiscal_year,
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 					self.meta.get_label(date_field), self)
 
 	def validate_due_date(self):
@@ -114,11 +153,14 @@ class AccountsController(TransactionBase):
 			validate_due_date(self.posting_date, self.due_date, "Supplier", self.supplier, self.company)
 
 	def set_price_list_currency(self, buying_or_selling):
+<<<<<<< HEAD
 		if self.meta.get_field("posting_date"):
 			transaction_date = self.posting_date
 		else:
 			transaction_date = self.transaction_date
 
+=======
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 		if self.meta.get_field("currency"):
 			# price list part
 			fieldname = "selling_price_list" if buying_or_selling.lower() == "selling" \
@@ -131,8 +173,13 @@ class AccountsController(TransactionBase):
 					self.plc_conversion_rate = 1.0
 
 				elif not self.plc_conversion_rate:
+<<<<<<< HEAD
 					self.plc_conversion_rate = get_exchange_rate(self.price_list_currency,
 						self.company_currency, transaction_date)
+=======
+					self.plc_conversion_rate = get_exchange_rate(
+						self.price_list_currency, self.company_currency)
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 
 			# currency
 			if not self.currency:
@@ -142,12 +189,19 @@ class AccountsController(TransactionBase):
 				self.conversion_rate = 1.0
 			elif not self.conversion_rate:
 				self.conversion_rate = get_exchange_rate(self.currency,
+<<<<<<< HEAD
 					self.company_currency, transaction_date)
+=======
+					self.company_currency)
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 
 	def set_missing_item_details(self, for_validate=False):
 		"""set missing item values"""
 		from erpnext.stock.get_item_details import get_item_details
+<<<<<<< HEAD
 		from erpnext.stock.doctype.serial_no.serial_no import get_serial_nos
+=======
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 
 		if hasattr(self, "items"):
 			parent_dict = {}
@@ -174,11 +228,16 @@ class AccountsController(TransactionBase):
 
 					ret = get_item_details(args)
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 					for fieldname, value in ret.items():
 						if item.meta.get_field(fieldname) and value is not None:
 							if (item.get(fieldname) is None or fieldname in force_item_fields):
 								item.set(fieldname, value)
 
+<<<<<<< HEAD
 							elif fieldname in ['cost_center', 'conversion_factor'] and not item.get(fieldname):
 								item.set(fieldname, value)
 
@@ -187,6 +246,11 @@ class AccountsController(TransactionBase):
 								if stock_qty != len(get_serial_nos(item.get('serial_no'))):
 									item.set(fieldname, value)
 
+=======
+							elif fieldname == "cost_center" and not item.get("cost_center"):
+								item.set(fieldname, value)
+
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 							elif fieldname == "conversion_factor" and not item.get("conversion_factor"):
 								item.set(fieldname, value)
 
@@ -262,9 +326,13 @@ class AccountsController(TransactionBase):
 		if not account_currency:
 			account_currency = get_account_currency(gl_dict.account)
 
+<<<<<<< HEAD
 		if gl_dict.account and self.doctype not in ["Journal Entry", 
 			"Period Closing Voucher", "Payment Entry"]:
 			
+=======
+		if self.doctype not in ["Journal Entry", "Period Closing Voucher", "Payment Entry"]:
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 			self.validate_account_currency(gl_dict.account, account_currency)
 			set_balance_in_account_currency(gl_dict, account_currency, self.get("conversion_rate"), self.company_currency)
 
@@ -420,7 +488,11 @@ class AccountsController(TransactionBase):
 					max_allowed_amt = flt(ref_amt * (100 + tolerance) / 100)
 
 					if total_billed_amt - max_allowed_amt > 0.01:
+<<<<<<< HEAD
 						frappe.throw(_("Cannot overbill for Item {0} in row {1} more than {2}. To allow over-billing, please set in Buying Settings").format(item.item_code, item.idx, max_allowed_amt))
+=======
+						frappe.throw(_("Cannot overbill for Item {0} in row {1} more than {2}. To allow overbilling, please set in Stock Settings").format(item.item_code, item.idx, max_allowed_amt))
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 
 	def get_company_default(self, fieldname):
 		from erpnext.accounts.utils import get_company_default
@@ -565,6 +637,7 @@ class AccountsController(TransactionBase):
 								frappe.throw(_("Row #{0}: Asset {1} cannot be submitted, it is already {2}")
 									.format(d.idx, d.asset, asset.status))
 
+<<<<<<< HEAD
 	def delink_advance_entries(self, linked_doc_name):
 		total_allocated_amount = 0
 		for adv in self.advances:
@@ -601,6 +674,8 @@ class AccountsController(TransactionBase):
 		for item in duplicate_list:
 			self.remove(item)
 
+=======
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 @frappe.whitelist()
 def get_tax_rate(account_head):
 	return frappe.db.get_value("Account", account_head, ["tax_rate", "account_name"], as_dict=True)
@@ -705,7 +780,11 @@ def get_advance_journal_entries(party_type, party, party_account, amount_field,
 			.format(order_doctype, order_condition))
 
 	reference_condition = " and (" + " or ".join(conditions) + ")" if conditions else ""
+<<<<<<< HEAD
 
+=======
+	
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 	journal_entries = frappe.db.sql("""
 		select
 			"Journal Entry" as reference_type, t1.name as reference_name,
@@ -760,6 +839,7 @@ def get_advance_payment_entries(party_type, party, party_account,
 					and docstatus = 1 and unallocated_amount > 0
 			""".format(party_account_field), (party_account, party_type, party, payment_type), as_dict=1)
 
+<<<<<<< HEAD
 	return list(payment_entries_against_order) + list(unallocated_payment_entries)
 
 def update_invoice_status():
@@ -770,3 +850,6 @@ def update_invoice_status():
 
 	frappe.db.sql(""" update `tabPurchase Invoice` set status = 'Overdue'
 		where due_date < CURDATE() and docstatus = 1 and outstanding_amount > 0""")
+=======
+	return list(payment_entries_against_order) + list(unallocated_payment_entries)
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347

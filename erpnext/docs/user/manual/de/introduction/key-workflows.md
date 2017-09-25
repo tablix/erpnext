@@ -3,9 +3,16 @@
 
 Dieses Diagramm stellt dar, wie ERPNext die Informationen und Vorgänge in Ihrem Unternehmen über Schlüsselfunktionen nachverfolgt. Dieses Diagramm gibt nicht alle Funktionalitäten von ERPNext wieder.
 
+<<<<<<< HEAD
 
 <img class="screenshot" alt="Hohe Auflösung" src="/docs/assets/img/setup/overview.png">
 
+=======
+![]({{docs_base_url}}/assets/old_images/erpnext/overview.png)
+
+
+[Hohe Auflösung]({{docs_base_url}}/assets/old_images/erpnext/overview.png)
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 
 _Anmerkung: Nicht alle Schritte sind zwingend erforderlich. ERPNext erlaubt es Ihnen nach eigenem Gutdünken Schritte auszulassen, wenn Sie den Prozess vereinfachen wollen._
 

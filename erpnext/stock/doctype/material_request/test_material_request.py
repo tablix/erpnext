@@ -5,13 +5,21 @@
 # For license information, please see license.txt
 
 from __future__ import unicode_literals
+<<<<<<< HEAD
 import frappe, unittest, erpnext
+=======
+import frappe, unittest
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 from frappe.utils import flt
 from erpnext.stock.doctype.material_request.material_request import raise_production_orders
 
 class TestMaterialRequest(unittest.TestCase):
 	def setUp(self):
+<<<<<<< HEAD
 		erpnext.set_perpetual_inventory(0)
+=======
+		frappe.defaults.set_global_default("auto_accounting_for_stock", 0)
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 
 	def test_make_purchase_order(self):
 		from erpnext.stock.doctype.material_request.material_request import make_purchase_order
@@ -66,6 +74,10 @@ class TestMaterialRequest(unittest.TestCase):
 				"posting_date": "2013-03-01",
 				"posting_time": "00:00:00",
 				"purpose": "Material Receipt",
+<<<<<<< HEAD
+=======
+				"fiscal_year": "_Test Fiscal Year 2013",
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 				"items": [
 					{
 						"conversion_factor": 1.0,
@@ -78,7 +90,10 @@ class TestMaterialRequest(unittest.TestCase):
 						"transfer_qty": qty1,
 						"uom": "_Test UOM 1",
 						"t_warehouse": warehouse or "_Test Warehouse 1 - _TC",
+<<<<<<< HEAD
 						"cost_center": "_Test Cost Center - _TC"
+=======
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 					},
 					{
 						"conversion_factor": 1.0,
@@ -91,13 +106,17 @@ class TestMaterialRequest(unittest.TestCase):
 						"transfer_qty": qty2,
 						"uom": "_Test UOM 1",
 						"t_warehouse": warehouse or "_Test Warehouse 1 - _TC",
+<<<<<<< HEAD
 						"cost_center": "_Test Cost Center - _TC"
+=======
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 					}
 				]
 			})
 		se.insert()
 		se.submit()
 
+<<<<<<< HEAD
 	def test_cannot_stop_cancelled_material_request(self):
 		mr = frappe.copy_doc(test_records[0])
 		mr.insert()
@@ -186,6 +205,8 @@ class TestMaterialRequest(unittest.TestCase):
 		mr.insert()
 		self.assertRaises(frappe.InvalidStatusError, mr.update_status, 'Stopped')
 
+=======
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 	def test_completed_qty_for_purchase(self):
 		existing_requested_qty_item1 = self._get_requested_qty("_Test Item Home Desktop 100", "_Test Warehouse - _TC")
 		existing_requested_qty_item2 = self._get_requested_qty("_Test Item Home Desktop 200", "_Test Warehouse - _TC")

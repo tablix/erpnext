@@ -1,5 +1,8 @@
+<<<<<<< HEAD
 # Make Read Only After Saving
 
+=======
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 Use the method `cur_frm.set_df_property` to update the field's display.
 
 In this script we also use the `__islocal` property of the doc to check if the

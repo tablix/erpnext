@@ -1,5 +1,8 @@
+<<<<<<< HEAD
 # Accounting Of Inventory Stock
 
+=======
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 The value of available inventory is treated as an Asset in company's Chart of
 Accounts. Depending on the type of items, it can be treated as Fixed Asset or
 Current Asset. To prepare Balance Sheet, you should make the accounting
@@ -21,7 +24,11 @@ balance. This improves accuracy of Balance Sheet and Profit and Loss
 statement.
 
 To check accounting entries for a particular stock transaction, please check
+<<<<<<< HEAD
 [examples](/docs/user/manual/en/stock/accounting-of-inventory-stock/perpetual-inventory.html)
+=======
+[examples]({{docs_base_url}}/user/manual/en/stock/accounting-of-inventory-stock/perpetual-inventory.html)
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 
 #### **Advantages**
 
@@ -66,6 +73,10 @@ This complete process is called Periodic Inventory.
 
 If you are an existing user using Periodic Inventory and want to use Perpetual
 Inventory, you have to follow some steps to migrate. For details, check
+<<<<<<< HEAD
 [Migration From Periodic Inventory](/docs/user/manual/en/stock/accounting-of-inventory-stock/migrate-to-perpetual-inventory.html).
+=======
+[Migration From Periodic Inventory]({{docs_base_url}}/user/manual/en/stock/accounting-of-inventory-stock/migrate-to-perpetual-inventory.html).
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 
 {next}

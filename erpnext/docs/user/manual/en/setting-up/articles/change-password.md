@@ -5,11 +5,19 @@ Each ERPNext user can customize password for his/her ERPNext account. Also user 
 
 ####Step 1: Go to My Setting
 
+<<<<<<< HEAD
 <img alt="Change Password" class="screenshot" src="/docs/assets/img/articles/change-password-1.png">
 
 ####Step 2: Set New Password
 
 <img alt="Change Password" class="screenshot" src="/docs/assets/img/articles/change-password-2.png">
+=======
+<img alt="Change Password" class="screenshot" src="{{docs_base_url}}/assets/img/articles/change-password-1.png">
+
+####Step 2: Set New Password
+
+<img alt="Change Password" class="screenshot" src="{{docs_base_url}}/assets/img/articles/change-password-2.png">
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 
 Enter the new password and save the form to save changes.
 

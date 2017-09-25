@@ -4,20 +4,30 @@
 
 from __future__ import unicode_literals
 import unittest
+<<<<<<< HEAD
 import frappe, erpnext
 import frappe.model
 from frappe.utils import cint, flt, today, nowdate
+=======
+import frappe
+import frappe.model
+from frappe.utils import cint, flt, today
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 import frappe.defaults
 from erpnext.stock.doctype.purchase_receipt.test_purchase_receipt import set_perpetual_inventory, \
 	test_records as pr_test_records
 from erpnext.exceptions import InvalidCurrency
 from erpnext.stock.doctype.stock_entry.test_stock_entry import get_qty_after_transaction
+<<<<<<< HEAD
 from erpnext.accounts.doctype.account.test_account import get_inventory_account
+=======
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 
 test_dependencies = ["Item", "Cost Center"]
 test_ignore = ["Serial No"]
 
 class TestPurchaseInvoice(unittest.TestCase):
+<<<<<<< HEAD
 	def setUp(self):
 		unlink_payment_on_cancel_of_invoice()
 		frappe.db.set_value("Buying Settings", None, "allow_multiple_items", 1)
@@ -29,6 +39,13 @@ class TestPurchaseInvoice(unittest.TestCase):
 		wrapper = frappe.copy_doc(test_records[0])
 		set_perpetual_inventory(0, wrapper.company)
 		self.assertTrue(not cint(erpnext.is_perpetual_inventory_enabled(wrapper.company)))
+=======
+	def test_gl_entries_without_auto_accounting_for_stock(self):
+		set_perpetual_inventory(0)
+		self.assertTrue(not cint(frappe.defaults.get_global_default("auto_accounting_for_stock")))
+
+		wrapper = frappe.copy_doc(test_records[0])
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 		wrapper.insert()
 		wrapper.submit()
 		wrapper.load_from_db()
@@ -50,15 +67,24 @@ class TestPurchaseInvoice(unittest.TestCase):
 		for d in gl_entries:
 			self.assertEqual([d.debit, d.credit], expected_gl_entries.get(d.account))
 
+<<<<<<< HEAD
 	def test_gl_entries_with_perpetual_inventory(self):
 		pi = frappe.copy_doc(test_records[1])
 		set_perpetual_inventory(1, pi.company)
 		self.assertTrue(cint(erpnext.is_perpetual_inventory_enabled(pi.company)), 1)
+=======
+	def test_gl_entries_with_auto_accounting_for_stock(self):
+		set_perpetual_inventory(1)
+		self.assertEqual(cint(frappe.defaults.get_global_default("auto_accounting_for_stock")), 1)
+
+		pi = frappe.copy_doc(test_records[1])
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 		pi.insert()
 		pi.submit()
 
 		self.check_gle_for_pi(pi.name)
 
+<<<<<<< HEAD
 		set_perpetual_inventory(0, pi.company)
 
 	def test_payment_entry_unlink_against_purchase_invoice(self):
@@ -86,6 +112,15 @@ class TestPurchaseInvoice(unittest.TestCase):
 		pr = frappe.copy_doc(pr_test_records[0])
 		set_perpetual_inventory(1, pr.company)
 		self.assertTrue(cint(erpnext.is_perpetual_inventory_enabled(pr.company)), 1)
+=======
+		set_perpetual_inventory(0)
+
+	def test_gl_entries_with_auto_accounting_for_stock_against_pr(self):
+		set_perpetual_inventory(1)
+		self.assertEqual(cint(frappe.defaults.get_global_default("auto_accounting_for_stock")), 1)
+
+		pr = frappe.copy_doc(pr_test_records[0])
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 		pr.submit()
 
 		pi = frappe.copy_doc(test_records[1])
@@ -96,7 +131,11 @@ class TestPurchaseInvoice(unittest.TestCase):
 
 		self.check_gle_for_pi(pi.name)
 
+<<<<<<< HEAD
 		set_perpetual_inventory(0, pr.company)
+=======
+		set_perpetual_inventory(0)
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 
 	def check_gle_for_pi(self, pi):
 		gl_entries = frappe.db.sql("""select account, debit, credit
@@ -116,6 +155,7 @@ class TestPurchaseInvoice(unittest.TestCase):
 			self.assertEquals(expected_values[gle.account][1], gle.debit)
 			self.assertEquals(expected_values[gle.account][2], gle.credit)
 
+<<<<<<< HEAD
 	def test_purchase_invoice_change_naming_series(self):
 		pi = frappe.copy_doc(test_records[1])
 		pi.insert()
@@ -133,6 +173,13 @@ class TestPurchaseInvoice(unittest.TestCase):
 		pi = frappe.copy_doc(test_records[1])
 		set_perpetual_inventory(1, pi.company)
 		self.assertTrue(cint(erpnext.is_perpetual_inventory_enabled(pi.company)), 1)
+=======
+	def test_gl_entries_with_aia_for_non_stock_items(self):
+		set_perpetual_inventory()
+		self.assertEqual(cint(frappe.defaults.get_global_default("auto_accounting_for_stock")), 1)
+
+		pi = frappe.copy_doc(test_records[1])
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 		pi.get("items")[0].item_code = "_Test Non Stock Item"
 		pi.get("items")[0].expense_account = "_Test Account Cost for Goods Sold - _TC"
 		pi.get("taxes").pop(0)
@@ -155,7 +202,11 @@ class TestPurchaseInvoice(unittest.TestCase):
 			self.assertEquals(expected_values[i][0], gle.account)
 			self.assertEquals(expected_values[i][1], gle.debit)
 			self.assertEquals(expected_values[i][2], gle.credit)
+<<<<<<< HEAD
 		set_perpetual_inventory(0, pi.company)
+=======
+		set_perpetual_inventory(0)
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 
 	def test_purchase_invoice_calculation(self):
 		pi = frappe.copy_doc(test_records[0])
@@ -256,6 +307,13 @@ class TestPurchaseInvoice(unittest.TestCase):
 		self.assertFalse(frappe.db.sql("""select name from `tabJournal Entry Account`
 			where reference_type='Purchase Invoice' and reference_name=%s""", pi.name))
 
+<<<<<<< HEAD
+=======
+	def test_recurring_invoice(self):
+		from erpnext.controllers.tests.test_recurring_document import test_recurring_document
+		test_recurring_document(self, test_records)
+
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 	def test_total_purchase_cost_for_project(self):
 		existing_purchase_cost = frappe.db.sql("""select sum(base_net_amount)
 			from `tabPurchase Invoice Item` where project = '_Test Project' and docstatus=1""")
@@ -363,11 +421,18 @@ class TestPurchaseInvoice(unittest.TestCase):
 			order by account asc""", pi.name, as_dict=1)
 
 		self.assertTrue(gl_entries)
+<<<<<<< HEAD
 		stock_in_hand_account = get_inventory_account(pi.company, pi.get("items")[0].warehouse)
 
 		expected_gl_entries = dict((d[0], d) for d in [
 			[pi.credit_to, 0.0, 250.0],
 			[stock_in_hand_account, 250.0, 0.0]
+=======
+
+		expected_gl_entries = dict((d[0], d) for d in [
+			[pi.credit_to, 0.0, 250.0],
+			[pi.items[0].warehouse, 250.0, 0.0]
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 		])
 
 		for i, gle in enumerate(gl_entries):
@@ -384,13 +449,21 @@ class TestPurchaseInvoice(unittest.TestCase):
 				sum(credit) as credit, debit_in_account_currency, credit_in_account_currency
 			from `tabGL Entry` where voucher_type='Purchase Invoice' and voucher_no=%s
 			group by account, voucher_no order by account asc;""", pi.name, as_dict=1)
+<<<<<<< HEAD
 		
 		stock_in_hand_account = get_inventory_account(pi.company, pi.get("items")[0].warehouse)
+=======
+
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 		self.assertTrue(gl_entries)
 
 		expected_gl_entries = dict((d[0], d) for d in [
 			[pi.credit_to, 250.0, 250.0],
+<<<<<<< HEAD
 			[stock_in_hand_account, 250.0, 0.0],
+=======
+			[pi.items[0].warehouse, 250.0, 0.0],
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 			["Cash - _TC", 0.0, 250.0]
 		])
 
@@ -399,6 +472,7 @@ class TestPurchaseInvoice(unittest.TestCase):
 			self.assertEquals(expected_gl_entries[gle.account][1], gle.debit)
 			self.assertEquals(expected_gl_entries[gle.account][2], gle.credit)
 
+<<<<<<< HEAD
 	def test_auto_batch(self):
 		item_code = frappe.db.get_value('Item',
 			{'has_batch_no': 1, 'create_new_batch':1}, 'name')
@@ -420,6 +494,8 @@ class TestPurchaseInvoice(unittest.TestCase):
 		self.assertTrue(frappe.db.get_value('Batch',
 			{'item': item_code, 'reference_name': pi.name}))
 
+=======
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 	def test_update_stock_and_purchase_return(self):
 		actual_qty_0 = get_qty_after_transaction()
 
@@ -467,6 +543,7 @@ class TestPurchaseInvoice(unittest.TestCase):
 
 		self.assertEquals(frappe.db.get_value("Serial No", pi.get("items")[0].rejected_serial_no,
 			"warehouse"), pi.get("items")[0].rejected_warehouse)
+<<<<<<< HEAD
 	
 	def test_outstanding_amount_after_advance_jv_cancelation(self):
 		from erpnext.accounts.doctype.journal_entry.test_journal_entry \
@@ -551,6 +628,8 @@ def unlink_payment_on_cancel_of_invoice(enable=1):
 	accounts_settings = frappe.get_doc("Accounts Settings")
 	accounts_settings.unlink_payment_on_cancellation_of_invoice = enable
 	accounts_settings.save()
+=======
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 
 def make_purchase_invoice(**args):
 	pi = frappe.new_doc("Purchase Invoice")
@@ -596,4 +675,8 @@ def make_purchase_invoice(**args):
 			pi.submit()
 	return pi
 
+<<<<<<< HEAD
 test_records = frappe.get_test_records('Purchase Invoice')
+=======
+test_records = frappe.get_test_records('Purchase Invoice')
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347

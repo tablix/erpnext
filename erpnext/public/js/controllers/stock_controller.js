@@ -18,6 +18,7 @@ erpnext.stock.StockController = frappe.ui.form.Controller.extend({
 		});
 	},
 
+<<<<<<< HEAD
 	setup_posting_date_time_check: function() {
 		// make posting date default and read only unless explictly checked
 		frappe.ui.form.on(this.frm.doctype, 'set_posting_date_and_time_read_only', function(frm) {
@@ -48,6 +49,8 @@ erpnext.stock.StockController = frappe.ui.form.Controller.extend({
 		});
 	},
 
+=======
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 	show_stock_ledger: function() {
 		var me = this;
 		if(this.frm.doc.docstatus===1) {

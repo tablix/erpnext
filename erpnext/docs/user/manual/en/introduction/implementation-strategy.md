@@ -1,5 +1,8 @@
+<<<<<<< HEAD
 # Implementation Strategy
 
+=======
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 Before you start managing your Operations in EPRNext, you must first become
 familiar with the system and the terms used. For this we recommend
 implementation should happen in two phases.

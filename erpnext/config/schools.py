@@ -6,17 +6,29 @@ def get_data():
 		{
 			"label": _("Student"),
 			"items": [
+<<<<<<< HEAD
+=======
+
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 				{
 					"type": "doctype",
 					"name": "Student"
 				},
 				{
 					"type": "doctype",
+<<<<<<< HEAD
 					"name": "Guardian"
 				},
 				{
 					"type": "doctype",
 					"name": "Student Log"
+=======
+					"name": "Student Log"
+				},
+				{
+					"type": "doctype",
+					"name": "Student Batch"
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 				},
 				{
 					"type": "doctype",
@@ -25,6 +37,7 @@ def get_data():
 				{
 					"type": "doctype",
 					"name": "Student Group Creation Tool"
+<<<<<<< HEAD
 				},
 				{
 					"type": "report",
@@ -33,6 +46,9 @@ def get_data():
 					"doctype": "Program Enrollment"
 				}
 
+=======
+				}
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 			]
 		},
 		{
@@ -45,10 +61,13 @@ def get_data():
 				},
 				{
 					"type": "doctype",
+<<<<<<< HEAD
 					"name": "Student Admission"
 				},
 				{
 					"type": "doctype",
+=======
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 					"name": "Program Enrollment"
 				},
 				{
@@ -58,6 +77,7 @@ def get_data():
 			]
 		},
 		{
+<<<<<<< HEAD
 			"label": _("Attendance"),
 			"items": [
 				{
@@ -103,10 +123,35 @@ def get_data():
 				{
 					"type": "doctype",
 					"name": "Course Scheduling Tool"
+=======
+			"label": _("Schedule"),
+			"items": [
+				{
+					"type": "doctype",
+					"name": "Course Schedule",
+					"route": "Calendar/Course Schedule"
+				},
+				{
+					"type": "doctype",
+					"name": "Student Attendance"
+				},
+				{
+					"type": "doctype",
+					"name": "Assessment"
+				},
+				{
+					"type": "doctype",
+					"name": "Assessment Group"
+				},
+				{
+					"type": "doctype",
+					"name": "Scheduling Tool"
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 				}
 			]
 		},
 		{
+<<<<<<< HEAD
 			"label": _("Assessment"),
 			"items": [
 				{
@@ -171,6 +216,44 @@ def get_data():
 					"name": "Student Fee Collection",
 					"doctype": "Fees",
 					"is_query_report": True
+=======
+			"label": _("Fees"),
+			"items": [
+				{
+					"type": "doctype",
+					"name": "Fees"
+				},
+				{
+					"type": "doctype",
+					"name": "Fee Structure"
+				},
+				{
+					"type": "doctype",
+					"name": "Fee Category"
+				},
+				{
+					"type": "report",
+					"name": "Student Fee Collection",
+					"doctype": "Fees",
+					"is_query_report": True
+				}
+			]
+		},
+		{
+			"label": _("LMS"),
+			"items": [
+				{
+					"type": "doctype",
+					"name": "Announcement"
+				},
+				{
+					"type": "doctype",
+					"name": "Topic"
+				},
+				{
+					"type": "doctype",
+					"name": "Discussion"
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 				}
 			]
 		},
@@ -195,6 +278,7 @@ def get_data():
 				},
 				{
 					"type": "doctype",
+<<<<<<< HEAD
 					"name": "Student Category"
 				},
 				{
@@ -203,15 +287,20 @@ def get_data():
 				},
 				{
 					"type": "doctype",
+=======
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 					"name": "Academic Term"
 				},
 				{
 					"type": "doctype",
 					"name": "Academic Year"
+<<<<<<< HEAD
 				},
 				{
 					"type": "doctype",
 					"name": "School Settings"
+=======
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 				}
 			]
 		},

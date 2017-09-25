@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 // Copyright (c) 2016, Frappe Technologies Pvt. Ltd. and contributors
 // For license information, please see license.txt
 
@@ -6,11 +7,15 @@ frappe.ui.form.on("Student Applicant", {
 		frm.add_fetch("guardian", "guardian_name", "guardian_name");
 	},
 
+=======
+frappe.ui.form.on("Student Applicant", {
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 	refresh: function(frm) {
 		if(frm.doc.application_status== "Applied" && frm.doc.docstatus== 1 ) {
 			frm.add_custom_button(__("Approve"), function() {
 				frm.set_value("application_status", "Approved");
 				frm.save_or_update();
+<<<<<<< HEAD
 
 			}, 'Actions');
 
@@ -20,10 +25,22 @@ frappe.ui.form.on("Student Applicant", {
 			}, 'Actions');
 		}
 
+=======
+				
+			}).addClass("btn-primary");
+			
+			frm.add_custom_button(__("Reject"), function() {
+				frm.set_value("application_status", "Rejected");
+				frm.save_or_update();
+			}).addClass("btn-danger");
+		}
+		
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 		if(frm.doc.application_status== "Approved" && frm.doc.docstatus== 1 ) {
 			frm.add_custom_button(__("Enroll"), function() {
 				frm.events.enroll(frm)
 			}).addClass("btn-primary");
+<<<<<<< HEAD
 			frm.add_custom_button(__("Reject"), function() {
 				frm.set_value("application_status", "Rejected");
 				frm.save_or_update();
@@ -38,12 +55,18 @@ frappe.ui.form.on("Student Applicant", {
 		})
 	},
 
+=======
+		}
+	},
+	
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 	enroll: function(frm) {
 		frappe.model.open_mapped_doc({
 			method: "erpnext.schools.api.enroll_student",
 			frm: frm
 		})
 	}
+<<<<<<< HEAD
 });
 
 frappe.ui.form.on('Student Sibling', {
@@ -52,4 +75,6 @@ frappe.ui.form.on('Student Sibling', {
 		frm.add_fetch("student", "gender", "gender");
 		frm.add_fetch("student", "date_of_birth", "date_of_birth");
 	}
+=======
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 });

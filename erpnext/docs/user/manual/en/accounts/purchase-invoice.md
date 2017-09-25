@@ -1,10 +1,14 @@
+<<<<<<< HEAD
 # Purchase Invoice
 
+=======
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 Purchase Invoice is the exact opposite of your Sales Invoice. It is the bill
 that your Supplier sends you for products or services delivered. Here you
 accrue expenses to your Supplier. Making a Purchase Invoice is very similar to
 making a Purchase Order.
 
+<<<<<<< HEAD
 To make a new Purchase Invoice:
 > type "new purchase invoice" into the search bar then select "New Purchase 
 Invoice" from the drop down
@@ -15,11 +19,21 @@ You can also create a Purchase Invoice from:
 > Accounts > Billing > Purchase Invoice > New Purchase Invoice
 
 <img class="screenshot" alt="Purchase Invoice" src="/docs/assets/img/accounts/purchase-invoice.png">
+=======
+To make a new Purchase Invoice, go to:
+
+> Accounts > Documents > Purchase Invoice > New Purchase Invoice
+
+or click on “Make Purchase Invoice” in Purchase Order or Purchase Receipt.
+
+<img class="screenshot" alt="Purchase Invoice" src="{{docs_base_url}}/assets/img/accounts/purchase-invoice.png">
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 
 The concept of “Posting Date” is again same as Sales Invoice. “Bill No” and
 “Bill Date” helps to track the bill number as set by your Supplier for
 reference.
 
+<<<<<<< HEAD
 #### Is Paid option
 The **Is Paid** checkbox should be checked if there is a part or full payment 
 on the invoice at posting date.
@@ -28,6 +42,8 @@ on the invoice at posting date.
 The **Update Stock** checkbox should be checked if you want ERPNext to automatically
  update your inventory. Consequently, there will be no need for a Delivery Note.
 
+=======
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 #### Accounting Impact
 
 Like in Sales Invoice, you have to enter an Expense or an Asset account for
@@ -47,6 +63,7 @@ Debits:
 Credits:
 
   * Supplier
+<<<<<<< HEAD
   
 ##### Accounting Treatment When **Is Paid** is checked
 If **Is Paid** is checked, ERPNext will also make the following
@@ -59,6 +76,9 @@ Debits:
 Credits:
   * Bank/Cash Account
   
+=======
+
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 To see entries in your Purchase Invoice after you “Submit”, click on “View
 Ledger”.
 

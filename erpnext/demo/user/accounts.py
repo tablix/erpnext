@@ -23,6 +23,7 @@ def work():
 		report = "Ordered Items to be Billed"
 		for so in list(set([r[0] for r in query_report.run(report)["result"]
 				if r[0]!="Total"]))[:random.randint(1, 5)]:
+<<<<<<< HEAD
 			try:
 				si = frappe.get_doc(make_sales_invoice(so))
 				si.posting_date = frappe.flags.current_date
@@ -34,11 +35,22 @@ def work():
 				frappe.db.commit()
 			except frappe.ValidationError:
 				pass
+=======
+			si = frappe.get_doc(make_sales_invoice(so))
+			si.posting_date = frappe.flags.current_date
+			for d in si.get("items"):
+				if not d.income_account:
+					d.income_account = "Sales - {}".format(frappe.db.get_value('Company', si.company, 'abbr'))
+			si.insert()
+			si.submit()
+			frappe.db.commit()
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 
 	if random.random() <= 0.6:
 		report = "Received Items to be Billed"
 		for pr in list(set([r[0] for r in query_report.run(report)["result"]
 			if r[0]!="Total"]))[:random.randint(1, 5)]:
+<<<<<<< HEAD
 			try:
 				pi = frappe.get_doc(make_purchase_invoice(pr))
 				pi.posting_date = frappe.flags.current_date
@@ -49,6 +61,14 @@ def work():
 			except frappe.ValidationError:
 				pass
 
+=======
+			pi = frappe.get_doc(make_purchase_invoice(pr))
+			pi.posting_date = frappe.flags.current_date
+			pi.bill_no = random_string(6)
+			pi.insert()
+			pi.submit()
+			frappe.db.commit()
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 
 	if random.random() < 0.5:
 		make_payment_entries("Sales Invoice", "Accounts Receivable")

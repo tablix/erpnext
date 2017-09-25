@@ -6,7 +6,10 @@ import frappe, json
 from frappe import _
 from frappe.utils import nowdate
 from erpnext.setup.utils import get_exchange_rate
+<<<<<<< HEAD
 from frappe.core.doctype.communication.email import make
+=======
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 from erpnext.stock.get_item_details import get_pos_profile
 from erpnext.accounts.party import get_party_account_currency
 from erpnext.controllers.accounts_controller import get_taxes_and_charges
@@ -21,18 +24,28 @@ def get_pos_data():
 
 	if pos_profile.get('name'):
 		pos_profile = frappe.get_doc('POS Profile', pos_profile.get('name'))
+<<<<<<< HEAD
 		pos_profile.validate()
+=======
+	else:
+		frappe.msgprint('<a href="#List/POS Profile">'
+			+ _("Welcome to POS: Create your POS Profile") + '</a>');
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 
 	company_data = get_company_data(doc.company)
 	update_pos_profile_data(doc, pos_profile, company_data)
 	update_multi_mode_option(doc, pos_profile)
 	default_print_format = pos_profile.get('print_format') or "Point of Sale"
 	print_template = frappe.db.get_value('Print Format', default_print_format, 'html')
+<<<<<<< HEAD
 	customers = get_customers_list(pos_profile)
+=======
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 
 	return {
 		'doc': doc,
 		'default_customer': pos_profile.get('customer'),
+<<<<<<< HEAD
 		'items': get_items_list(pos_profile),
 		'item_groups': get_item_groups(pos_profile),
 		'customers': customers,
@@ -61,13 +74,29 @@ def get_meta():
 
 	return doctype_meta
 
+=======
+		'items': get_items(doc, pos_profile),
+		'customers': get_customers(pos_profile, doc, company_data.default_currency),
+		'pricing_rules': get_pricing_rules(doc),
+		'print_template': print_template,
+		'meta': {
+			'invoice': frappe.get_meta('Sales Invoice'),
+			'items': frappe.get_meta('Sales Invoice Item'),
+			'taxes': frappe.get_meta('Sales Taxes and Charges')
+		}
+	}
+
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 def get_company_data(company):
 	return frappe.get_all('Company', fields = ["*"], filters= {'name': company})[0]
 
 def update_pos_profile_data(doc, pos_profile, company_data):
 	doc.campaign = pos_profile.get('campaign')
+<<<<<<< HEAD
 	if pos_profile and not pos_profile.get('country'):
 		pos_profile.country = company_data.country
+=======
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 
 	doc.write_off_account = pos_profile.get('write_off_account') or \
 		company_data.write_off_account
@@ -79,10 +108,15 @@ def update_pos_profile_data(doc, pos_profile, company_data):
 
 	doc.currency = pos_profile.get('currency') or company_data.default_currency
 	doc.conversion_rate = 1.0
+<<<<<<< HEAD
 
 	if doc.currency != company_data.default_currency:
 		doc.conversion_rate = get_exchange_rate(doc.currency, company_data.default_currency, doc.posting_date)
 
+=======
+	if doc.currency != company_data.default_currency:
+		doc.conversion_rate = get_exchange_rate(doc.currency, company_data.default_currency)
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 	doc.selling_price_list = pos_profile.get('selling_price_list') or \
 		frappe.db.get_value('Selling Settings', None, 'selling_price_list')
 	doc.naming_series = pos_profile.get('naming_series') or 'SINV-'
@@ -91,7 +125,10 @@ def update_pos_profile_data(doc, pos_profile, company_data):
 	doc.apply_discount_on = pos_profile.get('apply_discount_on') if pos_profile.get('apply_discount') else ''
 	doc.customer_group = pos_profile.get('customer_group') or get_root('Customer Group')
 	doc.territory = pos_profile.get('territory') or get_root('Territory')
+<<<<<<< HEAD
 	doc.terms = frappe.db.get_value('Terms and Conditions', pos_profile.get('tc_name'), 'terms') or doc.terms or ''
+=======
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 
 def get_root(table):
 	root = frappe.db.sql(""" select name from `tab%(table)s` having
@@ -129,6 +166,7 @@ def update_tax_table(doc):
 	for tax in taxes:
 		doc.append('taxes', tax)
 
+<<<<<<< HEAD
 def get_items_list(pos_profile):
 	cond = "1=1"
 	item_groups = []
@@ -214,10 +252,44 @@ def get_serial_no_data(pos_profile, company):
 	# example {'Nokia Lumia 1020': {'SN0001': 'Pune'}}
 	# where Nokia Lumia 1020 is item code, SN0001 is serial no and Pune is warehouse
 
+=======
+def get_items(doc, pos_profile):
+	item_list = []
+	for item in frappe.get_all("Item", fields=["*"], filters={'disabled': 0, 'has_variants': 0, 'is_sales_item': 1}):
+		item_doc = frappe.get_doc('Item', item.name)
+		if item_doc.taxes:
+			item.taxes = json.dumps(dict(([d.tax_type, d.tax_rate] for d in
+						item_doc.get("taxes"))))
+
+		item.price_list_rate = frappe.db.get_value('Item Price', {'item_code': item.name,
+									'price_list': doc.selling_price_list}, 'price_list_rate') or 0
+		item.default_warehouse = pos_profile.get('warehouse') or \
+			get_item_warehouse_for_company(doc.company, item.default_warehouse) or None
+		item.expense_account = pos_profile.get('expense_account') or item.expense_account
+		item.income_account = pos_profile.get('income_account') or item_doc.income_account
+		item.cost_center = pos_profile.get('cost_center') or item_doc.selling_cost_center
+		item.actual_qty = frappe.db.get_value('Bin', {'item_code': item.name,
+								'warehouse': item.default_warehouse}, 'actual_qty') or 0
+		item.serial_nos = get_serial_nos(item, pos_profile, doc.company)
+		item.batch_nos = frappe.db.sql_list("""select name from `tabBatch` where ifnull(expiry_date, '4000-10-10') > curdate()
+			and item = %(item_code)s""", {'item_code': item.item_code})
+
+		item_list.append(item)
+
+	return item_list
+
+def get_item_warehouse_for_company(company, warehouse):
+	if frappe.db.get_value('Warehouse', warehouse, 'company') != company:
+		warehouse = None
+	return warehouse
+
+def get_serial_nos(item, pos_profile, company):
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 	cond = "1=1"
 	if pos_profile.get('update_stock') and pos_profile.get('warehouse'):
 		cond = "warehouse = '{0}'".format(pos_profile.get('warehouse'))
 
+<<<<<<< HEAD
 	serial_nos = frappe.db.sql("""select name, warehouse, item_code from `tabSerial No` where {0}
 				and company = %(company)s """.format(cond), {'company': company}, as_dict=1)
 
@@ -287,6 +359,30 @@ def get_bin_data(pos_profile):
 	return itemwise_bin_data
 
 def get_pricing_rule_data(doc):
+=======
+	serial_nos = frappe.db.sql("""select name, warehouse from `tabSerial No` where {0}
+				and item_code = %(item_code)s and company = %(company)s
+				""".format(cond), {'item_code': item.item_code, 'company': company}, as_dict=1)
+
+	serial_no_list = {}
+	for serial_no in serial_nos:
+		serial_no_list[serial_no.name] = serial_no.warehouse
+
+	return serial_no_list
+
+def get_customers(pos_profile, doc, company_currency):
+	filters = {'disabled': 0}
+	customer_list = []
+	customers = frappe.get_all("Customer", fields=["*"], filters = filters)
+
+	for customer in customers:
+		customer_currency = get_party_account_currency('Customer', customer.name, doc.company) or doc.currency
+		if customer_currency == doc.currency or customer_currency == company_currency:
+			customer_list.append(customer)
+	return customer_list
+
+def get_pricing_rules(doc):
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 	pricing_rules = ""
 	if doc.ignore_pricing_rule == 0:
 		pricing_rules = frappe.db.sql(""" Select * from `tabPricing Rule` where docstatus < 2
@@ -298,6 +394,7 @@ def get_pricing_rule_data(doc):
 	return pricing_rules
 
 @frappe.whitelist()
+<<<<<<< HEAD
 def make_invoice(doc_list={}, email_queue_list={}, customers_list={}):
 	if isinstance(doc_list, basestring):
 		doc_list = json.loads(doc_list)
@@ -313,10 +410,23 @@ def make_invoice(doc_list={}, email_queue_list={}, customers_list={}):
 	for docs in doc_list:
 		for name, doc in docs.items():
 			if not frappe.db.exists('Sales Invoice', {'offline_pos_name': name}):
+=======
+def make_invoice(doc_list):
+	if isinstance(doc_list, basestring):
+		doc_list = json.loads(doc_list)
+
+	name_list = []
+
+	for docs in doc_list:
+		for name, doc in docs.items():
+			if not frappe.db.exists('Sales Invoice',
+				{'offline_pos_name': name, 'docstatus': ("<", "2")}):
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 				validate_records(doc)
 				si_doc = frappe.new_doc('Sales Invoice')
 				si_doc.offline_pos_name = name
 				si_doc.update(doc)
+<<<<<<< HEAD
 				si_doc.set_posting_time = 1
 				si_doc.customer = get_customer_id(doc)
 				si_doc.due_date = doc.get('posting_date')
@@ -458,6 +568,29 @@ def make_email_queue(email_queue):
 		name_list.append(key)
 
 	return name_list
+=======
+				submit_invoice(si_doc, name)
+				name_list.append(name)
+			else:
+				name_list.append(name)
+
+	return name_list
+
+def validate_records(doc):
+	validate_customer(doc)
+	validate_item(doc)
+
+def validate_customer(doc):
+	if not frappe.db.exists('Customer', doc.get('customer')):
+		customer_doc = frappe.new_doc('Customer')
+		customer_doc.customer_name = doc.get('customer')
+		customer_doc.customer_type = 'Company'
+		customer_doc.customer_group = doc.get('customer_group')
+		customer_doc.territory = doc.get('territory')
+		customer_doc.save(ignore_permissions = True)
+		frappe.db.commit()
+		doc['customer'] = customer_doc.name
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 
 def validate_item(doc):
 	for item in doc.get('items'):
@@ -473,6 +606,7 @@ def validate_item(doc):
 			item_doc.save(ignore_permissions=True)
 			frappe.db.commit()
 
+<<<<<<< HEAD
 
 def submit_invoice(si_doc, name, doc, name_list):
 	try:
@@ -500,3 +634,26 @@ def save_invoice(e, si_doc, name, name_list):
 		frappe.log_error(frappe.get_traceback())
 
 	return name_list
+=======
+def submit_invoice(si_doc, name):
+	try:
+		si_doc.insert()
+		si_doc.submit()
+	except Exception, e:
+		if frappe.message_log: frappe.message_log.pop()
+		frappe.db.rollback()
+		save_invoice(e, si_doc, name)
+
+def save_invoice(e, si_doc, name):
+	if not frappe.db.exists('Sales Invoice', {'offline_pos_name': name}):
+		si_doc.docstatus = 0
+		si_doc.flags.ignore_mandatory = True
+		si_doc.insert()
+		make_scheduler_log(e, si_doc.name)
+
+def make_scheduler_log(e, sales_invoice):
+	scheduler_log = frappe.new_doc('Scheduler Log')
+	scheduler_log.method = "erpnext.accounts.doctype.sales_invoice.pos.make_invoice"
+	scheduler_log.error = e
+	scheduler_log.save(ignore_permissions=True)
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347

@@ -1,5 +1,8 @@
+<<<<<<< HEAD
 # Supplier Quotation
 
+=======
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 A Supplier Quotation is a formal statement of promise by potential supplier to
 supply the goods or services required by a buyer, at specified prices, and
 within a specified period. A quotation may also contain terms of sale and
@@ -10,7 +13,11 @@ You can make a supplier quotation from a Material Request
 
 #### Supplier Quotation Flow-Chart
 
+<<<<<<< HEAD
 ![Supplier Quotation](/docs/assets/img/buying/buying_flow.png)
+=======
+![Supplier Quotation]({{docs_base_url}}/assets/old_images/erpnext/supplier-quotation-f.jpg)
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 
 You can also make a Supplier Quotation directly from:
 
@@ -18,20 +25,29 @@ You can also make a Supplier Quotation directly from:
 
 #### Create Supplier Quotation
 
+<<<<<<< HEAD
 <img class="screenshot" alt="Supplier Quotation" src="/docs/assets/img/buying/supplier-quotation.png">
+=======
+<img class="screenshot" alt="Supplier Quotation" src="{{docs_base_url}}/assets/img/buying/supplier-quotation.png">
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 
 If you have multiple Suppliers who supply you with the same Item, you
 usually send out a message (Request for Quote) to various Suppliers. In
 many cases, especially if you have centralized buying, you may want to record
 all the quotes so that
 
+<<<<<<< HEAD
   * You can easily compare prices in the future
+=======
+  * You can easily compare prices in the future 
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
   * Audit whether all Suppliers were given the opportunity to quote.
 
 Supplier Quotations are not necessary for most small businesses. Always
 evaluate the cost of collecting information to the value it really provides!
 You could only do this for high value items.
 
+<<<<<<< HEAD
 #### Taxes
 If your Supplier is going to charge you additional taxes or charge like a shipping or insurance charge, you can add it here. It will help you to accurately track your costs. Also, if some of these charges add to the value of the product you will have to mention them in the Taxes table. You can also use templates for your taxes. For more information on setting up your taxes see the Purchase Taxes and Charges Template.
 
@@ -43,4 +59,6 @@ Besides, in case of multiple items you can keep track of taxes on each by clicki
 
 <img class="screenshot" alt="Supplier Quotation" src="/docs/assets/img/buying/show_tax_breakup.png">
 
+=======
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 {next}

@@ -13,7 +13,11 @@ Um einen Vertriebspartner anzulegen, gehen Sie zu:
 
 Vertriebspartner werden mit einem vom Benutzer vergebenen Namen abgespeichert.
 
+<<<<<<< HEAD
 <img class="screenshot" alt="Vertriebspartner" src="/docs/assets/img/selling/sales-partner.png">
+=======
+<img class="screenshot" alt="Vertriebspartner" src="{{docs_base_url}}/assets/img/selling/sales-partner.png">
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 
 Sie können die Adressen und Kontaktdaten von Vertriebsmitarbeitern erfassen und sie basierend auf Menge und Betrag jeder Artikelgruppe zuweisen.
 
@@ -21,13 +25,25 @@ Sie können die Adressen und Kontaktdaten von Vertriebsmitarbeitern erfassen und
 
 Um die Namen Ihrer Partner auf Ihrer Webseite anzuzeigen, aktivieren Sie "Auf der Webseite anzeigen". Wenn Sie diese Option anklicken, erscheint ein Feld, über das Sie das Logo Ihres Partners und eine kurze Beschreibung eingeben können.
 
+<<<<<<< HEAD
 <img class="screenshot" alt="Vertriebspartner" src="/docs/assets/img/selling/sales-partner-website.png">
+=======
+<img class="screenshot" alt="Vertriebspartner" src="{{docs_base_url}}/assets/img/selling/sales-partner-website.png">
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 
 Um eine Übersicht Ihrer Partner zu erhalten, gehen Sie zu:
 
 https://example.erpnext.com/Partners
 
+<<<<<<< HEAD
 <img class="screenshot" alt="Auflistung der Vertriebspartner" src="/docs/assets/img/crm/sales-partner-listing.png">
 
+=======
+![Auflistung der Vertriebspartner]({{docs_base_url}}/assets/old_images/erpnext/sales-partner-listing.png)
+
+Im Folgenden sehen Sie, wie die vollständigen Daten Ihres Partners auf der Webseite angezeigt werden.
+
+![Veröffentlichte Vertriebspartner]({{docs_base_url}}/assets/old_images/erpnext/sales-partner-published.png)
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 
 {next}

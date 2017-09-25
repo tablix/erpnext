@@ -1,5 +1,8 @@
+<<<<<<< HEAD
 # Item Valuation Fifo And Moving Average
 
+=======
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 ### How are Items Valued?
 
 One of the major features of any inventory system is that you can find out the
@@ -21,8 +24,17 @@ There are two major ways in which ERPNext values your items.
 
   * **FIFO (First In First Out):** In this system, ERPNext assumes that you will consume / sell those Items first which you bought first. For example, if you buy an Item at price X and then after a few days at price Y, whenever you sell your Item, ERPNext will reduce the quantity of the Item priced at X first and then Y.
 
+<<<<<<< HEAD
 <img alt="FIFO" class="screenshot" src="/docs/assets/img/stock/fifo.png">
+=======
+![FIFO]({{docs_base_url}}/assets/old_images/erpnext/fifo.png)
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 
   * **Moving Average:** In this method, ERPNext assumes that the value of the item at any point is the average price of the units of that Item in stock. For example, if the value of an Item is X in a Warehouse with quantity Y and another quantity Y1 is added to the Warehouse at cost X1, the new value X2 would be:
 
 > New Value X2 = (X * Y + X1 * Y1) / (Y + Y1)
+<<<<<<< HEAD
+=======
+
+{next}
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347

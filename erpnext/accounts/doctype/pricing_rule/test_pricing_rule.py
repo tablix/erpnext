@@ -5,10 +5,13 @@
 from __future__ import unicode_literals
 import unittest
 import frappe
+<<<<<<< HEAD
 from erpnext.selling.doctype.sales_order.test_sales_order import make_sales_order
 from erpnext.accounts.doctype.sales_invoice.test_sales_invoice import create_sales_invoice
 from erpnext.stock.get_item_details import get_item_details
 from frappe import MandatoryError
+=======
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 
 class TestPricingRule(unittest.TestCase):
 	def test_pricing_rule_for_discount(self):
@@ -207,6 +210,7 @@ class TestPricingRule(unittest.TestCase):
 
 		details = get_item_details(args)
 		self.assertEquals(details.get("discount_percentage"), 17.5)
+<<<<<<< HEAD
 
 	def test_pricing_rule_for_stock_qty(self):
 		frappe.db.sql("delete from `tabPricing Rule`")
@@ -297,3 +301,5 @@ def make_pricing_rule(**args):
 	applicable_for = doc.applicable_for.replace(' ', '_').lower()
 	if args.get(applicable_for):
 		doc.db_set(applicable_for, args.get(applicable_for))
+=======
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347

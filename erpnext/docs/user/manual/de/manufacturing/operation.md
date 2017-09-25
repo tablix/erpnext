@@ -9,6 +9,10 @@ Sie können einen Arbeitsgang anlegen über:
 
 > Fertigung > Dokumente > Arbeitsgang > Neu
 
+<<<<<<< HEAD
 <img class="screenshot" alt="Arbeitsgang" src="/docs/assets/img/manufacturing/operation.png">
+=======
+<img class="screenshot" alt="Arbeitsgang" src="{{docs_base_url}}/assets/img/manufacturing/operation.png">
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 
 {next}

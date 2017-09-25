@@ -3,6 +3,7 @@ from __future__ import unicode_literals
 import frappe
 
 @frappe.whitelist()
+<<<<<<< HEAD
 def get_data(item_code=None, warehouse=None, item_group=None,
 	start=0, sort_by='actual_qty', sort_order='desc'):
 	'''Return data to render the item dashboard'''
@@ -40,3 +41,14 @@ def get_data(item_code=None, warehouse=None, item_group=None,
 		{start}, 21
 	'''.format(conditions=conditions, sort_by=sort_by, sort_order=sort_order,
 		start=start), values, as_dict=True)
+=======
+def get_data(item_code=None, warehouse=None, start=0, sort_by='actual_qty', sort_order='desc'):
+	filters = {}
+	if item_code:
+		filters['item_code'] = item_code
+	if warehouse:
+		filters['warehouse'] = warehouse
+	return frappe.get_list("Bin", filters=filters, fields=['item_code', 'warehouse',
+		'projected_qty', 'reserved_qty', 'reserved_qty_for_production', 'actual_qty', 'valuation_rate'],
+		order_by='{0} {1}'.format(sort_by, sort_order), start=start, page_length = 21)
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347

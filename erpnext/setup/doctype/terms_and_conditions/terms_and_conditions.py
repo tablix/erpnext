@@ -3,6 +3,7 @@
 
 from __future__ import unicode_literals
 import frappe
+<<<<<<< HEAD
 import json
 from frappe.model.document import Document
 from frappe.utils.jinja import validate_template
@@ -21,3 +22,10 @@ def get_terms_and_conditions(template_name, doc):
 	
 	if terms_and_conditions.terms:
 		return frappe.render_template(terms_and_conditions.terms, doc)
+=======
+
+from frappe.model.document import Document
+
+class TermsandConditions(Document):
+	pass
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347

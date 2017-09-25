@@ -129,7 +129,11 @@ def get_entries(filters):
 			reference_no, reference_date as ref_date, 
 			if(paid_to=%(account)s, received_amount, 0) as debit, 
 			if(paid_from=%(account)s, paid_amount, 0) as credit, 
+<<<<<<< HEAD
 			posting_date, ifnull(party,if(paid_from=%(account)s,paid_to,paid_from)) as against_account, clearance_date,
+=======
+			posting_date, party as against_account, clearance_date,
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 			if(paid_to=%(account)s, paid_to_account_currency, paid_from_account_currency) as account_currency
 		from `tabPayment Entry`
 		where

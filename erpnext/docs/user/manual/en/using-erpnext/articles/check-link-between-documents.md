@@ -2,7 +2,11 @@
 
 Links option shows one document is linked to which other documents. Check Menu for the Links options.
 
+<<<<<<< HEAD
 <img alt="Cancel Doc" class="screenshot" src="/docs/assets/img/articles/links-1.gif">
+=======
+<img alt="Cancel Doc" class="screenshot" src="{{docs_base_url}}/assets/img/articles/links-1.gif">
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 
 ####Scenario
 
@@ -18,6 +22,10 @@ If I check Links in the Purchase Receipt, will it list Purchase Order from which
 
 Links only shows forward linkages. For the backward links, you should check current document itself. In the Purchase Receipt Item table table, you can check which Purchase Order it is linked to.
 
+<<<<<<< HEAD
 <img alt="Cancel Doc" class="screenshot" src="/docs/assets/img/articles/links-2.gif">
+=======
+<img alt="Cancel Doc" class="screenshot" src="{{docs_base_url}}/assets/img/articles/links-2.gif">
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 
 <!-- markdown -->

@@ -8,7 +8,11 @@ Material Issue entry create to issue item(s) from a warehouse. On submission of 
 
 Material Issue is generally made for the low value consumable items like office stationary, product consumables etc. Also you can create Material Issue to reconcile serialized and batched item's stock.
 
+<<<<<<< HEAD
 <img alt="Material Issue" class="screenshot" src="/docs/assets/img/articles/stock-entry-issue.png">
+=======
+<img alt="Material Issue" class="screenshot" src="{{docs_base_url}}/assets/img/articles/stock-entry-issue.png">
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 
 #### 2.Purpose: Material Receipt
 
@@ -16,24 +20,37 @@ Material Receipt entry is created to inward stock of item(s) in a warehouse. Thi
 
 For the stock valuation purpose, provided Item Valuation becomes a mandatory field in the Material Receipt entry.
 
+<<<<<<< HEAD
 <img alt="Material Receipt" class="screenshot" src="/docs/assets/img/articles/stock-entry-receipt.png">
+=======
+<img alt="Material Receipt" class="screenshot" src="{{docs_base_url}}/assets/img/articles/stock-entry-receipt.png">
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 
 #### 3.Purpose: Material Transfer
 
 Material Transfer entry is created for the inter-warehouse Material Transfer.
 
+<<<<<<< HEAD
 <img alt="Material Transfer" class="screenshot" src="/docs/assets/img/articles/stock-entry-transfer.png">
+=======
+<img alt="Material Transfer" class="screenshot" src="{{docs_base_url}}/assets/img/articles/stock-entry-transfer.png">
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
  
 #### 4.Purpose: Material Transfer for Manufacture 
 
 In the manufacturing process, raw-materials are issued from the stores to the production department (generally WIP warehouse). This Material Transfer entry is created from Production Order. Items in this entry are fetched from the BOM of production Item, as selected in Production Order.
 
+<<<<<<< HEAD
 <img alt="Transfer for Manufacture" class="screenshot" src="/docs/assets/img/articles/stock-entry-manufacture-transfer.gif">
+=======
+<img alt="Transfer for Manufacture" class="screenshot" src="{{docs_base_url}}/assets/img/articles/stock-entry-manufacture-transfer.gif">
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 
 #### 4.Purpose: Manufacture
 
 Manufacture is created from Production Order. In this entry, both raw-material item as well as production item are fetched from the BOM, selected in the Production Order. For the raw-material items, only Source Warehouse (generally WIP warehouse) is mentioned. For the production item, only target warehouse as mentioned in the Production Order is updated. On submission, stock of raw-material items are deducted from Source Warehouse, which indicates that raw-material items were consumed in the manufacturing process. Production Item is added to the Target Warehouse marking the completion of production cycle.
 
+<<<<<<< HEAD
 <img alt="Manufacture" class="screenshot" src="/docs/assets/img/articles/stock-entry-manufacture.gif">
 
 #### 5.Purpose: Repack
@@ -45,5 +62,18 @@ Repack Entry is created when items purchases in bulk is repacked under smaller p
 Subcontracting transaction involves company transfer raw-material items to the sub-contractors warehouse. This requires adding a warehouse for the sub-contractor as well. Sub-contract entry transfers stock from the companies warehouse to the sub-contractors warehouse.![Check this page to know more about Subcontracting](/docs/user/manual/en/manufacturing/subcontracting.html).
 
 <img alt="Subcontract" class="screenshot" src="/docs/assets/img/articles/stock-entry-subcontract.gif">
+=======
+<img alt="Manufacture" class="screenshot" src="{{docs_base_url}}/assets/img/articles/stock-entry-manufacture.gif">
+
+#### 5.Purpose: Repack
+
+Repack Entry is created when items purchases in bulk is repacked under smaller packs. ![Check this page to know more about Repack entry.]({{docs_base_url}}/user/manual/en/stock/articles/repack-entry.html)
+
+#### 6.Purpose: Subcontract
+
+Subcontracting transaction involves company transfer raw-material items to the sub-contractors warehouse. This requires adding a warehouse for the sub-contractor as well. Sub-contract entry transfers stock from the companies warehouse to the sub-contractors warehouse.![Check this page to know more about Subcontracting]({{docs_base_url}}/user/manual/en/manufacturing/subcontracting.html).
+
+<img alt="Subcontract" class="screenshot" src="{{docs_base_url}}/assets/img/articles/stock-entry-subcontract.gif">
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 
 <!-- markdown -->

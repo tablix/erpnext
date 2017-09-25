@@ -26,8 +26,13 @@
  },
  {
   "email": "aromn@example.com",
+<<<<<<< HEAD
   "first_name": "Arom",
   "last_name": "Nolan"
+=======
+  "first_name": "\u0414\u043c\u0438\u0442\u0440\u0438\u0439",
+  "last_name": "\u041f\u0438\u0440\u043e\u0433\u043e\u0432"
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
  },
  {
   "email": "TildeLindqvist@example.com",

@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 // Copyright (c) 2017, Frappe Technologies Pvt. Ltd. and contributors
 // For license information, please see license.txt
 
@@ -48,6 +49,11 @@ frappe.ui.form.on('Fee Structure', {
 frappe.ui.form.on("Fee Component", {
 	amount: function(frm) {
 		var total_amount = 0;
+=======
+frappe.ui.form.on("Fee Component", {
+	amount: function(frm) {
+		total_amount = 0;
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 		for(var i=0;i<frm.doc.components.length;i++) {
 			total_amount += frm.doc.components[i].amount;
 		}

@@ -3,8 +3,11 @@
 
 from __future__ import unicode_literals
 import frappe
+<<<<<<< HEAD
 from erpnext.stock import get_warehouse_account, get_company_default_inventory_account
 
+=======
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 
 def _make_test_records(verbose):
 	from frappe.test_runner import make_test_objects
@@ -65,6 +68,7 @@ def _make_test_records(verbose):
 			} for account_name, parent_account, is_group, account_type, currency in accounts])
 
 	return test_objects
+<<<<<<< HEAD
 
 def get_inventory_account(company, warehouse=None):
 	account = None
@@ -86,3 +90,5 @@ def create_account(**kwargs):
 	
 	account.save()
 	return account.name
+=======
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347

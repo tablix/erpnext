@@ -3,7 +3,11 @@
  "creation": "2014-08-08 02:45:55.931022", 
  "docstatus": 0, 
  "doctype": "Page", 
+<<<<<<< HEAD
  "icon": "fa fa-th", 
+=======
+ "icon": "icon-th", 
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
  "modified": "2014-08-08 05:59:33.045012", 
  "modified_by": "Administrator", 
  "module": "Accounts", 

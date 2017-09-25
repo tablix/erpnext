@@ -8,7 +8,11 @@ frappe.query_reports["Batch-Wise Balance History"] = {
 			"label": __("From Date"),
 			"fieldtype": "Date",
 			"width": "80",
+<<<<<<< HEAD
 			"default": frappe.sys_defaults.year_start_date,
+=======
+			"default": sys_defaults.year_start_date,
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 		},
 		{
 			"fieldname":"to_date",

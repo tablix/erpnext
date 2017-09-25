@@ -4,10 +4,13 @@
 frappe.provide("erpnext.support");
 
 frappe.ui.form.on("Warranty Claim", {
+<<<<<<< HEAD
 	setup: function(frm) {
 		frm.set_query('contact_person', erpnext.queries.contact_query);
 		frm.set_query('customer_address', erpnext.queries.address_query);
 	},
+=======
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 	customer: function(frm) {
 		erpnext.utils.get_party_details(frm);
 	},
@@ -21,8 +24,11 @@ frappe.ui.form.on("Warranty Claim", {
 
 erpnext.support.WarrantyClaim = frappe.ui.form.Controller.extend({
 	refresh: function() {
+<<<<<<< HEAD
 		frappe.dynamic_link = {doc: this.frm.doc, fieldname: 'customer', doctype: 'Customer'}
 
+=======
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 		if(!cur_frm.doc.__islocal &&
 			(cur_frm.doc.status=='Open' || cur_frm.doc.status == 'Work In Progress')) {
 			cur_frm.add_custom_button(__('Maintenance Visit'),
@@ -46,6 +52,21 @@ cur_frm.cscript.onload = function(doc,cdt,cdn){
 		set_multiple(cdt,cdn,{status:'Open'});
 }
 
+<<<<<<< HEAD
+=======
+cur_frm.fields_dict['customer_address'].get_query = function(doc, cdt, cdn) {
+	return{
+		filters:{ 'customer': doc.customer}
+	}
+}
+
+cur_frm.fields_dict['contact_person'].get_query = function(doc, cdt, cdn) {
+	return{
+		filters:{ 'customer': doc.customer}
+	}
+}
+
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 cur_frm.fields_dict['serial_no'].get_query = function(doc, cdt, cdn) {
 	var cond = [];
 	var filter = [

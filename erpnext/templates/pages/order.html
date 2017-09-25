@@ -7,6 +7,7 @@
 
 {% block title %}{{ doc.name }}{% endblock %}
 
+<<<<<<< HEAD
 {% block header %}
 	<h1>{{ doc.name }}</h1>
 {% endblock %}
@@ -14,17 +15,25 @@
 {% block header_actions %}
 <a class='btn btn-xs btn-default' href='/printview?doctype={{ doc.doctype}}&name={{ doc.name }}&format={{ print_format }}' target="_blank" rel="noopener noreferrer">{{ _("Print") }}</a>
 {% endblock %}
+=======
+{% block header %}<h1>{{ doc.name }}</h1>{% endblock %}
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 
 {% block page_content %}
 
 <div class="row transaction-subheading">
     <div class="col-xs-6">
+<<<<<<< HEAD
         <span class="indicator {{ doc.indicator_color or ("blue" if doc.docstatus==1 else "darkgrey") }}">
+=======
+        <span class="indicator {{ doc.indicator_color or "darkgrey" }}">
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
             {{ doc.indicator_title or doc.status or "Submitted" }}
         </span>
 	</div>
     <div class="col-xs-6 text-muted text-right small">
         {{ frappe.utils.formatdate(doc.transaction_date, 'medium') }}
+<<<<<<< HEAD
 		{% if doc.valid_till %}
 		<p>
         {{ _("Valid Till") }}: {{ frappe.utils.formatdate(doc.valid_till, 'medium') }}
@@ -45,6 +54,11 @@
 {% endif %}
 </p>
 
+=======
+    </div>
+</div>
+
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 {% if doc._header %}
 {{ doc._header }}
 {% endif %}
@@ -54,6 +68,7 @@
     <!-- items -->
     <div class="order-item-table">
         <div class="row order-items order-item-header text-muted">
+<<<<<<< HEAD
             <div class="col-sm-6 col-xs-6 h6 text-uppercase">
                 {{ _("Item") }}
             </div>
@@ -61,22 +76,42 @@
                 {{ _("Quantity") }}
             </div>
             <div class="col-sm-3 col-xs-3 text-right h6 text-uppercase">
+=======
+            <div class="col-sm-8 col-xs-6 h6 text-uppercase">
+                {{ _("Item") }}
+            </div>
+            <div class="col-sm-2 col-xs-3 text-right h6 text-uppercase">
+                {{ _("Quantity") }}
+            </div>
+            <div class="col-sm-2 col-xs-3 text-right h6 text-uppercase">
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
                 {{ _("Amount") }}
             </div>
         </div>
         {% for d in doc.items %}
         <div class="row order-items">
+<<<<<<< HEAD
             <div class="col-sm-6 col-xs-6">
                 {{ item_name_and_description(d) }}
             </div>
             <div class="col-sm-3 col-xs-3 text-right">
+=======
+            <div class="col-sm-8 col-xs-6">
+                {{ item_name_and_description(d) }}
+            </div>
+            <div class="col-sm-2 col-xs-3 text-right">
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
                 {{ d.qty }}
                 {% if d.delivered_qty is defined and d.delivered_qty != None %}
                 <p class="text-muted small">{{
                     _("Delivered: {0}").format(d.delivered_qty) }}</p>
                 {% endif %}
             </div>
+<<<<<<< HEAD
             <div class="col-sm-3 col-xs-3 text-right">
+=======
+            <div class="col-sm-2 col-xs-3 text-right">
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
                 {{ d.get_formatted("amount")	 }}
                 <p class="text-muted small">{{
                     _("@ {0}").format(d.get_formatted("rate")) }}</p>
@@ -95,20 +130,31 @@
 </div>
 
 <div class="cart-taxes row small">
+<<<<<<< HEAD
     <div class="col-sm-6"><!-- empty --></div>
     <div class="col-sm-6">
+=======
+    <div class="col-sm-8"><!-- empty --></div>
+    <div class="col-sm-4">
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 		{% if enabled_checkout %}
 	        {% if (doc.doctype=="Sales Order" and doc.per_billed <= 0)
 				or (doc.doctype=="Sales Invoice" and doc.outstanding_amount > 0) %}
 			<div class="page-header-actions-block" data-html-block="header-actions">
 				<p>
+<<<<<<< HEAD
 				    <a href="/api/method/erpnext.accounts.doctype.payment_request.payment_request.make_payment_request?dn={{ doc.name }}&dt={{ doc.doctype }}&submit_doc=1&order_type=Shopping Cart"
 				        class="btn btn-primary btn-sm">{{ _("Pay") }} {{ doc.get_formatted("grand_total") }} </a>
+=======
+				    <a href="/api/method/erpnext.accounts.doctype.payment_request.payment_request.make_payment_request?dn={{ doc.name }}&dt={{ doc.doctype }}&submit_doc=1"
+				        class="btn btn-primary btn-sm">Pay {{ doc.get_formatted("grand_total") }} </a>
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 				</p>
 			</div>
 			{% endif %}
 		{% endif %}
 	</div>
+<<<<<<< HEAD
 
 {% if attachments %}
 <div class="order-item-table">
@@ -134,4 +180,8 @@
     <hr><p>{{ doc.terms }}</p>
 </div>
 {% endif %}
+=======
+</div>
+
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 {% endblock %}

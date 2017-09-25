@@ -1,3 +1,7 @@
 employees-loan-management
+<<<<<<< HEAD
 leave-calculation-in-salary-slip
 working-days-in-salary-slip
+=======
+leave-calculation-in-salary-slip
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347

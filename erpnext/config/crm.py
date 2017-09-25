@@ -4,7 +4,11 @@ def get_data():
 	return [
 		{
 			"label": _("Sales Pipeline"),
+<<<<<<< HEAD
 			"icon": "fa fa-star",
+=======
+			"icon": "icon-star",
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 			"items": [
 				{
 					"type": "doctype",
@@ -30,6 +34,7 @@ def get_data():
 		},
 		{
 			"label": _("Reports"),
+<<<<<<< HEAD
 			"icon": "fa fa-list",
 			"items": [
 				{
@@ -49,6 +54,15 @@ def get_data():
 					"name": "Prospects Engaged But Not Converted",
 					"doctype": "Lead",
 					"is_query_report": True
+=======
+			"icon": "icon-list",
+			"items": [
+				{
+					"type": "page",
+					"name": "sales-funnel",
+					"label": _("Sales Funnel"),
+					"icon": "icon-bar-chart",
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 				},
 				{
 					"type": "report",
@@ -59,18 +73,29 @@ def get_data():
 				{
 					"type": "report",
 					"is_query_report": True,
+<<<<<<< HEAD
 					"name": "Customer Addresses And Contacts",
 					"doctype": "Contact"
+=======
+					"name": "Lead Details",
+					"doctype": "Lead"
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 				},
 				{
 					"type": "report",
 					"is_query_report": True,
+<<<<<<< HEAD
 					"name": "Inactive Customers",
 					"doctype": "Sales Order"
+=======
+					"name": "Customer Addresses and Contacts",
+					"doctype": "Contact"
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 				},
 				{
 					"type": "report",
 					"is_query_report": True,
+<<<<<<< HEAD
 					"name": "Campaign Efficiency",
 					"doctype": "Lead"
 				},
@@ -80,11 +105,20 @@ def get_data():
 					"name": "Lead Owner Efficiency",
 					"doctype": "Lead"
 				}
+=======
+					"name": "Inactive Customers",
+					"doctype": "Sales Order"
+				},
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 			]
 		},
 		{
 			"label": _("Communication"),
+<<<<<<< HEAD
 			"icon": "fa fa-star",
+=======
+			"icon": "icon-star",
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 			"items": [
 				{
 					"type": "doctype",
@@ -95,7 +129,11 @@ def get_data():
 		},
 		{
 			"label": _("Setup"),
+<<<<<<< HEAD
 			"icon": "fa fa-cog",
+=======
+			"icon": "icon-cog",
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 			"items": [
 				{
 					"type": "doctype",
@@ -106,7 +144,11 @@ def get_data():
 					"type": "doctype",
 					"label": _("Customer Group"),
 					"name": "Customer Group",
+<<<<<<< HEAD
 					"icon": "fa fa-sitemap",
+=======
+					"icon": "icon-sitemap",
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 					"link": "Tree/Customer Group",
 					"description": _("Manage Customer Group Tree."),
 				},
@@ -114,7 +156,11 @@ def get_data():
 					"type": "doctype",
 					"label": _("Territory"),
 					"name": "Territory",
+<<<<<<< HEAD
 					"icon": "fa fa-sitemap",
+=======
+					"icon": "icon-sitemap",
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 					"link": "Tree/Territory",
 					"description": _("Manage Territory Tree."),
 				},
@@ -122,7 +168,11 @@ def get_data():
 					"type": "doctype",
 					"label": _("Sales Person"),
 					"name": "Sales Person",
+<<<<<<< HEAD
 					"icon": "fa fa-sitemap",
+=======
+					"icon": "icon-sitemap",
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 					"link": "Tree/Sales Person",
 					"description": _("Manage Sales Person Tree."),
 				},
@@ -130,7 +180,11 @@ def get_data():
 		},
 		{
 			"label": _("SMS"),
+<<<<<<< HEAD
 			"icon": "fa fa-wrench",
+=======
+			"icon": "icon-wrench",
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 			"items": [
 				{
 					"type": "doctype",

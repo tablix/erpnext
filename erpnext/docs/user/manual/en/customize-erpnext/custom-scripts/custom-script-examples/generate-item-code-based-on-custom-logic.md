@@ -1,5 +1,8 @@
+<<<<<<< HEAD
 # Generate Item Code Based On Custom Logic
 
+=======
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 Add this in the Custom Script of **Item**, so that the new Item Code is
 generated just before the a new Item is saved.
 

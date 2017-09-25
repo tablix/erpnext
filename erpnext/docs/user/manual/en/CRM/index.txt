@@ -3,5 +3,8 @@ customer
 opportunity
 contact
 newsletter
+<<<<<<< HEAD
 crm_reports
+=======
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 setup

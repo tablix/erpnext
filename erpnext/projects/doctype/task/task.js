@@ -6,6 +6,7 @@ frappe.provide("erpnext.projects");
 cur_frm.add_fetch("project", "company", "company");
 
 frappe.ui.form.on("Task", {
+<<<<<<< HEAD
 	onload: function(frm) {
 		frm.set_query("task", "depends_on", function() {
 			var filters = {
@@ -26,6 +27,35 @@ frappe.ui.form.on("Task", {
 			}
 		}
 
+=======
+	refresh: function(frm) {
+		var doc = frm.doc;
+		//new addition
+		frm.set_df_property("exp_start_date", "read_only", frm.doc.__islocal ? 0 : 1);
+		frm.set_df_property("exp_end_date", "read_only", frm.doc.__islocal ? 0 : 1);
+		if(doc.__islocal) {
+			if(!frm.doc.exp_end_date) {
+				frm.set_value("exp_start_date", frappe.datetime.add_days(new Date(), 0));
+				frm.set_value("exp_end_date", frappe.datetime.add_days(new Date(), 7));
+			}
+		}
+		
+		//frm.toggle_display("project", frappe.user.has_role("Projects Users, Projects Manager"));
+		
+		if(inList(user_roles, "Projects User") || inList(user_roles, "Projects Manager"))
+		{
+			console.log("++")
+			frm.toggle_display("project", true);
+		}
+		else
+		{
+			console.log("--")
+			frm.toggle_display("project", false);
+		}
+		
+		//new addition
+		
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 		if(!doc.__islocal) {
 			if(frappe.model.can_read("Timesheet")) {
 				frm.add_custom_button(__("Timesheet"), function() {
@@ -35,7 +65,11 @@ frappe.ui.form.on("Task", {
 			}
 			if(frappe.model.can_read("Expense Claim")) {
 				frm.add_custom_button(__("Expense Claims"), function() {
+<<<<<<< HEAD
 					frappe.route_options = {"project": doc.project, "task": doc.name}
+=======
+					frappe.route_options = {"project": doc.project, "task": doc.name}	
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 					frappe.set_route("List", "Expense Claim");
 				}, __("View"), true);
 			}
@@ -45,6 +79,10 @@ frappe.ui.form.on("Task", {
 					frm.add_custom_button(__("Close"), function() {
 						frm.set_value("status", "Closed");
 						frm.save();
+<<<<<<< HEAD
+=======
+						frappe.call
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 					});
 				} else {
 					frm.add_custom_button(__("Reopen"), function() {
@@ -79,4 +117,7 @@ frappe.ui.form.on("Task", {
 });
 
 cur_frm.add_fetch('task', 'subject', 'subject');
+<<<<<<< HEAD
 cur_frm.add_fetch('task', 'project', 'project');
+=======
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347

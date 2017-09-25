@@ -7,6 +7,10 @@ Sie können Standardwerte für Ihre Dokumente über die globalen Voreinstellunge
 
 Immer dann, wenn ein neues Dokument erstellt wird, werden diese Werte als Standardeinstellungen verwendet.
 
+<<<<<<< HEAD
 <img class="screenshot" alt="Globale Voreinstellungen" src="/docs/assets/img/setup/settings/global-defaults.png">
+=======
+<img class="screenshot" alt="Globale Voreinstellungen" src="{{docs_base_url}}/assets/img/setup/settings/global-defaults.png">
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 
 {next}

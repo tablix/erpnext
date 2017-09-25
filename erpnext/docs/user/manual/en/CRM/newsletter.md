@@ -1,5 +1,8 @@
+<<<<<<< HEAD
 # Newsletter
 
+=======
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 A newsletter is a short written report that tells about the recent activities
 of an organization. It is generally sent to members of the organization,
 potential clients customers or potential leads.
@@ -11,11 +14,20 @@ very simple and easy.
 Select the list that you want to send the email to. Fill in your content in
 the message box, and send your newsletter.If you wish to test your email, to
 see how it looks to the recepient, you can use the test function. Save the
+<<<<<<< HEAD
 document before testing. A test email will be sent to your Email Address. You can
 send the email to all the intended receipients by clicking on the send button.
 
 <img class="screenshot" alt="Newsletter - New" src="/docs/assets/img/crm/newsletter-new.png">
 
 <img class="screenshot" alt="Newsletter - Test" src="/docs/assets/img/crm/newsletter-test.png">
+=======
+document before testing. A test email will be sent to your email id. You can
+send the email to all the intended receipients by clicking on the send button.
+
+<img class="screenshot" alt="Newsletter - New" src="{{docs_base_url}}/assets/img/crm/newsletter-new.png">
+
+<img class="screenshot" alt="Newsletter - Test" src="{{docs_base_url}}/assets/img/crm/newsletter-test.png">
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 
 {next}

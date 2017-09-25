@@ -7,10 +7,14 @@ import frappe
 
 from frappe.test_runner import make_test_records
 from erpnext.controllers.item_variant import (create_variant, ItemVariantExistsError,
+<<<<<<< HEAD
 	InvalidItemAttributeValueError, get_variant)
 
 from frappe.model.rename_doc import rename_doc
 from erpnext.stock.doctype.stock_entry.stock_entry_utils import make_stock_entry
+=======
+	InvalidItemAttributeValueError)
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 
 test_ignore = ["BOM"]
 test_dependencies = ["Warehouse"]
@@ -119,6 +123,7 @@ class TestItem(unittest.TestCase):
 		variant.item_code = "_Test Variant Item-L-duplicate"
 		self.assertRaises(ItemVariantExistsError, variant.save)
 
+<<<<<<< HEAD
 	def test_copy_fields_from_template_to_variants(self):
 		fields = [{'field_name': 'item_group'}, {'field_name': 'is_stock_item'}]
 		allow_fields = [d.get('field_name') for d in fields]
@@ -150,6 +155,8 @@ class TestItem(unittest.TestCase):
 		template.item_group = "_Test Item Group Desktops"
 		template.save()
 
+=======
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 	def test_make_item_variant_with_numeric_values(self):
 		# cleanup
 		for d in frappe.db.get_all('Item', filters={'variant_of':
@@ -193,18 +200,28 @@ class TestItem(unittest.TestCase):
 
 		variant = create_variant("_Test Numeric Template Item",
 			{"Test Size": "Large", "Test Item Length": 1.1})
+<<<<<<< HEAD
 		self.assertEquals(variant.item_code, "_Test Numeric Template Item-L-1.1")
+=======
+		self.assertEquals(variant.item_code, None)
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 		variant.item_code = "_Test Numeric Variant-L-1.1"
 		variant.item_name = "_Test Numeric Variant Large 1.1m"
 		self.assertRaises(InvalidItemAttributeValueError, variant.save)
 
+<<<<<<< HEAD
 		variant = create_variant("_Test Numeric Template Item",
 			{"Test Size": "Large", "Test Item Length": 1.5})
 		self.assertEquals(variant.item_code, "_Test Numeric Template Item-L-1.5")
+=======
+		variant = create_variant("_Test Numeric Template Item", {"Test Size": "Large", "Test Item Length": 1.5})
+		self.assertEquals(variant.item_code, None)
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 		variant.item_code = "_Test Numeric Variant-L-1.5"
 		variant.item_name = "_Test Numeric Variant Large 1.5m"
 		variant.save()
 
+<<<<<<< HEAD
 	def test_item_merging(self):
 		create_item("Test Item for Merging 1")
 		create_item("Test Item for Merging 2")
@@ -266,6 +283,8 @@ def set_item_variant_settings(fields):
 	doc.set('fields', fields)
 	doc.save()
 
+=======
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 def make_item_variant():
 	if not frappe.db.exists("Item", "_Test Variant Item-S"):
 		variant = create_variant("_Test Variant Item", """{"Test Size": "Small"}""")
@@ -273,6 +292,7 @@ def make_item_variant():
 		variant.item_name = "_Test Variant Item-S"
 		variant.save()
 
+<<<<<<< HEAD
 def get_total_projected_qty(item):
 	total_qty = frappe.db.sql(""" select sum(projected_qty) as projected_qty from tabBin
 		where item_code = %(item)s""", {'item': item}, as_dict=1)
@@ -290,3 +310,6 @@ def create_item(item_code, is_stock_item=None):
 		item.item_group = "All Item Groups"
 		item.is_stock_item = is_stock_item or 1
 		item.save()
+=======
+test_records = frappe.get_test_records('Item')
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347

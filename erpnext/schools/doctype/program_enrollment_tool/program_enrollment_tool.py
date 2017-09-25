@@ -11,16 +11,25 @@ from erpnext.schools.api import enroll_student
 class ProgramEnrollmentTool(Document):
 	def get_students(self):
 		if not self.get_students_from:
+<<<<<<< HEAD
 			frappe.throw(_("Mandatory field - Get Students From"))
 		elif not self.program:
 			frappe.throw(_("Mandatory field - Program"))
 		elif not self.academic_year:
 			frappe.throw(_("Mandatory field - Academic Year"))
+=======
+			frappe.throw(_("Mandatory feild - Get Students From"))
+		elif not self.program:
+			frappe.throw(_("Mandatory feild - Program"))
+		elif not self.academic_year:
+			frappe.throw(_("Mandatory feild - Academic Year"))
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 		else:
 			if self.get_students_from == "Student Applicants":
 				students = frappe.db.sql("select name as student_applicant, title as student_name from \
 					`tabStudent Applicant` where program = %s and academic_year = %s",(self.program, self.academic_year), as_dict=1)
 			else:
+<<<<<<< HEAD
 				students = frappe.db.sql("select student, student_name, student_batch_name from \
 					`tabProgram Enrollment` where program = %s and academic_year = %s",(self.program, self.academic_year), as_dict=1)
 				student_list = [d.student for d in students]
@@ -33,6 +42,10 @@ class ProgramEnrollmentTool(Document):
 					if student.student in [d.student for d in inactive_students]:
 						students.remove(student)
 
+=======
+				students = frappe.db.sql("select student, student_name from \
+					`tabProgram Enrollment` where program = %s and academic_year = %s",(self.program, self.academic_year), as_dict=1)
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 		if students:
 			return students
 		else:
@@ -44,7 +57,10 @@ class ProgramEnrollmentTool(Document):
 				prog_enrollment = frappe.new_doc("Program Enrollment")
 				prog_enrollment.student = stud.student
 				prog_enrollment.student_name = stud.student_name
+<<<<<<< HEAD
 				prog_enrollment.student_batch_name = stud.student_batch_name
+=======
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 				prog_enrollment.program = self.new_program
 				prog_enrollment.academic_year = self.new_academic_year
 				prog_enrollment.save()

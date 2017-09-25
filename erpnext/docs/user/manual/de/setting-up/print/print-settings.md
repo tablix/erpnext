@@ -7,6 +7,10 @@ Um die Druckeinstellungen zu bearbeiten, gehen Sie zu:
 
 > Einstellungen > Druck > Druckeinstellungen
 
+<<<<<<< HEAD
 <img class="screenshot" alt="Druckeinstellungen" src="/docs/assets/img/setup/print/print-settings.png">
+=======
+<img class="screenshot" alt="Druckeinstellungen" src="{{docs_base_url}}/assets/img/setup/print/print-settings.png">
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 
 {next}

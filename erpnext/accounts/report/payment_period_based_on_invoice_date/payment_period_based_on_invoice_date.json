@@ -2,18 +2,27 @@
  "add_total_row": 1, 
  "apply_user_permissions": 1, 
  "creation": "2013-12-02 17:06:37", 
+<<<<<<< HEAD
  "disabled": 0, 
  "docstatus": 0, 
  "doctype": "Report", 
  "idx": 3, 
  "is_standard": "Yes", 
  "modified": "2017-02-24 20:16:43.005325", 
+=======
+ "docstatus": 0, 
+ "doctype": "Report", 
+ "idx": 1, 
+ "is_standard": "Yes", 
+ "modified": "2014-06-03 07:18:17.207997", 
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
  "modified_by": "Administrator", 
  "module": "Accounts", 
  "name": "Payment Period Based On Invoice Date", 
  "owner": "Administrator", 
  "ref_doctype": "Journal Entry", 
  "report_name": "Payment Period Based On Invoice Date", 
+<<<<<<< HEAD
  "report_type": "Script Report", 
  "roles": [
   {
@@ -26,4 +35,7 @@
    "role": "Auditor"
   }
  ]
+=======
+ "report_type": "Script Report"
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 }

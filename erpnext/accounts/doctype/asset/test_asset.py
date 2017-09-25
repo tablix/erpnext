@@ -5,7 +5,11 @@ from __future__ import unicode_literals
 
 import frappe
 import unittest
+<<<<<<< HEAD
 from frappe.utils import cstr, nowdate, getdate, flt
+=======
+from frappe.utils import cstr, nowdate, getdate
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 from erpnext.accounts.doctype.asset.depreciation import post_depreciation_entries, scrap_asset, restore_asset
 from erpnext.accounts.doctype.asset.asset import make_sales_invoice, make_purchase_invoice
 
@@ -119,6 +123,7 @@ class TestAsset(unittest.TestCase):
 			for d in asset.get("schedules")]
 
 		self.assertEqual(schedules, expected_schedules)
+<<<<<<< HEAD
 		
 	def test_schedule_for_manual_method(self):
 		asset = frappe.get_doc("Asset", "Macbook Pro 1")
@@ -143,6 +148,8 @@ class TestAsset(unittest.TestCase):
 			for d in asset.get("schedules")]
 
 		self.assertEqual(schedules, expected_schedules)
+=======
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 
 	def test_depreciation(self):
 		asset = frappe.get_doc("Asset", "Macbook Pro 1")
@@ -150,16 +157,22 @@ class TestAsset(unittest.TestCase):
 		asset.load_from_db()
 		self.assertEqual(asset.status, "Submitted")
 
+<<<<<<< HEAD
 		frappe.db.set_value("Company", "_Test Company", "series_for_depreciation_entry", "DEPR-")
 
+=======
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 		post_depreciation_entries(date="2021-01-01")
 		asset.load_from_db()
 
 		self.assertEqual(asset.status, "Partially Depreciated")
 
+<<<<<<< HEAD
 		# check depreciation entry series
 		self.assertEqual(asset.get("schedules")[0].journal_entry[:4], "DEPR")
 
+=======
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 		expected_gle = (
 			("_Test Accumulated Depreciations - _TC", 0.0, 30000.0),
 			("_Test Depreciations - _TC", 30000.0, 0.0)
@@ -171,6 +184,7 @@ class TestAsset(unittest.TestCase):
 
 		self.assertEqual(gle, expected_gle)
 		self.assertEqual(asset.get("value_after_depreciation"), 70000)
+<<<<<<< HEAD
 		
 	def test_depreciation_entry_cancellation(self):
 		asset = frappe.get_doc("Asset", "Macbook Pro 1")
@@ -188,6 +202,8 @@ class TestAsset(unittest.TestCase):
 		depr_entry = asset.get("schedules")[0].journal_entry
 		self.assertFalse(depr_entry)
 		
+=======
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 
 	def test_scrap_asset(self):
 		asset = frappe.get_doc("Asset", "Macbook Pro 1")
@@ -248,6 +264,7 @@ class TestAsset(unittest.TestCase):
 
 		self.assertEqual(frappe.db.get_value("Asset", "Macbook Pro 1", "status"), "Partially Depreciated")
 
+<<<<<<< HEAD
 	def test_asset_expected_value_after_useful_life(self):
 		asset = frappe.get_doc("Asset", "Macbook Pro 1")
 		asset.depreciation_method = "Straight Line"
@@ -265,6 +282,8 @@ class TestAsset(unittest.TestCase):
 
 		self.assertTrue(asset.expected_value_after_useful_life >= asset_value_after_full_schedule)
 
+=======
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 	def tearDown(self):
 		asset = frappe.get_doc("Asset", "Macbook Pro 1")
 
@@ -336,7 +355,11 @@ def set_depreciation_settings_in_company():
 	company.depreciation_expense_account = "_Test Depreciations - _TC"
 	company.disposal_account = "_Test Gain/Loss on Asset Disposal - _TC"
 	company.depreciation_cost_center = "_Test Cost Center - _TC"
+<<<<<<< HEAD
 	company.save()
 	
 	# Enable booking asset depreciation entry automatically
 	frappe.db.set_value("Accounts Settings", None, "book_asset_depreciation_entry_automatically", 1)
+=======
+	company.save()
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347

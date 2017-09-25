@@ -11,15 +11,22 @@ from erpnext.hr.utils import set_employee_name
 
 class Attendance(Document):
 	def validate_duplicate_record(self):
+<<<<<<< HEAD
 		res = frappe.db.sql("""select name from `tabAttendance` where employee = %s and attendance_date = %s
 			and name != %s and docstatus = 1""",
 			(self.employee, self.attendance_date, self.name))
+=======
+		res = frappe.db.sql("""select name from `tabAttendance` where employee = %s and att_date = %s
+			and name != %s and docstatus = 1""",
+			(self.employee, self.att_date, self.name))
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 		if res:
 			frappe.throw(_("Attendance for employee {0} is already marked").format(self.employee))
 
 		set_employee_name(self)
 
 	def check_leave_record(self):
+<<<<<<< HEAD
 		leave_record = frappe.db.sql("""select leave_type, half_day from `tabLeave Application`
 			where employee = %s and %s between from_date and to_date and status = 'Approved'
 			and docstatus = 1""", (self.employee, self.attendance_date), as_dict=True)
@@ -41,6 +48,20 @@ class Attendance(Document):
 			frappe.throw(_("Attendance can not be marked for future dates"))
 		elif date_of_joining and getdate(self.attendance_date) < getdate(date_of_joining):
 			frappe.throw(_("Attendance date can not be less than employee's joining date"))
+=======
+		if self.status == 'Present':
+			leave = frappe.db.sql("""select name from `tabLeave Application`
+				where employee = %s and %s between from_date and to_date and status = 'Approved'
+				and docstatus = 1""", (self.employee, self.att_date))
+
+			if leave:
+				frappe.throw(_("Employee {0} was on leave on {1}. Cannot mark attendance.").format(self.employee,
+					self.att_date))
+
+	def validate_att_date(self):
+		if getdate(self.att_date) > getdate(nowdate()):
+			frappe.throw(_("Attendance can not be marked for future dates"))
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 
 	def validate_employee(self):
 		emp = frappe.db.sql("select name from `tabEmployee` where name = %s and status = 'Active'",
@@ -50,7 +71,20 @@ class Attendance(Document):
 
 	def validate(self):
 		from erpnext.controllers.status_updater import validate_status
+<<<<<<< HEAD
 		validate_status(self.status, ["Present", "Absent", "On Leave", "Half Day"])
 		self.validate_attendance_date()
 		self.validate_duplicate_record()
 		self.check_leave_record()
+=======
+		validate_status(self.status, ["Present", "Absent", "Half Day"])
+		self.validate_att_date()
+		self.validate_duplicate_record()
+		self.check_leave_record()
+
+	def on_update(self):
+		# this is done because sometimes user entered wrong employee name
+		# while uploading employee attendance
+		employee_name = frappe.db.get_value("Employee", self.employee, "employee_name")
+		frappe.db.set(self, 'employee_name', employee_name)
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347

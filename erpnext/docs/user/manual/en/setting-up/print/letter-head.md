@@ -19,7 +19,11 @@ Following is how you can enter details in the Letter Head.
   * Logo Image: You can insert the image in your Letter Head record by clicking on image icon. Once image is inserted, HTML for it will be generated automatically.
   * Other information (like Address, tax ID etc.) that you want to put on your letter head.
 
+<<<<<<< HEAD
 <img class="screenshot" alt="Print Heading" src="/docs/assets/img/setup/print/letter-head.png">
+=======
+<img class="screenshot" alt="Print Heading" src="{{docs_base_url}}/assets/img/setup/print/letter-head.png">
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
   
 > If you want to make this the default letter head, click on “Is Default”.
 
@@ -31,7 +35,11 @@ After enter values in the Header and Footer section, Save Letter Head.
 
 This is how the letter head looks in a document's print.
 
+<<<<<<< HEAD
 <img class="screenshot" alt="Print Heading" src="/docs/assets/img/setup/print/letter-head-1.png">
+=======
+<img class="screenshot" alt="Print Heading" src="{{docs_base_url}}/assets/img/setup/print/letter-head-1.png">
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 
 > Please note that Footer will be visible only when document's print is seen in the PDF. Footer will not be visible in the HTML based print preview.
 

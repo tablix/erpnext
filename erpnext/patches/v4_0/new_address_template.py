@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 from __future__ import print_function, unicode_literals
+=======
+from __future__ import unicode_literals
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 import frappe
 
 def execute():
@@ -10,5 +14,9 @@ def execute():
 				frappe.db.get_value("Global Defaults", "Global Defaults", "country")})
 			d.insert()
 		except:
+<<<<<<< HEAD
 			print(frappe.get_traceback())
+=======
+			print frappe.get_traceback()
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 

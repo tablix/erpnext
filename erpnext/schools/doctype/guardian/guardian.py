@@ -7,6 +7,7 @@ import frappe
 from frappe.model.document import Document
 
 class Guardian(Document):
+<<<<<<< HEAD
 	def __setup__(self):
 		self.onload()
 
@@ -26,3 +27,6 @@ class Guardian(Document):
 
 	def validate(self):
 		self.students = []
+=======
+	pass
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347

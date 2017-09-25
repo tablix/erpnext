@@ -4,7 +4,11 @@
 Geben Sie Details zum Unternehmen wie Name, Kürzel und Geschäftsjahr ein.
 
 <img alt="Unternehmensdetails" class="screenshot"
+<<<<<<< HEAD
 src="/docs/assets/img/setup-wizard/step-4.png">
+=======
+src="{{docs_base_url}}/assets/img/setup-wizard/step-4.png">
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 
 ---
 

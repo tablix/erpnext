@@ -4,8 +4,13 @@
 
 <h2>ERPNext License Info</h2>
 
+<<<<<<< HEAD
 <p>(c) 2013 Frappé Technologies Pvt Ltd. Mumbai
 ERPNext is a trademark of Frappé Technologies</p>
+=======
+<p>(c) 2013 Frappe Technologies Pvt Ltd. Mumbai
+ERPNext is a trademark of Frappe Technologies</p>
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 
 <p>The ERPNext code is licensed under the GNU General Public License (v3) as mentioned below and the Documentation is licensed under Creative Commons (CC-BY-SA-3.0)</p>
 

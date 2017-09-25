@@ -4,7 +4,10 @@
 from __future__ import unicode_literals
 import unittest, frappe
 from frappe.utils import flt
+<<<<<<< HEAD
 from erpnext.accounts.doctype.account.test_account import get_inventory_account
+=======
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 from erpnext.exceptions import InvalidAccountCurrency
 
 
@@ -84,8 +87,12 @@ class TestJournalEntry(unittest.TestCase):
 
 		jv = frappe.copy_doc(test_records[0])
 		jv.get("accounts")[0].update({
+<<<<<<< HEAD
 			"account": get_inventory_account('_Test Company'),
 			"company": "_Test Company",
+=======
+			"account": "_Test Warehouse - _TC",
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 			"party_type": None,
 			"party": None
 		})
@@ -174,10 +181,14 @@ class TestJournalEntry(unittest.TestCase):
 
 		jv.submit()
 
+<<<<<<< HEAD
 def make_journal_entry(account1, account2, amount, cost_center=None, posting_date=None, exchange_rate=1, save=True, submit=False, project=None):
 	if not cost_center:
 		cost_center = "_Test Cost Center - _TC"
 
+=======
+def make_journal_entry(account1, account2, amount, cost_center=None, posting_date=None, exchange_rate=1, save=True, submit=False):
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 	jv = frappe.new_doc("Journal Entry")
 	jv.posting_date = posting_date or "2013-02-14"
 	jv.company = "_Test Company"
@@ -187,14 +198,20 @@ def make_journal_entry(account1, account2, amount, cost_center=None, posting_dat
 		{
 			"account": account1,
 			"cost_center": cost_center,
+<<<<<<< HEAD
 			"project": project,
+=======
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 			"debit_in_account_currency": amount if amount > 0 else 0,
 			"credit_in_account_currency": abs(amount) if amount < 0 else 0,
 			"exchange_rate": exchange_rate
 		}, {
 			"account": account2,
 			"cost_center": cost_center,
+<<<<<<< HEAD
 			"project": project,
+=======
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 			"credit_in_account_currency": amount if amount > 0 else 0,
 			"debit_in_account_currency": abs(amount) if amount < 0 else 0,
 			"exchange_rate": exchange_rate

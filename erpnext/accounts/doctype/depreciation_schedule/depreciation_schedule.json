@@ -10,13 +10,19 @@
  "doctype": "DocType", 
  "document_type": "Document", 
  "editable_grid": 1, 
+<<<<<<< HEAD
  "engine": "InnoDB", 
+=======
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
  "fields": [
   {
    "allow_on_submit": 0, 
    "bold": 0, 
    "collapsible": 0, 
+<<<<<<< HEAD
    "columns": 0, 
+=======
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
    "fieldname": "schedule_date", 
    "fieldtype": "Date", 
    "hidden": 0, 
@@ -31,8 +37,12 @@
    "precision": "", 
    "print_hide": 0, 
    "print_hide_if_no_value": 0, 
+<<<<<<< HEAD
    "read_only": 0, 
    "remember_last_selected_value": 0, 
+=======
+   "read_only": 1, 
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
    "report_hide": 0, 
    "reqd": 1, 
    "search_index": 0, 
@@ -43,7 +53,10 @@
    "allow_on_submit": 0, 
    "bold": 0, 
    "collapsible": 0, 
+<<<<<<< HEAD
    "columns": 0, 
+=======
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
    "fieldname": "depreciation_amount", 
    "fieldtype": "Currency", 
    "hidden": 0, 
@@ -59,8 +72,12 @@
    "precision": "", 
    "print_hide": 0, 
    "print_hide_if_no_value": 0, 
+<<<<<<< HEAD
    "read_only": 0, 
    "remember_last_selected_value": 0, 
+=======
+   "read_only": 1, 
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
    "report_hide": 0, 
    "reqd": 1, 
    "search_index": 0, 
@@ -71,7 +88,10 @@
    "allow_on_submit": 0, 
    "bold": 0, 
    "collapsible": 0, 
+<<<<<<< HEAD
    "columns": 0, 
+=======
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
    "fieldname": "column_break_3", 
    "fieldtype": "Column Break", 
    "hidden": 0, 
@@ -86,7 +106,10 @@
    "print_hide": 0, 
    "print_hide_if_no_value": 0, 
    "read_only": 0, 
+<<<<<<< HEAD
    "remember_last_selected_value": 0, 
+=======
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
    "report_hide": 0, 
    "reqd": 0, 
    "search_index": 0, 
@@ -97,7 +120,10 @@
    "allow_on_submit": 0, 
    "bold": 0, 
    "collapsible": 0, 
+<<<<<<< HEAD
    "columns": 0, 
+=======
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
    "fieldname": "accumulated_depreciation_amount", 
    "fieldtype": "Currency", 
    "hidden": 0, 
@@ -114,9 +140,14 @@
    "print_hide": 0, 
    "print_hide_if_no_value": 0, 
    "read_only": 1, 
+<<<<<<< HEAD
    "remember_last_selected_value": 0, 
    "report_hide": 0, 
    "reqd": 0, 
+=======
+   "report_hide": 0, 
+   "reqd": 1, 
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
    "search_index": 0, 
    "set_only_once": 0, 
    "unique": 0
@@ -125,8 +156,11 @@
    "allow_on_submit": 0, 
    "bold": 0, 
    "collapsible": 0, 
+<<<<<<< HEAD
    "columns": 0, 
    "depends_on": "eval:doc.docstatus==1", 
+=======
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
    "fieldname": "journal_entry", 
    "fieldtype": "Link", 
    "hidden": 0, 
@@ -143,7 +177,10 @@
    "print_hide": 0, 
    "print_hide_if_no_value": 0, 
    "read_only": 1, 
+<<<<<<< HEAD
    "remember_last_selected_value": 0, 
+=======
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
    "report_hide": 0, 
    "reqd": 0, 
    "search_index": 0, 
@@ -154,8 +191,12 @@
    "allow_on_submit": 1, 
    "bold": 0, 
    "collapsible": 0, 
+<<<<<<< HEAD
    "columns": 0, 
    "depends_on": "eval:(doc.docstatus==1 && !doc.journal_entry && doc.schedule_date <= get_today())", 
+=======
+   "depends_on": "eval:(!doc.journal_entry && doc.schedule_date <= get_today())", 
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
    "fieldname": "make_depreciation_entry", 
    "fieldtype": "Button", 
    "hidden": 0, 
@@ -171,7 +212,10 @@
    "print_hide": 0, 
    "print_hide_if_no_value": 0, 
    "read_only": 0, 
+<<<<<<< HEAD
    "remember_last_selected_value": 0, 
+=======
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
    "report_hide": 0, 
    "reqd": 0, 
    "search_index": 0, 
@@ -189,7 +233,11 @@
  "issingle": 0, 
  "istable": 1, 
  "max_attachments": 0, 
+<<<<<<< HEAD
  "modified": "2016-11-18 16:42:19.543657", 
+=======
+ "modified": "2016-07-11 03:27:59.603924", 
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
  "modified_by": "Administrator", 
  "module": "Accounts", 
  "name": "Depreciation Schedule", 

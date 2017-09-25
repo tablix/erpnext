@@ -1,5 +1,8 @@
+<<<<<<< HEAD
 # Projects
 
+=======
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 ERPNext helps you manage your Projects by breaking them into Tasks and
 allocating them to different people.
 

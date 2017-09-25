@@ -4,6 +4,7 @@
 {% include 'erpnext/selling/sales_common.js' %}
 
 frappe.ui.form.on("Sales Order", {
+<<<<<<< HEAD
 	setup: function(frm) {
 		frm.custom_make_buttons = {
 			'Delivery Note': 'Delivery',
@@ -14,11 +15,14 @@ frappe.ui.form.on("Sales Order", {
 		}
 		frm.add_fetch('customer', 'tax_id', 'tax_id');
 	},
+=======
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 	onload: function(frm) {
 		erpnext.queries.setup_queries(frm, "Warehouse", function() {
 			return erpnext.queries.warehouse(frm.doc);
 		});
 
+<<<<<<< HEAD
 		frm.set_query('project', function(doc, cdt, cdn) {
 			return {
 				query: "erpnext.controllers.queries.get_project_name",
@@ -54,6 +58,16 @@ frappe.ui.form.on("Sales Order Item", {
 erpnext.selling.SalesOrderController = erpnext.selling.SellingController.extend({
 	refresh: function(doc, dt, dn) {
 		var me = this;
+=======
+		// formatter for material request item
+		frm.set_indicator_formatter('item_code',
+			function(doc) { return (doc.qty<=doc.delivered_qty) ? "green" : "orange" })
+	}
+});
+
+erpnext.selling.SalesOrderController = erpnext.selling.SellingController.extend({
+	refresh: function(doc, dt, dn) {
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 		this._super();
 		var allow_purchase = false;
 		var allow_delivery = false;
@@ -61,8 +75,13 @@ erpnext.selling.SalesOrderController = erpnext.selling.SellingController.extend(
 		if(doc.docstatus==1) {
 			if(doc.status != 'Closed') {
 
+<<<<<<< HEAD
 				for (var i in this.frm.doc.items) {
 					var item = this.frm.doc.items[i];
+=======
+				for (var i in cur_frm.doc.items) {
+					var item = cur_frm.doc.items[i];
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 					if(item.delivered_by_supplier === 1 || item.supplier){
 						if(item.qty > flt(item.ordered_qty)
 							&& item.qty > flt(item.delivered_qty)) {
@@ -84,36 +103,55 @@ erpnext.selling.SalesOrderController = erpnext.selling.SellingController.extend(
 				if (this.frm.has_perm("submit")) {
 					// close
 					if(flt(doc.per_delivered, 2) < 100 || flt(doc.per_billed) < 100) {
+<<<<<<< HEAD
 						this.frm.add_custom_button(__('Close'),
 							function() { me.close_sales_order() }, __("Status"))
 					}
+=======
+							cur_frm.add_custom_button(__('Close'), this.close_sales_order, __("Status"))
+						}
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 				}
 
 				// delivery note
 				if(flt(doc.per_delivered, 2) < 100 && ["Sales", "Shopping Cart"].indexOf(doc.order_type)!==-1 && allow_delivery) {
+<<<<<<< HEAD
 					this.frm.add_custom_button(__('Delivery'),
 						function() { me.make_delivery_note_based_on_delivery_note(); }, __("Make"));
 					this.frm.add_custom_button(__('Production Order'),
 						function() { me.make_production_order() }, __("Make"));
 
 					this.frm.page.set_inner_btn_group_as_primary(__("Make"));
+=======
+					cur_frm.add_custom_button(__('Delivery'), this.make_delivery_note, __("Make"));
+					cur_frm.page.set_inner_btn_group_as_primary(__("Make"));
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 				}
 
 				// sales invoice
 				if(flt(doc.per_billed, 2) < 100) {
+<<<<<<< HEAD
 					this.frm.add_custom_button(__('Invoice'),
 						function() { me.make_sales_invoice() }, __("Make"));
+=======
+					cur_frm.add_custom_button(__('Invoice'), this.make_sales_invoice, __("Make"));
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 				}
 
 				// material request
 				if(!doc.order_type || ["Sales", "Shopping Cart"].indexOf(doc.order_type)!==-1
 					&& flt(doc.per_delivered, 2) < 100) {
+<<<<<<< HEAD
 					this.frm.add_custom_button(__('Material Request'),
 						function() { me.make_material_request() }, __("Make"));
+=======
+						cur_frm.add_custom_button(__('Material Request'), this.make_material_request, __("Make"));
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 				}
 
 				// make purchase order
 				if(flt(doc.per_delivered, 2) < 100 && allow_purchase) {
+<<<<<<< HEAD
 					this.frm.add_custom_button(__('Purchase Order'),
 						function() { me.make_purchase_order() }, __("Make"));
 				}
@@ -124,11 +162,20 @@ erpnext.selling.SalesOrderController = erpnext.selling.SellingController.extend(
 						function() { me.make_payment_request() }, __("Make"));
 					this.frm.add_custom_button(__('Payment'),
 						function() { me.make_payment_entry() }, __("Make"));
+=======
+					cur_frm.add_custom_button(__('Purchase Order'), cur_frm.cscript.make_purchase_order, __("Make"));
+				}
+
+				if(flt(doc.per_billed)==0) {
+					cur_frm.add_custom_button(__('Payment Request'), this.make_payment_request, __("Make"));
+					cur_frm.add_custom_button(__('Payment'), cur_frm.cscript.make_payment_entry, __("Make"));
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 				}
 
 				// maintenance
 				if(flt(doc.per_delivered, 2) < 100 &&
 						["Sales", "Shopping Cart"].indexOf(doc.order_type)===-1) {
+<<<<<<< HEAD
 					this.frm.add_custom_button(__('Maintenance Visit'),
 						function() { me.make_maintenance_visit() }, __("Make"));
 					this.frm.add_custom_button(__('Maintenance Schedule'),
@@ -146,10 +193,17 @@ erpnext.selling.SalesOrderController = erpnext.selling.SellingController.extend(
 						erpnext.utils.make_subscription(doc.doctype, doc.name)
 					}, __("Make"))
 				}
+=======
+					cur_frm.add_custom_button(__('Maintenance Visit'), this.make_maintenance_visit, __("Make"));
+					cur_frm.add_custom_button(__('Maintenance Schedule'), this.make_maintenance_schedule, __("Make"));
+				}
+
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 
 			} else {
 				if (this.frm.has_perm("submit")) {
 					// un-close
+<<<<<<< HEAD
 					this.frm.add_custom_button(__('Re-open'), function() {
 						me.frm.cscript.update_status('Re-open', 'Draft')
 					}, __("Status"));
@@ -159,10 +213,74 @@ erpnext.selling.SalesOrderController = erpnext.selling.SellingController.extend(
 
 		if (this.frm.doc.docstatus===0) {
 			this.frm.add_custom_button(__('Quotation'),
+=======
+					cur_frm.add_custom_button(__('Re-open'), cur_frm.cscript['Unclose Sales Order'], __("Status"));
+				}
+			}
+		}
+		
+		//new addition
+		if(cur_frm.doc.docstatus==0 && cur_frm.doc.so_status == "Approved")
+		{
+			 cur_frm.savesubmit();
+		}
+		if(frappe.user.has_role("Sales Manager") && cur_frm.doc.so_status == "Open")
+		{
+			cur_frm.add_custom_button(__('Send for Approval'),
+			cur_frm.cscript['Send for Approval']);
+		}	
+		if(frappe.user.has_role("Sales Manager") && cur_frm.doc.so_status == "Needs Clarification")
+		{
+			cur_frm.add_custom_button(__('Send for Approval'),
+			cur_frm.cscript['Send for Approval']);
+		}	
+	
+		if((frappe.user.has_role("CEO") || frappe.user.has_role("CBDO")) && cur_frm.doc.so_status == "Open")
+		{
+			cur_frm.add_custom_button(__('KAM Approve'),
+			cur_frm.cscript['KAM Approved']);
+			
+			cur_frm.add_custom_button(__('Need Info'),
+			cur_frm.cscript['Need Info']);
+		}	
+		if(frappe.user.has_role("COO") && cur_frm.doc.so_status == "KAM Approved")
+		{
+			cur_frm.add_custom_button(__('COO Approve'),
+			cur_frm.cscript['COO Approved']);
+			
+			cur_frm.add_custom_button(__('Need Info'),
+			cur_frm.cscript['Need Info']);
+		}
+		if(frappe.user.has_role("CBDO") && cur_frm.doc.so_status == "COO Approved")
+		{
+			cur_frm.add_custom_button(__('CBDO Approve'),
+			cur_frm.cscript['CBDO Approved']);
+			
+			cur_frm.add_custom_button(__('Need Info'),
+			cur_frm.cscript['Need Info']);
+		}
+		if(frappe.user.has_role("CFO") && cur_frm.doc.so_status == "CBDO Approved")
+		{
+			cur_frm.add_custom_button(__('CFO Approve'),
+			cur_frm.cscript['CFO Approved']);
+			
+			cur_frm.add_custom_button(__('Need Info'),
+			cur_frm.cscript['Need Info']);
+		}
+		if(cur_frm.doc.reason != "")
+		{	
+			cur_frm.set_intro(__(cur_frm.doc.reason));
+		}
+
+		if (this.frm.doc.docstatus===0) 
+		{
+			cur_frm.add_custom_button(__('Quotation'),
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 				function() {
 					erpnext.utils.map_current_doc({
 						method: "erpnext.selling.doctype.quotation.quotation.make_sales_order",
 						source_doctype: "Quotation",
+<<<<<<< HEAD
 						target: me.frm,
 						setters: {
 							customer: me.frm.doc.customer || undefined
@@ -171,6 +289,14 @@ erpnext.selling.SalesOrderController = erpnext.selling.SellingController.extend(
 							company: me.frm.doc.company,
 							docstatus: 1,
 							status: ["!=", "Lost"],
+=======
+						get_query_filters: {
+							docstatus: 1,
+							status: ["!=", "Lost"],
+							order_type: cur_frm.doc.order_type,
+							customer: cur_frm.doc.customer || undefined,
+							company: cur_frm.doc.company
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 						}
 					})
 				}, __("Get items from"));
@@ -179,6 +305,7 @@ erpnext.selling.SalesOrderController = erpnext.selling.SellingController.extend(
 		this.order_type(doc);
 	},
 
+<<<<<<< HEAD
 	make_production_order() {
 		var me = this;
 		this.frm.call({
@@ -257,6 +384,10 @@ erpnext.selling.SalesOrderController = erpnext.selling.SellingController.extend(
 
 	order_type: function() {
 		this.frm.fields_dict.items.grid.toggle_reqd("delivery_date", this.frm.doc.order_type == "Sales");
+=======
+	order_type: function() {
+		this.frm.toggle_reqd("delivery_date", this.frm.doc.order_type == "Sales");
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 	},
 
 	tc_name: function() {
@@ -266,6 +397,7 @@ erpnext.selling.SalesOrderController = erpnext.selling.SellingController.extend(
 	make_material_request: function() {
 		frappe.model.open_mapped_doc({
 			method: "erpnext.selling.doctype.sales_order.sales_order.make_material_request",
+<<<<<<< HEAD
 			frm: this.frm
 		})
 	},
@@ -336,19 +468,34 @@ erpnext.selling.SalesOrderController = erpnext.selling.SellingController.extend(
 		frappe.model.open_mapped_doc({
 			method: "erpnext.selling.doctype.sales_order.sales_order.make_delivery_note",
 			frm: me.frm
+=======
+			frm: cur_frm
+		})
+	},
+
+	make_delivery_note: function() {
+		frappe.model.open_mapped_doc({
+			method: "erpnext.selling.doctype.sales_order.sales_order.make_delivery_note",
+			frm: cur_frm
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 		})
 	},
 
 	make_sales_invoice: function() {
 		frappe.model.open_mapped_doc({
 			method: "erpnext.selling.doctype.sales_order.sales_order.make_sales_invoice",
+<<<<<<< HEAD
 			frm: this.frm
+=======
+			frm: cur_frm
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 		})
 	},
 
 	make_maintenance_schedule: function() {
 		frappe.model.open_mapped_doc({
 			method: "erpnext.selling.doctype.sales_order.sales_order.make_maintenance_schedule",
+<<<<<<< HEAD
 			frm: this.frm
 		})
 	},
@@ -357,18 +504,28 @@ erpnext.selling.SalesOrderController = erpnext.selling.SellingController.extend(
 		frappe.model.open_mapped_doc({
 			method: "erpnext.selling.doctype.sales_order.sales_order.make_project",
 			frm: this.frm
+=======
+			frm: cur_frm
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 		})
 	},
 
 	make_maintenance_visit: function() {
 		frappe.model.open_mapped_doc({
 			method: "erpnext.selling.doctype.sales_order.sales_order.make_maintenance_visit",
+<<<<<<< HEAD
 			frm: this.frm
+=======
+			frm: cur_frm
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 		})
 	},
 
 	make_purchase_order: function(){
+<<<<<<< HEAD
 		var me = this;
+=======
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 		var dialog = new frappe.ui.Dialog({
 			title: __("For Supplier"),
 			fields: [
@@ -376,7 +533,11 @@ erpnext.selling.SalesOrderController = erpnext.selling.SellingController.extend(
 					"get_query": function () {
 						return {
 							query:"erpnext.selling.doctype.sales_order.sales_order.get_supplier",
+<<<<<<< HEAD
 							filters: {'parent': me.frm.doc.name}
+=======
+							filters: {'parent': cur_frm.doc.name}
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 						}
 					}, "reqd": 1 },
 				{"fieldtype": "Button", "label": __("Make Purchase Order"), "fieldname": "make_purchase_order", "cssClass": "btn-primary"},
@@ -384,14 +545,22 @@ erpnext.selling.SalesOrderController = erpnext.selling.SellingController.extend(
 		});
 
 		dialog.fields_dict.make_purchase_order.$input.click(function() {
+<<<<<<< HEAD
 			var args = dialog.get_values();
+=======
+			args = dialog.get_values();
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 			if(!args) return;
 			dialog.hide();
 			return frappe.call({
 				type: "GET",
 				method: "erpnext.selling.doctype.sales_order.sales_order.make_purchase_order_for_drop_shipment",
 				args: {
+<<<<<<< HEAD
 					"source_name": me.frm.doc.name,
+=======
+					"source_name": cur_frm.doc.name,
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 					"for_supplier": args.supplier
 				},
 				freeze: true,
@@ -406,6 +575,7 @@ erpnext.selling.SalesOrderController = erpnext.selling.SellingController.extend(
 		dialog.show();
 	},
 	close_sales_order: function(){
+<<<<<<< HEAD
 		this.frm.cscript.update_status("Close", "Closed")
 	},
 	update_status: function(label, status){
@@ -441,3 +611,217 @@ erpnext.selling.SalesOrderController = erpnext.selling.SellingController.extend(
 });
 
 $.extend(cur_frm.cscript, new erpnext.selling.SalesOrderController({frm: cur_frm}));
+=======
+		cur_frm.cscript.update_status("Close", "Closed")
+	}
+
+});
+
+// for backward compatibility: combine new and previous states
+$.extend(cur_frm.cscript, new erpnext.selling.SalesOrderController({frm: cur_frm}));
+
+cur_frm.cscript.new_contact = function(){
+	tn = frappe.model.make_new_doc_and_get_name('Contact');
+	locals['Contact'][tn].is_customer = 1;
+	if(doc.customer) locals['Contact'][tn].customer = doc.customer;
+	frappe.set_route('Form', 'Contact', tn);
+}
+
+cur_frm.fields_dict['project'].get_query = function(doc, cdt, cdn) {
+	return {
+		query: "erpnext.controllers.queries.get_project_name",
+		filters: {
+			'customer': doc.customer
+		}
+	}
+}
+
+cur_frm.cscript.update_status = function(label, status){
+	var doc = cur_frm.doc;
+	frappe.ui.form.is_saving = true;
+	frappe.call({
+		method: "erpnext.selling.doctype.sales_order.sales_order.update_status",
+		args: {status: status, name: doc.name},
+		callback: function(r){
+			cur_frm.reload_doc();
+		},
+		always: function() {
+			frappe.ui.form.is_saving = false;
+		}
+	});
+}
+
+cur_frm.cscript['Unclose Sales Order'] = function() {
+	cur_frm.cscript.update_status('Re-open', 'Draft')
+}
+
+cur_frm.cscript.on_submit = function(doc, cdt, cdn) {
+	if(cint(frappe.boot.notification_settings.sales_order)) {
+		cur_frm.email_doc(frappe.boot.notification_settings.sales_order_message);
+	}
+};
+
+
+//new addition
+cur_frm.cscript['Send for Approval'] = function(){
+	
+	var dialog = new frappe.ui.Dialog({
+		title: "Send for Approval with Remark",
+		fields: [
+			{"fieldtype": "Text", "label": __("Remarks"), "fieldname": "reason",
+				"reqd": 1 },
+			{"fieldtype": "Button", "label": __("Send"), "fieldname": "finish"},
+		]
+		
+	});
+	dialog.show();
+	
+	dialog.fields_dict.finish.$input.click(function() {	
+		arg = dialog.get_values();
+		if(!arg) return;
+		var reason = arg.reason;
+		return cur_frm.call({
+			doc: cur_frm.doc,
+			method: "send_notification",
+			args: {"reason": "need_approval", "remark": reason},
+			callback: function(r) {
+				if(r.exc) {
+					dialog.hide();
+					msgprint(__("There were errors."));
+				} else {
+					dialog.hide();
+					//cur_frm.timeline.insert_comment("Workflow", "Sent for Approval");
+					msgprint(__("Succesfully Send for Approval !!!!!"));
+					location.reload();
+				}
+			}
+		});
+	});	
+	
+}
+
+cur_frm.cscript['KAM Approved'] = function(){
+		
+	cur_frm.timeline.insert_comment("Workflow", "Approved by KAM");
+
+	cur_frm.call({
+			doc: cur_frm.doc,
+			method: "send_notification",
+			args: "kam_approved",
+			callback: function(r) {
+				if(r.exc) {
+					msgprint(__("There were errors."));
+				} else {
+					//cur_frm.timeline.insert_comment("Workflow", "Sent for Approval");
+					msgprint(__("Succesfully Send for Next Approval !!!!!"));
+					location.reload();
+				}
+			}
+		});
+	
+}
+
+cur_frm.cscript['COO Approved'] = function(){
+		
+	cur_frm.timeline.insert_comment("Workflow", "Approved by CBDO");
+
+	cur_frm.call({
+			doc: cur_frm.doc,
+			method: "send_notification",
+			args: "coo_approved",
+			callback: function(r) {
+				if(r.exc) {
+					msgprint(__("There were errors."));
+				} else {
+					//cur_frm.timeline.insert_comment("Workflow", "Sent for Approval");
+					msgprint(__("Succesfully Send for Next Approval !!!!!"));
+					location.reload();
+				}
+			}
+		});
+	
+}
+
+cur_frm.cscript['CBDO Approved'] = function(){
+		
+	cur_frm.timeline.insert_comment("Workflow", "Approved by CBDO");
+
+	cur_frm.call({
+			doc: cur_frm.doc,
+			method: "send_notification",
+			args: "cbdo_approved",
+			callback: function(r) {
+				if(r.exc) {
+					msgprint(__("There were errors."));
+				} else {
+					//cur_frm.timeline.insert_comment("Workflow", "Sent for Approval");
+					msgprint(__("Succesfully Send for Next Approval !!!!!"));
+					location.reload();
+				}
+			}
+		});
+	
+}
+
+cur_frm.cscript['CFO Approved'] = function(){
+		
+	cur_frm.timeline.insert_comment("Workflow", "Approved by CFO");
+
+	cur_frm.call({
+			doc: cur_frm.doc,
+			method: "send_notification",
+			args: "cfo_approved",
+			callback: function(r) {
+				if(r.exc) {
+					msgprint(__("There were errors."));
+				} else {
+					//cur_frm.timeline.insert_comment("Workflow", "Sent for Approval");
+					msgprint(__("Approval Procedure is completed. Kindly submit the SO !!!!!"));
+					location.reload();
+				}
+			}
+		});
+	
+}
+
+
+cur_frm.cscript['Need Info'] = function(){
+	var dialog = new frappe.ui.Dialog({
+		title: "Need more info",
+		fields: [
+			{"fieldtype": "Text", "label": __("Remarks"), "fieldname": "reason",
+				"reqd": 1 },
+			{"fieldtype": "Button", "label": __("Send"), "fieldname": "finish"},
+		]
+		
+	});
+	dialog.show();
+	dialog.fields_dict.finish.$input.click(function() {
+		arg = dialog.get_values();
+		if(!arg) return;
+		var remark = arg.reason;
+		cur_frm.set_value("reason", arg.reason);
+		return cur_frm.call({
+			doc: cur_frm.doc,
+			method: "send_notification",
+			args:{"reason":"need_info", "remark": remark},
+			callback: function(r) {
+				if(r.exc) {
+					dialog.hide();
+					cur_frm.timeline.insert_comment("Workflow", "Reverted back to BDM: " + remark);
+					msgprint(__("There were errors."));
+				} else {
+					dialog.hide();
+					cur_frm.timeline.insert_comment("Workflow", "Reverted back to BDM: " + remark);
+					msgprint(__("Succesfully reverted back to BDM!!!!!"));
+					location.reload();
+				}
+			}
+		});
+		
+		
+	});
+	
+}
+
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347

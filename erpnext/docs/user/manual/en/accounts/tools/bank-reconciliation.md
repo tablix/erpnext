@@ -1,13 +1,22 @@
+<<<<<<< HEAD
 # Bank Reconciliation
 
 ### Bank Reconciliation Statement
 
 If you are receiving payments or making payments via cheques, the bank statements will not accurately match the dates of your entry, this is because the bank usually takes time to “clear” these payments. Also you may have mailed a cheque to your Supplier and it may be a few days before it is received and deposited by the Supplier. In ERPNext you can synchronise your bank statements and your Journal Entries using the “Bank Reconciliation” tool.
+=======
+### Bank Reconciliation Statement
+
+If you are receiving payments or making payments via cheques, the bank statements will not accurately match the dates of your entry, this is because the bank usually takes time to “clear” these payments. Also you may have
+mailed a cheque to your Supplier and it may be a few days before it is received and deposited by the Supplier. In ERPNext you can synchronise your bank statements and your Journal Entrys using the “Bank Reconciliation”
+tool.
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 
 The Bank Reconciliation Report provide the difference between the bank balance shown in an organisation's bank statement, as provided by the ban against amount shown in the companies Chart of Accounts.
 
 ####Bank Reconciliation Statement
 
+<<<<<<< HEAD
 <img class="screenshot" alt="Bank Reconciliation statement" src="/docs/assets/img/accounts/bank-reconciliation-2.png">  
 
 In the report, check whether the field 'Balance as per bank' matches the Bank Account Statement. If it is matching, it means that Clearance Date is correctly updated for all the bank entries. If there is a mismatch, Its because of bank entries for which Cleanrane Date is not yet updated.
@@ -17,6 +26,21 @@ In the report, check whether the field 'Balance as per bank' matches the Bank Ac
 To add clearance entries go to:
 
 `Accounts > Tools > Bank Reconciliation`
+=======
+![]({{docs_base_url}}/assets/old_images/erpnext/bank-reconciliation-2.png)  
+
+In the report, check whether the field 'Balance as per bank' matches the Bank Account Statement. If it is matching, it means that Clearance Date is correctly updated for all the bank entries. If there is a mismatch, Its because of bank entries for which Cleanrane Date is not yet updated.
+
+To add clearance entries go to:
+
+> Accounts > Tools > Bank Reconciliation
+
+###Bank Reconciliation Tool
+
+o use this, go to:
+
+> Accounts > Tools > Bank Reconciliation
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 
 Select your “Bank” Account and enter the dates of your statement. Here you
 will get all the “Bank Voucher” type entries. In each of the entry on the
@@ -36,7 +60,11 @@ All the entries in the specified date range will be shown in a table below.
 
 __Step 4:__ Click on the JV from the table and update clearance date.
 
+<<<<<<< HEAD
 <img class="screenshot" alt="Bank Reconciliation" src="/docs/assets/img/accounts/bank-reconciliation.png">
+=======
+<img class="screenshot" alt="Bank Reconciliation" src="{{docs_base_url}}/assets/img/accounts/bank-reconciliation.png">
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 
 __Step 5:__ Click on the button 'Update Clearance Date'.
  

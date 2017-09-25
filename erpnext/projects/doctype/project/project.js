@@ -3,6 +3,7 @@
 
 frappe.ui.form.on("Project", {
 	setup: function(frm) {
+<<<<<<< HEAD
 		frm.set_indicator_formatter('title',
 			function(doc) {
 				let indicator = 'orange';
@@ -20,6 +21,16 @@ frappe.ui.form.on("Project", {
 		);
 	},
 
+=======
+		frm.get_field('tasks').grid.editable_fields = [
+			{fieldname: 'title', columns: 3},
+			{fieldname: 'status', columns: 3},
+			{fieldname: 'start_date', columns: 2},
+			{fieldname: 'end_date', columns: 2}
+		];
+
+	},
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 	onload: function(frm) {
 		var so = frappe.meta.get_docfield("Project", "sales_order");
 		so.get_route_options_for_new_doc = function(field) {
@@ -31,12 +42,21 @@ frappe.ui.form.on("Project", {
 		}
 
 		frm.set_query('customer', 'erpnext.controllers.queries.customer_query');
+<<<<<<< HEAD
 
 		frm.set_query("user", "users", function() {
 			return {
 				query:"erpnext.projects.doctype.project.project.get_users_for_project"
 			}
 		});
+=======
+		
+		frm.set_query("user", "users", function() {
+					return {
+						query:"erpnext.projects.doctype.project.project.get_users_for_project"
+					}
+				});
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 
 		// sales order
 		frm.set_query('sales_order', function() {
@@ -53,7 +73,10 @@ frappe.ui.form.on("Project", {
 			}
 		});
 	},
+<<<<<<< HEAD
 
+=======
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 	refresh: function(frm) {
 		if(frm.doc.__islocal) {
 			frm.web_link && frm.web_link.remove();
@@ -62,8 +85,14 @@ frappe.ui.form.on("Project", {
 
 			if(frappe.model.can_read("Task")) {
 				frm.add_custom_button(__("Gantt Chart"), function() {
+<<<<<<< HEAD
 					frappe.route_options = {"project": frm.doc.name};
 					frappe.set_route("List", "Task", "Gantt");
+=======
+					frappe.route_options = {"project": frm.doc.name,
+						"start": frm.doc.expected_start_date, "end": frm.doc.expected_end_date};
+					frappe.set_route("Gantt", "Task");
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 				});
 			}
 
@@ -96,7 +125,11 @@ frappe.ui.form.on("Project", {
 			section.on('click', '.time-sheet-link', function() {
 				var activity_type = $(this).attr('data-activity_type');
 				frappe.set_route('List', 'Timesheet',
+<<<<<<< HEAD
 					{'activity_type': activity_type, 'project': frm.doc.name, 'status': ["!=", "Cancelled"]});
+=======
+					{'activity_type': activity_type, 'project': frm.doc.name});
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 			});
 		}
 	}
@@ -108,10 +141,18 @@ frappe.ui.form.on("Project Task", {
 		if(doc.task_id) {
 			frappe.set_route("Form", "Task", doc.task_id);
 		} else {
+<<<<<<< HEAD
 			frappe.msgprint(__("Save the document first."));
+=======
+			msgprint(__("Save the document first."));
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 		}
 	},
 	status: function(frm, doctype, name) {
 		frm.trigger('tasks_refresh');
 	},
 });
+<<<<<<< HEAD
+=======
+
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347

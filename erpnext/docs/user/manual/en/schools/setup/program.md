@@ -1,5 +1,6 @@
 # Program
 
+<<<<<<< HEAD
 An educational program is a program written by the institutions which determines the learning progress of each subject in all the stages of formal education.
 
 To create a Program go to :
@@ -15,5 +16,8 @@ Add the relevant Course and the Fee details for a program.
 <img class="screenshot" alt="Program" src="/docs/assets/img/schools/setup/course-fee-program.png">
 
 The Program Doctype is further linked to the **Student applicant**, **Program enrollment, Student group, Fee structre and Fee**. The links allow to view or create the related document for a Program.
+=======
+<img class="screenshot" alt="Program" src="{{url_prefix}}/assets/img/schools/setup/program.png">
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 
 {next}

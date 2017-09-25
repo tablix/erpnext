@@ -27,6 +27,10 @@ def work():
 		for mr in frappe.get_all('Material Request',
 			filters={'material_request_type': 'Purchase', 'status': 'Open'},
 			limit=random.randint(1,6)):
+<<<<<<< HEAD
+=======
+			print mr.name
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 			if not frappe.get_all('Request for Quotation',
 				filters={'material_request': mr.name}, limit=1):
 				rfq = make_request_for_quotation(mr.name)
@@ -75,7 +79,11 @@ def work():
 				frappe.db.commit()
 
 	# make purchase orders
+<<<<<<< HEAD
 	if random.random() < 0.5:
+=======
+	if random.random() < 0.3:
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 		from erpnext.stock.doctype.material_request.material_request import make_purchase_order
 		report = "Requested Items To Be Ordered"
 		for row in query_report.run(report)["result"][:how_many("Purchase Order")]:
@@ -104,11 +112,20 @@ def make_material_request(item_code, qty):
 
 	mr.transaction_date = frappe.flags.current_date
 
+<<<<<<< HEAD
+=======
+	moq = frappe.db.get_value('Item', item_code, 'min_order_qty')
+
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 	mr.append("items", {
 		"doctype": "Material Request Item",
 		"schedule_date": frappe.utils.add_days(mr.transaction_date, 7),
 		"item_code": item_code,
+<<<<<<< HEAD
 		"qty": qty
+=======
+		"qty": qty if qty > moq else moq
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 	})
 	mr.insert()
 	mr.submit()
@@ -122,6 +139,7 @@ def add_suppliers(rfq):
 
 def make_subcontract():
 	from erpnext.buying.doctype.purchase_order.purchase_order import make_stock_entry
+<<<<<<< HEAD
 	item_code = get_random("Item", {"is_sub_contracted_item": 1})
 	if item_code:
 		# make sub-contract PO
@@ -152,3 +170,35 @@ def make_subcontract():
 		stock_entry.from_warehouse = "Stores - WPL"
 		stock_entry.to_warehouse = "Supplier - WPL"
 		stock_entry.insert()
+=======
+
+	# make sub-contract PO
+	po = frappe.new_doc("Purchase Order")
+	po.is_subcontracted = "Yes"
+	po.supplier = get_random("Supplier")
+
+	item_code = get_random("Item", {"is_sub_contracted_item": 1})
+	moq = frappe.db.get_value('Item', item_code, 'min_order_qty')
+
+	po.append("items", {
+		"item_code": item_code,
+		"schedule_date": frappe.utils.add_days(frappe.flags.current_date, 7),
+		"qty": moq
+	})
+	po.set_missing_values()
+	try:
+		po.insert()
+	except InvalidCurrency:
+		return
+
+	po.submit()
+
+	# make material request for
+	make_material_request(po.items[0].item_code, po.items[0].qty)
+
+	# transfer material for sub-contract
+	stock_entry = frappe.get_doc(make_stock_entry(po.name, po.items[0].item_code))
+	stock_entry.from_warehouse = "Stores - WPL"
+	stock_entry.to_warehouse = "Supplier - WPL"
+	stock_entry.insert()
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347

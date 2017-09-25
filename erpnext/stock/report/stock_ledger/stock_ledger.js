@@ -38,6 +38,7 @@ frappe.query_reports["Stock Ledger"] = {
 			"options": "Item"
 		},
 		{
+<<<<<<< HEAD
 			"fieldname":"item_group",
 			"label": __("Item Group"),
 			"fieldtype": "Link",
@@ -50,6 +51,8 @@ frappe.query_reports["Stock Ledger"] = {
 			"options": "Batch"
 		},
 		{
+=======
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 			"fieldname":"brand",
 			"label": __("Brand"),
 			"fieldtype": "Link",

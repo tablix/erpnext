@@ -2,7 +2,12 @@
 // For license information, please see license.txt
 
 frappe.ui.form.on('Assessment Group', {
+<<<<<<< HEAD
 	onload: function(frm) {
 		frm.list_route = "Tree/Assessment Group";
+=======
+	refresh: function(frm) {
+
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 	}
 });

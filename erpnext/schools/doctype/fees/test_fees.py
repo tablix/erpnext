@@ -5,13 +5,17 @@ from __future__ import unicode_literals
 
 import frappe
 import unittest
+<<<<<<< HEAD
 from frappe.utils import nowdate
 from frappe.utils.make_random import get_random
 
+=======
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 
 # test_records = frappe.get_test_records('Fees')
 
 class TestFees(unittest.TestCase):
+<<<<<<< HEAD
 
 	def test_fees(self):
 		student = get_random("Student")
@@ -51,3 +55,6 @@ class TestFees(unittest.TestCase):
 			self.assertEquals(gl_entries[0].debit, 0)
 			self.assertEquals(gl_entries[1].credit, 0)
 			self.assertEquals(gl_entries[1].debit, 50000)
+=======
+	pass
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347

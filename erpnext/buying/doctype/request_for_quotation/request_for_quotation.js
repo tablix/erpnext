@@ -2,12 +2,17 @@
 // License: GNU General Public License v3. See license.txt
 
 
+<<<<<<< HEAD
 {% include 'erpnext/public/js/controllers/buying.js' %};
+=======
+{% include 'erpnext/buying/doctype/purchase_common/purchase_common.js' %};
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 
 cur_frm.add_fetch('contact', 'email_id', 'email_id')
 
 frappe.ui.form.on("Request for Quotation",{
 	setup: function(frm) {
+<<<<<<< HEAD
 		frm.custom_make_buttons = {
 			'Supplier Quotation': 'Supplier Quotation'
 		}
@@ -19,6 +24,27 @@ frappe.ui.form.on("Request for Quotation",{
 				filters: {'supplier': d.supplier}
 			}
 		}
+=======
+		frm.fields_dict["suppliers"].grid.get_field("contact").get_query = function(doc, cdt, cdn){
+			var d =locals[cdt][cdn];
+			return {
+				filters: {'supplier': d.supplier}
+			}
+		}
+
+		frm.get_field('items').grid.editable_fields = [
+			{fieldname: 'item_code', columns: 3},
+			{fieldname: 'qty', columns: 2},
+			{fieldname: 'schedule_date', columns: 2},
+			{fieldname: 'warehouse', columns: 3},
+		];
+
+		frm.get_field('suppliers').grid.editable_fields = [
+			{fieldname: 'supplier', columns: 4},
+			{fieldname: 'contact', columns: 3},
+			{fieldname: 'email_id', columns: 3}
+		];
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 	},
 
 	onload: function(frm) {
@@ -44,13 +70,17 @@ frappe.ui.form.on("Request for Quotation",{
 					freeze: true,
 					args: {
 						rfq_name: frm.doc.name
+<<<<<<< HEAD
 					},
 					callback: function(r){
 						frm.reload_doc();
+=======
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 					}
 				});
 			});
 		}
+<<<<<<< HEAD
 
 	},
 
@@ -138,22 +168,39 @@ frappe.ui.form.on("Request for Quotation",{
 		dialog.show();
 
 	},
+=======
+	},
+
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 	make_suppplier_quotation: function(frm) {
 		var doc = frm.doc;
 		var dialog = new frappe.ui.Dialog({
 			title: __("For Supplier"),
 			fields: [
+<<<<<<< HEAD
 				{	"fieldtype": "Select", "label": __("Supplier"),
 					"fieldname": "supplier",
 					"options": doc.suppliers.map(d => d.supplier),
 					"reqd": 1 },
 				{	"fieldtype": "Button", "label": __("Make Supplier Quotation"),
 					"fieldname": "make_supplier_quotation", "cssClass": "btn-primary" },
+=======
+				{"fieldtype": "Select", "label": __("Supplier"),
+					"fieldname": "supplier", "options":"Supplier",
+					"options": $.map(doc.suppliers,
+						function(d) { return d.supplier }), "reqd": 1 },
+				{"fieldtype": "Button", "label": __("Make Supplier Quotation"),
+					"fieldname": "make_supplier_quotation", "cssClass": "btn-primary"},
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 			]
 		});
 
 		dialog.fields_dict.make_supplier_quotation.$input.click(function() {
+<<<<<<< HEAD
 			var args = dialog.get_values();
+=======
+			args = dialog.get_values();
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 			if(!args) return;
 			dialog.hide();
 			return frappe.call({
@@ -204,6 +251,7 @@ frappe.ui.form.on("Request for Quotation Supplier",{
 			+"&supplier_idx="+encodeURIComponent(child.idx)
 			+"&no_letterhead=0"));
 		if(!w) {
+<<<<<<< HEAD
 			frappe.msgprint(__("Please enable pop-ups")); return;
 		}
 	},
@@ -228,28 +276,41 @@ frappe.ui.form.on("Request for Quotation Supplier",{
 					frm.refresh_field("suppliers");
 				}
 			});
+=======
+			msgprint(__("Please enable pop-ups")); return;
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 		}
 	}
 })
 
 erpnext.buying.RequestforQuotationController = erpnext.buying.BuyingController.extend({
 	refresh: function() {
+<<<<<<< HEAD
 		var me = this;
 		this._super();
 		if (this.frm.doc.docstatus===0) {
 			this.frm.add_custom_button(__('Material Request'),
+=======
+		this._super();
+		if (this.frm.doc.docstatus===0) {
+			cur_frm.add_custom_button(__('Material Request'),
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 				function() {
 					erpnext.utils.map_current_doc({
 						method: "erpnext.stock.doctype.material_request.material_request.make_request_for_quotation",
 						source_doctype: "Material Request",
+<<<<<<< HEAD
 						target: me.frm,
 						setters: {
 							company: me.frm.doc.company
 						},
+=======
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 						get_query_filters: {
 							material_request_type: "Purchase",
 							docstatus: 1,
 							status: ["!=", "Stopped"],
+<<<<<<< HEAD
 							per_ordered: ["<", 99.99]
 						}
 					})
@@ -308,6 +369,13 @@ erpnext.buying.RequestforQuotationController = erpnext.buying.BuyingController.e
 				d.show();
 			}, __("Get items from"));
 
+=======
+							per_ordered: ["<", 99.99],
+							company: cur_frm.doc.company
+						}
+					})
+				}, __("Get items from"));
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 		}
 	},
 

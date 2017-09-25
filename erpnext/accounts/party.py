@@ -7,6 +7,7 @@ import frappe
 import datetime
 from frappe import _, msgprint, scrub
 from frappe.defaults import get_user_permissions
+<<<<<<< HEAD
 from frappe.model.utils import get_fetch_values
 from frappe.utils import (add_days, getdate, formatdate, get_first_day, date_diff,
 	add_years, get_timestamp, nowdate, flt)
@@ -17,6 +18,12 @@ from erpnext.exceptions import PartyFrozen, PartyDisabled, InvalidAccountCurrenc
 from erpnext.accounts.utils import get_fiscal_year
 from erpnext import get_default_currency, get_company_currency
 
+=======
+from frappe.utils import add_days, getdate, formatdate, get_first_day, date_diff, add_years
+from erpnext.utilities.doctype.address.address import get_address_display
+from erpnext.utilities.doctype.contact.contact import get_contact_details
+from erpnext.exceptions import PartyFrozen, InvalidCurrency, PartyDisabled, InvalidAccountCurrency
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 
 class DuplicatePartyAccountError(frappe.ValidationError): pass
 
@@ -44,9 +51,14 @@ def _get_party_details(party=None, account=None, party_type="Customer", company=
 		frappe.throw(_("Not permitted for {0}").format(party), frappe.PermissionError)
 
 	party = frappe.get_doc(party_type, party)
+<<<<<<< HEAD
 	currency = party.default_currency if party.default_currency else get_company_currency(company)
 
 	set_address_details(out, party, party_type, doctype, company)
+=======
+
+	set_address_details(out, party, party_type)
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 	set_contact_details(out, party, party_type)
 	set_other_values(out, party, party_type)
 	set_price_list(out, party, party_type, price_list)
@@ -64,17 +76,26 @@ def _get_party_details(party=None, account=None, party_type="Customer", company=
 
 	return out
 
+<<<<<<< HEAD
 def set_address_details(out, party, party_type, doctype=None, company=None):
 	billing_address_field = "customer_address" if party_type == "Lead" \
 		else party_type.lower() + "_address"
 	out[billing_address_field] = get_default_address(party_type, party.name)
 	out.update(get_fetch_values(doctype, billing_address_field, out[billing_address_field]))
+=======
+def set_address_details(out, party, party_type):
+	billing_address_field = "customer_address" if party_type == "Lead" \
+		else party_type.lower() + "_address"
+	out[billing_address_field] = frappe.db.get_value("Address",
+		{party_type.lower(): party.name, "is_primary_address":1}, "name")
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 
 	# address display
 	out.address_display = get_address_display(out[billing_address_field])
 
 	# shipping address
 	if party_type in ["Customer", "Lead"]:
+<<<<<<< HEAD
 		out.shipping_address_name = get_default_address(party_type, party.name, 'is_shipping_address')
 		out.shipping_address = get_address_display(out["shipping_address_name"])
 		out.update(get_fetch_values(doctype, 'shipping_address_name', out.shipping_address_name))
@@ -86,6 +107,15 @@ def set_address_details(out, party, party_type, doctype=None, company=None):
 
 def set_contact_details(out, party, party_type):
 	out.contact_person = get_default_contact(party_type, party.name)
+=======
+		out.shipping_address_name = frappe.db.get_value("Address",
+			{party_type.lower(): party.name, "is_shipping_address":1}, "name")
+		out.shipping_address = get_address_display(out["shipping_address_name"])
+
+def set_contact_details(out, party, party_type):
+	out.contact_person = frappe.db.get_value("Contact",
+		{party_type.lower(): party.name, "is_primary_contact":1}, "name")
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 
 	if not out.contact_person:
 		out.update({
@@ -165,6 +195,16 @@ def set_account_and_due_date(party, account, party_type, company, posting_date, 
 	}
 	return out
 
+<<<<<<< HEAD
+=======
+def get_company_currency():
+	company_currency = frappe._dict()
+	for d in frappe.get_all("Company", fields=["name", "default_currency"]):
+		company_currency.setdefault(d.name, d.default_currency)
+
+	return company_currency
+
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 @frappe.whitelist()
 def get_party_account(party_type, party, company):
 	"""Returns the account for the given `party`.
@@ -178,17 +218,29 @@ def get_party_account(party_type, party, company):
 		account = frappe.db.get_value("Party Account",
 			{"parenttype": party_type, "parent": party, "company": company}, "account")
 
+<<<<<<< HEAD
 		if not account and party_type in ['Customer', 'Supplier']:
+=======
+		if not account:
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 			party_group_doctype = "Customer Group" if party_type=="Customer" else "Supplier Type"
 			group = frappe.db.get_value(party_type, party, scrub(party_group_doctype))
 			account = frappe.db.get_value("Party Account",
 				{"parenttype": party_group_doctype, "parent": group, "company": company}, "account")
 
+<<<<<<< HEAD
 		if not account and party_type in ['Customer', 'Supplier']:
 			default_account_name = "default_receivable_account" \
 				if party_type=="Customer" else "default_payable_account"
 			account = frappe.db.get_value("Company", company, default_account_name)
 
+=======
+		if not account:
+			default_account_name = "default_receivable_account" \
+				if party_type=="Customer" else "default_payable_account"
+			account = frappe.db.get_value("Company", company, default_account_name)
+			
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 		existing_gle_currency = get_party_gle_currency(party_type, party, company)
 		if existing_gle_currency:
 			if account:
@@ -215,7 +267,11 @@ def get_party_gle_currency(party_type, party, company):
 
 	return frappe.local_cache("party_gle_currency", (party_type, party, company), generator,
 		regenerate_if_none=True)
+<<<<<<< HEAD
 
+=======
+		
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 def get_party_gle_account(party_type, party, company):
 	def generator():
 		existing_gle_account = frappe.db.sql("""select account from `tabGL Entry`
@@ -256,7 +312,11 @@ def validate_party_accounts(doc):
 		if existing_gle_currency and party_account_currency != existing_gle_currency:
 			frappe.throw(_("Accounting entries have already been made in currency {0} for company {1}. Please select a receivable or payable account with currency {0}.").format(existing_gle_currency, account.company))
 
+<<<<<<< HEAD
 		if doc.get("default_currency") and party_account_currency and company_default_currency:
+=======
+		if doc.default_currency and party_account_currency and company_default_currency:
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 			if doc.default_currency != party_account_currency and doc.default_currency != company_default_currency:
 				frappe.throw(_("Billing currency must be equal to either default comapany's currency or party account currency"))
 
@@ -275,7 +335,10 @@ def get_due_date(posting_date, party_type, party, company):
 	return due_date
 
 def get_credit_days(party_type, party, company):
+<<<<<<< HEAD
 	credit_days = 0
+=======
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 	if party_type and party:
 		if party_type == "Customer":
 			credit_days_based_on, credit_days, customer_group = \
@@ -285,6 +348,7 @@ def get_credit_days(party_type, party, company):
 				frappe.db.get_value(party_type, party, ["credit_days_based_on", "credit_days", "supplier_type"])
 
 	if not credit_days_based_on:
+<<<<<<< HEAD
 		if party_type == "Customer" and customer_group:
 			credit_days_based_on, credit_days = \
 				frappe.db.get_value("Customer Group", customer_group, ["credit_days_based_on", "credit_days"])
@@ -295,6 +359,16 @@ def get_credit_days(party_type, party, company):
 	if not credit_days_based_on:
 		credit_days_based_on, credit_days = \
 			frappe.db.get_value("Company", company, ["credit_days_based_on", "credit_days"])
+=======
+		if party_type == "Customer":
+			credit_days_based_on, credit_days = \
+				frappe.db.get_value("Customer Group", customer_group, ["credit_days_based_on", "credit_days"]) \
+				or frappe.db.get_value("Company", company, ["credit_days_based_on", "credit_days"])
+		else:
+			credit_days_based_on, credit_days = \
+				frappe.db.get_value("Supplier Type", supplier_type, ["credit_days_based_on", "credit_days"])\
+				or frappe.db.get_value("Company", company, ["credit_days_based_on", "credit_days"] )
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 
 	return credit_days_based_on, credit_days
 
@@ -347,6 +421,7 @@ def set_taxes(party, party_type, posting_date, company, customer_group=None, sup
 
 def validate_party_frozen_disabled(party_type, party_name):
 	if party_type and party_name:
+<<<<<<< HEAD
 		if party_type in ("Customer", "Supplier"):
 			party = frappe.db.get_value(party_type, party_name, ["is_frozen", "disabled"], as_dict=True)
 			if party.disabled:
@@ -359,10 +434,20 @@ def validate_party_frozen_disabled(party_type, party_name):
 		elif party_type == "Employee":
 			if frappe.db.get_value("Employee", party_name, "status") == "Left":
 				frappe.msgprint(_("{0} {1} is not active").format(party_type, party_name), alert=True)
+=======
+		party = frappe.db.get_value(party_type, party_name, ["is_frozen", "disabled"], as_dict=True)
+		if party.disabled:
+			frappe.throw(_("{0} {1} is disabled").format(party_type, party_name), PartyDisabled)
+		elif party.is_frozen:
+			frozen_accounts_modifier = frappe.db.get_value( 'Accounts Settings', None,'frozen_accounts_modifier')
+			if not frozen_accounts_modifier in frappe.get_roles():
+				frappe.throw(_("{0} {1} is frozen").format(party_type, party_name), PartyFrozen)
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 
 def get_timeline_data(doctype, name):
 	'''returns timeline data for the past one year'''
 	from frappe.desk.form.load import get_communication_data
+<<<<<<< HEAD
 
 	out = {}
 	data = get_communication_data(doctype, name,
@@ -412,3 +497,10 @@ def get_dashboard_info(party_type, party):
 		info["total_unpaid"] = -1 * info["total_unpaid"]
 
 	return info
+=======
+	data = get_communication_data(doctype, name,
+		fields = 'unix_timestamp(date(creation)), count(name)',
+		after = add_years(None, -1).strftime('%Y-%m-%d'),
+		group_by='group by date(creation)', as_dict=False)
+	return dict(data)
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347

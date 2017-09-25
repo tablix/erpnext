@@ -1,7 +1,11 @@
 # Copyright (c) 2013, Web Notes Technologies Pvt. Ltd. and Contributors
 # License: GNU General Public License v3. See license.txt
 
+<<<<<<< HEAD
 from __future__ import print_function, unicode_literals
+=======
+from __future__ import unicode_literals
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 import frappe
 import MySQLdb
 
@@ -32,7 +36,11 @@ def execute():
 			migrate_item_variants()
 
 		except MySQLdb.ProgrammingError:
+<<<<<<< HEAD
 			print("`tabItem Variant` not found")
+=======
+			print "`tabItem Variant` not found"
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 
 def rename_and_reload_doctypes():
 	if "tabVariant Attribute" in frappe.db.get_tables():

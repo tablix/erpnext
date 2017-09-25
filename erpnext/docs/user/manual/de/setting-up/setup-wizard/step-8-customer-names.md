@@ -4,7 +4,11 @@
 Geben Sie die Namen Ihrer Kunden und die Kontaktpersonen ein.
 
 <img alt="Customers" class="screenshot"
+<<<<<<< HEAD
 src="/docs/assets/img/setup-wizard/step-8.png">
+=======
+src="{{docs_base_url}}/assets/img/setup-wizard/step-8.png">
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 
 ---
 
@@ -18,6 +22,10 @@ Kundenname: American Power Mills
 
 Kontaktname: Shiv Agarwal
 
+<<<<<<< HEAD
 Um mehr über Kunden zu erfahren, lesen Sie im Abschnitt [Details zu Kunden](/docs/user/manual/de/CRM/customer.html) nach.
+=======
+Um mehr über Kunden zu erfahren, lesen Sie im Abschnitt [Details zu Kunden]({{docs_base_url}}/user/manual/de/CRM/customer.html) nach.
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 
 {next}

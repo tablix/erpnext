@@ -9,10 +9,18 @@ Sie können Druckköpfe erstellen über:
 
 #### Abbildung 1: Druckköpfe abspeichern
 
+<<<<<<< HEAD
 <img class="screenshot" alt="Druckköpfe" src="/docs/assets/img/setup/print/print-heading.png">
 
 Hier ist ein Beispiel abgebildet, wie man einen Druckkopf auswechselt:
 
 <img class="screenshot" alt="Druckköpfe" src="/docs/assets/img/setup/print/print-heading-1.png">
+=======
+<img class="screenshot" alt="Druckköpfe" src="{{docs_base_url}}/assets/img/setup/print/print-heading.png">
+
+Hier ist ein Beispiel abgebildet, wie man einen Druckkopf auswechselt:
+
+<img class="screenshot" alt="Druckköpfe" src="{{docs_base_url}}/assets/img/setup/print/print-heading-1.png">
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 
 {next}

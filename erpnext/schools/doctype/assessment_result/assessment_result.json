@@ -1,9 +1,14 @@
 {
  "allow_copy": 0, 
+<<<<<<< HEAD
  "allow_guest_to_view": 0, 
  "allow_import": 0, 
  "allow_rename": 0, 
  "autoname": "RES.######", 
+=======
+ "allow_import": 0, 
+ "allow_rename": 0, 
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
  "beta": 0, 
  "creation": "2015-11-13 17:18:06.468332", 
  "custom": 0, 
@@ -11,6 +16,7 @@
  "doctype": "DocType", 
  "document_type": "", 
  "editable_grid": 1, 
+<<<<<<< HEAD
  "engine": "InnoDB", 
  "fields": [
   {
@@ -19,15 +25,26 @@
    "bold": 0, 
    "collapsible": 0, 
    "columns": 0, 
+=======
+ "fields": [
+  {
+   "allow_on_submit": 0, 
+   "bold": 0, 
+   "collapsible": 0, 
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
    "fieldname": "student", 
    "fieldtype": "Link", 
    "hidden": 0, 
    "ignore_user_permissions": 0, 
    "ignore_xss_filter": 0, 
    "in_filter": 0, 
+<<<<<<< HEAD
    "in_global_search": 1, 
    "in_list_view": 0, 
    "in_standard_filter": 0, 
+=======
+   "in_list_view": 1, 
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
    "label": "Student", 
    "length": 0, 
    "no_copy": 0, 
@@ -37,7 +54,10 @@
    "print_hide": 0, 
    "print_hide_if_no_value": 0, 
    "read_only": 0, 
+<<<<<<< HEAD
    "remember_last_selected_value": 0, 
+=======
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
    "report_hide": 0, 
    "reqd": 1, 
    "search_index": 0, 
@@ -45,20 +65,30 @@
    "unique": 0
   }, 
   {
+<<<<<<< HEAD
    "allow_bulk_edit": 0, 
    "allow_on_submit": 0, 
    "bold": 0, 
    "collapsible": 0, 
    "columns": 0, 
+=======
+   "allow_on_submit": 0, 
+   "bold": 0, 
+   "collapsible": 0, 
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
    "fieldname": "student_name", 
    "fieldtype": "Data", 
    "hidden": 0, 
    "ignore_user_permissions": 0, 
    "ignore_xss_filter": 0, 
    "in_filter": 0, 
+<<<<<<< HEAD
    "in_global_search": 1, 
    "in_list_view": 1, 
    "in_standard_filter": 0, 
+=======
+   "in_list_view": 1, 
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
    "label": "Student Name", 
    "length": 0, 
    "no_copy": 0, 
@@ -67,7 +97,10 @@
    "print_hide": 0, 
    "print_hide_if_no_value": 0, 
    "read_only": 1, 
+<<<<<<< HEAD
    "remember_last_selected_value": 0, 
+=======
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
    "report_hide": 0, 
    "reqd": 0, 
    "search_index": 0, 
@@ -75,20 +108,30 @@
    "unique": 0
   }, 
   {
+<<<<<<< HEAD
    "allow_bulk_edit": 0, 
    "allow_on_submit": 0, 
    "bold": 0, 
    "collapsible": 0, 
    "columns": 0, 
+=======
+   "allow_on_submit": 0, 
+   "bold": 0, 
+   "collapsible": 0, 
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
    "fieldname": "column_break_3", 
    "fieldtype": "Column Break", 
    "hidden": 0, 
    "ignore_user_permissions": 0, 
    "ignore_xss_filter": 0, 
    "in_filter": 0, 
+<<<<<<< HEAD
    "in_global_search": 0, 
    "in_list_view": 0, 
    "in_standard_filter": 0, 
+=======
+   "in_list_view": 0, 
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
    "length": 0, 
    "no_copy": 0, 
    "permlevel": 0, 
@@ -96,7 +139,10 @@
    "print_hide": 0, 
    "print_hide_if_no_value": 0, 
    "read_only": 0, 
+<<<<<<< HEAD
    "remember_last_selected_value": 0, 
+=======
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
    "report_hide": 0, 
    "reqd": 0, 
    "search_index": 0, 
@@ -104,6 +150,7 @@
    "unique": 0
   }, 
   {
+<<<<<<< HEAD
    "allow_bulk_edit": 0, 
    "allow_on_submit": 0, 
    "bold": 0, 
@@ -351,11 +398,18 @@
    "collapsible": 0, 
    "columns": 0, 
    "fieldname": "grade", 
+=======
+   "allow_on_submit": 0, 
+   "bold": 0, 
+   "collapsible": 0, 
+   "fieldname": "result", 
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
    "fieldtype": "Data", 
    "hidden": 0, 
    "ignore_user_permissions": 0, 
    "ignore_xss_filter": 0, 
    "in_filter": 0, 
+<<<<<<< HEAD
    "in_global_search": 0, 
    "in_list_view": 1, 
    "in_standard_filter": 0, 
@@ -419,6 +473,10 @@
    "in_list_view": 0, 
    "in_standard_filter": 0, 
    "label": "Comment", 
+=======
+   "in_list_view": 1, 
+   "label": "Result", 
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
    "length": 0, 
    "no_copy": 0, 
    "permlevel": 0, 
@@ -426,6 +484,7 @@
    "print_hide": 0, 
    "print_hide_if_no_value": 0, 
    "read_only": 0, 
+<<<<<<< HEAD
    "remember_last_selected_value": 0, 
    "report_hide": 0, 
    "reqd": 0, 
@@ -457,6 +516,8 @@
    "print_hide_if_no_value": 0, 
    "read_only": 1, 
    "remember_last_selected_value": 0, 
+=======
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
    "report_hide": 0, 
    "reqd": 0, 
    "search_index": 0, 
@@ -464,22 +525,35 @@
    "unique": 0
   }
  ], 
+<<<<<<< HEAD
  "has_web_view": 0, 
+=======
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
  "hide_heading": 0, 
  "hide_toolbar": 0, 
  "idx": 0, 
  "image_view": 0, 
  "in_create": 0, 
+<<<<<<< HEAD
  "is_submittable": 1, 
  "issingle": 0, 
  "istable": 0, 
  "max_attachments": 0, 
  "modified": "2017-08-31 15:39:24.813328", 
+=======
+ "in_dialog": 0, 
+ "is_submittable": 0, 
+ "issingle": 0, 
+ "istable": 1, 
+ "max_attachments": 0, 
+ "modified": "2016-08-01 10:37:23.571679", 
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
  "modified_by": "Administrator", 
  "module": "Schools", 
  "name": "Assessment Result", 
  "name_case": "", 
  "owner": "Administrator", 
+<<<<<<< HEAD
  "permissions": [
   {
    "amend": 1, 
@@ -511,5 +585,13 @@
  "sort_order": "DESC", 
  "title_field": "student_name", 
  "track_changes": 0, 
+=======
+ "permissions": [], 
+ "quick_entry": 0, 
+ "read_only": 0, 
+ "read_only_onload": 0, 
+ "sort_field": "modified", 
+ "sort_order": "DESC", 
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
  "track_seen": 0
 }

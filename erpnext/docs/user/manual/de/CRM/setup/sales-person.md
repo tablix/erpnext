@@ -3,7 +3,11 @@
 
 Vertriebsmitarbeiter verhalten sich wie Regionen. Sie können ein Organigramm der Vertriebsmitarbeiter erstellen, in dem individuell das Vertriebsziel des Vertriebsmitarbeiters vermerkt werden kann. Genauso wie in der Region muss das Ziel einer Artikelgruppe zugeordnet werden.
 
+<<<<<<< HEAD
 <img class="screenshot" alt="Baumstruktur der Vertriebsmitarbeiter" src="/docs/assets/img/crm/sales-person-tree.png">
+=======
+<img class="screenshot" alt="Baumstruktur der Vertriebsmitarbeiter" src="{{docs_base_url}}/assets/img/crm/sales-person-tree.png">
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 
 ### Vertriebspersonen in Transaktionen
 

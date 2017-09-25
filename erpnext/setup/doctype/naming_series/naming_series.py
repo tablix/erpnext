@@ -8,19 +8,29 @@ from frappe.utils import cstr
 from frappe import msgprint, throw, _
 
 from frappe.model.document import Document
+<<<<<<< HEAD
 from frappe.model.naming import parse_naming_series
 from frappe.permissions import get_doctypes_with_read
+=======
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 
 class NamingSeriesNotSetError(frappe.ValidationError): pass
 
 class NamingSeries(Document):
 	def get_transactions(self, arg=None):
 		doctypes = list(set(frappe.db.sql_list("""select parent
+<<<<<<< HEAD
 				from `tabDocField` df where fieldname='naming_series'""")
 			+ frappe.db.sql_list("""select dt from `tabCustom Field`
 				where fieldname='naming_series'""")))
 
 		doctypes = list(set(get_doctypes_with_read()) | set(doctypes))
+=======
+				from `tabDocField` where fieldname='naming_series'""")
+			+ frappe.db.sql_list("""select dt from `tabCustom Field`
+				where fieldname='naming_series'""")))
+
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 		prefixes = ""
 		for d in doctypes:
 			options = ""
@@ -28,13 +38,22 @@ class NamingSeries(Document):
 				options = self.get_options(d)
 			except frappe.DoesNotExistError:
 				frappe.msgprint('Unable to find DocType {0}'.format(d))
+<<<<<<< HEAD
 				#frappe.pass_does_not_exist_error()
+=======
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 				continue
 
 			if options:
 				prefixes = prefixes + "\n" + options
+<<<<<<< HEAD
 		prefixes.replace("\n\n", "\n")
 		prefixes = "\n".join(sorted(prefixes.split("\n")))
+=======
+
+		prefixes.replace("\n\n", "\n")
+		prefixes = "\n".join(sorted(prefixes.split()))
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 
 		return {
 			"transactions": "\n".join([''] + sorted(doctypes)),
@@ -110,7 +129,13 @@ class NamingSeries(Document):
 				where dt.name = df.dt and df.fieldname='naming_series' and dt.name != %s""",
 				self.select_doc_for_series)
 			))
+<<<<<<< HEAD
 		sr = [[frappe.get_meta(p).get_field("naming_series").options, p] for p in parent]
+=======
+		sr = [[frappe.get_meta(p).get_field("naming_series").options, p]
+			for p in parent]
+
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 		dt = frappe.get_doc("DocType", self.select_doc_for_series)
 		options = self.scrub_options_list(self.set_options.split("\n"))
 		for series in options:
@@ -127,12 +152,17 @@ class NamingSeries(Document):
 			throw(_('Special Characters except "-", "#", "." and "/" not allowed in naming series'))
 
 	def get_options(self, arg=None):
+<<<<<<< HEAD
 		if frappe.get_meta(arg or self.select_doc_for_series).get_field("naming_series"):
 			return frappe.get_meta(arg or self.select_doc_for_series).get_field("naming_series").options
+=======
+		return frappe.get_meta(arg or self.select_doc_for_series).get_field("naming_series").options
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 
 	def get_current(self, arg=None):
 		"""get series current"""
 		if self.prefix:
+<<<<<<< HEAD
 			prefix = self.parse_naming_series()
 			self.current_value = frappe.db.get_value("Series",
 				prefix, "current", order_by = "name")
@@ -140,11 +170,23 @@ class NamingSeries(Document):
 	def insert_series(self, series):
 		"""insert series if missing"""
 		if not frappe.db.get_value('Series', series, 'name', order_by="name"):
+=======
+			self.current_value = frappe.db.get_value("Series",
+				self.prefix.split('.')[0], "current")
+
+	def insert_series(self, series):
+		"""insert series if missing"""
+		if not frappe.db.exists('Series', series):
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 			frappe.db.sql("insert into tabSeries (name, current) values (%s, 0)", (series))
 
 	def update_series_start(self):
 		if self.prefix:
+<<<<<<< HEAD
 			prefix = self.parse_naming_series()
+=======
+			prefix = self.prefix.split('.')[0]
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 			self.insert_series(prefix)
 			frappe.db.sql("update `tabSeries` set current = %s where name = %s",
 				(self.current_value, prefix))
@@ -152,6 +194,7 @@ class NamingSeries(Document):
 		else:
 			msgprint(_("Please select prefix first"))
 
+<<<<<<< HEAD
 	def parse_naming_series(self):
 		parts = self.prefix.split('.')
 		# If series contain date format like INV.YYYY.MM.#####
@@ -163,6 +206,8 @@ class NamingSeries(Document):
 
 		return prefix
 
+=======
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 def set_by_naming_series(doctype, fieldname, naming_series, hide_name_field=True):
 	from frappe.custom.doctype.property_setter.property_setter import make_property_setter
 	if naming_series:

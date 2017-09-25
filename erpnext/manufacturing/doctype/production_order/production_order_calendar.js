@@ -7,10 +7,14 @@ frappe.views.calendar["Production Order"] = {
 		"end": "planned_end_date",
 		"id": "name",
 		"title": "name",
+<<<<<<< HEAD
 		"allDay": "allDay",
 		"progress": function(data) {
 			return flt(data.produced_qty) / data.qty * 100;
 		}
+=======
+		"allDay": "allDay"
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 	},
 	gantt: true,
 	get_css_class: function(data) {

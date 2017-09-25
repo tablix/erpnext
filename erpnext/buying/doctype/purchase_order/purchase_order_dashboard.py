@@ -1,5 +1,6 @@
 from frappe import _
 
+<<<<<<< HEAD
 def get_data():
 	return {
 		'fieldname': 'purchase_order',
@@ -32,3 +33,27 @@ def get_data():
 			},
 		]
 	}
+=======
+data = {
+	'fieldname': 'purchase_order',
+	'internal_links': {
+		'Material Request': ['items', 'material_request'],
+		'Supplier Quotation': ['items', 'supplier_quotation'],
+		'Project': ['project']
+	},
+	'transactions': [
+		{
+			'label': _('Related'),
+			'items': ['Purchase Receipt', 'Purchase Invoice', 'Journal Entry']
+		},
+		{
+			'label': _('Reference'),
+			'items': ['Material Request', 'Supplier Quotation', 'Project']
+		},
+		{
+			'label': _('Sub-contracting'),
+			'items': ['Stock Entry']
+		},
+	]
+} 
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347

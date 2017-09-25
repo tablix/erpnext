@@ -1,12 +1,19 @@
+<<<<<<< HEAD
 # Web Page
 
+=======
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 <p class="lead">Static Content like your Home Page, About Us, Contact Us, Terms pages can be created using the Web Page. </p>
 
 To create a new Web Page, go to:
 
 > Website > Web Page > New
 
+<<<<<<< HEAD
 <img class="screenshot" alt="Web Page" src="/docs/assets/img/website/web-page.png">
+=======
+<img class="screenshot" alt="Web Page" src="{{docs_base_url}}/assets/img/website/web-page.png">
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 
 #### Title
 

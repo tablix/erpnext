@@ -10,6 +10,10 @@ frappe.ui.form.on("Campaign", "refresh", function(frm) {
 		cur_frm.add_custom_button(__("View Leads"), function() {
 			frappe.route_options = {"source": "Campaign","campaign_name": frm.doc.name}
 			frappe.set_route("List", "Lead");
+<<<<<<< HEAD
 		}, "fa fa-list", true);
+=======
+		}, "icon-list", true);
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 	}
 })

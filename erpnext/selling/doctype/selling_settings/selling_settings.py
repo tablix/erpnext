@@ -5,16 +5,22 @@
 
 from __future__ import unicode_literals
 import frappe
+<<<<<<< HEAD
 import frappe.defaults
 from frappe.utils import cint
 from frappe.custom.doctype.property_setter.property_setter import make_property_setter
 from frappe.utils.nestedset import get_root_of
+=======
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 
 from frappe.model.document import Document
 
 class SellingSettings(Document):
+<<<<<<< HEAD
 	def on_update(self):
 		self.toggle_hide_tax_id()
+=======
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 
 	def validate(self):
 		for key in ["cust_master_name", "campaign_naming_by", "customer_group", "territory",
@@ -24,6 +30,7 @@ class SellingSettings(Document):
 		from erpnext.setup.doctype.naming_series.naming_series import set_by_naming_series
 		set_by_naming_series("Customer", "customer_name",
 			self.get("cust_master_name")=="Naming Series", hide_name_field=False)
+<<<<<<< HEAD
 
 	def toggle_hide_tax_id(self):
 		self.hide_tax_id = cint(self.hide_tax_id)
@@ -38,3 +45,5 @@ class SellingSettings(Document):
 			self.customer_group = get_root_of('Customer Group')
 		if not self.territory:
 			self.territory = get_root_of('Territory')
+=======
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347

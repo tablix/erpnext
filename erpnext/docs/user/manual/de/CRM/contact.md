@@ -7,11 +7,19 @@ Um einen neuen Kontakt zu erstellen, gehe Sie zu
 
 > CRM > Dokumente > Kontakt > Neu
 
+<<<<<<< HEAD
 <img class="screenshot" alt="Kontakt" src="/docs/assets/img/crm/contact.png">
 
 Alternativ können Sie einen Kontakt oder eine Adresse auch direkt aus dem Kundendatensatz erstellen. Klicken Sie hierzu auf "Neuer Kontakt" oder "Neue Adresse".
 
 <img class="screenshot" alt="Kontakt" src="/docs/assets/img/crm/contact-from-cust.png">
+=======
+<img class="screenshot" alt="Kontakt" src="{{docs_base_url}}/assets/img/crm/contact.png">
+
+Alternativ können Sie einen Kontakt oder eine Adresse auch direkt aus dem Kundendatensatz erstellen. Klicken Sie hierzu auf "Neuer Kontakt" oder "Neue Adresse".
+
+<img class="screenshot" alt="Kontakt" src="{{docs_base_url}}/assets/img/crm/contact-from-cust.png">
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 
 > Tipp: Wenn Sie in einer beliebigen Transaktion einen Kunden auswählen, wird ein Kontakt und eine Adresse vorselektiert. Das sind dann der Standardkontakt und die Standardadresse.
 

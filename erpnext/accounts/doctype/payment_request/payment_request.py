@@ -6,6 +6,7 @@ from __future__ import unicode_literals
 import frappe
 from frappe import _
 from frappe.model.document import Document
+<<<<<<< HEAD
 from frappe.utils import flt, nowdate, get_url
 from erpnext.accounts.party import get_party_account
 from erpnext.accounts.utils import get_account_currency
@@ -23,6 +24,18 @@ class PaymentRequest(Document):
 		if not self.reference_doctype or not self.reference_name:
 			frappe.throw(_("To create a Payment Request reference document is required"))
 
+=======
+from frappe.utils import flt, get_url, nowdate
+from erpnext.accounts.party import get_party_account
+from erpnext.accounts.utils import get_account_currency
+from erpnext.accounts.doctype.payment_entry.payment_entry import get_payment_entry, get_company_defaults
+
+class PaymentRequest(Document):
+	def validate(self):
+		self.validate_payment_request()
+		self.validate_currency()
+
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 	def validate_payment_request(self):
 		if frappe.db.get_value("Payment Request", {"reference_name": self.reference_name,
 			"name": ("!=", self.name), "status": ("not in", ["Initiated", "Paid"]), "docstatus": 1}, "name"):
@@ -35,6 +48,7 @@ class PaymentRequest(Document):
 
 	def on_submit(self):
 		send_mail = True
+<<<<<<< HEAD
 		ref_doc = frappe.get_doc(self.reference_doctype, self.reference_name)
 
 		if (hasattr(ref_doc, "order_type") and getattr(ref_doc, "order_type") == "Shopping Cart") \
@@ -53,11 +67,35 @@ class PaymentRequest(Document):
 	def make_invoice(self):
 		ref_doc = frappe.get_doc(self.reference_doctype, self.reference_name)
 		if (hasattr(ref_doc, "order_type") and getattr(ref_doc, "order_type") == "Shopping Cart"):
+=======
+		self.make_communication_entry()
+		ref_doc = frappe.get_doc(self.reference_doctype, self.reference_name)
+
+		if hasattr(ref_doc, "order_type") and getattr(ref_doc, "order_type") == "Shopping Cart":
+			send_mail = False
+
+		if send_mail and not self.flags.mute_email:
+			self.send_payment_request()
+			self.send_email()
+
+	def on_cancel(self):
+		self.set_as_cancelled()
+
+	def get_payment_url(self):
+		""" This is blanck method to trigger hooks call from individual payment gateway app
+		which will return respective payment gateway"""
+		pass
+
+	def make_invoice(self):
+		ref_doc = frappe.get_doc(self.reference_doctype, self.reference_name)
+		if hasattr(ref_doc, "order_type") and getattr(ref_doc, "order_type") == "Shopping Cart":
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 			from erpnext.selling.doctype.sales_order.sales_order import make_sales_invoice
 			si = make_sales_invoice(self.reference_name, ignore_permissions=True)
 			si = si.insert(ignore_permissions=True)
 			si.submit()
 
+<<<<<<< HEAD
 	def set_payment_request_url(self):
 		if self.payment_account:
 			self.payment_url = self.get_payment_url()
@@ -90,6 +128,18 @@ class PaymentRequest(Document):
 			"currency": self.currency
 		})
 
+=======
+	def send_payment_request(self):
+		if self.payment_account:
+			self.payment_url = get_url("/api/method/erpnext.accounts.doctype.payment_request.payment_request.generate_payment_request?name={0}".format(self.name))
+		
+		if self.payment_url:
+			self.db_set('payment_url', self.payment_url)
+			
+		if self.payment_url or not self.payment_gateway_account:
+			self.db_set('status', 'Initiated')
+
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 	def set_as_paid(self):
 		if frappe.session.user == "Guest":
 			frappe.set_user("Administrator")
@@ -147,6 +197,7 @@ class PaymentRequest(Document):
 
 	def send_email(self):
 		"""send email with payment link"""
+<<<<<<< HEAD
 		email_args = {
 			"recipients": self.email_to,
 			"sender": None,
@@ -156,6 +207,11 @@ class PaymentRequest(Document):
 			"attachments": [frappe.attach_print(self.reference_doctype, self.reference_name,
 				file_name=self.reference_name, print_format=self.print_format)]}
 		enqueue(method=frappe.sendmail, queue='short', timeout=300, async=True, **email_args)
+=======
+		frappe.sendmail(recipients=self.email_to, sender=None, subject=self.subject,
+			message=self.get_message(), attachments=[frappe.attach_print(self.reference_doctype,
+			self.reference_name, file_name=self.reference_name, print_format=self.print_format)])
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 
 	def get_message(self):
 		"""return message with payment gateway link"""
@@ -174,6 +230,7 @@ class PaymentRequest(Document):
 	def set_as_cancelled(self):
 		self.db_set("status", "Cancelled")
 
+<<<<<<< HEAD
 	def check_if_payment_entry_exists(self):
 		if self.status == "Paid":
 			payment_entry = frappe.db.sql_list("""select parent from `tabPayment Entry Reference`
@@ -181,6 +238,8 @@ class PaymentRequest(Document):
 			if payment_entry:
 				frappe.throw(_("Payment Entry already exists"), title=_('Error'))
 
+=======
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 	def make_communication_entry(self):
 		"""Make communication entry"""
 		comm = frappe.get_doc({
@@ -196,6 +255,7 @@ class PaymentRequest(Document):
 	def get_payment_success_url(self):
 		return self.payment_success_url
 
+<<<<<<< HEAD
 	def on_payment_authorized(self, status=None):
 		if not status:
 			return
@@ -222,15 +282,27 @@ class PaymentRequest(Document):
 
 			return redirect_to
 
+=======
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 @frappe.whitelist(allow_guest=True)
 def make_payment_request(**args):
 	"""Make payment request"""
 
 	args = frappe._dict(args)
+<<<<<<< HEAD
 	ref_doc = frappe.get_doc(args.dt, args.dn)
 	grand_total = get_amount(ref_doc, args.dt)
 	gateway_account = get_gateway_details(args) or frappe._dict()
 
+=======
+
+	ref_doc = frappe.get_doc(args.dt, args.dn)
+
+	gateway_account = get_gateway_details(args) or frappe._dict()
+
+	grand_total = get_amount(ref_doc, args.dt)
+
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 	existing_payment_request = frappe.db.get_value("Payment Request",
 		{"reference_doctype": args.dt, "reference_name": args.dn, "docstatus": ["!=", 2]})
 
@@ -247,24 +319,43 @@ def make_payment_request(**args):
 			"grand_total": grand_total,
 			"email_to": args.recipient_id or "",
 			"subject": "Payment Request for %s"%args.dn,
+<<<<<<< HEAD
 			"message": gateway_account.get("message") or get_dummy_message(ref_doc),
+=======
+			"message": gateway_account.get("message") or get_dummy_message(args.use_dummy_message),
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 			"reference_doctype": args.dt,
 			"reference_name": args.dn
 		})
 
+<<<<<<< HEAD
 		if args.order_type == "Shopping Cart" or args.mute_email:
+=======
+		if args.return_doc:
+			return pr
+
+		if args.mute_email:
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 			pr.flags.mute_email = True
 
 		if args.submit_doc:
 			pr.insert(ignore_permissions=True)
 			pr.submit()
 
+<<<<<<< HEAD
 	if args.order_type == "Shopping Cart":
 		frappe.db.commit()
 		frappe.local.response["type"] = "redirect"
 		frappe.local.response["location"] = pr.get_payment_url()
 
 	if args.return_doc:
+=======
+	if hasattr(ref_doc, "order_type") and getattr(ref_doc, "order_type") == "Shopping Cart":
+		generate_payment_request(pr.name)
+		frappe.db.commit()
+
+	if not args.cart:
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 		return pr
 
 	return pr.as_dict()
@@ -280,9 +371,12 @@ def get_amount(ref_doc, dt):
 		else:
 			grand_total = flt(ref_doc.outstanding_amount) / ref_doc.conversion_rate
 
+<<<<<<< HEAD
 	if dt == "Fees":
 		grand_total = ref_doc.outstanding_amount
 
+=======
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 	if grand_total > 0 :
 		return grand_total
 
@@ -319,6 +413,13 @@ def get_print_format_list(ref_doctype):
 	}
 
 @frappe.whitelist(allow_guest=True)
+<<<<<<< HEAD
+=======
+def generate_payment_request(name):
+	frappe.get_doc("Payment Request", name).run_method("get_payment_url")
+
+@frappe.whitelist(allow_guest=True)
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 def resend_payment_email(docname):
 	return frappe.get_doc("Payment Request", docname).send_email()
 
@@ -332,11 +433,16 @@ def make_status_as_paid(doc, method):
 		payment_request_name = frappe.db.get_value("Payment Request",
 			{"reference_doctype": ref.reference_doctype, "reference_name": ref.reference_name,
 			"docstatus": 1})
+<<<<<<< HEAD
 
+=======
+		
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 		if payment_request_name:
 			doc = frappe.get_doc("Payment Request", payment_request_name)
 			if doc.status != "Paid":
 				doc.db_set('status', 'Paid')
+<<<<<<< HEAD
 				frappe.db.commit()
 
 def get_dummy_message(doc):
@@ -353,3 +459,15 @@ def get_dummy_message(doc):
 
 <p>{{ _("Thank you for your business!") }}</p>
 """, dict(doc=doc, payment_url = '{{ payment_url }}'))
+=======
+
+def get_dummy_message(use_dummy_message=True):
+	return """
+		<p> Hope you are enjoying a service. Please consider bank details for payment </p>
+		<p> Bank Details <p><br>
+		<p> Bank Name : National Bank </p>
+		<p> Account Number : 123456789000872 </p>
+		<p> IFSC code : NB000001 </p>
+		<p> Account Name : Wind Power LLC </p>
+	"""
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347

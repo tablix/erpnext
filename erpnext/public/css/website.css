@@ -2,9 +2,12 @@
   font-size: 18px;
   line-height: 200%;
 }
+<<<<<<< HEAD
 .web-page-content {
   margin-bottom: 30px;
 }
+=======
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 .item-stock {
   margin-bottom: 10px !important;
 }
@@ -26,6 +29,11 @@
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center top;
+<<<<<<< HEAD
+=======
+  border-radius-top: 4px;
+  border-radius-right: 4px;
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 }
 .product-image.missing-image {
   width: 100%;
@@ -34,6 +42,11 @@
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center top;
+<<<<<<< HEAD
+=======
+  border-radius-top: 4px;
+  border-radius-right: 4px;
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
   position: relative;
   background-color: #EBEFF2;
 }
@@ -41,6 +54,17 @@
   font-size: 32px;
   color: #d1d8dd;
 }
+<<<<<<< HEAD
+=======
+.product-text {
+  padding: 15px 0px;
+}
+.product-label {
+  padding-bottom: 4px;
+  text-transform: uppercase;
+  font-size: 12px;
+}
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 .product-search {
   margin-bottom: 15px;
 }
@@ -62,10 +86,22 @@
 .featured-products {
   border-top: 1px solid #EBEFF2;
 }
+<<<<<<< HEAD
+=======
+.transaction-list-item:hover,
+.transaction-list-item:active,
+.transaction-list-item:focus {
+  background-color: #fafbfc;
+}
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 .transaction-list-item .indicator {
   font-weight: inherit;
   color: #8D99A6;
 }
+<<<<<<< HEAD
+=======
+.transaction-list-item .items-preview,
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 .transaction-list-item .transaction-time {
   margin-top: 5px;
 }
@@ -168,6 +204,10 @@
 }
 .cart-dropdown-container .cart-items-dropdown {
   max-height: 350px;
+<<<<<<< HEAD
+=======
+  overflow: auto;
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 }
 .cart-dropdown-container .cart-items-dropdown .cart-dropdown {
   display: block;
@@ -234,6 +274,7 @@
   padding: 15px;
   word-wrap: break-word;
   height: 75px;
+<<<<<<< HEAD
   display: block;
   /* Fallback for non-webkit */
   display: -webkit-box;
@@ -243,10 +284,13 @@
   -webkit-box-orient: vertical;
   overflow: hidden;
   text-overflow: ellipsis;
+=======
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 }
 .product-image-wrapper {
   padding-bottom: 40px;
 }
+<<<<<<< HEAD
 .duration-bar {
   display: inline-block;
   color: white;
@@ -268,3 +312,5 @@
 .bom-spec {
   margin-bottom: 20px;
 }
+=======
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347

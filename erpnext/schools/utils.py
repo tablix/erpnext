@@ -9,9 +9,15 @@ from frappe import _
 class OverlapError(frappe.ValidationError): pass
 
 def validate_overlap_for(doc, doctype, fieldname, value=None):
+<<<<<<< HEAD
 	"""Checks overlap for specified field.
 	
 	:param fieldname: Checks Overlap for this field 
+=======
+	"""Checks overlap for specified feild.
+	
+	:param fieldname: Checks Overlap for this feild 
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 	"""
 	
 	existing = get_overlap_for(doc, doctype, fieldname, value)
@@ -20,9 +26,15 @@ def validate_overlap_for(doc, doctype, fieldname, value=None):
 			doc.meta.get_label(fieldname) if not value else fieldname , value or doc.get(fieldname)), OverlapError)
 	
 def get_overlap_for(doc, doctype, fieldname, value=None):
+<<<<<<< HEAD
 	"""Returns overlaping document for specified field.
 	
 	:param fieldname: Checks Overlap for this field 
+=======
+	"""Returns overlaping document for specified feild.
+	
+	:param fieldname: Checks Overlap for this feild 
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 	"""
 
 	existing = frappe.db.sql("""select name, from_time, to_time from `tab{0}`

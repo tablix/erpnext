@@ -20,7 +20,11 @@ def execute(filters=None):
 		data.append([
 			d.name, d.customer, d.territory, d.posting_date, d.item_code,
 			item_details.get(d.item_code, {}).get("item_group"), item_details.get(d.item_code, {}).get("brand"),
+<<<<<<< HEAD
 			d.stock_qty, d.base_net_amount, d.sales_person, d.allocated_percentage, d.contribution_amt
+=======
+			d.qty, d.base_net_amount, d.sales_person, d.allocated_percentage, d.contribution_amt
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 		])
 
 	if data:
@@ -48,7 +52,11 @@ def get_entries(filters):
 	entries = frappe.db.sql("""
 		select
 			dt.name, dt.customer, dt.territory, dt.%s as posting_date, dt_item.item_code,
+<<<<<<< HEAD
 			dt_item.stock_qty, dt_item.base_net_amount, st.sales_person, st.allocated_percentage,
+=======
+			dt_item.qty, dt_item.base_net_amount, st.sales_person, st.allocated_percentage,
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 			dt_item.base_net_amount*st.allocated_percentage/100 as contribution_amt
 		from
 			`tab%s` dt, `tab%s Item` dt_item, `tabSales Team` st

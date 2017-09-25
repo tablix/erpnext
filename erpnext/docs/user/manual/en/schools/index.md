@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # Schools
 
 
@@ -5,4 +6,6 @@ The School Modules in ERPNext is designed to meet requirements of Schools, Colle
 
 <img class="screenshot" alt="Fees Section" src="/docs/assets/img/schools/module.png">
 
+=======
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 {index}

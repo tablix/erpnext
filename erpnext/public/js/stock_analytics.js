@@ -6,6 +6,10 @@ erpnext.StockAnalytics = erpnext.StockGridReport.extend({
 	init: function(wrapper, opts) {
 		var args = {
 			title: __("Stock Analytics"),
+<<<<<<< HEAD
+=======
+			page: wrapper,
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 			parent: $(wrapper).find('.layout-main'),
 			page: wrapper.page,
 			doctypes: ["Item", "Item Group", "Warehouse", "Stock Ledger Entry", "Brand",
@@ -119,8 +123,13 @@ erpnext.StockAnalytics = erpnext.StockGridReport.extend({
 	},
 	prepare_balances: function() {
 		var me = this;
+<<<<<<< HEAD
 		var from_date = frappe.datetime.str_to_obj(this.from_date);
 		var to_date = frappe.datetime.str_to_obj(this.to_date);
+=======
+		var from_date = dateutil.str_to_obj(this.from_date);
+		var to_date = dateutil.str_to_obj(this.to_date);
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 		var data = frappe.report_dump.data["Stock Ledger Entry"];
 
 		this.item_warehouse = {};
@@ -129,7 +138,11 @@ erpnext.StockAnalytics = erpnext.StockGridReport.extend({
 		for(var i=0, j=data.length; i<j; i++) {
 			var sl = data[i];
 			sl.posting_datetime = sl.posting_date + " " + sl.posting_time;
+<<<<<<< HEAD
 			var posting_datetime = frappe.datetime.str_to_obj(sl.posting_datetime);
+=======
+			var posting_datetime = dateutil.str_to_obj(sl.posting_datetime);
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 
 			if(me.is_default("warehouse") ? true : me.warehouse == sl.warehouse) {
 				var item = me.item_by_name[sl.item_code];
@@ -138,7 +151,11 @@ erpnext.StockAnalytics = erpnext.StockGridReport.extend({
 				if(me.value_or_qty!="Quantity") {
 					var wh = me.get_item_warehouse(sl.warehouse, sl.item_code);
 					var valuation_method = item.valuation_method ?
+<<<<<<< HEAD
 						item.valuation_method : frappe.sys_defaults.valuation_method;
+=======
+						item.valuation_method : sys_defaults.valuation_method;
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 					var is_fifo = valuation_method == "FIFO";
 
 					if(sl.voucher_type=="Stock Reconciliation") {
@@ -184,7 +201,11 @@ erpnext.StockAnalytics = erpnext.StockGridReport.extend({
 
 				var parent = me.parent_map[item.name];
 				while(parent) {
+<<<<<<< HEAD
 					var parent_group = me.item_by_name[parent];
+=======
+					parent_group = me.item_by_name[parent];
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 					$.each(me.columns, function(c, col) {
 						if (col.formatter == me.currency_formatter) {
 							parent_group[col.field] =

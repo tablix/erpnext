@@ -1,7 +1,11 @@
 # Konteneinstellungen
 <span class="text-muted contributed-by">Beigetragen von CWT Connector & Wire Technology GmbH</span>
 
+<<<<<<< HEAD
 <img class="screenshot" alt="Konteneinstellungen" src="/docs/assets/img/accounts/account-settings.png">
+=======
+<img class="screenshot" alt="Konteneinstellungen" src="{{docs_base_url}}/assets/img/accounts/account-settings.png">
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 
 * Konten gesperrt bis: Sperren Sie Konten-Transaktionen bis zu einem bestimmten Datum. Niemand bis auf die angegebene Rolle kann dann Buchungen zu diesem Konto erstellen oder verändern.
 

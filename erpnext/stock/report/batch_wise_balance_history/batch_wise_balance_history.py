@@ -23,8 +23,12 @@ def execute(filters=None):
 				if qty_dict.opening_qty or qty_dict.in_qty or qty_dict.out_qty or qty_dict.bal_qty:
 					data.append([item, item_map[item]["item_name"], item_map[item]["description"], wh, batch,
 						flt(qty_dict.opening_qty, float_precision), flt(qty_dict.in_qty, float_precision),
+<<<<<<< HEAD
 						flt(qty_dict.out_qty, float_precision), flt(qty_dict.bal_qty, float_precision),
 						 item_map[item]["stock_uom"]
+=======
+						flt(qty_dict.out_qty, float_precision), flt(qty_dict.bal_qty, float_precision)
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 					])
 
 	return columns, data
@@ -34,9 +38,13 @@ def get_columns(filters):
 
 	columns = [_("Item") + ":Link/Item:100"] + [_("Item Name") + "::150"] + [_("Description") + "::150"] + \
 	[_("Warehouse") + ":Link/Warehouse:100"] + [_("Batch") + ":Link/Batch:100"] + [_("Opening Qty") + ":Float:90"] + \
+<<<<<<< HEAD
 	[_("In Qty") + ":Float:80"] + [_("Out Qty") + ":Float:80"] + [_("Balance Qty") + ":Float:90"] + \
 	[_("UOM") + "::90"]
 
+=======
+	[_("In Qty") + ":Float:80"] + [_("Out Qty") + ":Float:80"] + [_("Balance Qty") + ":Float:90"]
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 
 	return columns
 
@@ -90,7 +98,11 @@ def get_item_warehouse_batch_map(filters, float_precision):
 
 def get_item_details(filters):
 	item_map = {}
+<<<<<<< HEAD
 	for d in frappe.db.sql("select name, item_name, description, stock_uom from tabItem", as_dict=1):
+=======
+	for d in frappe.db.sql("select name, item_name, description from tabItem", as_dict=1):
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 		item_map.setdefault(d.name, d)
 
 	return item_map

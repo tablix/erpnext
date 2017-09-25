@@ -3,6 +3,7 @@
 
 from __future__ import unicode_literals
 import frappe
+<<<<<<< HEAD
 from frappe.desk.reportview import get_match_cond, get_filters_cond
 from frappe.utils import nowdate
 from collections import defaultdict
@@ -11,12 +12,47 @@ from collections import defaultdict
  # searches for active employees
 def employee_query(doctype, txt, searchfield, start, page_len, filters):
 	conditions = []
+=======
+from frappe.desk.reportview import get_match_cond
+from frappe.model.db_query import DatabaseQuery
+from frappe.utils import nowdate
+
+def get_filters_cond(doctype, filters, conditions):
+	if filters:
+		flt = filters
+		if isinstance(filters, dict):
+			filters = filters.items()
+			flt = []
+			for f in filters:
+				if isinstance(f[1], basestring) and f[1][0] == '!':
+					flt.append([doctype, f[0], '!=', f[1][1:]])
+				else:
+					value = frappe.db.escape(f[1]) if isinstance(f[1], basestring) else f[1]
+					flt.append([doctype, f[0], '=', value])
+
+		query = DatabaseQuery(doctype)
+		query.filters = flt
+		query.conditions = conditions
+		query.build_filter_conditions(flt, conditions)
+
+		cond = ' and ' + ' and '.join(query.conditions)
+	else:
+		cond = ''
+	return cond
+
+ # searches for active employees
+def employee_query(doctype, txt, searchfield, start, page_len, filters):
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 	return frappe.db.sql("""select name, employee_name from `tabEmployee`
 		where status = 'Active'
 			and docstatus < 2
 			and ({key} like %(txt)s
 				or employee_name like %(txt)s)
+<<<<<<< HEAD
 			{fcond} {mcond}
+=======
+			{mcond}
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 		order by
 			if(locate(%(_txt)s, name), locate(%(_txt)s, name), 99999),
 			if(locate(%(_txt)s, employee_name), locate(%(_txt)s, employee_name), 99999),
@@ -24,7 +60,10 @@ def employee_query(doctype, txt, searchfield, start, page_len, filters):
 			name, employee_name
 		limit %(start)s, %(page_len)s""".format(**{
 			'key': searchfield,
+<<<<<<< HEAD
 			'fcond': get_filters_cond(doctype, filters, conditions),
+=======
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 			'mcond': get_match_cond(doctype)
 		}), {
 			'txt': "%%%s%%" % txt,
@@ -60,13 +99,17 @@ def lead_query(doctype, txt, searchfield, start, page_len, filters):
 
  # searches for customer
 def customer_query(doctype, txt, searchfield, start, page_len, filters):
+<<<<<<< HEAD
 	conditions = []
+=======
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 	cust_master_name = frappe.defaults.get_user_default("cust_master_name")
 
 	if cust_master_name == "Customer Name":
 		fields = ["name", "customer_group", "territory"]
 	else:
 		fields = ["name", "customer_name", "customer_group", "territory"]
+<<<<<<< HEAD
 
 	meta = frappe.get_meta("Customer")
 	searchfields = meta.get_search_fields()
@@ -81,6 +124,19 @@ def customer_query(doctype, txt, searchfield, start, page_len, filters):
 		where docstatus < 2
 			and ({scond}) and disabled=0
 			{fcond} {mcond}
+=======
+		
+	meta = frappe.get_meta("Customer")
+	fields = fields + [f for f in meta.get_search_fields() if not f in fields]
+
+	fields = ", ".join(fields)
+
+	return frappe.db.sql("""select {fields} from `tabCustomer`
+		where docstatus < 2
+			and ({key} like %(txt)s
+				or customer_name like %(txt)s) and disabled=0
+			{mcond}
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 		order by
 			if(locate(%(_txt)s, name), locate(%(_txt)s, name), 99999),
 			if(locate(%(_txt)s, customer_name), locate(%(_txt)s, customer_name), 99999),
@@ -88,9 +144,14 @@ def customer_query(doctype, txt, searchfield, start, page_len, filters):
 			name, customer_name
 		limit %(start)s, %(page_len)s""".format(**{
 			"fields": fields,
+<<<<<<< HEAD
 			"scond": searchfields,
 			"mcond": get_match_cond(doctype),
 			"fcond": get_filters_cond(doctype, filters, conditions).replace('%', '%%'),
+=======
+			"key": searchfield,
+			"mcond": get_match_cond(doctype)
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 		}), {
 			'txt': "%%%s%%" % txt,
 			'_txt': txt.replace("%", ""),
@@ -227,6 +288,7 @@ def get_project_name(doctype, txt, searchfield, start, page_len, filters):
 				"_txt": txt.replace('%', '')
 			})
 
+<<<<<<< HEAD
 
 def get_delivery_notes_to_be_billed(doctype, txt, searchfield, start, page_len, filters, as_dict):
 	return frappe.db.sql("""
@@ -251,6 +313,21 @@ def get_delivery_notes_to_be_billed(doctype, txt, searchfield, start, page_len, 
 		"txt": "%(txt)s"
 	}, {"txt": ("%%%s%%" % txt)}, as_dict=as_dict)
 
+=======
+def get_delivery_notes_to_be_billed(doctype, txt, searchfield, start, page_len, filters):
+	return frappe.db.sql("""select `tabDelivery Note`.name, `tabDelivery Note`.customer_name
+		from `tabDelivery Note`
+		where `tabDelivery Note`.`%(key)s` like %(txt)s and
+			`tabDelivery Note`.docstatus = 1 and status not in ("Stopped", "Closed") %(fcond)s
+			and (`tabDelivery Note`.per_billed < 100 or `tabDelivery Note`.grand_total = 0)
+			%(mcond)s order by `tabDelivery Note`.`%(key)s` asc
+			limit %(start)s, %(page_len)s""" % {
+				"key": searchfield,
+				"fcond": get_filters_cond(doctype, filters, []),
+				"mcond": get_match_cond(doctype),
+				"start": "%(start)s", "page_len": "%(page_len)s", "txt": "%(txt)s"
+			}, { "start": start, "page_len": page_len, "txt": ("%%%s%%" % txt) })
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 
 def get_batch_no(doctype, txt, searchfield, start, page_len, filters):
 	cond = ""
@@ -365,6 +442,7 @@ def get_expense_account(doctype, txt, searchfield, start, page_len, filters):
 			'company': filters.get("company", ""),
 			'txt': "%%%s%%" % frappe.db.escape(txt)
 		})
+<<<<<<< HEAD
 
 
 @frappe.whitelist()
@@ -408,3 +486,5 @@ def get_doctype_wise_filters(filters):
 	for row in filters:
 		filter_dict[row[0]].append(row)
 	return filter_dict
+=======
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347

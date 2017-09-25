@@ -4,6 +4,7 @@
 
 from __future__ import unicode_literals
 import frappe
+<<<<<<< HEAD
 from frappe import _
 from frappe.utils import flt
 from frappe.model.document import Document
@@ -49,3 +50,9 @@ class AssessmentResult(Document):
 
 
 
+=======
+from frappe.model.document import Document
+
+class AssessmentResult(Document):
+	pass
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347

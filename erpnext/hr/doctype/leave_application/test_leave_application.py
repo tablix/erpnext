@@ -53,7 +53,11 @@ class TestLeaveApplication(unittest.TestCase):
 		frappe.db.sql("""delete from `tabEmployee Leave Approver`""")
 
 	def _clear_roles(self):
+<<<<<<< HEAD
 		frappe.db.sql("""delete from `tabHas Role` where parent in
+=======
+		frappe.db.sql("""delete from `tabUserRole` where parent in
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 			("test@example.com", "test1@example.com", "test2@example.com")""")
 
 	def _clear_applications(self):
@@ -134,7 +138,11 @@ class TestLeaveApplication(unittest.TestCase):
 		application.leave_approver = "test2@example.com"
 		self.assertRaises(OverlapError, application.insert)
 
+<<<<<<< HEAD
 	def test_overlap_with_half_day_1(self):
+=======
+	def test_overlap_with_half_day(self):
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 		self._clear_roles()
 		self._clear_applications()
 
@@ -146,6 +154,7 @@ class TestLeaveApplication(unittest.TestCase):
 
 		make_allocation_record()
 
+<<<<<<< HEAD
 		# leave from 1-5, half day on 3rd
 		application = self.get_application(_test_records[0])
 		application.leave_approver = "test2@example.com"
@@ -173,6 +182,27 @@ class TestLeaveApplication(unittest.TestCase):
 		self.assertRaises(OverlapError, application.insert)
 
 	def test_overlap_with_half_day_2(self):
+=======
+		# allow second half-day on the same day if available
+		application = self.get_application(_test_records[0])
+		application.leave_approver = "test2@example.com"
+		application.half_day = 1
+		application.insert()
+
+		# allow second half-day on the same day if available
+		application = self.get_application(_test_records[0])
+		application.leave_approver = "test2@example.com"
+		application.half_day = 1
+		application.insert()
+
+		application = self.get_application(_test_records[0])
+		application.leave_approver = "test2@example.com"
+		application.half_day = 1
+
+		self.assertRaises(OverlapError, application.insert)
+
+	def test_overlap_with_half_day_not_applicable(self):
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 		self._clear_roles()
 		self._clear_applications()
 
@@ -184,11 +214,16 @@ class TestLeaveApplication(unittest.TestCase):
 
 		make_allocation_record()
 
+<<<<<<< HEAD
 		# leave from 1-5, no half day
+=======
+		# allow second half-day on the same day if available
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 		application = self.get_application(_test_records[0])
 		application.leave_approver = "test2@example.com"
 		application.insert()
 
+<<<<<<< HEAD
 		# Apply again for a half day leave on 1st
 		application = self.get_application(_test_records[0])
 		application.leave_approver = "test2@example.com"
@@ -234,6 +269,14 @@ class TestLeaveApplication(unittest.TestCase):
 		application.half_day = 1
 		application.half_day_date = "2013-01-05"
 		application.insert()
+=======
+		# allow second half-day on the same day if available
+		application = self.get_application(_test_records[0])
+		application.leave_approver = "test2@example.com"
+		application.half_day = 1
+
+		self.assertRaises(OverlapError, application.insert)
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 
 	def test_global_block_list(self):
 		self._clear_roles()

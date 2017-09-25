@@ -8,7 +8,11 @@ Using Renaming feature, you can change ID of a master documents like Item, Wareh
 
 #### 2. Rename
 
+<<<<<<< HEAD
 <img alt="Renamed Item" class="screenshot" src="/docs/assets/img/articles/rename-a-doc.gif">
+=======
+<img alt="Renamed Item" class="screenshot" src="{{docs_base_url}}/assets/img/articles/rename-a-doc.gif">
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 
 ###Effect of Renaming
 
@@ -16,8 +20,13 @@ Renaming document affects existing transaction where this record is selected. Co
 
 ###See Also
 
+<<<<<<< HEAD
 1. [Bulk Renaming](/docs/user/manual/en/using-erpnext/articles/bulk-rename.html)
 2. [Document Merging](/docs/user/manual/en/using-erpnext/articles/merging-documents.html)
+=======
+1. [Bulk Renaming]({{docs_base_url}}/user/manual/en/using-erpnext/articles/bulk-rename.html)
+2. [Document Merging]({{docs_base_url}}/user/manual/en/using-erpnext/articles/merging-documents.html)
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 
 **List of Renamable Documents**
 

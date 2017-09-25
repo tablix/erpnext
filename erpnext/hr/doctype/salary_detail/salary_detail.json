@@ -1,6 +1,9 @@
 {
  "allow_copy": 0, 
+<<<<<<< HEAD
  "allow_guest_to_view": 0, 
+=======
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
  "allow_import": 0, 
  "allow_rename": 0, 
  "beta": 0, 
@@ -15,17 +18,25 @@
    "allow_on_submit": 0, 
    "bold": 0, 
    "collapsible": 0, 
+<<<<<<< HEAD
    "columns": 0, 
+=======
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
    "fieldname": "salary_component", 
    "fieldtype": "Link", 
    "hidden": 0, 
    "ignore_user_permissions": 0, 
    "ignore_xss_filter": 0, 
    "in_filter": 0, 
+<<<<<<< HEAD
    "in_global_search": 0, 
    "in_list_view": 1, 
    "in_standard_filter": 0, 
    "label": "Component", 
+=======
+   "in_list_view": 1, 
+   "label": "Salary Component", 
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
    "length": 0, 
    "no_copy": 0, 
    "options": "Salary Component", 
@@ -34,7 +45,10 @@
    "print_hide": 0, 
    "print_hide_if_no_value": 0, 
    "read_only": 0, 
+<<<<<<< HEAD
    "remember_last_selected_value": 0, 
+=======
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
    "report_hide": 0, 
    "reqd": 1, 
    "search_index": 0, 
@@ -45,14 +59,20 @@
    "allow_on_submit": 0, 
    "bold": 0, 
    "collapsible": 0, 
+<<<<<<< HEAD
    "columns": 1, 
    "depends_on": "eval:doc.parenttype=='Salary Structure'", 
    "fieldname": "abbr", 
    "fieldtype": "Data", 
+=======
+   "fieldname": "amount", 
+   "fieldtype": "Currency", 
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
    "hidden": 0, 
    "ignore_user_permissions": 0, 
    "ignore_xss_filter": 0, 
    "in_filter": 0, 
+<<<<<<< HEAD
    "in_global_search": 0, 
    "in_list_view": 1, 
    "in_standard_filter": 0, 
@@ -60,12 +80,23 @@
    "length": 0, 
    "no_copy": 0, 
    "options": "salary_component.salary_component_abbr", 
+=======
+   "in_list_view": 1, 
+   "label": "Amount", 
+   "length": 0, 
+   "no_copy": 0, 
+   "options": "Company:company:default_currency", 
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
    "permlevel": 0, 
    "precision": "", 
    "print_hide": 0, 
    "print_hide_if_no_value": 0, 
+<<<<<<< HEAD
    "read_only": 1, 
    "remember_last_selected_value": 0, 
+=======
+   "read_only": 0, 
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
    "report_hide": 0, 
    "reqd": 0, 
    "search_index": 0, 
@@ -76,13 +107,17 @@
    "allow_on_submit": 0, 
    "bold": 0, 
    "collapsible": 0, 
+<<<<<<< HEAD
    "columns": 0, 
+=======
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
    "fieldname": "column_break_3", 
    "fieldtype": "Column Break", 
    "hidden": 0, 
    "ignore_user_permissions": 0, 
    "ignore_xss_filter": 0, 
    "in_filter": 0, 
+<<<<<<< HEAD
    "in_global_search": 0, 
    "in_list_view": 0, 
    "in_standard_filter": 0, 
@@ -208,12 +243,20 @@
    "length": 0, 
    "no_copy": 0, 
    "options": "", 
+=======
+   "in_list_view": 0, 
+   "length": 0, 
+   "no_copy": 0, 
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
    "permlevel": 0, 
    "precision": "", 
    "print_hide": 0, 
    "print_hide_if_no_value": 0, 
    "read_only": 0, 
+<<<<<<< HEAD
    "remember_last_selected_value": 0, 
+=======
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
    "report_hide": 0, 
    "reqd": 0, 
    "search_index": 0, 
@@ -224,6 +267,7 @@
    "allow_on_submit": 0, 
    "bold": 0, 
    "collapsible": 0, 
+<<<<<<< HEAD
    "columns": 0, 
    "default": "", 
    "depends_on": "eval:doc.amount_based_on_formula!==0 && doc.parenttype==='Salary Structure'", 
@@ -289,24 +333,36 @@
    "collapsible": 0, 
    "columns": 0, 
    "depends_on": "", 
+=======
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
    "fieldname": "depends_on_lwp", 
    "fieldtype": "Check", 
    "hidden": 0, 
    "ignore_user_permissions": 0, 
    "ignore_xss_filter": 0, 
    "in_filter": 0, 
+<<<<<<< HEAD
    "in_global_search": 0, 
    "in_list_view": 0, 
    "in_standard_filter": 0, 
+=======
+   "in_list_view": 0, 
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
    "label": "Depends on Leave Without Pay", 
    "length": 0, 
    "no_copy": 0, 
    "permlevel": 0, 
    "precision": "", 
+<<<<<<< HEAD
    "print_hide": 1, 
    "print_hide_if_no_value": 0, 
    "read_only": 0, 
    "remember_last_selected_value": 0, 
+=======
+   "print_hide": 0, 
+   "print_hide_if_no_value": 0, 
+   "read_only": 0, 
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
    "report_hide": 0, 
    "reqd": 0, 
    "search_index": 0, 
@@ -317,17 +373,24 @@
    "allow_on_submit": 0, 
    "bold": 0, 
    "collapsible": 0, 
+<<<<<<< HEAD
    "columns": 0, 
    "depends_on": "eval:doc.parenttype=='Salary Structure'", 
+=======
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
    "fieldname": "default_amount", 
    "fieldtype": "Currency", 
    "hidden": 0, 
    "ignore_user_permissions": 0, 
    "ignore_xss_filter": 0, 
    "in_filter": 0, 
+<<<<<<< HEAD
    "in_global_search": 0, 
    "in_list_view": 0, 
    "in_standard_filter": 0, 
+=======
+   "in_list_view": 0, 
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
    "label": "Default Amount", 
    "length": 0, 
    "no_copy": 0, 
@@ -337,6 +400,7 @@
    "print_hide": 0, 
    "print_hide_if_no_value": 0, 
    "read_only": 0, 
+<<<<<<< HEAD
    "remember_last_selected_value": 0, 
    "report_hide": 0, 
    "reqd": 0, 
@@ -398,6 +462,8 @@
    "print_hide_if_no_value": 0, 
    "read_only": 0, 
    "remember_last_selected_value": 0, 
+=======
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
    "report_hide": 0, 
    "reqd": 0, 
    "search_index": 0, 
@@ -405,18 +471,30 @@
    "unique": 0
   }
  ], 
+<<<<<<< HEAD
  "has_web_view": 0, 
+=======
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
  "hide_heading": 0, 
  "hide_toolbar": 0, 
  "idx": 0, 
  "image_view": 0, 
  "in_create": 0, 
+<<<<<<< HEAD
+=======
+ "in_dialog": 0, 
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
  "is_submittable": 0, 
  "issingle": 0, 
  "istable": 1, 
  "max_attachments": 0, 
+<<<<<<< HEAD
  "modified": "2017-04-13 00:47:33.980646", 
  "modified_by": "chude.osiegbu@manqala.com", 
+=======
+ "modified": "2016-07-11 03:28:06.925361", 
+ "modified_by": "Administrator", 
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
  "module": "HR", 
  "name": "Salary Detail", 
  "name_case": "", 
@@ -425,9 +503,14 @@
  "quick_entry": 1, 
  "read_only": 0, 
  "read_only_onload": 0, 
+<<<<<<< HEAD
  "show_name_in_global_search": 0, 
  "sort_field": "modified", 
  "sort_order": "DESC", 
  "track_changes": 0, 
+=======
+ "sort_field": "modified", 
+ "sort_order": "DESC", 
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
  "track_seen": 0
 }

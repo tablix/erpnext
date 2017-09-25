@@ -1,9 +1,16 @@
 print-settings
 print-format-builder
+<<<<<<< HEAD
 print-style
+=======
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 print-headings
 letter-head
 address-template
 terms-and-conditions
 cheque-print-template
+<<<<<<< HEAD
 custom-translations
+=======
+multi-lingual-print-format
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347

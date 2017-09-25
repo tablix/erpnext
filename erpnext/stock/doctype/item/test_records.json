@@ -15,8 +15,11 @@
   "item_group": "_Test Item Group",
   "item_name": "_Test Item",
   "apply_warehouse_wise_reorder_level": 1,
+<<<<<<< HEAD
   "gst_hsn_code": "999800",
   "valuation_rate": 100,
+=======
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
   "reorder_levels": [
    {
     "material_request_type": "Purchase",
@@ -25,6 +28,7 @@
     "warehouse_reorder_qty": 20
    }
   ],
+<<<<<<< HEAD
   "uoms": [
     {
       "uom": "_Test UOM",
@@ -35,6 +39,8 @@
       "conversion_factor": 10.0
     }
   ],
+=======
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
   "stock_uom": "_Test UOM",
   "show_in_website": 1,
   "website_warehouse": "_Test Warehouse - _TC"
@@ -73,7 +79,10 @@
   "item_code": "_Test Item Home Desktop 100",
   "item_group": "_Test Item Group Desktops",
   "item_name": "_Test Item Home Desktop 100",
+<<<<<<< HEAD
   "valuation_rate": 100,
+=======
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
   "taxes": [
    {
     "doctype": "Item Tax",

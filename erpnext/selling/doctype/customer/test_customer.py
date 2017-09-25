@@ -8,15 +8,19 @@ import unittest
 
 from frappe.test_runner import make_test_records
 from erpnext.exceptions import PartyFrozen, PartyDisabled
+<<<<<<< HEAD
 from frappe.utils import flt
 from erpnext.selling.doctype.customer.customer import get_credit_limit, get_customer_outstanding
 from erpnext.tests.utils import create_test_contact_and_address
+=======
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 
 test_ignore = ["Price List"]
 
 test_records = frappe.get_test_records('Customer')
 
 class TestCustomer(unittest.TestCase):
+<<<<<<< HEAD
 	def setUp(self):
 		if not frappe.get_value('Item', '_Test Item'):
 			make_test_records('Item')
@@ -24,6 +28,8 @@ class TestCustomer(unittest.TestCase):
 	def tearDown(self):
 		frappe.db.set_value("Customer", '_Test Customer', 'credit_limit', 0.0)
 
+=======
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 	def test_party_details(self):
 		from erpnext.accounts.party import get_party_details
 
@@ -31,21 +37,36 @@ class TestCustomer(unittest.TestCase):
 			'selling_price_list': None,
 			'customer_group': '_Test Customer Group',
 			'contact_designation': None,
+<<<<<<< HEAD
 			'customer_address': '_Test Address for Customer-Office',
+=======
+			'customer_address': '_Test Address-Office',
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 			'contact_department': None,
 			'contact_email': 'test_contact_customer@example.com',
 			'contact_mobile': None,
 			'sales_team': [],
+<<<<<<< HEAD
 			'contact_display': '_Test Contact for _Test Customer',
 			'contact_person': '_Test Contact for _Test Customer-_Test Customer',
+=======
+			'contact_display': '_Test Contact For _Test Customer',
+			'contact_person': '_Test Contact For _Test Customer-_Test Customer',
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 			'territory': u'_Test Territory',
 			'contact_phone': '+91 0000000000',
 			'customer_name': '_Test Customer'
 		}
 
+<<<<<<< HEAD
 		create_test_contact_and_address()
 
 		frappe.db.set_value("Contact", "_Test Contact for _Test Customer-_Test Customer",
+=======
+		make_test_records("Address")
+		make_test_records("Contact")
+		frappe.db.set_value("Contact", "_Test Contact For _Test Customer-_Test Customer",
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 			"is_primary_contact", 1)
 
 		details = get_party_details("_Test Customer")
@@ -54,12 +75,16 @@ class TestCustomer(unittest.TestCase):
 			self.assertEquals(value, details.get(key))
 
 	def test_rename(self):
+<<<<<<< HEAD
 		# delete communication linked to these 2 customers
+=======
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 		for name in ("_Test Customer 1", "_Test Customer 1 Renamed"):
 			frappe.db.sql("""delete from `tabCommunication`
 				where communication_type='Comment' and reference_doctype=%s and reference_name=%s""",
 				("Customer", name))
 
+<<<<<<< HEAD
 		# add comments
 		comment = frappe.get_doc("Customer", "_Test Customer 1").add_comment("Comment", "Test Comment for Rename")
 
@@ -71,13 +96,26 @@ class TestCustomer(unittest.TestCase):
 		self.assertFalse(frappe.db.exists("Customer", "_Test Customer 1"))
 
 		# test that comment gets linked to renamed doc
+=======
+		comment = frappe.get_doc("Customer", "_Test Customer 1").add_comment("Comment", "Test Comment for Rename")
+
+		frappe.rename_doc("Customer", "_Test Customer 1", "_Test Customer 1 Renamed")
+
+		self.assertTrue(frappe.db.exists("Customer", "_Test Customer 1 Renamed"))
+		self.assertFalse(frappe.db.exists("Customer", "_Test Customer 1"))
+
+		# test that comment gets renamed
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 		self.assertEquals(frappe.db.get_value("Communication", {
 			"communication_type": "Comment",
 			"reference_doctype": "Customer",
 			"reference_name": "_Test Customer 1 Renamed"
 		}), comment.name)
 
+<<<<<<< HEAD
 		# rename back to original
+=======
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 		frappe.rename_doc("Customer", "_Test Customer 1 Renamed", "_Test Customer 1")
 
 	def test_freezed_customer(self):
@@ -126,6 +164,7 @@ class TestCustomer(unittest.TestCase):
 		self.assertEquals("_Test Customer 1 - 1", duplicate_customer.name)
 		self.assertEquals(test_customer_1.customer_name, duplicate_customer.customer_name)
 
+<<<<<<< HEAD
 	def get_customer_outstanding_amount(self):
 		from erpnext.selling.doctype.sales_order.test_sales_order import make_sales_order
 		outstanding_amt = get_customer_outstanding('_Test Customer', '_Test Company')
@@ -181,6 +220,8 @@ class TestCustomer(unittest.TestCase):
 		customer.credit_limit = flt(outstanding_amt - 100)
 		self.assertRaises(frappe.ValidationError, customer.save)
 
+=======
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 def get_customer_dict(customer_name):
 	return {
 		 "customer_group": "_Test Customer Group",
@@ -189,3 +230,7 @@ def get_customer_dict(customer_name):
 		 "doctype": "Customer",
 		 "territory": "_Test Territory"
 	}
+<<<<<<< HEAD
+=======
+
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347

@@ -4,6 +4,7 @@
 from __future__ import unicode_literals
 import frappe
 
+<<<<<<< HEAD
 from frappe.utils import flt, cint, nowdate
 
 from frappe import throw, _
@@ -13,6 +14,16 @@ from erpnext.controllers.buying_controller import BuyingController
 from erpnext.accounts.utils import get_account_currency
 from frappe.desk.notifications import clear_doctype_notifications
 from erpnext.buying.utils import check_for_closed_status, update_last_purchase_rate
+=======
+from frappe.utils import flt, cint, get_link_to_form, money_in_words
+
+from frappe import _
+import frappe.defaults
+
+from erpnext.controllers.buying_controller import BuyingController
+from erpnext.accounts.utils import get_account_currency
+from frappe.desk.notifications import clear_doctype_notifications
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 
 form_grid_templates = {
 	"items": "templates/form_grid/item_grid.html"
@@ -47,6 +58,7 @@ class PurchaseReceipt(BuyingController):
 		}]
 
 	def validate(self):
+<<<<<<< HEAD
 		self.validate_posting_time()
 		super(PurchaseReceipt, self).validate()
 
@@ -64,6 +76,80 @@ class PurchaseReceipt(BuyingController):
 
 		if getdate(self.posting_date) > getdate(nowdate()):
 			throw(_("Posting Date cannot be future date"))
+=======
+		super(PurchaseReceipt, self).validate()
+
+		self.set_status()
+		self.po_required()
+		self.validate_with_previous_doc()
+		self.validate_inspection()
+		self.validate_uom_is_integer("uom", ["qty", "received_qty"])
+		self.validate_uom_is_integer("stock_uom", "stock_qty")
+		self.validate_po()
+		self.validate_vat_duties_charges()
+
+		pc_obj = frappe.get_doc('Purchase Common')
+		self.check_for_closed_status(pc_obj)
+		
+		
+	
+	def validate_po(self):
+		#new addition
+		#frappe.msgprint(_("Testing.........................."))		
+		for item in self.get("items"):
+			po_no = item.purchase_order
+			model_no = item.item_code
+			#frappe.msgprint(_("PO: {0}").format(po_no))
+			so = frappe.db.sql("select customer_po from `tabPurchase Order` where name  = %s",(po_no))[0][0]
+			#frappe.msgprint(_("SO: {0}").format(so))
+			mr_no = frappe.db.sql("select material_request from `tabPurchase Order` where name  = %s",(po_no))[0][0]
+			#frappe.msgprint(_("MR: {0}").format(mr_no))
+			if so is not None and so != '':
+				item.customer_po = so
+				customer = frappe.db.sql("select customer from `tabSales Order` where name  = %s",(so))[0][0]
+				self.customer = customer
+				#frappe.msgprint(_("CUST: {0}").format(customer))
+			if mr_no is not None and mr_no != '':
+				item.material_request_ref = mr_no
+				project = frappe.db.sql("select project from `tabMaterial Request` where name  = %s",(mr_no))[0][0]
+				self.project_ref = project
+				#frappe.msgprint(_("PROJ: {0}").format(project))		
+			
+			qty = frappe.db.sql("select qty from `tabPurchase Order Item` where parent  = %s and item_code = %s",(po_no,model_no))[0][0]
+			#frappe.msgprint(_("qty: {0}").format(qty))		
+			item.ordered_quantity = qty
+			
+	
+	def validate_vat_duties_charges(self):
+		self.grand_total = self.total
+		self.base_grand_total = self.base_total
+		if self.vat != None:
+			self.grand_total = self.grand_total + self.vat
+			if self.currency != "AED":
+				self.base_grand_total = self.base_grand_total + (self.vat * self.conversion_rate)
+			
+		if self.duties != None:
+			self.grand_total = self.grand_total + self.duties
+			self.base_grand_total = self.base_grand_total + (self.duties * self.conversion_rate)
+			
+		if self.other_charges !=None:
+			self.grand_total = self.grand_total + self.other_charges
+			self.base_grand_total = self.base_grand_total + (self.other_charges * self.conversion_rate)
+			
+		if self.discount_amount:
+			self.grand_total = self.grand_total - self.discount_amount
+			self.base_grand_total = self.base_grand_total - (self.discount_amount * self.conversion_rate)
+		
+		self.base_rounded_total = self.base_grand_total
+		in_words = money_in_words(self.grand_total)
+		self.base_in_words = money_in_words(self.base_grand_total)
+		in_words = in_words.replace("AED",self.currency)
+		fraction = frappe.db.sql("""select fraction from tabCurrency where name=%s""", self.currency)
+		in_words = in_words.replace("Fils",fraction[0][0])
+		self.in_words = in_words
+		
+		
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 
 	def validate_with_previous_doc(self):
 		super(PurchaseReceipt, self).validate_with_previous_doc({
@@ -74,8 +160,12 @@ class PurchaseReceipt(BuyingController):
 			"Purchase Order Item": {
 				"ref_dn_field": "purchase_order_item",
 				"compare_fields": [["project", "="], ["uom", "="], ["item_code", "="]],
+<<<<<<< HEAD
 				"is_child_table": True,
 				"allow_duplicate_prev_row_id": True
+=======
+				"is_child_table": True
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 			}
 		})
 
@@ -84,9 +174,15 @@ class PurchaseReceipt(BuyingController):
 
 	def po_required(self):
 		if frappe.db.get_value("Buying Settings", None, "po_required") == 'Yes':
+<<<<<<< HEAD
 			for d in self.get('items'):
 				if not d.purchase_order:
 					frappe.throw(_("Purchase Order number required for Item {0}").format(d.item_code))
+=======
+			 for d in self.get('items'):
+				 if not d.purchase_order:
+					 frappe.throw(_("Purchase Order number required for Item {0}").format(d.item_code))
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 
 	def get_already_received_qty(self, po, po_detail):
 		qty = frappe.db.sql("""select sum(qty) from `tabPurchase Receipt Item`
@@ -100,6 +196,7 @@ class PurchaseReceipt(BuyingController):
 			["qty", "warehouse"])
 		return po_qty, po_warehouse
 
+<<<<<<< HEAD
 	# Check for Closed status
 	def check_for_closed_status(self):
 		check_list =[]
@@ -111,16 +208,55 @@ class PurchaseReceipt(BuyingController):
 
 	# on submit
 	def on_submit(self):
+=======
+	def validate_inspection(self):
+		for d in self.get('items'):		 #Enter inspection date for all items that require inspection
+			if frappe.db.get_value("Item", d.item_code, "inspection_required") and not d.qa_no:
+				frappe.msgprint(_("Quality Inspection required for Item {0}").format(d.item_code))
+				if self.docstatus==1:
+					raise frappe.ValidationError
+
+	# Check for Closed status
+	def check_for_closed_status(self, pc_obj):
+		check_list =[]
+		for d in self.get('items'):
+			if d.meta.get_field('purchase_order') and d.purchase_order and d.purchase_order not in check_list:
+				check_list.append(d.purchase_order)
+				pc_obj.check_for_closed_status('Purchase Order', d.purchase_order)
+
+	# on submit
+	def on_submit(self):
+		
+		
+		self.assignment(recipient="yogie@tablix.ae")
+		self.assignment(recipient="prabhakaran.nair@tablix.ae")
+		self.assignment(recipient="bhavish@tablix.ae")
+		self.assignment(recipient="manoj@tablix.ae")
+		
+		purchase_controller = frappe.get_doc("Purchase Common")
+
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 		# Check for Approving Authority
 		frappe.get_doc('Authorization Control').validate_approving_authority(self.doctype,
 			self.company, self.base_grand_total)
 
+<<<<<<< HEAD
 		self.update_prevdoc_status()
 		if self.per_billed < 100:
 			self.update_billing_status()
 
 		if not self.is_return:
 			update_last_purchase_rate(self, 1)
+=======
+		# Set status as Submitted
+		frappe.db.set(self, 'status', 'Submitted')
+
+		self.update_prevdoc_status()
+		self.update_billing_status()
+
+		if not self.is_return:
+			purchase_controller.update_last_purchase_rate(self, 1)
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 
 		# Updating stock ledger should always be called after updating prevdoc status,
 		# because updating ordered qty in bin depends upon updated ordered qty in PO
@@ -130,6 +266,56 @@ class PurchaseReceipt(BuyingController):
 		update_serial_nos_after_submit(self, "items")
 
 		self.make_gl_entries()
+<<<<<<< HEAD
+=======
+		
+		# new addition
+		for item in self.get("items"):
+			po_no = item.purchase_order
+			model_no = item.item_code
+			qty = item.qty
+			#frappe.msgprint(_("Item Code: {0}").format(model_no))
+			mr_no = frappe.db.sql("select material_request from `tabPurchase Order` where name  = %s",(po_no))[0][0]
+			doc = frappe.get_doc("Material Request", mr_no)
+			for item1 in doc.get("items"):
+				if(item1.item_code == model_no):
+					#frappe.msgprint(_("Matching"))
+					item1.received_quantity = qty
+					doc.save()
+		
+	#new addition
+	
+	
+	def assignment(self,recipient):
+		msg = ""
+		
+		#recipient = "varna.manoj@tablix.ae; heena@tablix.ae"
+
+		self.notify({
+			# for post in messages
+			"message": self._get_message(url=True),
+			"message_to": recipient,
+			# for email
+			"subject": self._get_message()
+		})
+		
+
+	def _get_message(self,url=False):
+		name = self.name
+		if url:
+			name = get_link_to_form(self.doctype, self.name)
+			#employee_name = get_link_to_form("User", self.assigned_to, label=employee_name)
+
+		return (_("New Purchase Receipt Created") + ": %s") % (name)
+		
+		
+	def notify(self, args):
+		args = frappe._dict(args)
+		from frappe.desk.page.chat.chat import post
+		post(**{"txt": args.message, "contact": args.message_to, "subject": args.subject,
+			"notify": 1})
+		
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 
 	def check_next_docstatus(self):
 		submit_rv = frappe.db.sql("""select t1.name
@@ -140,7 +326,13 @@ class PurchaseReceipt(BuyingController):
 			frappe.throw(_("Purchase Invoice {0} is already submitted").format(self.submit_rv[0][0]))
 
 	def on_cancel(self):
+<<<<<<< HEAD
 		self.check_for_closed_status()
+=======
+		pc_obj = frappe.get_doc('Purchase Common')
+
+		self.check_for_closed_status(pc_obj)
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 		# Check if Purchase Invoice has been submitted against current Purchase Order
 		submitted = frappe.db.sql("""select t1.name
 			from `tabPurchase Invoice` t1,`tabPurchase Invoice Item` t2
@@ -149,11 +341,20 @@ class PurchaseReceipt(BuyingController):
 		if submitted:
 			frappe.throw(_("Purchase Invoice {0} is already submitted").format(submitted[0][0]))
 
+<<<<<<< HEAD
+=======
+		frappe.db.set(self,'status','Cancelled')
+
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 		self.update_prevdoc_status()
 		self.update_billing_status()
 
 		if not self.is_return:
+<<<<<<< HEAD
 			update_last_purchase_rate(self, 0)
+=======
+			pc_obj.update_last_purchase_rate(self, 0)
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 
 		# Updating stock ledger should always be called after updating prevdoc status,
 		# because updating ordered qty in bin depends upon updated ordered qty in PO
@@ -166,6 +367,12 @@ class PurchaseReceipt(BuyingController):
 				bin = frappe.db.sql("select actual_qty from `tabBin` where item_code = %s and warehouse = %s", (d.rm_item_code, self.supplier_warehouse), as_dict = 1)
 				d.current_stock = bin and flt(bin[0]['actual_qty']) or 0
 
+<<<<<<< HEAD
+=======
+	def get_rate(self,arg):
+		return frappe.get_doc('Purchase Common').get_rate(arg,self)
+
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 	def get_gl_entries(self, warehouse_account=None):
 		from erpnext.accounts.general_ledger import process_gl_map
 
@@ -185,7 +392,11 @@ class PurchaseReceipt(BuyingController):
 					if not stock_value_diff:
 						continue
 					gl_entries.append(self.get_gl_dict({
+<<<<<<< HEAD
 						"account": warehouse_account[d.warehouse]["account"],
+=======
+						"account": warehouse_account[d.warehouse]["name"],
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 						"against": stock_rbnb,
 						"cost_center": d.cost_center,
 						"remarks": self.get("remarks") or _("Accounting Entry for Stock"),
@@ -196,7 +407,11 @@ class PurchaseReceipt(BuyingController):
 					stock_rbnb_currency = get_account_currency(stock_rbnb)
 					gl_entries.append(self.get_gl_dict({
 						"account": stock_rbnb,
+<<<<<<< HEAD
 						"against": warehouse_account[d.warehouse]["account"],
+=======
+						"against": warehouse_account[d.warehouse]["name"],
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 						"cost_center": d.cost_center,
 						"remarks": self.get("remarks") or _("Accounting Entry for Stock"),
 						"credit": flt(d.base_net_amount, d.precision("base_net_amount")),
@@ -210,7 +425,11 @@ class PurchaseReceipt(BuyingController):
 					if flt(d.landed_cost_voucher_amount):
 						gl_entries.append(self.get_gl_dict({
 							"account": expenses_included_in_valuation,
+<<<<<<< HEAD
 							"against": warehouse_account[d.warehouse]["account"],
+=======
+							"against": warehouse_account[d.warehouse]["name"],
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 							"cost_center": d.cost_center,
 							"remarks": self.get("remarks") or _("Accounting Entry for Stock"),
 							"credit": flt(d.landed_cost_voucher_amount),
@@ -220,8 +439,13 @@ class PurchaseReceipt(BuyingController):
 					# sub-contracting warehouse
 					if flt(d.rm_supp_cost) and warehouse_account.get(self.supplier_warehouse):
 						gl_entries.append(self.get_gl_dict({
+<<<<<<< HEAD
 							"account": warehouse_account[self.supplier_warehouse]["account"],
 							"against": warehouse_account[d.warehouse]["account"],
+=======
+							"account": warehouse_account[self.supplier_warehouse]["name"],
+							"against": warehouse_account[d.warehouse]["name"],
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 							"cost_center": d.cost_center,
 							"remarks": self.get("remarks") or _("Accounting Entry for Stock"),
 							"credit": flt(d.rm_supp_cost)
@@ -242,7 +466,11 @@ class PurchaseReceipt(BuyingController):
 
 						gl_entries.append(self.get_gl_dict({
 							"account": loss_account,
+<<<<<<< HEAD
 							"against": warehouse_account[d.warehouse]["account"],
+=======
+							"against": warehouse_account[d.warehouse]["name"],
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 							"cost_center": d.cost_center,
 							"remarks": self.get("remarks") or _("Accounting Entry for Stock"),
 							"debit": divisional_loss,
@@ -424,3 +652,32 @@ def make_purchase_return(source_name, target_doc=None):
 def update_purchase_receipt_status(docname, status):
 	pr = frappe.get_doc("Purchase Receipt", docname)
 	pr.update_status(status)
+<<<<<<< HEAD
+=======
+
+	
+# new addition
+@frappe.whitelist()
+def make_delivery_note(source_name, target_doc=None):
+	from frappe.model.mapper import get_mapped_doc
+	purchase_receipt = frappe.get_doc("Purchase Receipt", source_name)
+	#frappe.db.set_value("Opportunity", boq.opportunity, "status", "Quotation")
+	doclist = get_mapped_doc("Purchase Receipt", source_name, {
+		"Purchase Receipt": {
+			"doctype": "Delivery Note",
+			"field_map": {
+				"purchase_receipt_ref": "name",
+				"customer": "customer",
+				"project_ref":"project_ref"
+			}
+		},
+		"Purchase Receipt Item": {
+			"doctype": "Delivery Note Item",
+			"field_map": {
+				"uom": "stock_uom",
+			}
+		}
+	})
+
+	return doclist
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347

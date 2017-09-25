@@ -11,7 +11,11 @@ frappe.listview_settings['Item'] = {
 		} else if (doc.end_of_life && doc.end_of_life < frappe.datetime.get_today()) {
 			return [__("Expired"), "grey", "end_of_life,<,Today"];
 		} else if (doc.has_variants) {
+<<<<<<< HEAD
 			return [__("Template"), "orange", "has_variants,=,Yes"];
+=======
+			return [__("Template"), "blue", "has_variants,=,Yes"];
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 		} else if (doc.variant_of) {
 			return [__("Variant"), "green", "variant_of,=," + doc.variant_of];
 		}

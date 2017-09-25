@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 // Copyright (c) 2017, Frappe Technologies Pvt. Ltd. and contributors
 // For license information, please see license.txt
 
@@ -115,12 +116,52 @@ frappe.ui.form.on("Fees", {
 					if(!r.exc){
 						var doc = frappe.model.sync(r.message);
 						frappe.set_route("Form", doc[0].doctype, doc[0].name);
+=======
+
+cur_frm.add_fetch("student", "title", "student_name");
+
+frappe.ui.form.on("Fees", {
+	refresh: function(frm) {
+		if (frm.doc.docstatus === 1 && (frm.doc.total_amount > frm.doc.paid_amount)) {
+			frm.add_custom_button(__("Collect Fees"), function() {
+				frappe.prompt({fieldtype:"Float", label: __("Amount Paid"), fieldname:"amt"},
+					function(data) {
+						frappe.call({
+							method:"erpnext.schools.api.collect_fees",
+							args: {
+								"fees": frm.doc.name,
+								"amt": data.amt
+							},
+							callback: function(r) {
+								frm.doc.paid_amount = r.message
+								frm.doc.outstanding_amount = frm.doc.total_amount - r.message
+								frm.refresh()
+							}
+						});
+					}, __("Enter Paid Amount"), __("Collect"));
+			});
+		}
+	},
+	
+	program: function(frm) {
+		if (frm.doc.program && frm.doc.academic_term) {
+			frappe.call({
+				method: "erpnext.schools.api.get_fee_structure",
+				args: {
+					"program": frm.doc.program,
+					"academic_term": frm.doc.academic_term
+				},
+				callback: function(r) {
+					if(r.message) {
+						frm.set_value("fee_structure" ,r.message);
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 					}
 				}
 			});
 		}
 	},
 
+<<<<<<< HEAD
 	make_payment_entry: function(frm) {
 		return frappe.call({
 			method: "erpnext.accounts.doctype.payment_entry.payment_entry.get_payment_entry",
@@ -139,6 +180,8 @@ frappe.ui.form.on("Fees", {
 		frm.refresh();
 	},
 
+=======
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 	academic_term: function() {
 		frappe.ui.form.trigger("Fees", "program");
 	},
@@ -165,6 +208,7 @@ frappe.ui.form.on("Fees", {
 			});
 		}
 	},
+<<<<<<< HEAD
 
 	calculate_total_amount: function(frm) {
 		var grand_total = 0;
@@ -176,6 +220,18 @@ frappe.ui.form.on("Fees", {
 });
 
 
+=======
+	
+	calculate_total_amount: function(frm) {
+		total_amount = 0;
+		for(var i=0;i<frm.doc.components.length;i++) {
+			total_amount += frm.doc.components[i].amount;
+		}
+		frm.set_value("total_amount", total_amount);
+	}
+});
+
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 frappe.ui.form.on("Fee Component", {
 	amount: function(frm) {
 		frm.trigger("calculate_total_amount");

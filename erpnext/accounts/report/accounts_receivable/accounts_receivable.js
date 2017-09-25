@@ -17,6 +17,7 @@ frappe.query_reports["Accounts Receivable"] = {
 			"options": "Customer"
 		},
 		{
+<<<<<<< HEAD
 			"fieldname":"customer_group",
 			"label": __("Customer Group"),
 			"fieldtype": "Link",
@@ -36,15 +37,31 @@ frappe.query_reports["Accounts Receivable"] = {
 			"label": __("As on Date"),
 			"fieldtype": "Date",
 			"default": frappe.datetime.get_today()
+=======
+			"fieldname":"report_date",
+			"label": __("As on Date"),
+			"fieldtype": "Date",
+			"default": get_today()
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 		},
 		{
 			"fieldname":"ageing_based_on",
 			"label": __("Ageing Based On"),
 			"fieldtype": "Select",
+<<<<<<< HEAD
 			"options": 'Posting Date\nDue Date',
 			"default": "Posting Date"
 		},
 		{
+=======
+			"options": 'Posting Date' + NEWLINE + 'Due Date',
+			"default": "Posting Date"
+		},
+		{
+			"fieldtype": "Break",
+		},
+		{
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 			"fieldname":"range1",
 			"label": __("Ageing Range 1"),
 			"fieldtype": "Int",
@@ -65,6 +82,7 @@ frappe.query_reports["Accounts Receivable"] = {
 			"default": "90",
 			"reqd": 1
 		}
+<<<<<<< HEAD
 	],
 
 	onload: function(report) {
@@ -73,4 +91,7 @@ frappe.query_reports["Accounts Receivable"] = {
 			frappe.set_route('query-report', 'Accounts Receivable Summary', {company: filters.company});
 		});
 	}
+=======
+	]
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 }

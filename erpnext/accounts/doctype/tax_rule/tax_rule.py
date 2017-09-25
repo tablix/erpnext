@@ -7,8 +7,11 @@ import frappe
 from frappe import _
 from frappe.model.document import Document
 from frappe.utils import cstr, cint
+<<<<<<< HEAD
 from frappe.contacts.doctype.address.address import get_default_address
 from erpnext.setup.doctype.customer_group.customer_group import get_parent_customer_groups
+=======
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 
 class IncorrectCustomerGroup(frappe.ValidationError): pass
 class IncorrectSupplierType(frappe.ValidationError): pass
@@ -98,6 +101,7 @@ class TaxRule(Document):
 @frappe.whitelist()
 def get_party_details(party, party_type, args=None):
 	out = {}
+<<<<<<< HEAD
 	billing_address, shipping_address = None, None
 	if args:
 		if args.get('billing_address'):
@@ -123,6 +127,29 @@ def get_party_details(party, party_type, args=None):
 		out["shipping_county"]= shipping_address.county
 		out["shipping_state"]= shipping_address.state
 		out["shipping_country"]= shipping_address.country
+=======
+	if args:
+		billing_filters=	{"name": args.get("billing_address")}
+		shipping_filters=	{"name": args.get("shipping_address")}
+	else:
+		billing_filters=	{party_type: party, "is_primary_address": 1}
+		shipping_filters=	{party_type:party, "is_shipping_address": 1}
+
+	billing_address=	frappe.get_all("Address", fields=["city", "county", "state", "country"], filters= billing_filters)
+	shipping_address=	frappe.get_all("Address", fields=["city", "county", "state", "country"], filters= shipping_filters)
+
+	if billing_address:
+		out["billing_city"]= billing_address[0].city
+		out["billing_county"]= billing_address[0].county
+		out["billing_state"]= billing_address[0].state
+		out["billing_country"]= billing_address[0].country
+
+	if shipping_address:
+		out["shipping_city"]= shipping_address[0].city
+		out["shipping_county"]= shipping_address[0].county
+		out["shipping_state"]= shipping_address[0].state
+		out["shipping_country"]= shipping_address[0].country
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 
 	return out
 
@@ -135,10 +162,13 @@ def get_tax_template(posting_date, args):
 	for key, value in args.iteritems():
 		if key=="use_for_shopping_cart":
 			conditions.append("use_for_shopping_cart = {0}".format(1 if value else 0))
+<<<<<<< HEAD
 		if key == 'customer_group':
 			if not value: value = _("All Customer Groups")
 			customer_group_condition = get_customer_group_condition(value)
 			conditions.append("ifnull({0}, '') in ('', {1})".format(key, customer_group_condition))
+=======
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 		else:
 			conditions.append("ifnull({0}, '') in ('', '{1}')".format(key, frappe.db.escape(cstr(value))))
 
@@ -162,6 +192,7 @@ def get_tax_template(posting_date, args):
 		return None
 
 	return tax_template
+<<<<<<< HEAD
 
 def get_customer_group_condition(customer_group):
 	condition = ""
@@ -169,3 +200,5 @@ def get_customer_group_condition(customer_group):
 	if customer_groups:
 		condition = ",".join(['%s'] * len(customer_groups))%(tuple(customer_groups))
 	return condition
+=======
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347

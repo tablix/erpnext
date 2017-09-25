@@ -388,7 +388,11 @@
  ], 
  "hide_heading": 0, 
  "hide_toolbar": 1, 
+<<<<<<< HEAD
  "icon": "fa fa-resize-horizontal", 
+=======
+ "icon": "icon-resize-horizontal", 
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
  "idx": 0, 
  "in_create": 0, 
  "in_dialog": 0, 

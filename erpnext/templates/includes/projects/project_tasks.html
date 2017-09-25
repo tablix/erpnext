@@ -6,7 +6,11 @@
 				<span class="indicator {{ "red" if task.status=="Open" else "green" if task.status=="Closed" else "darkgrey" }}" title="{{ task.status }}"  > {{ task.subject }}</span> 
 	 				<div class="small text-muted item-timestamp"
 	 					title="{{ frappe.utils.pretty_date(task.modified) }}">
+<<<<<<< HEAD
 						{{ _("modified") }} {{ frappe.utils.pretty_date(task.modified) }}
+=======
+	 					modified {{ frappe.utils.pretty_date(task.modified) }}
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 	 				</div>
 			</div>
 			<div class='col-xs-1'>{% if task.todo %}

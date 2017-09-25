@@ -12,14 +12,20 @@ class InvalidItemAttributeValueError(frappe.ValidationError): pass
 class ItemTemplateCannotHaveStock(frappe.ValidationError): pass
 
 @frappe.whitelist()
+<<<<<<< HEAD
 def get_variant(template, args=None, variant=None, manufacturer=None,
 	manufacturer_part_no=None):
 	"""Validates Attributes and their Values, then looks for an exactly
 		matching Item Variant
+=======
+def get_variant(template, args, variant=None):
+	"""Validates Attributes and their Values, then looks for an exactly matching Item Variant
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 
 		:param item: Template Item
 		:param args: A dictionary with "Attribute" as key and "Attribute Value" as value
 	"""
+<<<<<<< HEAD
 	item_template = frappe.get_doc('Item', template)
 
 	if item_template.variant_based_on=='Manufacturer' and manufacturer:
@@ -48,6 +54,15 @@ def make_variant_based_on_manufacturer(template, manufacturer, manufacturer_part
 	variant.item_code = append_number_if_name_exists('Item', template.name)
 
 	return variant
+=======
+	if isinstance(args, basestring):
+		args = json.loads(args)
+
+	if not args:
+		frappe.throw(_("Please specify at least one attribute in the Attributes table"))
+
+	return find_variant(template, args, variant)
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 
 def validate_item_variant_attributes(item, args=None):
 	if isinstance(item, basestring):
@@ -64,6 +79,7 @@ def validate_item_variant_attributes(item, args=None):
 
 		if attribute.lower() in numeric_values:
 			numeric_attribute = numeric_values[attribute.lower()]
+<<<<<<< HEAD
 			validate_is_incremental(numeric_attribute, attribute, value, item.name)
 
 		else:
@@ -95,6 +111,32 @@ def validate_item_attribute_value(attributes_list, attribute, attribute_value, i
 	if attribute_value not in attributes_list:
 		frappe.throw(_("Value {0} for Attribute {1} does not exist in the list of valid Item Attribute Values for Item {2}").format(
 			attribute_value, attribute, item), InvalidItemAttributeValueError, title=_('Invalid Attribute'))
+=======
+
+			from_range = numeric_attribute.from_range
+			to_range = numeric_attribute.to_range
+			increment = numeric_attribute.increment
+
+			if increment == 0:
+				# defensive validation to prevent ZeroDivisionError
+				frappe.throw(_("Increment for Attribute {0} cannot be 0").format(attribute))
+
+			is_in_range = from_range <= flt(value) <= to_range
+			precision = max(len(cstr(v).split(".")[-1].rstrip("0")) for v in (value, increment))
+			#avoid precision error by rounding the remainder
+			remainder = flt((flt(value) - from_range) % increment, precision)
+
+			is_incremental = remainder==0 or remainder==increment
+
+			if not (is_in_range and is_incremental):
+				frappe.throw(_("Value for Attribute {0} must be within the range of {1} to {2} in the increments of {3} for Item {4}")\
+					.format(attribute, from_range, to_range, increment, item.name),
+					InvalidItemAttributeValueError, title=_('Invalid Attribute'))
+
+		elif value not in attribute_values.get(attribute.lower(), []):
+			frappe.throw(_("Value {0} for Attribute {1} does not exist in the list of valid Item Attribute Values for Item {2}").format(
+				value, attribute, item.name), InvalidItemAttributeValueError, title=_('Invalid Attribute'))
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 
 def get_attribute_values():
 	if not frappe.flags.attribute_values:
@@ -154,7 +196,10 @@ def create_variant(item, args):
 
 	template = frappe.get_doc("Item", item)
 	variant = frappe.new_doc("Item")
+<<<<<<< HEAD
 	variant.variant_based_on = 'Item Attribute'
+=======
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 	variant_attributes = []
 
 	for d in template.attributes:
@@ -165,12 +210,17 @@ def create_variant(item, args):
 
 	variant.set("attributes", variant_attributes)
 	copy_attributes_to_variant(template, variant)
+<<<<<<< HEAD
 	make_variant_item_code(template.item_code, template.item_name, variant)
+=======
+	make_variant_item_code(template.item_code, variant)
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 
 	return variant
 
 def copy_attributes_to_variant(item, variant):
 	from frappe.model import no_value_fields
+<<<<<<< HEAD
 
 	# copy non no-copy fields
 
@@ -184,10 +234,16 @@ def copy_attributes_to_variant(item, variant):
 	for field in item.meta.fields:
 		# "Table" is part of `no_value_field` but we shouldn't ignore tables
 		if (field.reqd or field.fieldname in allow_fields) and field.fieldname not in exclude_fields:
+=======
+	for field in item.meta.fields:
+		if field.fieldtype not in no_value_fields and (not field.no_copy)\
+			and field.fieldname not in ("item_code", "item_name", "show_in_website"):
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 			if variant.get(field.fieldname) != item.get(field.fieldname):
 				variant.set(field.fieldname, item.get(field.fieldname))
 	variant.variant_of = item.name
 	variant.has_variants = 0
+<<<<<<< HEAD
 	if not variant.description:
 		variant.description = ''
 
@@ -198,6 +254,14 @@ def copy_attributes_to_variant(item, variant):
 				variant.description += "<p>" + d.attribute + ": " + cstr(d.attribute_value) + "</p>"
 
 def make_variant_item_code(template_item_code, template_item_name, variant):
+=======
+	if variant.attributes:
+		variant.description += "\n"
+		for d in variant.attributes:
+			variant.description += "<p>" + d.attribute + ": " + cstr(d.attribute_value) + "</p>"
+
+def make_variant_item_code(template_item_code, variant):
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 	"""Uses template's item code and abbreviations to make variant's item code"""
 	if variant.item_code:
 		return
@@ -207,7 +271,11 @@ def make_variant_item_code(template_item_code, template_item_name, variant):
 		item_attribute = frappe.db.sql("""select i.numeric_values, v.abbr
 			from `tabItem Attribute` i left join `tabItem Attribute Value` v
 				on (i.name=v.parent)
+<<<<<<< HEAD
 			where i.name=%(attribute)s and (v.attribute_value=%(attribute_value)s or i.numeric_values = 1)""", {
+=======
+			where i.name=%(attribute)s and v.attribute_value=%(attribute_value)s""", {
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 				"attribute": attr.attribute,
 				"attribute_value": attr.attribute_value
 			}, as_dict=True)
@@ -218,9 +286,23 @@ def make_variant_item_code(template_item_code, template_item_name, variant):
 			# 	frappe.bold(attr.attribute_value)), title=_('Invalid Attribute'),
 			# 	exc=InvalidItemAttributeValueError)
 
+<<<<<<< HEAD
 		abbr_or_value = cstr(attr.attribute_value) if item_attribute[0].numeric_values else item_attribute[0].abbr
 		abbreviations.append(abbr_or_value)
 
 	if abbreviations:
 		variant.item_code = "{0}-{1}".format(template_item_code, "-".join(abbreviations))
 		variant.item_name = "{0}-{1}".format(template_item_name, "-".join(abbreviations))
+=======
+		if item_attribute[0].numeric_values:
+			# don't generate item code if one of the attributes is numeric
+			return
+
+		abbreviations.append(item_attribute[0].abbr)
+
+	if abbreviations:
+		variant.item_code = "{0}-{1}".format(template_item_code, "-".join(abbreviations))
+
+	if variant.item_code:
+		variant.item_name = variant.item_code
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347

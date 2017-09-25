@@ -14,9 +14,13 @@ frappe.listview_settings['Purchase Invoice'] = {
 			} else {
 				return [__("Unpaid"), "orange", "outstanding_amount,>,0|due,>=,Today"];
 			}
+<<<<<<< HEAD
 		} else if(flt(doc.outstanding_amount) < 0 && doc.docstatus == 1) {
 			return [__("Debit Note Issued"), "darkgrey", "outstanding_amount,<,0"]
 		}else if(flt(doc.outstanding_amount)==0 && doc.docstatus==1) {
+=======
+		} else if(flt(doc.outstanding_amount)==0 && doc.docstatus==1) {
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 			return [__("Paid"), "green", "outstanding_amount,=,0"];
 		}
 	}

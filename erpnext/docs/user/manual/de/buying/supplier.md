@@ -7,7 +7,11 @@ So können Sie einen neuen Lieferanten erstellen:
 
 > Einkauf > Dokumente > Lieferant > Neu
 
+<<<<<<< HEAD
 <img class="screenshot" alt="Lieferant" src="/docs/assets/img/buying/supplier-master.png">
+=======
+<img class="screenshot" alt="Lieferant" src="{{docs_base_url}}/assets/img/buying/supplier-master.png">
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 
 ### Kontakte und Adressen
 

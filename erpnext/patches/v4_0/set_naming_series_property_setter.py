@@ -1,7 +1,11 @@
 # Copyright (c) 2015, Frappe Technologies Pvt. Ltd. and Contributors
 # License: GNU General Public License v3. See license.txt
 
+<<<<<<< HEAD
 from __future__ import print_function, unicode_literals
+=======
+from __future__ import unicode_literals
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 
 import frappe
 from frappe.custom.doctype.property_setter.property_setter import make_property_setter
@@ -91,7 +95,11 @@ def get_default_series(doctype, new_series):
 		(new_series, new_series))
 
 	if not (default_series and default_series[0][0]):
+<<<<<<< HEAD
 		print("[Skipping] Cannot guess which naming series to use for", doctype)
+=======
+		print "[Skipping] Cannot guess which naming series to use for", doctype
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 		return
 
 	return default_series[0][0]

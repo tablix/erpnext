@@ -1,6 +1,10 @@
 // Copyright (c) 2015, Frappe Technologies and contributors
 // For license information, please see license.txt
 
+<<<<<<< HEAD
+=======
+cur_frm.add_fetch("course", "course_code", "course_code");
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 cur_frm.add_fetch('fee_structure', 'total_amount', 'amount');
 
 frappe.ui.form.on("Program", "refresh", function(frm) {

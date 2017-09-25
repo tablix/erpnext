@@ -3,12 +3,21 @@
 		<div class="row">
 			<a href="/announcements?announcement={{doc.name}}">
 				<div class="col-xs-12">
+<<<<<<< HEAD
 					<h1>{{ doc.subject }}</h1>
 					<p class="post-description more">{{ doc.description }}</p>
 					<p class="post-by text-muted small">
 						<i>{{ doc.posted_by }}</i>
 						<i class="spacer-dot"></i> {{ frappe.format_date(doc.modified) }}
 						<i class="spacer-dot"></i> {{ doc.num_attachments }} attachments
+=======
+					<h1 class="blog-header">{{ doc.subject }}</h1>
+					<p class="post-description more">{{ doc.description }}</p>
+					<p class="post-by text-muted small">
+						<i>{{ doc.posted_by }}</i>
+						<i class="blog-dot"></i> {{ frappe.format_date(doc.modified) }}
+						<i class="blog-dot"></i> {{ doc.num_attachments }} attachments
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 					</p>
 				</div>
 			</a>

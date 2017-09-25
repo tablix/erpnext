@@ -4,7 +4,11 @@
 	        <div class="col-xs-3">
 	                 <span class="indicator {{ "red" if doc.address_type=="Office" else "green" if doc.address_type=="Billing" else "blue" if doc.address_type=="Shipping" else "darkgrey" }}">{{ doc.address_title }}</span>
 			</div>
+<<<<<<< HEAD
 			<div class="col-xs-2"> {{ _(doc.address_type) }} </div>
+=======
+			<div class="col-xs-2"> {{ doc.address_type }} </div>
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 			<div class="col-xs-2"> {{ doc.city }} </div>
 			<div class="col-xs-5 text-right small text-muted">
 	            {{ frappe.get_doc(doc).get_display() }}

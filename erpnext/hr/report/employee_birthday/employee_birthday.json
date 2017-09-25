@@ -1,4 +1,5 @@
 {
+<<<<<<< HEAD
  "add_total_row": 0, 
  "apply_user_permissions": 1, 
  "creation": "2013-05-06 17:56:03", 
@@ -8,12 +9,22 @@
  "idx": 3, 
  "is_standard": "Yes", 
  "modified": "2017-02-24 20:18:13.011024", 
+=======
+ "apply_user_permissions": 1, 
+ "creation": "2013-05-06 17:56:03", 
+ "docstatus": 0, 
+ "doctype": "Report", 
+ "idx": 1, 
+ "is_standard": "Yes", 
+ "modified": "2014-06-03 07:18:17.045541", 
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
  "modified_by": "Administrator", 
  "module": "HR", 
  "name": "Employee Birthday", 
  "owner": "Administrator", 
  "ref_doctype": "Employee", 
  "report_name": "Employee Birthday", 
+<<<<<<< HEAD
  "report_type": "Script Report", 
  "roles": [
   {
@@ -26,4 +37,7 @@
    "role": "HR Manager"
   }
  ]
+=======
+ "report_type": "Script Report"
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 }

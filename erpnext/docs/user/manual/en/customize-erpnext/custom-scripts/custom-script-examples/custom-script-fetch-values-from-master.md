@@ -1,5 +1,8 @@
+<<<<<<< HEAD
 # Custom Script Fetch Values From Master
 
+=======
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 To pull a value of a link on selection, use the `add_fetch` method.
 
     

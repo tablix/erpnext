@@ -69,6 +69,7 @@ def get_events(start, end, filters=None):
 	:param end: End date-time.
 	:param filters: Filters (JSON).
 	"""
+<<<<<<< HEAD
 	if filters:
 		filters = json.loads(filters)
 	else:
@@ -83,3 +84,29 @@ def get_events(start, end, filters=None):
 		fields=['name', '`tabHoliday`.holiday_date', '`tabHoliday`.description'],
 		filters = filters,
 		update={"allDay": 1})
+=======
+	condition = ''
+	values = {
+		"start_date": getdate(start),
+		"end_date": getdate(end)
+	}
+
+	if filters:
+		if isinstance(filters, basestring):
+			filters = json.loads(filters)
+
+		if filters.get('holiday_list'):
+			condition = 'and hlist.name=%(holiday_list)s'
+			values['holiday_list'] = filters['holiday_list']
+
+	data = frappe.db.sql("""select hlist.name, h.holiday_date, h.description
+		from `tabHoliday List` hlist, tabHoliday h
+		where h.parent = hlist.name
+		and h.holiday_date is not null
+		and h.holiday_date >= %(start_date)s
+		and h.holiday_date <= %(end_date)s
+		{condition}""".format(condition=condition),
+		values, as_dict=True, update={"allDay": 1})
+
+	return data
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347

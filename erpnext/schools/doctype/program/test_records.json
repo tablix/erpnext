@@ -1,12 +1,19 @@
 [
 	{
 		"program_name": "_Test Program",
+<<<<<<< HEAD
 		"program_code": "_TP1",
 		"program_abbreviation": "TP1"
 	},
 	{
 		"program_name": "_Test Program 2",
 		"program_code": "_TP2",
+=======
+		"program_abbreviation": "TP"
+	},
+	{
+		"program_name": "_Test Program 2",
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 		"program_abbreviation": "TP2"
 	}
 ]

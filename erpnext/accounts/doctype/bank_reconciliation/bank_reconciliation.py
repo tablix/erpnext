@@ -3,7 +3,11 @@
 
 from __future__ import unicode_literals
 import frappe
+<<<<<<< HEAD
 from frappe.utils import flt, getdate, nowdate, fmt_money
+=======
+from frappe.utils import flt, getdate, nowdate
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 from frappe import msgprint, _
 from frappe.model.document import Document
 
@@ -26,8 +30,13 @@ class BankReconciliation(Document):
 			select 
 				"Journal Entry" as payment_document, t1.name as payment_entry, 
 				t1.cheque_no as cheque_number, t1.cheque_date, 
+<<<<<<< HEAD
 				t2.debit_in_account_currency as debit, t2.credit_in_account_currency as credit, 
 				t1.posting_date, t2.against_account, t1.clearance_date, t2.account_currency 
+=======
+				abs(t2.debit_in_account_currency - t2.credit_in_account_currency) as amount, 
+				t1.posting_date, t2.against_account, t1.clearance_date
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 			from
 				`tabJournal Entry` t1, `tabJournal Entry Account` t2
 			where
@@ -36,11 +45,16 @@ class BankReconciliation(Document):
 				and ifnull(t1.is_opening, 'No') = 'No' {0}
 			order by t1.posting_date ASC, t1.name DESC
 		""".format(condition), (self.bank_account, self.from_date, self.to_date), as_dict=1)
+<<<<<<< HEAD
 
+=======
+				
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 		payment_entries = frappe.db.sql("""
 			select 
 				"Payment Entry" as payment_document, name as payment_entry, 
 				reference_no as cheque_number, reference_date as cheque_date, 
+<<<<<<< HEAD
 				if(paid_from=%(account)s, paid_amount, "") as credit, 
 				if(paid_from=%(account)s, "", received_amount) as debit, 
 				posting_date, ifnull(party,if(paid_from=%(account)s,paid_to,paid_from)) as against_account, clearance_date,
@@ -53,6 +67,18 @@ class BankReconciliation(Document):
 				posting_date ASC, name DESC
 		""".format(condition), 
 		        {"account":self.bank_account, "from":self.from_date, "to":self.to_date}, as_dict=1)
+=======
+				if(paid_from=%s, paid_amount, received_amount) as amount, 
+				posting_date, party as against_account, clearance_date
+			from `tabPayment Entry`
+			where
+				(paid_from=%s or paid_to=%s) and docstatus=1
+				and posting_date >= %s and posting_date <= %s {0}
+			order by 
+				posting_date ASC, name DESC
+		""".format(condition), 
+		(self.bank_account, self.bank_account, self.bank_account, self.from_date, self.to_date), as_dict=1)
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 		
 		entries = sorted(list(payment_entries)+list(journal_entries), 
 			key=lambda k: k['posting_date'] or getdate(nowdate()))
@@ -62,6 +88,7 @@ class BankReconciliation(Document):
 
 		for d in entries:
 			row = self.append('payment_entries', {})
+<<<<<<< HEAD
 			amount = d.debit if d.debit else d.credit
 			d.amount = fmt_money(amount, 2, d.account_currency) + " " + (_("Dr") if d.debit else _("Cr"))
 			d.pop("credit")
@@ -69,14 +96,21 @@ class BankReconciliation(Document):
 			d.pop("account_currency")
 			row.update(d)
 			self.total_amount += flt(amount)
+=======
+			row.update(d)
+			self.total_amount += flt(d.amount)
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 
 	def update_clearance_date(self):
 		clearance_date_updated = False
 		for d in self.get('payment_entries'):
 			if d.clearance_date:
+<<<<<<< HEAD
 				if not d.payment_document:
 					frappe.throw(_("Row #{0}: Payment document is required to complete the trasaction"))
 
+=======
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 				if d.cheque_date and getdate(d.clearance_date) < getdate(d.cheque_date):
 					frappe.throw(_("Row #{0}: Clearance date {1} cannot be before Cheque Date {2}")
 						.format(d.idx, d.clearance_date, d.cheque_date))

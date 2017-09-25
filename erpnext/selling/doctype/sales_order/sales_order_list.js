@@ -1,4 +1,5 @@
 frappe.listview_settings['Sales Order'] = {
+<<<<<<< HEAD
 	add_fields: ["base_grand_total", "customer_name", "currency", "delivery_date",
 		"per_delivered", "per_billed", "status", "order_type", "name"],
 	get_indicator: function(doc) {
@@ -6,6 +7,15 @@ frappe.listview_settings['Sales Order'] = {
 			return [__("Closed"), "green", "status,=,Closed"];
 
 		} else if (doc.order_type !== "Maintenance"
+=======
+	add_fields: ["base_grand_total", "customer_name", "currency", "delivery_date", "per_delivered", "per_billed",
+		"status", "order_type"],
+	get_indicator: function(doc) {
+        if(doc.status==="Closed"){
+        	return [__("Closed"), "green", "status,=,Closed"];
+
+        } else if (doc.order_type !== "Maintenance"
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 			&& flt(doc.per_delivered, 2) < 100 && frappe.datetime.get_diff(doc.delivery_date) < 0) {
 			// to bill & overdue
 			return [__("Overdue"), "red", "per_delivered,<,100|delivery_date,<,Today|status,!=,Closed"];

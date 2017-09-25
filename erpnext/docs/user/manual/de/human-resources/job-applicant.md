@@ -1,13 +1,21 @@
 # Bewerber
 <span class="text-muted contributed-by">Beigetragen von CWT Connector & Wire Technology GmbH</span>
 
+<<<<<<< HEAD
 Sie können eine Liste von Bewerbern auf [offene Stellen](/docs/user/manual/de/human-resources/job-opening.html) verwalten.
+=======
+Sie können eine Liste von Bewerbern auf [offene Stellen]({{docs_base_url}}/user/manual/de/human-resources/job-opening.html) verwalten.
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 
 Um einen neuen Bewerber anzulegen, gehen Sie zu:
 
 > Personalwesen > Dokumente > Bewerber > Neu
 
+<<<<<<< HEAD
 <img class="screenshot" alt="Bewerber" src="/docs/assets/img/human-resources/job-applicant.png">
+=======
+<img class="screenshot" alt="Bewerber" src="{{docs_base_url}}/assets/img/human-resources/job-applicant.png">
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 
 ### Verknüpfung mit einem E-Mail-Konto
 
@@ -20,6 +28,10 @@ Sie können die Bewerbersuche mit einem E-Mail-Konto verknüpfen. Wenn wir anneh
 * Geben Sie die E-Mail-ID und das Passwort ein und aktivieren Sie "Eingehend aktivieren".
 * Unter "Anhängen an" geben Sie "Bewerber" an.
 
+<<<<<<< HEAD
 <img class="screenshot" alt="E-Mail-Konto" src="/docs/assets/img/human-resources/email-account.png">
+=======
+<img class="screenshot" alt="E-Mail-Konto" src="{{docs_base_url}}/assets/img/human-resources/email-account.png">
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 
 {next}

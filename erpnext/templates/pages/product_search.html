@@ -1,8 +1,14 @@
 {% extends "templates/web.html" %}
 
+<<<<<<< HEAD
 {% block title %} {{ _("Product Search") }} {% endblock %}
 
 {% block header %}<h2>{{ _("Product Search") }}</h2>{% endblock %}
+=======
+{% block title %} {{ "Product Search" }} {% endblock %}
+
+{% block header %}<h2>Product Search</h2>{% endblock %}
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 
 {% block page_content %}
 <script>{% include "templates/includes/product_list.js" %}</script>
@@ -10,7 +16,11 @@
 <script>
 frappe.ready(function() {
 	var txt = get_url_arg("search");
+<<<<<<< HEAD
 	$(".search-results").html("{{ _('Search results for') }}: " + encodeURIComponent(txt));
+=======
+	$(".search-results").html("Search results for: " + txt);
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 	window.search = txt;
 	window.start = 0;
 	window.get_product_list();
@@ -18,14 +28,22 @@ frappe.ready(function() {
 </script>
 
 <div class="product-search-content">
+<<<<<<< HEAD
     <h3 class="search-results">{{ _("Search Results") }}</h3>
+=======
+	<h3 class="search-results">Search Results</h3>
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 	<div id="search-list" class="row">
 
 	</div>
 	<div style="text-align: center;">
 		<div class="more-btn"
 			style="display: none; text-align: center;">
+<<<<<<< HEAD
             <button class="btn btn-default">{{ _("More...") }}</button>
+=======
+			<button class="btn btn-default">More...</button>
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 		</div>
 	</div>
 </div>

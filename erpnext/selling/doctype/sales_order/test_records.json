@@ -7,6 +7,10 @@
   "customer": "_Test Customer", 
   "customer_group": "_Test Customer Group", 
   "customer_name": "_Test Customer", 
+<<<<<<< HEAD
+=======
+  "delivery_date": "2013-02-23", 
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
   "doctype": "Sales Order", 
   "base_grand_total": 1000.0, 
   "grand_total": 1000.0, 
@@ -22,6 +26,7 @@
     "doctype": "Sales Order Item", 
     "item_code": "_Test Item Home Desktop 100", 
     "item_name": "CPU", 
+<<<<<<< HEAD
     "delivery_date": "2013-02-23", 
     "parentfield": "items", 
     "qty": 10.0, 
@@ -30,6 +35,12 @@
     "stock_uom": "_Test UOM",
 	"conversion_factor": 1.0,
 	"uom": "_Test UOM"
+=======
+    "parentfield": "items", 
+    "qty": 10.0, 
+    "rate": 100.0, 
+    "warehouse": "_Test Warehouse - _TC"
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
    }
   ], 
   "selling_price_list": "_Test Price List", 

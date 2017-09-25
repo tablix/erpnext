@@ -43,7 +43,11 @@ Um eine neue Gehaltsstruktur zu erstellen, gehen Sie zu:
 
 #### Abbildung 1: Gehaltsstruktur
 
+<<<<<<< HEAD
 <img class="screenshot" alt="Gehaltsstruktur" src="/docs/assets/img/human-resources/salary-structure.png">
+=======
+<img class="screenshot" alt="Gehaltsstruktur" src="{{docs_base_url}}/assets/img/human-resources/salary-structure.png">
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 
 ### In der Gehaltsstruktur
 
@@ -67,7 +71,11 @@ Um eine Gehaltsabrechnung über die Gehaltsstruktur zu erstellen, klicken Sie au
 
 #### Abbildung 2: Gehaltsabrechnung
 
+<<<<<<< HEAD
 <img class="screenshot" alt="Lohnzettel" src="/docs/assets/img/human-resources/salary-slip.png">
+=======
+<img class="screenshot" alt="Lohnzettel" src="{{docs_base_url}}/assets/img/human-resources/salary-slip.png">
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 
 Sie können auch Gehaltsabrechnungen für mehrere verschiedene Mitarbeiter über "Gehaltsabrechnung bearbeiten" anlegen.
 
@@ -75,7 +83,11 @@ Sie können auch Gehaltsabrechnungen für mehrere verschiedene Mitarbeiter über
 
 #### Abbildung 3: Gehaltsabrechnung durchführen
 
+<<<<<<< HEAD
 <img class="screenshot" alt="Gehaltsabrechnung durchführen" src="/docs/assets/img/human-resources/process-payroll.png">
+=======
+<img class="screenshot" alt="Gehaltsabrechnung durchführen" src="{{docs_base_url}}/assets/img/human-resources/process-payroll.png">
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 
 Beim Bearbeiten einer Gehaltsabrechnung
 

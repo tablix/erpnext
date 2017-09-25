@@ -15,4 +15,8 @@ third-party-backups
 workflows
 bar-code
 company-setup
+<<<<<<< HEAD
+=======
+calculate-incentive-for-sales-team
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 articles

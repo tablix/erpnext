@@ -7,7 +7,11 @@ Der projizierte Lagerbestand wird vom Planungssystem verwendet um den Nachbestel
 
 Eine strikte Kontrolle des projizierten Lagerbestandes ist entscheidend um Engpässe vorherzusagen und die richtige Bestellmenge kalkulieren zu können.
 
+<<<<<<< HEAD
 <img class="screenshot" alt="Bericht zur projizierten Menge" src="/docs/assets/img/stock/projected-quantity-stock-report.png">
+=======
+![Bericht zur projizierten Menge]({{docs_base_url}}/assets/old_images/erpnext/projected-quantity-stock-report.png)
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 
 > Projizierte Menge = Momentan vorhandene Menge + Geplante Menge + Angefragte Menge + Bestellte Menge - Reservierte Menge
 

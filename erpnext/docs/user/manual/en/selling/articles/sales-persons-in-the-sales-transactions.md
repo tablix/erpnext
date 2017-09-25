@@ -1,16 +1,28 @@
 #Sales Persons in the Sales Transactions
 
+<<<<<<< HEAD
 In ERPNext, Sales Person master is maintained in [tree structure](/docs/user/manual/en/setting-up/articles/managing-tree-structure-masters.html). Sales Person is selectable in all the sales transactions.
 
 Sales Persons can be updated in the Customer master as well. On selection of Customer in the transactions, Sales Persons as updated in the Customer will fetch into sales transaction.
 
 <img class="screenshot" alt="Sales Person Customer" src="/docs/assets/img/articles/sales-person-transaction-1.png">
+=======
+In ERPNext, Sales Person master is maintained in [tree structure]({{docs_base_url}}/user/manual/en/setting-up/articles/managing-tree-structure-masters.html). Sales Person is selectable in all the sales transactions.
+
+Sales Persons can be updated in the Customer master as well. On selection of Customer in the transactions, Sales Persons as updated in the Customer will fetch into sales transaction.
+
+<img class="screenshot" alt="Sales Person Customer" src="{{docs_base_url}}/assets/img/articles/sales-person-transaction-1.png">
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 
 ####Sales Person Contribution
 
 If more than one sales persons are working together on an order, then contribution (%) should be set for each Sales Person.
 
+<<<<<<< HEAD
 <img class="screenshot" alt="Sales Person Order" src="/docs/assets/img/articles/sales-person-transaction-2.png">
+=======
+<img class="screenshot" alt="Sales Person Order" src="{{docs_base_url}}/assets/img/articles/sales-person-transaction-2.png">
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 
 On saving transaction, based on the Net Total and Contriution (%), `Contribution to Net Total` will be calculated for each Sales Person.
 
@@ -24,7 +36,11 @@ Check Sales Person's Transaction report from:
 
 This report can be generated based on Sales Order, Delivery Note and Sales Invoice. It will give you total amount of sale made by an employe.
 
+<<<<<<< HEAD
 <img class="screenshot" alt="Sales Person Report" src="/docs/assets/img/articles/sales-person-transaction-3.png">
+=======
+<img class="screenshot" alt="Sales Person Report" src="{{docs_base_url}}/assets/img/articles/sales-person-transaction-3.png">
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 
 ####Sales Person wise Commission
 
@@ -32,4 +48,17 @@ ERPNext only provide total amount of sale made by a Sales Person. If you offer c
 
 `Accounts > Standard Reports > Sales Partners Commission`
 
+<<<<<<< HEAD
+=======
+####Disable Sales Person Feature
+
+If you don't track Sales Person wise performance, and doesn't wish to use this feature, you can disable it from:
+
+`Setup > Customize > Features Setup`
+
+<img class="screenshot" alt="Disable Sales Person" src="{{docs_base_url}}/assets/img/articles/sales-person-transaction-4.png">
+
+On disabling this feature, fields and tables related to Sales Person will become hidden from masters and transcations.
+
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 <!-- markdown -->

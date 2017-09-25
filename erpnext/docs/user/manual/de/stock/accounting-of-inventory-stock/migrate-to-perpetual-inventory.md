@@ -21,7 +21,11 @@ Schritte:
 
 > Einstellungen > Rechnungswesen > Konteneinstellungen > Eine  Buchung für jede Lagerbewegung erstellen
 
+<<<<<<< HEAD
 ![Aktivierung](/docs/assets/old_images/erpnext/accounting-for-stock-1.png)  
+=======
+![Aktivierung]({{docs_base_url}}/assets/old_images/erpnext/accounting-for-stock-1.png)  
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 
 * Erstellen Sie Lagerbuchungen (Materialübertrag) um verfügbare Lagerbestände von einem existierenden Lager auf ein neues Lager zu übertragen. Sobald im neuen Lager der Lagerbestand verfügbar wird, sollten Sie für zukünftige Transaktionen nur noch das neue Lager verwenden.
 

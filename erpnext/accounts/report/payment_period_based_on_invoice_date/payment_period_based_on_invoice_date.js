@@ -21,7 +21,11 @@ frappe.query_reports["Payment Period Based On Invoice Date"] = {
 			fieldname:"to_date",
 			label: __("To Date"),
 			fieldtype: "Date",
+<<<<<<< HEAD
 			default: frappe.datetime.get_today()
+=======
+			default: get_today()
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 		},
 		{
 			fieldname:"payment_type",
@@ -46,8 +50,13 @@ frappe.query_reports["Payment Period Based On Invoice Date"] = {
 			"label": __("Party"),
 			"fieldtype": "Dynamic Link",
 			"get_options": function() {
+<<<<<<< HEAD
 				var party_type = frappe.query_report_filters_by_name.party_type.get_value();
 				var party = frappe.query_report_filters_by_name.party.get_value();
+=======
+				var party_type = frappe.query_report.filters_by_name.party_type.get_value();
+				var party = frappe.query_report.filters_by_name.party.get_value();
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 				if(party && !party_type) {
 					frappe.throw(__("Please select Party Type first"));
 				}

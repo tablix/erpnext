@@ -1,6 +1,9 @@
 from __future__ import unicode_literals
+<<<<<<< HEAD
 import frappe
 
+=======
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 install_docs = [
 	{"doctype":"Role", "role_name":"Stock Manager", "name":"Stock Manager"},
 	{"doctype":"Role", "role_name":"Item Manager", "name":"Item Manager"},
@@ -10,6 +13,7 @@ install_docs = [
 	{"doctype":"Item Group", "item_group_name":"Default", 
 		"parent_item_group":"All Item Groups", "is_group": 0},
 ]
+<<<<<<< HEAD
 
 def get_warehouse_account_map():
 	if not frappe.flags.warehouse_account_map or frappe.flags.in_test:
@@ -46,3 +50,5 @@ def get_warehouse_account(warehouse, company):
 	
 def get_company_default_inventory_account(company):
 	return frappe.db.get_value('Company', company, 'default_inventory_account')
+=======
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347

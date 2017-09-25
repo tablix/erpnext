@@ -9,7 +9,11 @@ Um das Kreditlimit einzustellen, gehen Sie zur Kundenvorlage
 
 ### Abbildung 1: Kreditlinie
 
+<<<<<<< HEAD
 <img class="screenshot" alt="Kreditlimit" src="/docs/assets/img/accounts/credit-limit-1.png">
+=======
+<img class="screenshot" alt="Kreditlimit" src="{{docs_base_url}}/assets/img/accounts/credit-limit-1.png">
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 
 Gehen Sie zum Abschnitt "Kreditlimit" und geben Sie den Betrag in das Feld "Kreditlimit" ein.
 
@@ -21,7 +25,11 @@ Im Feld Kredit-Controller wählen Sie die Rolle aus, die dazu autorisiert sein s
 
 ### Abbildung 2: Kredit-Controller
 
+<<<<<<< HEAD
 <img class="screenshot" alt="Kreditlimit" src="/docs/assets/img/accounts/credit-limit-2.png">
+=======
+<img class="screenshot" alt="Kreditlimit" src="{{docs_base_url}}/assets/img/accounts/credit-limit-2.png">
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 
 Speichern Sie die Änderungen
 

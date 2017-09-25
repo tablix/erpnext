@@ -1,4 +1,5 @@
 frappe.listview_settings['Student Applicant'] = {
+<<<<<<< HEAD
 	add_fields: [ "application_status", 'paid'],
 	has_indicator_for_draft: 1,
 	get_indicator: function(doc) {
@@ -6,6 +7,11 @@ frappe.listview_settings['Student Applicant'] = {
 			return [__("Paid"), "green", "paid,=,Yes"];
 		}
 		else if (doc.application_status=="Applied") {
+=======
+	add_fields: [ "application_status"],
+	get_indicator: function(doc) {
+		if (doc.application_status=="Applied") {
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 			return [__("Applied"), "orange", "application_status,=,Applied"];
 		}
 		else if (doc.application_status=="Approved") {

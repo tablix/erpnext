@@ -5,16 +5,26 @@ from __future__ import unicode_literals
 import frappe, os
 from frappe import _
 
+<<<<<<< HEAD
 from frappe.utils import cint, today, formatdate
+=======
+from frappe.utils import cint
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 import frappe.defaults
 
 
 from frappe.model.document import Document
+<<<<<<< HEAD
 from frappe.contacts.address_and_contact import load_address_and_contact
 
 class Company(Document):
 	def onload(self):
 		load_address_and_contact(self, "company")
+=======
+
+class Company(Document):
+	def onload(self):
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 		self.get("__onload")["transactions_exist"] = self.check_if_transactions_exist()
 
 	def check_if_transactions_exist(self):
@@ -32,8 +42,11 @@ class Company(Document):
 		self.validate_abbr()
 		self.validate_default_accounts()
 		self.validate_currency()
+<<<<<<< HEAD
 		self.validate_coa_input()
 		self.validate_perpetual_inventory()
+=======
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 
 	def validate_abbr(self):
 		if not self.abbr:
@@ -51,11 +64,17 @@ class Company(Document):
 			frappe.throw(_("Abbreviation already used for another company"))
 
 	def validate_default_accounts(self):
+<<<<<<< HEAD
 		for field in ["default_bank_account", "default_cash_account",
 			"default_receivable_account", "default_payable_account",
 			"default_expense_account", "default_income_account",
 			"stock_received_but_not_billed", "stock_adjustment_account",
 			"expenses_included_in_valuation", "default_payroll_payable_account"]:
+=======
+		for field in ["default_bank_account", "default_cash_account", "default_receivable_account", "default_payable_account",
+			"default_expense_account", "default_income_account", "stock_received_but_not_billed",
+			"stock_adjustment_account", "expenses_included_in_valuation"]:
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 				if self.get(field):
 					for_company = frappe.db.get_value("Account", self.get(field), "company")
 					if for_company != self.name:
@@ -76,28 +95,46 @@ class Company(Document):
 				self.create_default_accounts()
 				self.create_default_warehouses()
 
+<<<<<<< HEAD
 				if cint(frappe.db.get_single_value('System Settings', 'setup_complete')):
 					# In the case of setup, fixtures should be installed after setup_success
 					# This also prevents db commits before setup is successful
 					install_country_fixtures(self.name)
+=======
+				self.install_country_fixtures()
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 
 		if not frappe.db.get_value("Cost Center", {"is_group": 0, "company": self.name}):
 			self.create_default_cost_center()
 
 		if not frappe.local.flags.ignore_chart_of_accounts:
 			self.set_default_accounts()
+<<<<<<< HEAD
 			if self.default_cash_account:
 				self.set_mode_of_payment_account()
+=======
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 
 		if self.default_currency:
 			frappe.db.set_value("Currency", self.default_currency, "enabled", 1)
 
+<<<<<<< HEAD
 		if hasattr(frappe.local, 'enable_perpetual_inventory') and \
 			self.name in frappe.local.enable_perpetual_inventory:
 			frappe.local.enable_perpetual_inventory[self.name] = self.enable_perpetual_inventory
 
 		frappe.clear_cache()
 
+=======
+		frappe.clear_cache()
+
+	def install_country_fixtures(self):
+		path = os.path.join(os.path.dirname(__file__), "fixtures", self.country.lower())
+		if os.path.exists(path.encode("utf-8")):
+			frappe.get_attr("erpnext.setup.doctype.company.fixtures.{0}.install"
+				.format(self.country.lower()))(self)
+
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 	def create_default_warehouses(self):
 		for wh_detail in [
 			{"warehouse_name": _("All Warehouses"), "is_group": 1},
@@ -115,20 +152,34 @@ class Company(Document):
 						"is_group": wh_detail["is_group"],
 						"company": self.name,
 						"parent_warehouse": "{0} - {1}".format(_("All Warehouses"), self.abbr) \
+<<<<<<< HEAD
 							if not wh_detail["is_group"] else ""
+=======
+							if not wh_detail["is_group"] else "",
+						"create_account_under": stock_group
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 					})
 					warehouse.flags.ignore_permissions = True
 					warehouse.insert()
 
 	def create_default_accounts(self):
+<<<<<<< HEAD
 		from erpnext.accounts.doctype.account.chart_of_accounts.chart_of_accounts import create_charts
 		create_charts(self.name, self.chart_of_accounts, self.existing_company)
+=======
+		if not self.chart_of_accounts:
+			self.chart_of_accounts = "Standard"
+
+		from erpnext.accounts.doctype.account.chart_of_accounts.chart_of_accounts import create_charts
+		create_charts(self.chart_of_accounts, self.name)
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 
 		frappe.db.set(self, "default_receivable_account", frappe.db.get_value("Account",
 			{"company": self.name, "account_type": "Receivable", "is_group": 0}))
 		frappe.db.set(self, "default_payable_account", frappe.db.get_value("Account",
 			{"company": self.name, "account_type": "Payable", "is_group": 0}))
 
+<<<<<<< HEAD
 	def validate_coa_input(self):
 		if self.create_chart_of_accounts_based_on == "Existing Company":
 			self.chart_of_accounts = None
@@ -147,6 +198,8 @@ class Company(Document):
 				frappe.msgprint(_("Set default inventory account for perpetual inventory"),
 					alert=True, indicator='orange')
 
+=======
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 	def set_default_accounts(self):
 		self._set_default_account("default_cash_account", "Cash")
 		self._set_default_account("default_bank_account", "Bank")
@@ -154,9 +207,14 @@ class Company(Document):
 		self._set_default_account("accumulated_depreciation_account", "Accumulated Depreciation")
 		self._set_default_account("depreciation_expense_account", "Depreciation")
 
+<<<<<<< HEAD
 		if self.enable_perpetual_inventory:
 			self._set_default_account("stock_received_but_not_billed", "Stock Received But Not Billed")
 			self._set_default_account("default_inventory_account", "Stock")
+=======
+		if cint(frappe.db.get_single_value("Accounts Settings", "auto_accounting_for_stock")):
+			self._set_default_account("stock_received_but_not_billed", "Stock Received But Not Billed")
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 			self._set_default_account("stock_adjustment_account", "Stock Adjustment")
 			self._set_default_account("expenses_included_in_valuation", "Expenses Included In Valuation")
 			self._set_default_account("default_expense_account", "Cost of Goods Sold")
@@ -165,8 +223,11 @@ class Company(Document):
 			self.db_set("default_income_account", frappe.db.get_value("Account",
 				{"account_name": _("Sales"), "company": self.name}))
 
+<<<<<<< HEAD
 		if not self.default_payable_account:
 			self.db_set("default_payable_account", self.default_payable_account)
+=======
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 
 	def _set_default_account(self, fieldname, account_type):
 		if self.get(fieldname):
@@ -178,6 +239,7 @@ class Company(Document):
 		if account:
 			self.db_set(fieldname, account)
 
+<<<<<<< HEAD
 	def set_mode_of_payment_account(self):
 		cash = frappe.db.get_value('Mode of Payment', {'type': 'Cash'}, 'name')
 		if cash and self.default_cash_account \
@@ -189,6 +251,8 @@ class Company(Document):
 			})
 			mode_of_payment.save(ignore_permissions=True)
 
+=======
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 	def create_default_cost_center(self):
 		cc_list = [
 			{
@@ -278,8 +342,11 @@ class Company(Document):
 		frappe.db.sql("""update `tabSingles` set value=""
 			where doctype='Global Defaults' and field='default_company'
 			and value=%s""", self.name)
+<<<<<<< HEAD
 		# delete mode of payment account
 		frappe.db.sql("delete from `tabMode of Payment Account` where company=%s", self.name)
+=======
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 
 @frappe.whitelist()
 def replace_abbr(company, old, new):
@@ -297,7 +364,11 @@ def replace_abbr(company, old, new):
 			if len(parts) == 1 or parts[1].lower() == old.lower():
 				frappe.rename_doc(dt, d[0], parts[0] + " - " + new)
 
+<<<<<<< HEAD
 	for dt in ["Warehouse", "Account", "Cost Center"]:
+=======
+	for dt in ["Account", "Cost Center", "Warehouse"]:
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 		_rename_record(dt)
 		frappe.db.commit()
 
@@ -310,6 +381,7 @@ def get_name_with_abbr(name, company):
 
 	return " - ".join(parts)
 
+<<<<<<< HEAD
 def install_country_fixtures(company):
 	company_doc = frappe.get_doc("Company", company)
 	path = frappe.get_app_path('erpnext', 'regional', frappe.scrub(company_doc.country))
@@ -354,3 +426,8 @@ def cache_companies_monthly_sales_history():
 	for company in companies:
 		update_company_monthly_sales(company)
 	frappe.db.commit()
+=======
+def get_company_currency(company):
+	return frappe.local_cache("company_currency", company,
+		lambda: frappe.db.get_value("Company", company, "default_currency"))
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347

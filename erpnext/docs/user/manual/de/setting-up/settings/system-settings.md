@@ -7,6 +7,10 @@ Um die Systemeinstellungen zu öffnen, gehen Sie zu:
 
 > Einstellungen > Einstellungen > Systemeinstellungen
 
+<<<<<<< HEAD
 <img class="screenshot" alt="Systemeinstellungen" src="/docs/assets/img/setup/settings/system-settings.png">
+=======
+<img class="screenshot" alt="Systemeinstellungen" src="{{docs_base_url}}/assets/img/setup/settings/system-settings.png">
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 
 {next}

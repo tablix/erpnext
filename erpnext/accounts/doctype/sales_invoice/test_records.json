@@ -20,10 +20,14 @@
     "item_name": "138-CMS Shoe",
     "parentfield": "items",
     "qty": 1.0,
+<<<<<<< HEAD
     "rate": 500.0,
 	"uom": "_Test UOM",
 	"conversion_factor": 1,
     "stock_uom": "_Test UOM"
+=======
+    "rate": 500.0
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
    }
   ],
   "base_grand_total": 561.8,
@@ -92,10 +96,14 @@
     "item_name": "_Test Item",
     "parentfield": "items",
     "price_list_rate": 500.0,
+<<<<<<< HEAD
     "qty": 1.0,
 	"uom": "_Test UOM",
 	"conversion_factor": 1,
     "stock_uom": "_Test UOM"
+=======
+    "qty": 1.0
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
    }
   ],
   "base_grand_total": 630.0,
@@ -147,9 +155,13 @@
     "price_list_rate": 50,
     "qty": 10,
     "rate": 50,
+<<<<<<< HEAD
 	"uom": "_Test UOM 1",
 	"conversion_factor": 1,
     "stock_uom": "_Test UOM 1"
+=======
+    "stock_uom": "_Test UOM"
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
    },
    {
     "cost_center": "_Test Cost Center - _TC",
@@ -161,8 +173,11 @@
     "parentfield": "items",
     "price_list_rate": 150,
     "qty": 5,
+<<<<<<< HEAD
 	"uom": "_Test UOM",
 	"conversion_factor": 1,
+=======
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
     "rate": 150,
     "stock_uom": "_Test UOM"
    }
@@ -273,10 +288,14 @@
     "parentfield": "items",
     "price_list_rate": 62.5,
     "qty": 10,
+<<<<<<< HEAD
 	  "uom": "_Test UOM 1",
 	  "conversion_factor": 1,
     "stock_uom": "_Test UOM 1"
 	
+=======
+    "stock_uom": "_Test UOM"
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
    },
    {
     "cost_center": "_Test Cost Center - _TC",
@@ -288,8 +307,11 @@
     "parentfield": "items",
     "price_list_rate": 190.66,
     "qty": 5,
+<<<<<<< HEAD
 	"uom": "_Test UOM",
 	"conversion_factor": 1,
+=======
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
     "stock_uom": "_Test UOM"
    }
   ],

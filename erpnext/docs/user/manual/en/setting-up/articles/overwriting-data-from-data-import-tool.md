@@ -14,7 +14,11 @@ Template Used for overwriting data will be same as one used for importing new it
 
 Since items to be over-written will be already available in the system, while downloading template, click on "Download with data" to get all the existing items in the template.
 
+<<<<<<< HEAD
 <img alt="Download Template" class="screenshot" src="/docs/assets/img/articles/overwrite-1.gif">
+=======
+<img alt="Download Template" class="screenshot" src="{{docs_base_url}}/assets/img/articles/overwrite-1.gif">
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 	
 ####Step 2: Prepare Data
 
@@ -22,7 +26,11 @@ In the template, we can only keep rows of the items to be overwritten and delete
 
 Enter new value in the Item Group column for an item. Since Item Group is a master in itself, ensure Item Group entered in the spreadsheet file is already added in the Item Group master.
 
+<<<<<<< HEAD
 <img alt="Update Values" class="screenshot" src="/docs/assets/img/articles/overwrite-2.png">
+=======
+<img alt="Update Values" class="screenshot" src="{{docs_base_url}}/assets/img/articles/overwrite-2.png">
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 
 Since we are overwriting only Item Group, only following columns will be mandatory.
 
@@ -36,13 +44,21 @@ Columns of other field which won't have any impact can be removed, even if they 
 
 After updating Item Groups in spreadheet, come back to Data Import Tool in ERPNext. Browse and select the File/template which has data to be overwritten.
 
+<<<<<<< HEAD
 <img alt="Browse template" class="screenshot" src="/docs/assets/img/articles/overwrite-3.gif">
+=======
+<img alt="Browse template" class="screenshot" src="{{docs_base_url}}/assets/img/articles/overwrite-3.gif">
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 
 ####Step 4: Upload
 
 On clicking Import, Item Group will be over-written.
 
+<<<<<<< HEAD
 <img alt="Upload" class="screenshot" src="/docs/assets/img/articles/overwrite-4.png">
+=======
+<img alt="Upload" class="screenshot" src="{{docs_base_url}}/assets/img/articles/overwrite-4.png">
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 
 If validation of values fails, then it will indicate row no. of spreadsheet for which validation failed and needs correction. In that case, you should corrected value in that row of spreadsheet, and then import same file again. If validation fails even for one row, none of the records are imported/overwritten.
 

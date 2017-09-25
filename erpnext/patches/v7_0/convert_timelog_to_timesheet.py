@@ -3,12 +3,19 @@ from erpnext.manufacturing.doctype.production_order.production_order \
 	import make_timesheet, add_timesheet_detail
 
 def execute():
+<<<<<<< HEAD
 	frappe.reload_doc('projects', 'doctype', 'task')
+=======
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 	frappe.reload_doc('projects', 'doctype', 'timesheet')
 	if not frappe.db.table_exists("Time Log"):
 		return
 
+<<<<<<< HEAD
 	for data in frappe.db.sql("select * from `tabTime Log`", as_dict=1):
+=======
+	for data in frappe.db.sql("select * from `tabTime Log` where docstatus < 2", as_dict=1):
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 		if data.task:
 			company = frappe.db.get_value("Task", data.task, "company")
 		elif data.production_order:
@@ -19,10 +26,13 @@ def execute():
 		time_sheet = make_timesheet(data.production_order)
 		args = get_timelog_data(data)
 		add_timesheet_detail(time_sheet, args)
+<<<<<<< HEAD
 		if data.docstatus == 2:
 			time_sheet.docstatus = 0
 		else:
 			time_sheet.docstatus = data.docstatus
+=======
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 		time_sheet.employee = data.employee
 		time_sheet.note = data.note
 		time_sheet.company = company
@@ -42,10 +52,13 @@ def execute():
 				d.db_set("docstatus", 1)
 			time_sheet.update_production_order(time_sheet.name)
 			time_sheet.update_task_and_project()
+<<<<<<< HEAD
 		if data.docstatus == 2:
 			time_sheet.db_set("docstatus", 2)
 			for d in time_sheet.get("time_logs"):
 				d.db_set("docstatus", 2)
+=======
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 
 def get_timelog_data(data):
 	return {

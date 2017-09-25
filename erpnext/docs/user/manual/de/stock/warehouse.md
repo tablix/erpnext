@@ -7,7 +7,11 @@ Um zum Bereich "Lager" zu gelangen, klicken Sie auf "Lagerbestand" und gehen Sie
 
 > Lagerbestand > Einstellungen > Lager > Neu
 
+<<<<<<< HEAD
 <img class="screenshot" alt="Lager" src="/docs/assets/img/stock/warehouse.png">
+=======
+<img class="screenshot" alt="Lager" src="{{docs_base_url}}/assets/img/stock/warehouse.png">
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 
 In ERPNext muss jedes Lager einer festen Firma zugeordnet sein, um einen unternehmensbezogenen Lagerbestand zu erhalten. Die Lager werden mit den ihnen zugeordneten Firmenkürzeln abgespeichert. Dies erleichtert es auf einen Blick herauszufinden, welches Lager zu welcher Firma gehört.
 

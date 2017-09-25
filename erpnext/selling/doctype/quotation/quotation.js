@@ -4,6 +4,7 @@
 
 {% include 'erpnext/selling/sales_common.js' %}
 
+<<<<<<< HEAD
 frappe.ui.form.on('Quotation', {
 	setup: function(frm) {
 		frm.custom_make_buttons = {
@@ -24,6 +25,8 @@ frappe.ui.form.on('Quotation', {
 	}
 });
 
+=======
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 erpnext.selling.QuotationController = erpnext.selling.SellingController.extend({
 	onload: function(doc, dt, dn) {
 		var me = this;
@@ -36,6 +39,7 @@ erpnext.selling.QuotationController = erpnext.selling.SellingController.extend({
 	},
 	refresh: function(doc, dt, dn) {
 		this._super(doc, dt, dn);
+<<<<<<< HEAD
 		doctype = doc.quotation_to == 'Customer' ? 'Customer':'Lead';
 		frappe.dynamic_link = {doc: this.frm.doc, fieldname: doctype.toLowerCase(), doctype: doctype}
 
@@ -50,11 +54,17 @@ erpnext.selling.QuotationController = erpnext.selling.SellingController.extend({
 				cur_frm.add_custom_button(__('Sales Order'),
 					cur_frm.cscript['Make Sales Order'], __("Make"));
 			}
+=======
+		if(doc.docstatus == 1 && doc.status!=='Lost') {
+			cur_frm.add_custom_button(__('Make Sales Order'),
+				cur_frm.cscript['Make Sales Order']);
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 
 			if(doc.status!=="Ordered") {
 				cur_frm.add_custom_button(__('Set as Lost'),
 					cur_frm.cscript['Declare Order Lost']);
 			}
+<<<<<<< HEAD
 
 			if(!doc.subscription) {
 				cur_frm.add_custom_button(__('Subscription'), function() {
@@ -84,6 +94,34 @@ erpnext.selling.QuotationController = erpnext.selling.SellingController.extend({
 							company: me.frm.doc.company,
 							// cannot set enquiry_type as setter, as the fieldname is order_type
 							enquiry_type: me.frm.doc.order_type,
+=======
+		}
+
+		if (this.frm.doc.docstatus===0) {
+			cur_frm.add_custom_button(__('Opportunity'),
+				function() {
+					erpnext.utils.map_current_doc({
+						method: "erpnext.crm.doctype.opportunity.opportunity.make_quotation",
+						source_doctype: "Opportunity",
+						get_query_filters: {
+							status: ["not in", ["Lost", "Closed"]],
+							enquiry_type: cur_frm.doc.order_type,
+							customer: cur_frm.doc.customer || undefined,
+							lead: cur_frm.doc.lead || undefined,
+							company: cur_frm.doc.company
+						}
+					})
+				}, __("Get items from"), "btn-default");
+			cur_frm.add_custom_button(__('Boq'),
+				function() {
+					erpnext.utils.map_current_doc({
+						method: "boq.boq.doctype.boq.boq.make_quotation_new",
+						source_doctype: "Boq",
+						get_query_filters: {
+							status: ["in", ["Sales Complete", "BOQ Approved", "Quotation"]],
+							customer: cur_frm.doc.customer || undefined,
+							lead: cur_frm.doc.lead || undefined
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 						}
 					})
 				}, __("Get items from"), "btn-default");
@@ -112,8 +150,17 @@ erpnext.selling.QuotationController = erpnext.selling.SellingController.extend({
 		this.frm.toggle_reqd("customer", this.frm.doc.quotation_to == "Customer");
 
 		// to overwrite the customer_filter trigger from queries.js
+<<<<<<< HEAD
 		this.frm.set_query('customer_address', erpnext.queries.address_query);
 		this.frm.set_query('shipping_address_name', erpnext.queries.address_query);
+=======
+		$.each(["customer_address", "shipping_address_name"],
+			function(i, opts) {
+				me.frm.set_query(opts, me.frm.doc.quotation_to==="Lead"
+					? erpnext.queries["lead_filter"] : erpnext.queries["customer_filter"]);
+			}
+		);
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 	},
 
 	tc_name: function() {
@@ -122,7 +169,11 @@ erpnext.selling.QuotationController = erpnext.selling.SellingController.extend({
 
 	validate_company_and_party: function(party_field) {
 		if(!this.frm.doc.quotation_to) {
+<<<<<<< HEAD
 			frappe.msgprint(__("Please select a value for {0} quotation_to {1}", [this.frm.doc.doctype, this.frm.doc.name]));
+=======
+			msgprint(__("Please select a value for {0} quotation_to {1}", [this.frm.doc.doctype, this.frm.doc.name]));
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 			return false;
 		} else if (this.frm.doc.quotation_to == "Lead") {
 			return true;
@@ -133,10 +184,13 @@ erpnext.selling.QuotationController = erpnext.selling.SellingController.extend({
 
 	lead: function() {
 		var me = this;
+<<<<<<< HEAD
 		if(!this.frm.doc.lead) {
 			return;
 		}
 
+=======
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 		frappe.call({
 			method: "erpnext.crm.doctype.lead.lead.get_lead_details",
 			args: {
@@ -172,7 +226,11 @@ cur_frm.cscript['Make Sales Order'] = function() {
 
 cur_frm.cscript['Declare Order Lost'] = function(){
 	var dialog = new frappe.ui.Dialog({
+<<<<<<< HEAD
 		title: __('Set as Lost'),
+=======
+		title: "Set as Lost",
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 		fields: [
 			{"fieldtype": "Text", "label": __("Reason for losing"), "fieldname": "reason",
 				"reqd": 1 },
@@ -181,7 +239,11 @@ cur_frm.cscript['Declare Order Lost'] = function(){
 	});
 
 	dialog.fields_dict.update.$input.click(function() {
+<<<<<<< HEAD
 		var args = dialog.get_values();
+=======
+		args = dialog.get_values();
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 		if(!args) return;
 		return cur_frm.call({
 			method: "declare_order_lost",
@@ -189,7 +251,11 @@ cur_frm.cscript['Declare Order Lost'] = function(){
 			args: args.reason,
 			callback: function(r) {
 				if(r.exc) {
+<<<<<<< HEAD
 					frappe.msgprint(__("There were errors."));
+=======
+					msgprint(__("There were errors."));
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 					return;
 				}
 				dialog.hide();

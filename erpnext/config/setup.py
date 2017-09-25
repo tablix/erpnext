@@ -6,7 +6,11 @@ def get_data():
 	data = [
 		{
 			"label": _("Settings"),
+<<<<<<< HEAD
 			"icon": "fa fa-wrench",
+=======
+			"icon": "icon-wrench",
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 			"items": [
 				{
 					"type": "doctype",
@@ -19,7 +23,11 @@ def get_data():
 		},
 		{
 			"label": _("Printing"),
+<<<<<<< HEAD
 			"icon": "fa fa-print",
+=======
+			"icon": "icon-print",
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 			"items": [
 				{
 					"type": "doctype",
@@ -41,6 +49,14 @@ def get_data():
 					"name": "Terms and Conditions",
 					"description": _("Standard contract terms for Sales or Purchase.")
 				},
+<<<<<<< HEAD
+=======
+				{
+					"type": "doctype",
+					"name": "Assumptions",
+					"description": _("Standard contract assumptions for Sales or Purchase.")
+				},
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 			]
 		},
 		{
@@ -75,7 +91,11 @@ def get_data():
 		},
 		{
 			"label": _("Customize"),
+<<<<<<< HEAD
 			"icon": "fa fa-glass",
+=======
+			"icon": "icon-glass",
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 			"items": [
 				{
 					"type": "doctype",
@@ -92,6 +112,7 @@ def get_data():
 		},
 		{
 			"label": _("Email"),
+<<<<<<< HEAD
 			"icon": "fa fa-envelope",
 			"items": [
 				{
@@ -102,6 +123,12 @@ def get_data():
 				},
 				{
 					"type": "doctype",
+=======
+			"icon": "icon-envelope",
+			"items": [
+				{
+					"type": "doctype",
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 					"name": "Email Digest",
 					"description": _("Create and manage daily, weekly and monthly email digests.")
 				},
@@ -115,12 +142,21 @@ def get_data():
 	]
 
 	for module, label, icon in (
+<<<<<<< HEAD
 		("accounts", _("Accounts"), "fa fa-money"),
 		("stock", _("Stock"), "fa fa-truck"),
 		("selling", _("Selling"), "fa fa-tag"),
 		("buying", _("Buying"), "fa fa-shopping-cart"),
 		("hr", _("Human Resources"), "fa fa-group"),
 		("support", _("Support"), "fa fa-phone")):
+=======
+		("accounts", _("Accounts"), "icon-money"),
+		("stock", _("Stock"), "icon-truck"),
+		("selling", _("Selling"), "icon-tag"),
+		("buying", _("Buying"), "icon-shopping-cart"),
+		("hr", _("Human Resources"), "icon-group"),
+		("support", _("Support"), "icon-phone")):
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 
 		add_setup_section(data, "erpnext", module, label, icon)
 

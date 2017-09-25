@@ -3,20 +3,29 @@
  "allow_import": 1, 
  "allow_rename": 0, 
  "autoname": "field:leave_block_list_name", 
+<<<<<<< HEAD
  "beta": 0, 
+=======
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
  "creation": "2013-02-18 17:43:12", 
  "custom": 0, 
  "description": "Block Holidays on important days.", 
  "docstatus": 0, 
  "doctype": "DocType", 
  "document_type": "Setup", 
+<<<<<<< HEAD
  "editable_grid": 0, 
+=======
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
  "fields": [
   {
    "allow_on_submit": 0, 
    "bold": 0, 
    "collapsible": 0, 
+<<<<<<< HEAD
    "columns": 0, 
+=======
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
    "fieldname": "leave_block_list_name", 
    "fieldtype": "Data", 
    "hidden": 0, 
@@ -31,7 +40,10 @@
    "print_hide": 0, 
    "print_hide_if_no_value": 0, 
    "read_only": 0, 
+<<<<<<< HEAD
    "remember_last_selected_value": 0, 
+=======
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
    "report_hide": 0, 
    "reqd": 1, 
    "search_index": 0, 
@@ -42,7 +54,10 @@
    "allow_on_submit": 0, 
    "bold": 0, 
    "collapsible": 0, 
+<<<<<<< HEAD
    "columns": 0, 
+=======
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
    "fieldname": "company", 
    "fieldtype": "Link", 
    "hidden": 0, 
@@ -58,7 +73,10 @@
    "print_hide": 0, 
    "print_hide_if_no_value": 0, 
    "read_only": 0, 
+<<<<<<< HEAD
    "remember_last_selected_value": 1, 
+=======
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
    "report_hide": 0, 
    "reqd": 1, 
    "search_index": 0, 
@@ -69,7 +87,10 @@
    "allow_on_submit": 0, 
    "bold": 0, 
    "collapsible": 0, 
+<<<<<<< HEAD
    "columns": 0, 
+=======
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
    "description": "If not checked, the list will have to be added to each Department where it has to be applied.", 
    "fieldname": "applies_to_all_departments", 
    "fieldtype": "Check", 
@@ -85,7 +106,10 @@
    "print_hide": 0, 
    "print_hide_if_no_value": 0, 
    "read_only": 0, 
+<<<<<<< HEAD
    "remember_last_selected_value": 0, 
+=======
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
    "report_hide": 0, 
    "reqd": 0, 
    "search_index": 0, 
@@ -96,7 +120,10 @@
    "allow_on_submit": 0, 
    "bold": 0, 
    "collapsible": 0, 
+<<<<<<< HEAD
    "columns": 0, 
+=======
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
    "description": "Stop users from making Leave Applications on following days.", 
    "fieldname": "block_days", 
    "fieldtype": "Section Break", 
@@ -112,7 +139,10 @@
    "print_hide": 0, 
    "print_hide_if_no_value": 0, 
    "read_only": 0, 
+<<<<<<< HEAD
    "remember_last_selected_value": 0, 
+=======
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
    "report_hide": 0, 
    "reqd": 0, 
    "search_index": 0, 
@@ -123,7 +153,10 @@
    "allow_on_submit": 0, 
    "bold": 0, 
    "collapsible": 0, 
+<<<<<<< HEAD
    "columns": 0, 
+=======
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
    "fieldname": "leave_block_list_dates", 
    "fieldtype": "Table", 
    "hidden": 0, 
@@ -139,7 +172,10 @@
    "print_hide": 0, 
    "print_hide_if_no_value": 0, 
    "read_only": 0, 
+<<<<<<< HEAD
    "remember_last_selected_value": 0, 
+=======
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
    "report_hide": 0, 
    "reqd": 0, 
    "search_index": 0, 
@@ -150,7 +186,10 @@
    "allow_on_submit": 0, 
    "bold": 0, 
    "collapsible": 0, 
+<<<<<<< HEAD
    "columns": 0, 
+=======
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
    "description": "Allow the following users to approve Leave Applications for block days.", 
    "fieldname": "allow_list", 
    "fieldtype": "Section Break", 
@@ -166,7 +205,10 @@
    "print_hide": 0, 
    "print_hide_if_no_value": 0, 
    "read_only": 0, 
+<<<<<<< HEAD
    "remember_last_selected_value": 0, 
+=======
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
    "report_hide": 0, 
    "reqd": 0, 
    "search_index": 0, 
@@ -177,7 +219,10 @@
    "allow_on_submit": 0, 
    "bold": 0, 
    "collapsible": 0, 
+<<<<<<< HEAD
    "columns": 0, 
+=======
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
    "fieldname": "leave_block_list_allowed", 
    "fieldtype": "Table", 
    "hidden": 0, 
@@ -193,7 +238,10 @@
    "print_hide": 0, 
    "print_hide_if_no_value": 0, 
    "read_only": 0, 
+<<<<<<< HEAD
    "remember_last_selected_value": 0, 
+=======
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
    "report_hide": 0, 
    "reqd": 0, 
    "search_index": 0, 
@@ -203,16 +251,25 @@
  ], 
  "hide_heading": 0, 
  "hide_toolbar": 0, 
+<<<<<<< HEAD
  "icon": "fa fa-calendar", 
  "idx": 1, 
  "image_view": 0, 
+=======
+ "icon": "icon-calendar", 
+ "idx": 1, 
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
  "in_create": 0, 
  "in_dialog": 0, 
  "is_submittable": 0, 
  "issingle": 0, 
  "istable": 0, 
  "max_attachments": 0, 
+<<<<<<< HEAD
  "modified": "2016-11-03 16:01:42.171113", 
+=======
+ "modified": "2016-03-07 00:48:25.784577", 
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
  "modified_by": "Administrator", 
  "module": "HR", 
  "name": "Leave Block List", 
@@ -228,7 +285,10 @@
    "export": 0, 
    "if_owner": 0, 
    "import": 0, 
+<<<<<<< HEAD
    "is_custom": 0, 
+=======
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
    "permlevel": 0, 
    "print": 1, 
    "read": 1, 
@@ -240,9 +300,15 @@
    "write": 1
   }
  ], 
+<<<<<<< HEAD
  "quick_entry": 0, 
  "read_only": 0, 
  "read_only_onload": 0, 
  "sort_order": "ASC", 
  "track_seen": 0
+=======
+ "read_only": 0, 
+ "read_only_onload": 0, 
+ "sort_order": "ASC"
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 }

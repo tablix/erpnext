@@ -5,4 +5,7 @@ purchase-order
 setup
 articles
 purchase-taxes
+<<<<<<< HEAD
 supplier-scorecard
+=======
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347

@@ -12,7 +12,11 @@
 frappe.ready(function() {
 	$("#footer-subscribe-button").click(function() {
 
+<<<<<<< HEAD
 		if($("#footer-subscribe-email").val() && valid_email($("#footer-subscribe-email").val())) {
+=======
+		if($("#footer-subscribe-email").val()) {
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 			$("#footer-subscribe-email").attr('disabled', true);
 			$("#footer-subscribe-button").html("Sending...")
 				.attr("disabled", true);
@@ -31,7 +35,11 @@ frappe.ready(function() {
 			});
 		}
 		else
+<<<<<<< HEAD
 			frappe.msgprint(frappe._("Please enter valid email address"))
+=======
+			frappe.msgprint(frappe._("Please enter email address"))
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 	});
 });
 </script>

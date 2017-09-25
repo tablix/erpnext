@@ -5,7 +5,10 @@ from __future__ import unicode_literals
 import frappe
 
 from frappe import _
+<<<<<<< HEAD
 from erpnext.shopping_cart.doctype.shopping_cart_settings.shopping_cart_settings import show_attachments
+=======
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 
 def get_context(context):
 	context.no_cache = 1
@@ -14,6 +17,7 @@ def get_context(context):
 	if hasattr(context.doc, "set_indicator"):
 		context.doc.set_indicator()
 
+<<<<<<< HEAD
 	if show_attachments():
 		context.attachments = get_attachments(frappe.form_dict.doctype, frappe.form_dict.name)
 
@@ -31,3 +35,13 @@ def get_attachments(dt, dn):
         return frappe.get_all("File",
 			fields=["name", "file_name", "file_url", "is_private"],
 			filters = {"attached_to_name": dn, "attached_to_doctype": dt, "is_private":0})
+=======
+	context.parents = frappe.form_dict.parents
+	context.payment_ref = frappe.db.get_value("Payment Request", 
+		{"reference_name": frappe.form_dict.name}, "name")
+	
+	context.enabled_checkout = frappe.get_doc("Shopping Cart Settings").enable_checkout
+			
+	if not context.doc.has_website_permission("read"):
+		frappe.throw(_("Not Permitted"), frappe.PermissionError)
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347

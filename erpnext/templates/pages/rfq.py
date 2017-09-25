@@ -4,7 +4,10 @@
 from __future__ import unicode_literals
 import frappe
 from frappe import _
+<<<<<<< HEAD
 from frappe.utils import formatdate
+=======
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 from erpnext.controllers.website_list_for_contact import (get_customers_suppliers,
 					get_party_details)
 
@@ -14,7 +17,10 @@ def get_context(context):
 	context.doc = frappe.get_doc(frappe.form_dict.doctype, frappe.form_dict.name)
 	context.parents = frappe.form_dict.parents
 	context.doc.supplier = get_supplier()
+<<<<<<< HEAD
 	context.doc.rfq_links = get_link_quotation(context.doc.supplier, context.doc.name)
+=======
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 	unauthorized_user(context.doc.supplier)
 	update_supplier_details(context)
 	context["title"] = frappe.form_dict.name
@@ -29,7 +35,11 @@ def get_supplier():
 def check_supplier_has_docname_access(supplier):
 	status = True
 	if frappe.form_dict.name not in frappe.db.sql_list("""select parent from `tabRequest for Quotation Supplier`
+<<<<<<< HEAD
 		where supplier = %s""", (supplier,)):
+=======
+		where supplier = '{supplier}'""".format(supplier=supplier)):
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 		status = False
 	return status
 
@@ -43,6 +53,7 @@ def update_supplier_details(context):
 	context.doc.currency = supplier_doc.default_currency or frappe.db.get_value("Company", context.doc.company, "default_currency")
 	context.doc.currency_symbol = frappe.db.get_value("Currency", context.doc.currency, "symbol")
 	context.doc.number_format = frappe.db.get_value("Currency", context.doc.currency, "number_format")
+<<<<<<< HEAD
 	context.doc.buying_price_list = supplier_doc.default_price_list or ''
 
 def get_link_quotation(supplier, rfq):
@@ -58,3 +69,6 @@ def get_link_quotation(supplier, rfq):
 		data.transaction_date = formatdate(data.transaction_date)
 
 	return quotation or None
+=======
+	context.doc.buying_price_list = supplier_doc.default_price_list or ''
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347

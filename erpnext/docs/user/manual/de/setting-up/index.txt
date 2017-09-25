@@ -15,6 +15,9 @@ third-party-backups
 workflows
 bar-code
 company-setup
+<<<<<<< HEAD
 setting-company-sales-goal
+=======
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 calculate-incentive-for-sales-team
 articles

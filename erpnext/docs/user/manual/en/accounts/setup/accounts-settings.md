@@ -1,7 +1,12 @@
+<<<<<<< HEAD
 # Accounts Settings
 
 
 <img class="screenshot" alt="Account Settings" src="/docs/assets/img/accounts/account-settings.png">
+=======
+
+<img class="screenshot" alt="Account Settings" src="{{docs_base_url}}/assets/img/accounts/account-settings.png">
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 
 * Accounts Frozen Upto: Freeze accounting transactions upto specified date, nobody can make / modify entry except specified role.
 
@@ -9,6 +14,7 @@
 
 * Credit Controller: Role that is allowed to submit transactions that exceed credit limits set.
 
+<<<<<<< HEAD
 * Make Payment via Journal Entry: If checked, from invoice, if user choose to make payment, this will open the journal entry instead of payment entry
 
 * Unlink Payment on Cancellation of Invoice: If checked, system will unlink the payment against the invoice. Otherwise, it will show the link error.
@@ -18,3 +24,6 @@
 * Stale Days: The number of days to use when deciding if a Currency Exchange record is stale. E.g If Currency Exchange records are to be updated every day, the Stale Days should be set as 1. 
 
 {next}
+=======
+{next}
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347

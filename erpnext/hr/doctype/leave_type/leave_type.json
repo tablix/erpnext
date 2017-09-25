@@ -3,11 +3,19 @@
  "allow_import": 1, 
  "allow_rename": 1, 
  "autoname": "field:leave_type_name", 
+<<<<<<< HEAD
+=======
+ "beta": 0, 
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
  "creation": "2013-02-21 09:55:58", 
  "custom": 0, 
  "docstatus": 0, 
  "doctype": "DocType", 
  "document_type": "Setup", 
+<<<<<<< HEAD
+=======
+ "editable_grid": 0, 
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
  "fields": [
   {
    "allow_on_submit": 0, 
@@ -17,6 +25,10 @@
    "fieldtype": "Data", 
    "hidden": 0, 
    "ignore_user_permissions": 0, 
+<<<<<<< HEAD
+=======
+   "ignore_xss_filter": 0, 
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
    "in_filter": 0, 
    "in_list_view": 1, 
    "label": "Leave Type Name", 
@@ -26,6 +38,10 @@
    "oldfieldtype": "Data", 
    "permlevel": 0, 
    "print_hide": 0, 
+<<<<<<< HEAD
+=======
+   "print_hide_if_no_value": 0, 
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
    "read_only": 0, 
    "report_hide": 0, 
    "reqd": 1, 
@@ -41,6 +57,10 @@
    "fieldtype": "Data", 
    "hidden": 0, 
    "ignore_user_permissions": 0, 
+<<<<<<< HEAD
+=======
+   "ignore_xss_filter": 0, 
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
    "in_filter": 0, 
    "in_list_view": 1, 
    "label": "Max Days Leave Allowed", 
@@ -50,6 +70,10 @@
    "oldfieldtype": "Data", 
    "permlevel": 0, 
    "print_hide": 0, 
+<<<<<<< HEAD
+=======
+   "print_hide_if_no_value": 0, 
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
    "read_only": 0, 
    "report_hide": 0, 
    "reqd": 0, 
@@ -65,6 +89,10 @@
    "fieldtype": "Check", 
    "hidden": 0, 
    "ignore_user_permissions": 0, 
+<<<<<<< HEAD
+=======
+   "ignore_xss_filter": 0, 
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
    "in_filter": 0, 
    "in_list_view": 1, 
    "label": "Is Carry Forward", 
@@ -74,6 +102,10 @@
    "oldfieldtype": "Check", 
    "permlevel": 0, 
    "print_hide": 0, 
+<<<<<<< HEAD
+=======
+   "print_hide_if_no_value": 0, 
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
    "read_only": 0, 
    "report_hide": 0, 
    "reqd": 0, 
@@ -89,6 +121,10 @@
    "fieldtype": "Check", 
    "hidden": 1, 
    "ignore_user_permissions": 0, 
+<<<<<<< HEAD
+=======
+   "ignore_xss_filter": 0, 
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
    "in_filter": 0, 
    "in_list_view": 1, 
    "label": "Is Encash", 
@@ -98,6 +134,10 @@
    "oldfieldtype": "Check", 
    "permlevel": 0, 
    "print_hide": 1, 
+<<<<<<< HEAD
+=======
+   "print_hide_if_no_value": 0, 
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
    "read_only": 0, 
    "report_hide": 1, 
    "reqd": 0, 
@@ -113,6 +153,10 @@
    "fieldtype": "Check", 
    "hidden": 0, 
    "ignore_user_permissions": 0, 
+<<<<<<< HEAD
+=======
+   "ignore_xss_filter": 0, 
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
    "in_filter": 0, 
    "in_list_view": 0, 
    "label": "Is Leave Without Pay", 
@@ -120,6 +164,10 @@
    "no_copy": 0, 
    "permlevel": 0, 
    "print_hide": 0, 
+<<<<<<< HEAD
+=======
+   "print_hide_if_no_value": 0, 
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
    "read_only": 0, 
    "report_hide": 0, 
    "reqd": 0, 
@@ -135,6 +183,10 @@
    "fieldtype": "Check", 
    "hidden": 0, 
    "ignore_user_permissions": 0, 
+<<<<<<< HEAD
+=======
+   "ignore_xss_filter": 0, 
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
    "in_filter": 0, 
    "in_list_view": 0, 
    "label": "Allow Negative Balance", 
@@ -142,6 +194,10 @@
    "no_copy": 0, 
    "permlevel": 0, 
    "print_hide": 0, 
+<<<<<<< HEAD
+=======
+   "print_hide_if_no_value": 0, 
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
    "read_only": 0, 
    "report_hide": 0, 
    "reqd": 0, 
@@ -157,6 +213,10 @@
    "fieldtype": "Check", 
    "hidden": 0, 
    "ignore_user_permissions": 0, 
+<<<<<<< HEAD
+=======
+   "ignore_xss_filter": 0, 
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
    "in_filter": 0, 
    "in_list_view": 0, 
    "label": "Include holidays within leaves as leaves", 
@@ -164,6 +224,10 @@
    "no_copy": 0, 
    "permlevel": 0, 
    "print_hide": 0, 
+<<<<<<< HEAD
+=======
+   "print_hide_if_no_value": 0, 
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
    "read_only": 0, 
    "report_hide": 0, 
    "reqd": 0, 
@@ -174,15 +238,25 @@
  ], 
  "hide_heading": 0, 
  "hide_toolbar": 0, 
+<<<<<<< HEAD
  "icon": "fa fa-flag", 
  "idx": 1, 
+=======
+ "icon": "icon-flag", 
+ "idx": 1, 
+ "image_view": 0, 
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
  "in_create": 0, 
  "in_dialog": 0, 
  "is_submittable": 0, 
  "issingle": 0, 
  "istable": 0, 
  "max_attachments": 0, 
+<<<<<<< HEAD
  "modified": "2015-11-16 06:29:49.659028", 
+=======
+ "modified": "2016-10-11 10:17:58.716650", 
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
  "modified_by": "Administrator", 
  "module": "HR", 
  "name": "Leave Type", 
@@ -196,7 +270,11 @@
    "delete": 1, 
    "email": 1, 
    "export": 0, 
+<<<<<<< HEAD
    "if_owner": 0, 
+=======
+   "if_owner": 1, 
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
    "import": 0, 
    "permlevel": 0, 
    "print": 1, 
@@ -215,6 +293,29 @@
    "create": 1, 
    "delete": 1, 
    "email": 1, 
+<<<<<<< HEAD
+=======
+   "export": 1, 
+   "if_owner": 0, 
+   "import": 0, 
+   "permlevel": 0, 
+   "print": 1, 
+   "read": 1, 
+   "report": 1, 
+   "role": "All", 
+   "set_user_permissions": 0, 
+   "share": 1, 
+   "submit": 0, 
+   "write": 1
+  }, 
+  {
+   "amend": 0, 
+   "apply_user_permissions": 0, 
+   "cancel": 0, 
+   "create": 1, 
+   "delete": 1, 
+   "email": 1, 
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
    "export": 0, 
    "if_owner": 0, 
    "import": 0, 
@@ -249,6 +350,13 @@
    "write": 0
   }
  ], 
+<<<<<<< HEAD
  "read_only": 0, 
  "read_only_onload": 0
+=======
+ "quick_entry": 0, 
+ "read_only": 0, 
+ "read_only_onload": 0, 
+ "track_seen": 0
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 }

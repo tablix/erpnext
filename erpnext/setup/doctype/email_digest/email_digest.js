@@ -21,14 +21,21 @@ cur_frm.cscript.refresh = function(doc, dt, dn) {
 				d.show();
 			}
 		});
+<<<<<<< HEAD
 	}, "fa fa-eye-open", "btn-default");
 
 	if(frappe.session.user==="Administrator") {
+=======
+	}, "icon-eye-open", "btn-default");
+
+	if(user==="Administrator") {
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 		cur_frm.add_custom_button(__('Send Now'), function() {
 			doc = locals[dt][dn];
 			if(doc.__unsaved != 1) {
 				return $c_obj(doc, 'send', '', function(r, rt) {
 					if(r.exc) {
+<<<<<<< HEAD
 						frappe.msgprint(err_msg);
 						console.log(r.exc);
 					} else {
@@ -40,6 +47,19 @@ cur_frm.cscript.refresh = function(doc, dt, dn) {
 				frappe.msgprint(save_msg);
 			}
 		}, "fa fa-envelope", "btn-default");
+=======
+						msgprint(err_msg);
+						console.log(r.exc);
+					} else {
+						//console.log(arguments);
+						msgprint(__('Message Sent'));
+					}
+				});
+			} else {
+				msgprint(save_msg);
+			}
+		}, "icon-envelope", "btn-default");
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 	}
 }
 
@@ -47,7 +67,11 @@ cur_frm.cscript.addremove_recipients = function(doc, dt, dn) {
 	// Get user list
 	return $c_obj(doc, 'get_users', '', function(r, rt) {
 		if(r.exc) {
+<<<<<<< HEAD
 			frappe.msgprint(r.exc);
+=======
+			msgprint(r.exc);
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 		} else {
 			// Open a dialog and display checkboxes against email addresses
 			doc = locals[dt][dn];

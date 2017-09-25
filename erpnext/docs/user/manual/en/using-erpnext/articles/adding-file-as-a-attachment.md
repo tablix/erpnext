@@ -8,11 +8,19 @@ There are several ways to attach file to the document.
 
 ####From Browser
 
+<<<<<<< HEAD
 <img alt="Sales Order File Attachment" class="screenshot" src="/docs/assets/img/articles/attach-file-1.gif">
 
 ####By drag and drop
 
 <img alt="Sales Order File Attachment" class="screenshot" src="/docs/assets/img/articles/attach-file-2.gif">
+=======
+<img alt="Sales Order File Attachment" class="screenshot" src="{{docs_base_url}}/assets/img/articles/attach-file-1.gif">
+
+####By drag and drop
+
+<img alt="Sales Order File Attachment" class="screenshot" src="{{docs_base_url}}/assets/img/articles/attach-file-2.gif">
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 
 Click on Attach to browse and select the file.
 
@@ -20,11 +28,19 @@ Click on Attach to browse and select the file.
 
 If you use separate server for files, or use online service like Dropbox, you can attach file by providing link of a particular file.
 
+<<<<<<< HEAD
 <img alt="Sales Order Select File" class="screenshot" src="/docs/assets/img/articles/attach-file-3.gif">
 
 `For hosted users, limit of 5 MB is applied on file size.`
 
 To ensure there are not many files attached to a document, which can affect your accounts performance, you can set limit as how many files can be attached to a particular document. Click [here](/docs/user/manual/en/customize-erpnext/articles/increase-max-attachments.html) to learn more about it.
+=======
+<img alt="Sales Order Select File" class="screenshot" src="{{docs_base_url}}/assets/img/articles/attach-file-3.gif">
+
+`For hosted users, limit of 5 MB is applied on file size.`
+
+To ensure there are not many files attached to a document, which can affect your accounts performance, you can set limit as how many files can be attached to a particular document. Click [here]({{docs_base_url}}/user/manual/en/customize-erpnext/articles/increase-max-attachments.html) to learn more about it.
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 
 ####File Manager
 

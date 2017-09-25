@@ -12,7 +12,11 @@ frappe.ui.form.on("Warehouse", {
 
 		if (cint(frm.doc.is_group) == 1) {
 			frm.add_custom_button(__('Group to Non-Group'),
+<<<<<<< HEAD
 				function() { convert_to_group_or_ledger(frm); }, 'fa fa-retweet', 'btn-default')
+=======
+				function() { convert_to_group_or_ledger(frm); }, 'icon-retweet', 'btn-default')
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 		} else if (cint(frm.doc.is_group) == 0) {
 			if(frm.doc.__onload && frm.doc.__onload.account) {
 				frm.add_custom_button(__("General Ledger"), function() {
@@ -25,10 +29,17 @@ frappe.ui.form.on("Warehouse", {
 			}
 
 			frm.add_custom_button(__('Non-Group to Group'),
+<<<<<<< HEAD
 				function() { convert_to_group_or_ledger(frm); }, 'fa fa-retweet', 'btn-default')
 		}
 		
 		frm.toggle_enable(['is_group', 'company'], false);
+=======
+				function() { convert_to_group_or_ledger(frm); }, 'icon-retweet', 'btn-default')
+		}
+		
+		cur_frm.toggle_enable(['is_group', 'company'], false);
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 
 		frm.fields_dict['parent_warehouse'].get_query = function(doc) {
 			return {
@@ -37,6 +48,7 @@ frappe.ui.form.on("Warehouse", {
 				}
 			}
 		}
+<<<<<<< HEAD
 
 		frm.fields_dict['account'].get_query = function(doc) {
 			return {
@@ -49,6 +61,19 @@ frappe.ui.form.on("Warehouse", {
 		}
 	}
 });
+=======
+	}
+});
+
+cur_frm.set_query("create_account_under", function() {
+	return {
+		filters: {
+			"company": cur_frm.doc.company,
+			'is_group': 1
+		}
+	}
+})
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 
 function convert_to_group_or_ledger(frm){
 	frappe.call({

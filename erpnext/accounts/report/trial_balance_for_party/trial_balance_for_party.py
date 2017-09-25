@@ -20,14 +20,19 @@ def execute(filters=None):
 	
 def get_data(filters, show_party_name):
 	party_name_field = "customer_name" if filters.get("party_type")=="Customer" else "supplier_name"
+<<<<<<< HEAD
 	party_filters = {"name": filters.get("party")} if filters.get("party") else {}
 	parties = frappe.get_all(filters.get("party_type"), fields = ["name", party_name_field], 
 		filters = party_filters, order_by="name")
+=======
+	parties = frappe.get_all(filters.get("party_type"), fields = ["name", party_name_field], order_by="name")
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 	company_currency = frappe.db.get_value("Company", filters.company, "default_currency")
 	opening_balances = get_opening_balances(filters)
 	balances_within_period = get_balances_within_period(filters)
 	
 	data = []
+<<<<<<< HEAD
 	# total_debit, total_credit = 0, 0
 	total_row = frappe._dict({
 		"opening_debit": 0,
@@ -37,6 +42,9 @@ def get_data(filters, show_party_name):
 		"closing_debit": 0,
 		"closing_credit": 0
 	})
+=======
+	total_debit, total_credit = 0, 0
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 	for party in parties:
 		row = { "party": party.name }
 		if show_party_name:
@@ -55,7 +63,15 @@ def get_data(filters, show_party_name):
 			"debit": debit,
 			"credit": credit
 		})
+<<<<<<< HEAD
 				
+=======
+		
+		# totals
+		total_debit += debit
+		total_credit += credit
+		
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 		# closing
 		closing_debit, closing_credit = toggle_debit_credit(opening_debit + debit, opening_credit + credit)
 		row.update({
@@ -63,10 +79,13 @@ def get_data(filters, show_party_name):
 			"closing_credit": closing_credit
 		})
 		
+<<<<<<< HEAD
 		# totals
 		for col in total_row:
 			total_row[col] += row.get(col)
 		
+=======
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 		row.update({
 			"currency": company_currency
 		})
@@ -79,12 +98,22 @@ def get_data(filters, show_party_name):
 			data.append(row)
 		
 	# Add total row
+<<<<<<< HEAD
 	
 	total_row.update({
 		"party": "'" + _("Totals") + "'",
 		"currency": company_currency
 	})
 	data.append(total_row)
+=======
+	if total_debit or total_credit:
+		data.append({
+			"party": "'" + _("Totals") + "'",
+			"debit": total_debit,
+			"credit": total_credit,
+			"currency": company_currency
+		})
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 	
 	return data
 	

@@ -6,12 +6,18 @@ purchase-invoice
 payments
 journal-entry
 payment-entry
+<<<<<<< HEAD
 subscription
+=======
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 multi-currency-accounting
 advance-payment-entry
 payment-request
 credit-limit
+<<<<<<< HEAD
 bank-guarantee
+=======
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 accounting-reports
 accounting-entries
 managing-fixed-assets

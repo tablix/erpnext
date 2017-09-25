@@ -9,7 +9,10 @@ from frappe.utils import cstr, cint, flt, comma_or, getdate, nowdate, formatdate
 from erpnext.stock.utils import get_incoming_rate
 from erpnext.stock.stock_ledger import get_previous_sle, NegativeStockError
 from erpnext.stock.get_item_details import get_bin_details, get_default_cost_center, get_conversion_factor
+<<<<<<< HEAD
 from erpnext.stock.doctype.batch.batch import get_batch_no, set_batch_nos
+=======
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 from erpnext.manufacturing.doctype.bom.bom import validate_bom_no
 import json
 
@@ -32,7 +35,11 @@ class StockEntry(StockController):
 			item.update(get_bin_details(item.item_code, item.s_warehouse))
 
 	def validate(self):
+<<<<<<< HEAD
 		self.pro_doc = frappe._dict()
+=======
+		self.pro_doc = None
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 		if self.production_order:
 			self.pro_doc = frappe.get_doc('Production Order', self.production_order)
 
@@ -49,11 +56,14 @@ class StockEntry(StockController):
 		self.validate_with_material_request()
 		self.validate_batch()
 
+<<<<<<< HEAD
 		if self._action == 'submit':
 			self.make_batches('t_warehouse')
 		else:
 			set_batch_nos(self, 's_warehouse')
 
+=======
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 		self.set_actual_qty()
 		self.calculate_rate_and_amount(update_finished_item_rate=False)
 
@@ -83,8 +93,12 @@ class StockEntry(StockController):
 				frappe.throw(_("Row {0}: Qty is mandatory").format(item.idx))
 			if not flt(item.conversion_factor):
 				frappe.throw(_("Row {0}: UOM Conversion Factor is mandatory").format(item.idx))
+<<<<<<< HEAD
 			item.transfer_qty = flt(flt(item.qty) * flt(item.conversion_factor),
 				self.precision("transfer_qty", item))
+=======
+			item.transfer_qty = flt(item.qty * item.conversion_factor, self.precision("transfer_qty", item))
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 
 	def validate_item(self):
 		stock_items = self.get_stock_items()
@@ -93,10 +107,15 @@ class StockEntry(StockController):
 			if item.item_code not in stock_items:
 				frappe.throw(_("{0} is not a stock Item").format(item.item_code))
 
+<<<<<<< HEAD
 			item_details = self.get_item_details(frappe._dict(
 				{"item_code": item.item_code, "company": self.company,
 				"project": self.project, "uom": item.uom, 's_warehouse': item.s_warehouse}),
 				for_update=True)
+=======
+			item_details = self.get_item_details(frappe._dict({"item_code": item.item_code,
+				"company": self.company, "project": self.project, "uom": item.uom}), for_update=True)
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 
 			for f in ("uom", "stock_uom", "description", "item_name", "expense_account",
 				"cost_center", "conversion_factor"):
@@ -157,7 +176,11 @@ class StockEntry(StockController):
 						if not d.t_warehouse:
 							frappe.throw(_("Target warehouse is mandatory for row {0}").format(d.idx))
 
+<<<<<<< HEAD
 						elif self.pro_doc and (cstr(d.t_warehouse) != self.pro_doc.fg_warehouse and cstr(d.t_warehouse) != self.pro_doc.scrap_warehouse):
+=======
+						elif self.pro_doc and cstr(d.t_warehouse) != self.pro_doc.fg_warehouse:
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 							frappe.throw(_("Target warehouse in row {0} must be same as Production Order").format(d.idx))
 
 					else:
@@ -165,7 +188,11 @@ class StockEntry(StockController):
 						if not d.s_warehouse:
 							frappe.throw(_("Source warehouse is mandatory for row {0}").format(d.idx))
 
+<<<<<<< HEAD
 			if cstr(d.s_warehouse) == cstr(d.t_warehouse) and not self.purpose == "Material Transfer for Manufacture":
+=======
+			if cstr(d.s_warehouse) == cstr(d.t_warehouse):
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 				frappe.throw(_("Source and target warehouse cannot be same for row {0}").format(d.idx))
 
 	def validate_production_order(self):
@@ -228,13 +255,20 @@ class StockEntry(StockController):
 
 			# validate qty during submit
 			if d.docstatus==1 and d.s_warehouse and not allow_negative_stock and d.actual_qty < d.transfer_qty:
+<<<<<<< HEAD
 				frappe.throw(_("Row {0}: Qty not available for {4} in warehouse {1} at posting time of the entry ({2} {3})").format(d.idx,
 					frappe.bold(d.s_warehouse), formatdate(self.posting_date),
 					format_time(self.posting_time), frappe.bold(d.item_code))
+=======
+				frappe.throw(_("Row {0}: Qty not available for {4} in warehouse {1} at posting time of the entry ({2} {3})".format(d.idx,
+					frappe.bold(d.s_warehouse), formatdate(self.posting_date),
+					format_time(self.posting_time), frappe.bold(d.item_code)))
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 					+ '<br><br>' + _("Available qty is {0}, you need {1}").format(frappe.bold(d.actual_qty),
 						frappe.bold(d.transfer_qty)),
 					NegativeStockError, title=_('Insufficient Stock'))
 
+<<<<<<< HEAD
 	def set_serial_nos(self, production_order):
 		previous_se = frappe.db.get_value("Stock Entry", {"production_order": production_order,
 				"purpose": "Material Transfer for Manufacture"}, "name")
@@ -248,6 +282,9 @@ class StockEntry(StockController):
 
 	def get_stock_and_rate(self):
 		self.set_production_order_details()
+=======
+	def get_stock_and_rate(self):
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 		self.set_transfer_qty()
 		self.set_actual_qty()
 		self.calculate_rate_and_amount()
@@ -262,7 +299,10 @@ class StockEntry(StockController):
 	def set_basic_rate(self, force=False, update_finished_item_rate=True):
 		"""get stock and incoming rate on posting date"""
 		raw_material_cost = 0.0
+<<<<<<< HEAD
 		scrap_material_cost = 0.0
+=======
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 		fg_basic_rate = 0.0
 
 		for d in self.get('items'):
@@ -287,6 +327,7 @@ class StockEntry(StockController):
 				if not d.t_warehouse:
 					raw_material_cost += flt(d.basic_amount)
 
+<<<<<<< HEAD
 			# get scrap items basic rate
 			if d.bom_no:
 				if not flt(d.basic_rate) and getattr(self, "pro_doc", frappe._dict()).scrap_warehouse == d.t_warehouse:
@@ -309,6 +350,18 @@ class StockEntry(StockController):
 				if d.transfer_qty and (d.bom_no or d.t_warehouse) and (getattr(self, "pro_doc", frappe._dict()).scrap_warehouse != d.t_warehouse):
 					d.basic_rate = flt((raw_material_cost - scrap_material_cost) / flt(d.transfer_qty), d.precision("basic_rate"))
 					d.basic_amount = flt((raw_material_cost - scrap_material_cost), d.precision("basic_amount"))
+=======
+		number_of_fg_items = len([t.t_warehouse for t in self.get("items") if t.t_warehouse])
+		if (fg_basic_rate == 0.0 and number_of_fg_items == 1) or update_finished_item_rate:
+			self.set_basic_rate_for_finished_goods(raw_material_cost)
+
+	def set_basic_rate_for_finished_goods(self, raw_material_cost):
+		if self.purpose in ["Manufacture", "Repack"]:
+			for d in self.get("items"):
+				if d.bom_no or d.t_warehouse:
+					d.basic_rate = flt(raw_material_cost / flt(d.transfer_qty), d.precision("basic_rate"))
+					d.basic_amount = flt(raw_material_cost, d.precision("basic_amount"))
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 
 	def distribute_additional_costs(self):
 		if self.purpose == "Material Issue":
@@ -325,10 +378,18 @@ class StockEntry(StockController):
 
 	def update_valuation_rate(self):
 		for d in self.get("items"):
+<<<<<<< HEAD
 			if d.transfer_qty:
 				d.amount = flt(flt(d.basic_amount) + flt(d.additional_cost), d.precision("amount"))
 				d.valuation_rate = flt(flt(d.basic_rate) + (flt(d.additional_cost) / flt(d.transfer_qty)),
 					d.precision("valuation_rate"))
+=======
+			d.amount = flt(d.basic_amount + flt(d.additional_cost), d.precision("amount"))
+			d.valuation_rate = flt(
+				flt(d.basic_rate)
+				+ (flt(d.additional_cost) / flt(d.transfer_qty)),
+				d.precision("valuation_rate"))
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 
 	def set_total_incoming_outgoing_value(self):
 		self.total_incoming_value = self.total_outgoing_value = 0.0
@@ -341,9 +402,13 @@ class StockEntry(StockController):
 		self.value_difference = self.total_incoming_value - self.total_outgoing_value
 
 	def set_total_amount(self):
+<<<<<<< HEAD
 		self.total_amount = None
 		if self.purpose not in ['Manufacture', 'Repack']:
 			self.total_amount = sum([flt(item.amount) for item in self.get("items")])
+=======
+		self.total_amount = sum([flt(item.amount) for item in self.get("items")])
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 
 	def validate_purchase_order(self):
 		"""Throw exception if more raw material is transferred against Purchase Order than in
@@ -370,14 +435,22 @@ class StockEntry(StockController):
 
 	def validate_bom(self):
 		for d in self.get('items'):
+<<<<<<< HEAD
 			if d.bom_no and (d.t_warehouse != getattr(self, "pro_doc", frappe._dict()).scrap_warehouse):
+=======
+			if d.bom_no:
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 				validate_bom_no(d.item_code, d.bom_no)
 
 	def validate_finished_goods(self):
 		"""validation: finished good quantity should be same as manufacturing quantity"""
 		items_with_target_warehouse = []
 		for d in self.get('items'):
+<<<<<<< HEAD
 			if d.bom_no and flt(d.transfer_qty) != flt(self.fg_completed_qty) and (d.t_warehouse != getattr(self, "pro_doc", frappe._dict()).scrap_warehouse):
+=======
+			if d.bom_no and flt(d.transfer_qty) != flt(self.fg_completed_qty):
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 				frappe.throw(_("Quantity in row {0} ({1}) must be same as manufactured quantity {2}"). \
 					format(d.idx, d.transfer_qty, self.fg_completed_qty))
 
@@ -471,9 +544,13 @@ class StockEntry(StockController):
 
 	def get_item_details(self, args=None, for_update=False):
 		item = frappe.db.sql("""select stock_uom, description, image, item_name,
+<<<<<<< HEAD
 				expense_account, buying_cost_center, item_group, has_serial_no,
 				has_batch_no
 			from `tabItem`
+=======
+			expense_account, buying_cost_center, item_group from `tabItem`
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 			where name = %s
 				and disabled=0
 				and (end_of_life is null or end_of_life='0000-00-00' or end_of_life > %s)""",
@@ -483,7 +560,11 @@ class StockEntry(StockController):
 
 		item = item[0]
 
+<<<<<<< HEAD
 		ret = frappe._dict({
+=======
+		ret = {
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 			'uom'			      	: item.stock_uom,
 			'stock_uom'			  	: item.stock_uom,
 			'description'		  	: item.description,
@@ -496,11 +577,16 @@ class StockEntry(StockController):
 			'conversion_factor'		: 1,
 			'batch_no'				: '',
 			'actual_qty'			: 0,
+<<<<<<< HEAD
 			'basic_rate'			: 0,
 			'serial_no'				: '',
 			'has_serial_no'			: item.has_serial_no,
 			'has_batch_no'			: item.has_batch_no
 		})
+=======
+			'basic_rate'			: 0
+		}
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 		for d in [["Account", "expense_account", "default_expense_account"],
 			["Cost Center", "cost_center", "cost_center"]]:
 				company = frappe.db.get_value(d[0], ret.get(d[1]), "company")
@@ -509,7 +595,11 @@ class StockEntry(StockController):
 
 		# update uom
 		if args.get("uom") and for_update:
+<<<<<<< HEAD
 			ret.update(get_uom_details(args.get('item_code'), args.get('uom'), args.get('qty')))
+=======
+			ret.update(self.get_uom_details(args))
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 
 		if not ret["expense_account"]:
 			ret["expense_account"] = frappe.db.get_value("Company", self.company, "stock_adjustment_account")
@@ -520,11 +610,31 @@ class StockEntry(StockController):
 		stock_and_rate = args.get('warehouse') and get_warehouse_details(args) or {}
 		ret.update(stock_and_rate)
 
+<<<<<<< HEAD
 		# automatically select batch for outgoing item
 		if (args.get('s_warehouse', None) and args.get('qty') and
 			ret.get('has_batch_no') and not args.get('batch_no')):
 			args.batch_no = get_batch_no(args['item_code'], args['s_warehouse'], args['qty'])
 
+=======
+		return ret
+
+	def get_uom_details(self, args):
+		"""Returns dict `{"conversion_factor": [value], "transfer_qty": qty * [value]}`
+
+		:param args: dict with `item_code`, `uom` and `qty`"""
+		conversion_factor = get_conversion_factor(args.get("item_code"), args.get("uom")).get("conversion_factor")
+
+		if not conversion_factor:
+			frappe.msgprint(_("UOM coversion factor required for UOM: {0} in Item: {1}")
+				.format(args.get("uom"), args.get("item_code")))
+			ret = {'uom' : ''}
+		else:
+			ret = {
+				'conversion_factor'		: flt(conversion_factor),
+				'transfer_qty'			: flt(args.get("qty")) * flt(conversion_factor)
+			}
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 		return ret
 
 	def get_items(self):
@@ -534,7 +644,23 @@ class StockEntry(StockController):
 		if not self.posting_date or not self.posting_time:
 			frappe.throw(_("Posting date and posting time is mandatory"))
 
+<<<<<<< HEAD
 		self.set_production_order_details()
+=======
+		if not getattr(self, "pro_doc", None):
+			self.pro_doc = None
+
+		if self.production_order:
+			# common validations
+			if not self.pro_doc:
+				self.pro_doc = frappe.get_doc('Production Order', self.production_order)
+
+			if self.pro_doc:
+				self.bom_no = self.pro_doc.bom_no
+			else:
+				# invalid production order
+				self.production_order = None
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 
 		if self.bom_no:
 			if self.purpose in ["Material Issue", "Material Transfer", "Manufacture", "Repack",
@@ -556,6 +682,7 @@ class StockEntry(StockController):
 
 					item_dict = self.get_bom_raw_materials(self.fg_completed_qty)
 					for item in item_dict.values():
+<<<<<<< HEAD
 						if self.pro_doc and not self.pro_doc.skip_transfer:
 							item["from_warehouse"] = self.pro_doc.wip_warehouse
 
@@ -573,6 +700,14 @@ class StockEntry(StockController):
 			if self.production_order and self.purpose == "Manufacture":
 				self.set_serial_nos(self.production_order)
 
+=======
+						if self.pro_doc:
+							item["from_warehouse"] = self.pro_doc.wip_warehouse
+
+						item["to_warehouse"] = self.to_warehouse if self.purpose=="Subcontract" else ""
+					self.add_to_stock_entry_detail(item_dict)
+
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 			# add finished goods item
 			if self.purpose in ("Manufacture", "Repack"):
 				self.load_items_from_bom()
@@ -580,6 +715,7 @@ class StockEntry(StockController):
 		self.set_actual_qty()
 		self.calculate_rate_and_amount()
 
+<<<<<<< HEAD
 	def set_production_order_details(self):
 		if not getattr(self, "pro_doc", None):
 			self.pro_doc = frappe._dict()
@@ -595,6 +731,8 @@ class StockEntry(StockController):
 				# invalid production order
 				self.production_order = None
 
+=======
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 	def load_items_from_bom(self):
 		if self.production_order:
 			item_code = self.pro_doc.production_item
@@ -631,6 +769,7 @@ class StockEntry(StockController):
 			fetch_exploded = self.use_multi_level_bom)
 
 		for item in item_dict.values():
+<<<<<<< HEAD
 			# if source warehouse presents in BOM set from_warehouse as bom source_warehouse
 			item.from_warehouse = self.from_warehouse or item.source_warehouse or item.default_warehouse
 		return item_dict
@@ -644,6 +783,9 @@ class StockEntry(StockController):
 
 		for item in item_dict.values():
 			item.from_warehouse = ""
+=======
+			item.from_warehouse = self.from_warehouse or item.default_warehouse
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 		return item_dict
 
 	def get_transfered_raw_materials(self):
@@ -682,7 +824,11 @@ class StockEntry(StockController):
 		for item in transferred_materials:
 			qty= item.qty
 
+<<<<<<< HEAD
 			if trans_qty and manufacturing_qty > (produced_qty + flt(self.fg_completed_qty)):
+=======
+			if manufacturing_qty > (produced_qty + flt(self.fg_completed_qty)):
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 				qty = (qty/trans_qty) * flt(self.fg_completed_qty)
 
 			elif backflushed_materials.get(item.item_code):
@@ -709,11 +855,21 @@ class StockEntry(StockController):
 			issue (item quantity) that is pending to issue or desire to transfer,
 			whichever is less
 		"""
+<<<<<<< HEAD
 		item_dict = self.get_pro_order_required_items()
 		max_qty = flt(self.pro_doc.qty)
 		for item, item_details in item_dict.items():
 			pending_to_issue = flt(item_details.required_qty) - flt(item_details.transferred_qty)
 			desire_to_transfer = flt(self.fg_completed_qty) * flt(item_details.required_qty) / max_qty
+=======
+		item_dict = self.get_bom_raw_materials(1)
+		issued_item_qty = self.get_issued_qty()
+
+		max_qty = flt(self.pro_doc.qty)
+		for item in item_dict:
+			pending_to_issue = (max_qty * item_dict[item]["qty"]) - issued_item_qty.get(item, 0)
+			desire_to_transfer = flt(self.fg_completed_qty) * item_dict[item]["qty"]
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 
 			if desire_to_transfer <= pending_to_issue:
 				item_dict[item]["qty"] = desire_to_transfer
@@ -733,6 +889,7 @@ class StockEntry(StockController):
 
 		return item_dict
 
+<<<<<<< HEAD
 	def get_pro_order_required_items(self):
 		item_dict = frappe._dict()
 		pro_order = frappe.get_doc("Production Order", self.production_order)
@@ -751,25 +908,51 @@ class StockEntry(StockController):
 				item_dict.setdefault(d.item_code, item_row)
 			
 		return item_dict
+=======
+	def get_issued_qty(self):
+		issued_item_qty = {}
+		result = frappe.db.sql("""select t1.item_code, sum(t1.qty)
+			from `tabStock Entry Detail` t1, `tabStock Entry` t2
+			where t1.parent = t2.name and t2.production_order = %s and t2.docstatus = 1
+			and t2.purpose = 'Material Transfer for Manufacture'
+			group by t1.item_code""", self.production_order)
+		for t in result:
+			issued_item_qty[t[0]] = flt(t[1])
+
+		return issued_item_qty
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 
 	def add_to_stock_entry_detail(self, item_dict, bom_no=None):
 		expense_account, cost_center = frappe.db.get_values("Company", self.company, \
 			["default_expense_account", "cost_center"])[0]
+<<<<<<< HEAD
 				
 		for d in item_dict:
 			stock_uom = item_dict[d].get("stock_uom") or frappe.db.get_value("Item", d, "stock_uom")
 			
+=======
+
+		for d in item_dict:
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 			se_child = self.append('items')
 			se_child.s_warehouse = item_dict[d].get("from_warehouse")
 			se_child.t_warehouse = item_dict[d].get("to_warehouse")
 			se_child.item_code = cstr(d)
 			se_child.item_name = item_dict[d]["item_name"]
 			se_child.description = item_dict[d]["description"]
+<<<<<<< HEAD
 			se_child.uom = stock_uom
 			se_child.stock_uom = stock_uom
 			se_child.qty = flt(item_dict[d]["qty"])
 			se_child.expense_account = item_dict[d].get("expense_account") or expense_account
 			se_child.cost_center = item_dict[d].get("cost_center") or cost_center
+=======
+			se_child.uom = item_dict[d]["stock_uom"]
+			se_child.stock_uom = item_dict[d]["stock_uom"]
+			se_child.qty = flt(item_dict[d]["qty"])
+			se_child.expense_account = item_dict[d]["expense_account"] or expense_account
+			se_child.cost_center = item_dict[d]["cost_center"] or cost_center
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 
 			if se_child.s_warehouse==None:
 				se_child.s_warehouse = self.from_warehouse
@@ -827,7 +1010,11 @@ def get_additional_costs(production_order=None, bom_no=None, fg_qty=None):
 			"amount": operating_cost_per_unit * flt(fg_qty)
 		})
 
+<<<<<<< HEAD
 	if production_order and production_order.additional_operating_cost and production_order.qty:
+=======
+	if production_order and production_order.additional_operating_cost:
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 		additional_operating_cost_per_unit = \
 			flt(production_order.additional_operating_cost) / flt(production_order.qty)
 
@@ -847,18 +1034,27 @@ def get_operating_cost_per_unit(production_order=None, bom_no=None):
 		for d in production_order.get("operations"):
 			if flt(d.completed_qty):
 				operating_cost_per_unit += flt(d.actual_operating_cost) / flt(d.completed_qty)
+<<<<<<< HEAD
 			elif production_order.qty:
+=======
+			else:
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 				operating_cost_per_unit += flt(d.planned_operating_cost) / flt(production_order.qty)
 
 	# Get operating cost from BOM if not found in production_order.
 	if not operating_cost_per_unit and bom_no:
 		bom = frappe.db.get_value("BOM", bom_no, ["operating_cost", "quantity"], as_dict=1)
+<<<<<<< HEAD
 		if bom.quantity:
 			operating_cost_per_unit = flt(bom.operating_cost) / flt(bom.quantity)
+=======
+		operating_cost_per_unit = flt(bom.operating_cost) / flt(bom.quantity)
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 
 	return operating_cost_per_unit
 
 @frappe.whitelist()
+<<<<<<< HEAD
 def get_uom_details(item_code, uom, qty):
 	"""Returns dict `{"conversion_factor": [value], "transfer_qty": qty * [value]}`
 
@@ -877,6 +1073,8 @@ def get_uom_details(item_code, uom, qty):
 	return ret
 
 @frappe.whitelist()
+=======
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 def get_warehouse_details(args):
 	if isinstance(args, basestring):
 		args = json.loads(args)

@@ -21,6 +21,7 @@ frappe.ui.form.on("Course", "refresh", function(frm) {
 			frappe.set_route("List", "Course Schedule");
 		});
 		
+<<<<<<< HEAD
 		frm.add_custom_button(__("Assessment Plan"), function() {
 			frappe.route_options = {
 				course: frm.doc.name
@@ -36,4 +37,13 @@ frappe.ui.form.on("Course", "refresh", function(frm) {
 			}
 		}
 	});
+=======
+		frm.add_custom_button(__("Assessment"), function() {
+			frappe.route_options = {
+				course: frm.doc.name
+			}
+			frappe.set_route("List", "Assessment");
+		});
+	}
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 });

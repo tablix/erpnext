@@ -1,19 +1,32 @@
+<<<<<<< HEAD
 # Workflows
 
+=======
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 In order to allow multiple people to submit multiple requests, for approvals,
 by multiple users, ERPNext requires you to fill the workflow conditions.
 ERPNext tracks the multiple permissions before submission.
 
 Example of a leave application workflow is given below:
 
+<<<<<<< HEAD
 If a user applies for a leave, then his request will be sent to the HR
 department. The HR department (HR User) will either reject or approve this
 request. Once this process is completed, the user's Manager (leave approver)
+=======
+If an user applies for a leave, then his request will be sent to the HR
+department. The HR department(HR User) will either reject or approve this
+request. Once this process is completed, the user's Manager(leave approver)
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 will get an indication that the HR department has Accepted or Rejected. The
 Manager, who is the approving authority, will either Approve or Reject this
 request. Accordingly,the user will get his Approved or Rejected status.
 
+<<<<<<< HEAD
 <img class="screenshot" alt="Workflow" src="/docs/assets/img/setup/workflow-leave-fl.jpg">
+=======
+![Workflow]({{docs_base_url}}/assets/old_images/erpnext/workflow-leave-fl.jpg)
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 
 To make this Workflow and transition rules go to :
 
@@ -21,11 +34,19 @@ To make this Workflow and transition rules go to :
 
 #### Step 1: Enter the different states of Leave Approval Process.
 
+<<<<<<< HEAD
 <img class="screenshot" alt="Workflow" src="/docs/assets/img/setup/workflow-1.png">
 
 #### Step 2: Enter Transition Rules.
 
 <img class="screenshot" alt="Workflow" src="/docs/assets/img/setup/workflow-2.png">
+=======
+<img class="screenshot" alt="Workflow" src="{{docs_base_url}}/assets/img/setup/workflow-1.png">
+
+#### Step 2: Enter Transition Rules.
+
+<img class="screenshot" alt="Workflow" src="{{docs_base_url}}/assets/img/setup/workflow-2.png">
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 
 #### Notes:
 
@@ -46,6 +67,7 @@ workflow transition step that says from submitted you can cancel.
 
 #### Example of a Leave Application Process:  
 
+<<<<<<< HEAD
 When a Leave Application is saved by Employee, the status of the document changes to "Applied"
 
 <img class="screenshot" alt="Workflow" src="/docs/assets/img/setup/workflow-3.png">
@@ -58,5 +80,25 @@ status of the document changes to "Approved by HR". However, it is yet to be app
 When the Leave Approver opens the Leave Application page, he can finally "Approve" or "Reject" the Leave Application.
 
 <img class="screenshot" alt="Workflow" src="/docs/assets/img/setup/workflow-5.png">
+=======
+Go to the Human Resources Module and click on Leave Application. Apply for a
+Leave.
+
+When a Leave Application is submitted, the status on the right hand corner of
+the page shows as "Applied"
+
+![Workflow Employee LA]({{docs_base_url}}/assets/old_images/erpnext/workflow-employee-la.png)
+
+When the HR User logs in, he can either Approve or Reject. If approved the
+status on the right hand corner of the page shows as Approved. However, a blue
+band of information is displayed saying approval is pending by leave approver.
+
+![Leave Approver]({{docs_base_url}}/assets/old_images/erpnext/workflow-hr-user-la.png)
+
+When the leave approver opens the Leave Application page, he should select the
+status and convert to Approved or Rejected.
+
+![Workflow Leave Approver]({{docs_base_url}}/assets/old_images/erpnext/workflow-leave-approver-la.png)
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 
 {next}

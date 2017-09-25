@@ -8,6 +8,13 @@ frappe.ui.form.on("POS Profile", "onload", function(frm) {
 		return { filters: { selling: 1 } };
 	});
 
+<<<<<<< HEAD
+=======
+	frm.set_query("print_format", function() {
+		return { filters: { doc_type: "Sales Invoice", print_format_type: "Js"} };
+	});
+
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 	erpnext.queries.setup_queries(frm, "Warehouse", function() {
 		return erpnext.queries.warehouse(frm.doc);
 	});
@@ -22,6 +29,7 @@ frappe.ui.form.on("POS Profile", "onload", function(frm) {
 	});
 });
 
+<<<<<<< HEAD
 frappe.ui.form.on('POS Profile', {
 	setup: function(frm) {
 		frm.set_query("online_print_format", function() {
@@ -60,6 +68,8 @@ frappe.ui.form.on('POS Profile', {
 	}
 })
 
+=======
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 // Income Account
 // --------------------------------
 cur_frm.fields_dict['income_account'].get_query = function(doc,cdt,cdn) {
@@ -69,8 +79,13 @@ cur_frm.fields_dict['income_account'].get_query = function(doc,cdt,cdn) {
 			'company': doc.company,
 			'account_type': "Income Account"
 		}
+<<<<<<< HEAD
 	};
 };
+=======
+	}
+}
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 
 
 // Cost Center
@@ -81,8 +96,13 @@ cur_frm.fields_dict['cost_center'].get_query = function(doc,cdt,cdn) {
 			'company': doc.company,
 			'is_group': 0
 		}
+<<<<<<< HEAD
 	};
 };
+=======
+	}
+}
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 
 
 // Expense Account
@@ -94,8 +114,13 @@ cur_frm.fields_dict["expense_account"].get_query = function(doc) {
 			"company": doc.company,
 			"is_group": 0
 		}
+<<<<<<< HEAD
 	};
 };
+=======
+	}
+}
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 
 // ------------------ Get Print Heading ------------------------------------
 cur_frm.fields_dict['select_print_heading'].get_query = function(doc, cdt, cdn) {
@@ -103,6 +128,7 @@ cur_frm.fields_dict['select_print_heading'].get_query = function(doc, cdt, cdn) 
 		filters:[
 			['Print Heading', 'docstatus', '!=', 2]
 		]
+<<<<<<< HEAD
 	};
 };
 
@@ -110,6 +136,15 @@ cur_frm.fields_dict['select_print_heading'].get_query = function(doc, cdt, cdn) 
 cur_frm.fields_dict.user.get_query = function(doc,cdt,cdn) {
 	return{	query:"frappe.core.doctype.user.user.user_query"};
 };
+=======
+	}
+}
+
+
+cur_frm.fields_dict.user.get_query = function(doc,cdt,cdn) {
+	return{	query:"frappe.core.doctype.user.user.user_query"}
+}
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 
 cur_frm.fields_dict.write_off_account.get_query = function(doc) {
 	return{
@@ -118,16 +153,29 @@ cur_frm.fields_dict.write_off_account.get_query = function(doc) {
 			'is_group': 0,
 			'company': doc.company
 		}
+<<<<<<< HEAD
 	};
 };
 
 // Write off cost center
 // -----------------------
+=======
+	}
+}
+
+// Write off cost center
+//-----------------------
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 cur_frm.fields_dict.write_off_cost_center.get_query = function(doc) {
 	return{
 		filters:{
 			'is_group': 0,
 			'company': doc.company
 		}
+<<<<<<< HEAD
 	};
 };
+=======
+	}
+}
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347

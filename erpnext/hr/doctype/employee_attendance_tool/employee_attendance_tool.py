@@ -13,6 +13,7 @@ class EmployeeAttendanceTool(Document):
 
 
 @frappe.whitelist()
+<<<<<<< HEAD
 def get_employees(date, department = None, branch = None, company = None):
 	attendance_not_marked = []
 	attendance_marked = []
@@ -28,6 +29,16 @@ def get_employees(date, department = None, branch = None, company = None):
 	marked_employee = {}
 	for emp in frappe.get_list("Attendance", fields=["employee", "status"],
 							   filters={"attendance_date": date}):
+=======
+def get_employees(date, department=None, branch=None, company=None):
+	attendance_not_marked = []
+	attendance_marked = []
+	employee_list = frappe.get_list("Employee", fields=["employee", "employee_name"], filters={
+		"status": "Active", "department": department, "branch": branch, "company": company}, order_by="employee_name")
+	marked_employee = {}
+	for emp in frappe.get_list("Attendance", fields=["employee", "status"],
+							   filters={"att_date": date}):
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 		marked_employee[emp['employee']] = emp['status']
 
 	for employee in employee_list:
@@ -43,16 +54,25 @@ def get_employees(date, department = None, branch = None, company = None):
 
 
 @frappe.whitelist()
+<<<<<<< HEAD
 def mark_employee_attendance(employee_list, status, date, leave_type=None, company=None):
+=======
+def mark_employee_attendance(employee_list, status, date, company=None):
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 	employee_list = json.loads(employee_list)
 	for employee in employee_list:
 		attendance = frappe.new_doc("Attendance")
 		attendance.employee = employee['employee']
 		attendance.employee_name = employee['employee_name']
+<<<<<<< HEAD
 		attendance.attendance_date = date
 		attendance.status = status
 		if status == "On Leave" and leave_type:
 			attendance.leave_type = leave_type
+=======
+		attendance.att_date = date
+		attendance.status = status
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 		if company:
 			attendance.company = company
 		else:

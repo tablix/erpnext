@@ -1,5 +1,8 @@
+<<<<<<< HEAD
 # Article Variants
 
+=======
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 
 <span class="text-muted contributed-by">Beigetragen von CWT Connector & Wire Technology GmbH</span>
 ## 4.6.2 Artikelvarianten

@@ -5,6 +5,7 @@ Kunden können über das Kundenportal sehr einfach Fälle eröffnen. Eine einfac
 
 ### Ticketliste leeren
 
+<<<<<<< HEAD
 <img class="screenshot" alt="Ausgabeliste" src="/docs/assets/img/website/portal-ticket-list-empty.png">
 ### Neuer Fall
 
@@ -17,5 +18,20 @@ Kunden können über das Kundenportal sehr einfach Fälle eröffnen. Eine einfac
 ### Fall beantworten
 
 <img class="screenshot" alt="Frage beantworten" src="/docs/assets/img/website/portal-ticket-reply.gif">
+=======
+![Ticketliste]({{docs_base_url}}/assets/old_images/erpnext/portal-ticket-list-empty.png)
+
+### Neuer Fall
+
+![Neues Ticket]({{docs_base_url}}/assets/old_images/erpnext/portal-new-ticket.png)
+
+### Fall öffnen
+
+![Fall eröffnen]({{docs_base_url}}/assets/old_images/erpnext/portal-ticket-1.png)
+
+### Fall beantworten
+
+![Fall beantworten]({{docs_base_url}}/assets/old_images/erpnext/portal-ticket-reply.png)
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 
 {next}

@@ -4,8 +4,24 @@ from frappe import _
 def get_data():
 	return [
 		{
+<<<<<<< HEAD
 			"label": _("Purchasing"),
 			"icon": "fa fa-star",
+=======
+			"label": _("Bid"),
+			"icon": "icon-star",
+			"items": [
+				{
+					"type": "doctype",
+					"name": "Boq",
+					"description": _("Request for Costing to create Quotation."),
+				},
+			]
+		},
+		{
+			"label": _("Purchasing"),
+			"icon": "icon-star",
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 			"items": [
 				{
 					"type": "doctype",
@@ -27,6 +43,14 @@ def get_data():
 					"name": "Purchase Order",
 					"description": _("Purchase Orders given to Suppliers."),
 				},
+<<<<<<< HEAD
+=======
+				{
+					"type": "doctype",
+					"name": "Purchase Receipt",
+					"description": _("Create PR"),
+				},
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 			]
 		},
 		{
@@ -57,7 +81,11 @@ def get_data():
 		},
 		{
 			"label": _("Setup"),
+<<<<<<< HEAD
 			"icon": "fa fa-cog",
+=======
+			"icon": "icon-cog",
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 			"items": [
 				{
 					"type": "doctype",
@@ -98,7 +126,11 @@ def get_data():
 				{
 					"type": "doctype",
 					"name": "Item Group",
+<<<<<<< HEAD
 					"icon": "fa fa-sitemap",
+=======
+					"icon": "icon-sitemap",
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 					"label": _("Item Group"),
 					"link": "Tree/Item Group",
 					"description": _("Tree of Item Groups."),
@@ -119,13 +151,21 @@ def get_data():
 		},
 		{
 			"label": _("Analytics"),
+<<<<<<< HEAD
 			"icon": "fa fa-table",
+=======
+			"icon": "icon-table",
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 			"items": [
 				{
 					"type": "page",
 					"name": "purchase-analytics",
 					"label": _("Purchase Analytics"),
+<<<<<<< HEAD
 					"icon": "fa fa-bar-chart",
+=======
+					"icon": "icon-bar-chart",
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 				},
 				{
 					"type": "report",
@@ -142,6 +182,7 @@ def get_data():
 			]
 		},
 		{
+<<<<<<< HEAD
 			"label": _("Supplier Scorecard"),
 			"items": [
 				{
@@ -170,6 +211,10 @@ def get_data():
 		{
 			"label": _("Other Reports"),
 			"icon": "fa fa-list",
+=======
+			"label": _("Other Reports"),
+			"icon": "icon-list",
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 			"items": [
 				{
 					"type": "report",
@@ -198,12 +243,17 @@ def get_data():
 				{
 					"type": "report",
 					"is_query_report": True,
+<<<<<<< HEAD
 					"name": "Addresses And Contacts",
 					"label": "Supplier Addresses And Contacts",
 					"doctype": "Address",
 					"route_options": {
 						"party_type": "Supplier"
 					}
+=======
+					"name": "Supplier Addresses and Contacts",
+					"doctype": "Supplier"
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 				},
 			]
 		},

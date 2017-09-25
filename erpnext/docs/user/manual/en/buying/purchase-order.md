@@ -1,5 +1,8 @@
+<<<<<<< HEAD
 # Purchase Order
 
+=======
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 A Purchase Order is analogous to a Sales Order. It is usually a binding
 contract with your Supplier that you promise to buy a set of Items under the
 given conditions.
@@ -9,7 +12,11 @@ Supplier Quotation.
 
 #### Purchase Order Flow Chart
 
+<<<<<<< HEAD
 ![Purchase Order](/docs/assets/img/buying/buying_flow.png)
+=======
+![Purchase Order]({{docs_base_url}}/assets/old_images/erpnext/purchase-order-f.jpg)
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 
 In ERPNext, you can also make a Purchase Order directly by going to:
 
@@ -17,7 +24,11 @@ In ERPNext, you can also make a Purchase Order directly by going to:
 
 #### Create Purchase Order
 
+<<<<<<< HEAD
 <img class="screenshot" alt="Purchase Order" src="/docs/assets/img/buying/purchase-order.png">
+=======
+<img class="screenshot" alt="Purchase Order" src="{{docs_base_url}}/assets/img/buying/purchase-order.png">
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 
 Entering a Purchase Order is very similar to a Purchase Request, additionally
 you will have to set:
@@ -41,12 +52,15 @@ which you collect from your Customer. In many regions, what you pay to your
 government is only the difference between what you collect from your Customer
 and what you pay to your Supplier. This is called Value Added Tax (VAT).
 
+<<<<<<< HEAD
 #### Add Taxes in Purchase Order
 <img class="screenshot" alt="Purchase Order" src="/docs/assets/img/buying/add_taxes_to_doc.png">
 
 #### Show Tax break-up
 <img class="screenshot" alt="Purchase Order" src="/docs/assets/img/buying/show_tax_breakup.png">
 
+=======
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 For example you buy Items worth X and sell them for 1.3X. So your Customer
 pays 1.3 times the tax you pay your Supplier. Since you have already paid tax
 to your Supplier for X, what you owe your government is only the tax on 0.3X.
@@ -57,7 +71,11 @@ Ideally you must create two Accounts for each type of VAT you pay and collect,
 effect. Please contact your accountant if you need more help or post a query
 on our forums!
 
+<<<<<<< HEAD
 
+=======
+  
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 
 #### Purchase UOM and Stock UOM Conversion
 
@@ -81,7 +99,11 @@ Nos (from the Item form)
 #### Figure 3: Conversion of Purchase UOM to stock UOM
 
 
+<<<<<<< HEAD
 <img class="screenshot" alt="Purchase Order - UOM" src="/docs/assets/img/buying/purchase-order-uom.png">
+=======
+<img class="screenshot" alt="Purchase Order - UOM" src="{{docs_base_url}}/assets/img/buying/purchase-order-uom.png">
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 
 __Step 4:__ Mention the UOM conversion factor. For example, (100);If one box has
 100 pieces.  
@@ -90,5 +112,9 @@ __Step 5:__  Notice that the stock quantity will be updated accordingly.
 
 __Step 6:__ Save and Submit the Form.
 
+<<<<<<< HEAD
 
+=======
+  
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 {next}

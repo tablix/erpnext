@@ -5,7 +5,11 @@ def get_data():
 	return [
 		{
 			"label": _("Production"),
+<<<<<<< HEAD
 			"icon": "fa fa-star",
+=======
+			"icon": "icon-star",
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 			"items": [
 				{
 					"type": "doctype",
@@ -41,7 +45,11 @@ def get_data():
 				{
 					"type": "doctype",
 					"name": "BOM",
+<<<<<<< HEAD
 					"icon": "fa fa-sitemap",
+=======
+					"icon": "icon-sitemap",
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 					"label": _("BOM Browser"),
 					"description": _("Tree of Bill of Materials"),
 					"link": "Tree/BOM",
@@ -66,12 +74,21 @@ def get_data():
 		},
 		{
 			"label": _("Tools"),
+<<<<<<< HEAD
 			"icon": "fa fa-wrench",
 			"items": [
 				{
 					"type": "doctype",
 					"name": "BOM Update Tool",
 					"description": _("Replace BOM and update latest price in all BOMs"),
+=======
+			"icon": "icon-wrench",
+			"items": [
+				{
+					"type": "doctype",
+					"name": "BOM Replace Tool",
+					"description": _("Replace Item / BOM in all BOMs"),
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 				},
 			]
 		},
@@ -87,7 +104,11 @@ def get_data():
 		},
 		{
 			"label": _("Reports"),
+<<<<<<< HEAD
 			"icon": "fa fa-list",
+=======
+			"icon": "icon-list",
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 			"items": [
 				{
 					"type": "report",
@@ -112,23 +133,34 @@ def get_data():
 					"is_query_report": True,
 					"name": "Completed Production Orders",
 					"doctype": "Production Order"
+<<<<<<< HEAD
 				},{ 
 					"type": "page",
 					"name": "production-analytics",
 					"label": _("Production Analytics"),  
 					"icon": "fa fa-bar-chart",
+=======
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 				},
 				{
 					"type": "report",
 					"is_query_report": True,
 					"name": "BOM Search",
 					"doctype": "BOM"
+<<<<<<< HEAD
 				}
+=======
+				},
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 			]
 		},
 		{
 			"label": _("Help"),
+<<<<<<< HEAD
 			"icon": "fa fa-facetime-video",
+=======
+			"icon": "icon-facetime-video",
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 			"items": [
 				{
 					"type": "help",

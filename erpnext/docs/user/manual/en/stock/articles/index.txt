@@ -10,8 +10,12 @@ repack-entry
 serial-no-naming
 stock-entry-purpose
 stock-level-report
+<<<<<<< HEAD
 track-items-using-barcode
 stock-received-but-not-billed
 return-rejected-item
 item-valuation-transactions
 delivery-note-stock-error
+=======
+track-items-using-barcode
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347

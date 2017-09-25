@@ -1,4 +1,8 @@
+<<<<<<< HEAD
  # -*- coding: utf-8 -*-
+=======
+# -*- coding: utf-8 -*-
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 # Copyright (c) 2015, Frappe Technologies Pvt. Ltd. and contributors
 # For license information, please see license.txt
 
@@ -14,6 +18,7 @@ class DuplicateBudgetError(frappe.ValidationError): pass
 
 class Budget(Document):
 	def autoname(self):
+<<<<<<< HEAD
 		self.name = make_autoname(self.get(frappe.scrub(self.budget_against)) 
 			+ "/" + self.fiscal_year + "/.###")
 
@@ -34,6 +39,22 @@ class Budget(Document):
 			frappe.throw(_("Another Budget record '{0}' already exists against {1} '{2}' for fiscal year {3}")
 				.format(existing_budget, self.budget_against, budget_against, self.fiscal_year), DuplicateBudgetError)
 	
+=======
+		self.name = make_autoname(self.cost_center + "/" + self.fiscal_year + "/.###")
+
+	def validate(self):
+		self.validate_duplicate()
+		self.validate_accounts()
+
+	def validate_duplicate(self):
+		existing_budget = frappe.db.get_value("Budget", {"cost_center": self.cost_center,
+			"fiscal_year": self.fiscal_year, "company": self.company,
+			"name": ["!=", self.name], "docstatus": ["!=", 2]})
+		if existing_budget:
+			frappe.throw(_("Another Budget record {0} already exists against {1} for fiscal year {2}")
+				.format(existing_budget, self.cost_center, self.fiscal_year), DuplicateBudgetError)
+
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 	def validate_accounts(self):
 		account_list = []
 		for d in self.get('accounts'):
@@ -55,6 +76,7 @@ class Budget(Document):
 				else:
 					account_list.append(d.account)
 
+<<<<<<< HEAD
 	def set_null_value(self):
 		if self.budget_against == 'Cost Center':
 			self.project = None
@@ -130,12 +152,61 @@ def compare_expense_with_budget(args, budget_amount, action_for, action, budget_
 				frappe.bold(budget_against),
 				frappe.bold(fmt_money(budget_amount, currency=currency)), 
 				frappe.bold(fmt_money(diff, currency=currency)))
+=======
+def validate_expense_against_budget(args):
+	args = frappe._dict(args)
+	if not args.cost_center:
+		return
+		
+	if frappe.db.get_value("Account", {"name": args.account, "root_type": "Expense"}):
+		cc_lft, cc_rgt = frappe.db.get_value("Cost Center", args.cost_center, ["lft", "rgt"])
+
+		budget_records = frappe.db.sql("""
+			select ba.budget_amount, b.monthly_distribution, b.cost_center,
+				b.action_if_annual_budget_exceeded, b.action_if_accumulated_monthly_budget_exceeded
+			from `tabBudget` b, `tabBudget Account` ba
+			where
+				b.name=ba.parent and b.fiscal_year=%s and ba.account=%s and b.docstatus=1
+				and exists(select name from `tabCost Center` where lft<=%s and rgt>=%s and name=b.cost_center)
+		""", (args.fiscal_year, args.account, cc_lft, cc_rgt), as_dict=True)
+
+		for budget in budget_records:
+			if budget.budget_amount:
+				yearly_action = budget.action_if_annual_budget_exceeded
+				monthly_action = budget.action_if_accumulated_monthly_budget_exceeded
+
+				if monthly_action in ["Stop", "Warn"]:
+					budget_amount = get_accumulated_monthly_budget(budget.monthly_distribution,
+						args.posting_date, args.fiscal_year, budget.budget_amount)
+
+					args["month_end_date"] = get_last_day(args.posting_date)
+						
+					compare_expense_with_budget(args, budget.cost_center,
+						budget_amount, _("Accumulated Monthly"), monthly_action)
+
+				if yearly_action in ("Stop", "Warn") and monthly_action != "Stop" \
+					and yearly_action != monthly_action:
+						compare_expense_with_budget(args, budget.cost_center,
+							flt(budget.budget_amount), _("Annual"), yearly_action)
+
+def compare_expense_with_budget(args, cost_center, budget_amount, action_for, action):
+	actual_expense = get_actual_expense(args, cost_center)
+	if actual_expense > budget_amount:
+		diff = actual_expense - budget_amount
+		currency = frappe.db.get_value('Company', frappe.db.get_value('Cost Center',
+			cost_center, 'company'), 'default_currency')
+
+		msg = _("{0} Budget for Account {1} against Cost Center {2} is {3}. It will exceed by {4}").format(_(action_for),
+			frappe.bold(args.account), frappe.bold(cost_center),
+			frappe.bold(fmt_money(budget_amount, currency=currency)), frappe.bold(fmt_money(diff, currency=currency)))
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 
 		if action=="Stop":
 			frappe.throw(msg, BudgetError)
 		else:
 			frappe.msgprint(msg, indicator='orange')
 
+<<<<<<< HEAD
 
 def get_actual_expense(args):
 	condition1 = " and gle.posting_date <= %(month_end_date)s" \
@@ -162,6 +233,8 @@ def get_actual_expense(args):
 	""".format(condition1=condition1, condition2=condition2), (args))[0][0])
 
 
+=======
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 def get_accumulated_monthly_budget(monthly_distribution, posting_date, fiscal_year, annual_budget):
 	distribution = {}
 	if monthly_distribution:
@@ -182,3 +255,24 @@ def get_accumulated_monthly_budget(monthly_distribution, posting_date, fiscal_ye
 		dt = add_months(dt, 1)
 
 	return annual_budget * accumulated_percentage / 100
+<<<<<<< HEAD
+=======
+
+def get_actual_expense(args, cost_center):
+	lft_rgt = frappe.db.get_value("Cost Center", cost_center, ["lft", "rgt"], as_dict=1)
+	args.update(lft_rgt)
+
+	condition = " and gle.posting_date <= %(month_end_date)s" if args.get("month_end_date") else ""
+
+	return flt(frappe.db.sql("""
+		select sum(gle.debit) - sum(gle.credit)
+		from `tabGL Entry` gle
+		where gle.account=%(account)s
+			and exists(select name from `tabCost Center`
+				where lft>=%(lft)s and rgt<=%(rgt)s and name=gle.cost_center)
+			and gle.fiscal_year=%(fiscal_year)s
+			and gle.company=%(company)s
+			and gle.docstatus=1
+			{condition}
+	""".format(condition=condition), (args))[0][0])
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347

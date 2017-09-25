@@ -1,7 +1,11 @@
 // Copyright (c) 2015, Frappe Technologies Pvt. Ltd. and Contributors
 // License: GNU General Public License v3. See license.txt
 
+<<<<<<< HEAD
 erpnext.get_purchase_trends_filters = function() {
+=======
+var get_filters = function(){
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 	return [
 		{
 			"fieldname":"period",
@@ -44,7 +48,11 @@ erpnext.get_purchase_trends_filters = function() {
 			"label": __("Fiscal Year"),
 			"fieldtype": "Link",
 			"options":'Fiscal Year',
+<<<<<<< HEAD
 			"default": frappe.sys_defaults.fiscal_year
+=======
+			"default": sys_defaults.fiscal_year
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 		},
 		{
 			"fieldname":"company",

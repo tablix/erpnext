@@ -1,5 +1,8 @@
+<<<<<<< HEAD
 # Stock
 
+=======
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 For most small business that deal in physical goods, a large part of their net
 worth is invested in the stock in hand.
 

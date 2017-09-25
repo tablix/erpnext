@@ -30,7 +30,10 @@
    "print_hide": 0, 
    "print_hide_if_no_value": 0, 
    "read_only": 0, 
+<<<<<<< HEAD
    "remember_last_selected_value": 1, 
+=======
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
    "report_hide": 0, 
    "reqd": 0, 
    "search_index": 0, 
@@ -48,8 +51,13 @@
  "issingle": 0, 
  "istable": 1, 
  "max_attachments": 0, 
+<<<<<<< HEAD
  "modified": "2016-10-26 17:37:25.638190", 
  "modified_by": "rohitw1991@gmail.com", 
+=======
+ "modified": "2016-07-11 03:27:59.535486", 
+ "modified_by": "Administrator", 
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
  "module": "Projects", 
  "name": "Dependent Task", 
  "name_case": "", 

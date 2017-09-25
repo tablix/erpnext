@@ -1,5 +1,8 @@
+<<<<<<< HEAD
 # Human Resource Setup
 
+=======
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 The HR module has a setup process where you create the masters for all the
 major activities.
 

@@ -1,4 +1,5 @@
 {
+<<<<<<< HEAD
  "add_total_row": 0, 
  "apply_user_permissions": 1, 
  "creation": "2013-06-21 12:14:15", 
@@ -8,12 +9,22 @@
  "idx": 3, 
  "is_standard": "Yes", 
  "modified": "2017-02-24 20:14:50.589149", 
+=======
+ "apply_user_permissions": 1, 
+ "creation": "2013-06-21 12:14:15", 
+ "docstatus": 0, 
+ "doctype": "Report", 
+ "idx": 1, 
+ "is_standard": "Yes", 
+ "modified": "2014-06-03 07:18:17.307079", 
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
  "modified_by": "Administrator", 
  "module": "Selling", 
  "name": "Sales Person Target Variance Item Group-Wise", 
  "owner": "Administrator", 
  "ref_doctype": "Sales Order", 
  "report_name": "Sales Person Target Variance Item Group-Wise", 
+<<<<<<< HEAD
  "report_type": "Script Report", 
  "roles": [
   {
@@ -32,4 +43,7 @@
    "role": "Stock User"
   }
  ]
+=======
+ "report_type": "Script Report"
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 }

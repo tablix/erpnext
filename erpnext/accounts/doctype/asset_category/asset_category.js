@@ -2,6 +2,18 @@
 // For license information, please see license.txt
 
 frappe.ui.form.on('Asset Category', {
+<<<<<<< HEAD
+=======
+	setup: function(frm) {
+		frm.get_field('accounts').grid.editable_fields = [
+			{fieldname: 'company_name', columns: 3},
+			{fieldname: 'fixed_asset_account', columns: 3},
+			{fieldname: 'accumulated_depreciation_account', columns: 2},
+			{fieldname: 'depreciation_expense_account', columns: 2}
+		];
+	},
+
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 	onload: function(frm) {
 		frm.add_fetch('company_name', 'accumulated_depreciation_account', 'accumulated_depreciation_account');
 		frm.add_fetch('company_name', 'depreciation_expense_account', 'accumulated_depreciation_account');

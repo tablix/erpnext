@@ -1,5 +1,8 @@
+<<<<<<< HEAD
 # Open Source
 
+=======
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 The source code is an Open Source software. It is open for anyone to
 understand, extend or improve. And it is free!
 

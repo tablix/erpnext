@@ -55,13 +55,20 @@ def make_opportunity():
 		"enquiry_from": "Customer",
 		"customer": get_random("Customer"),
 		"enquiry_type": "Sales",
+<<<<<<< HEAD
 		"with_items": 1,
+=======
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 		"transaction_date": frappe.flags.current_date,
 	})
 
 	add_random_children(b, "items", rows=4, randomize = {
 		"qty": (1, 5),
+<<<<<<< HEAD
 		"item_code": ("Item", {"has_variants": 0, "is_fixed_asset": 0})
+=======
+		"item_code": ("Item", {"has_variants": "0", "is_fixed_asset": 0})
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 	}, unique="item_code")
 
 	b.insert()
@@ -69,7 +76,11 @@ def make_opportunity():
 
 def make_quotation():
 	# get open opportunites
+<<<<<<< HEAD
 	opportunity = get_random("Opportunity", {"status": "Open", "with_items": 1})
+=======
+	opportunity = get_random("Opportunity", {"status": "Open"})
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 
 	if opportunity:
 		from erpnext.crm.doctype.opportunity.opportunity import make_quotation

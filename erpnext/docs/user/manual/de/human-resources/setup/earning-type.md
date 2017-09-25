@@ -7,6 +7,10 @@ Um eine neue Eikommensart zu erstellen, gehen Sie zu:
 
 > Personalwesen > Einstellungen > Einkommensart > Neu
 
+<<<<<<< HEAD
 <img class="screenshot" alt="Einkommensart" src="/docs/assets/img/human-resources/earning-type.png">
+=======
+<img class="screenshot" alt="Einkommensart" src="{{docs_base_url}}/assets/img/human-resources/earning-type.png">
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 
 {next}

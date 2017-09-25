@@ -8,6 +8,7 @@ from frappe.utils import flt
 from erpnext.accounts.report.financial_statements import (get_period_list, get_columns, get_data)
 
 def execute(filters=None):
+<<<<<<< HEAD
 	period_list = get_period_list(filters.from_fiscal_year, filters.to_fiscal_year, 
 		filters.periodicity, filters.accumulated_values, filters.company)
 
@@ -19,6 +20,15 @@ def execute(filters=None):
 		accumulated_values=filters.accumulated_values, 
 		ignore_closing_entries=True, ignore_accumulated_values_for_fy= True)
 
+=======
+	period_list = get_period_list(filters.fiscal_year, filters.periodicity)
+	
+	income = get_data(filters.company, "Income", "Credit", period_list, 
+		accumulated_values=filters.accumulated_values, ignore_closing_entries=True)
+	expense = get_data(filters.company, "Expense", "Debit", period_list, 
+		accumulated_values=filters.accumulated_values, ignore_closing_entries=True)
+	
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 	net_profit_loss = get_net_profit_loss(income, expense, period_list, filters.company)
 
 	data = []
@@ -28,12 +38,17 @@ def execute(filters=None):
 		data.append(net_profit_loss)
 
 	columns = get_columns(filters.periodicity, period_list, filters.accumulated_values, filters.company)
+<<<<<<< HEAD
 
+=======
+	
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 	chart = get_chart_data(filters, columns, income, expense, net_profit_loss)
 
 	return columns, data, None, chart
 
 def get_net_profit_loss(income, expense, period_list, company):
+<<<<<<< HEAD
 	total = 0
 	net_profit_loss = {
 		"account_name": "'" + _("Net Profit / Loss") + "'",
@@ -65,6 +80,36 @@ def get_chart_data(filters, columns, income, expense, net_profit_loss):
 
 	income_data, expense_data, net_profit = [], [], []
 
+=======
+	if income and expense:
+		total = 0
+		net_profit_loss = {
+			"account_name": "'" + _("Net Profit / Loss") + "'",
+			"account": "'" + _("Net Profit / Loss") + "'",
+			"warn_if_negative": True,
+			"currency": frappe.db.get_value("Company", company, "default_currency")
+		}
+
+		has_value = False
+
+		for period in period_list:
+			net_profit_loss[period.key] = flt(income[-2][period.key] - expense[-2][period.key], 3)
+			
+			if net_profit_loss[period.key]:
+				has_value=True
+			
+			total += flt(net_profit_loss[period.key])
+			net_profit_loss["total"] = total
+		
+		if has_value:
+			return net_profit_loss
+
+def get_chart_data(filters, columns, income, expense, net_profit_loss):
+	x_intervals = ['x'] + [d.get("label") for d in columns[2:-1]]
+	
+	income_data, expense_data, net_profit = [], [], []
+	
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 	for p in columns[2:]:
 		if income:
 			income_data.append(income[-2].get(p.get("fieldname")))
@@ -72,7 +117,11 @@ def get_chart_data(filters, columns, income, expense, net_profit_loss):
 			expense_data.append(expense[-2].get(p.get("fieldname")))
 		if net_profit_loss:
 			net_profit.append(net_profit_loss.get(p.get("fieldname")))
+<<<<<<< HEAD
 
+=======
+			
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 	columns = [x_intervals]
 	if income_data:
 		columns.append(["Income"] + income_data)
@@ -80,6 +129,7 @@ def get_chart_data(filters, columns, income, expense, net_profit_loss):
 		columns.append(["Expense"] + expense_data)
 	if net_profit:
 		columns.append(["Net Profit/Loss"] + net_profit)
+<<<<<<< HEAD
 
 	chart = {
 		"data": {
@@ -96,4 +146,17 @@ def get_chart_data(filters, columns, income, expense, net_profit_loss):
 	if not filters.accumulated_values:
 		chart["chart_type"] = "bar"
 
+=======
+		
+	chart = {
+		"data": {
+			'x': 'x',
+			'columns': columns
+		}
+	}
+	
+	if not filters.accumulated_values:
+		chart["chart_type"] = "bar"
+		
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 	return chart

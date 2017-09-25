@@ -16,12 +16,20 @@ Let's assume that while creating Sales Invoice, you wish to see Serial No result
 
 Update Warehouse field name in the Search By field.
 
+<<<<<<< HEAD
 <img alt="Search By in Customize Form" class="screenshot" src="/docs/assets/img/articles/search-by-1.png">
+=======
+<img alt="Search By in Customize Form" class="screenshot" src="{{docs_base_url}}/assets/img/articles/search-by-1.png">
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 
 #### Searching in Another Record.
 
 While creating transaction, to get filtered result for Customer, you should firstly click on search magnifier.
 
+<<<<<<< HEAD
 <img alt="Search By in Customize Form" class="screenshot" src="/docs/assets/img/articles/search-by-2.png">
+=======
+<img alt="Search By in Customize Form" class="screenshot" src="{{docs_base_url}}/assets/img/articles/search-by-2.png">
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 
 <!-- markdown -->

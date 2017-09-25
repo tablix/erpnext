@@ -1,7 +1,11 @@
 # Copyright (c) 2015, Frappe Technologies Pvt. Ltd. and Contributors
 # License: GNU General Public License v3. See license.txt
 
+<<<<<<< HEAD
 from __future__ import print_function, unicode_literals
+=======
+from __future__ import unicode_literals
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 import frappe
 
 """
@@ -38,6 +42,7 @@ def check():
 	si_list = get_affected_sales_invoice()
 	
 	if so_list or dn_list or si_list:
+<<<<<<< HEAD
 		print("Entries with Target Warehouse:")
 		
 		if so_list:
@@ -51,6 +56,21 @@ def check():
 		if si_list:
 			print("Sales Invoice")
 			print([d.name for d in si_list])
+=======
+		print "Entries with Target Warehouse:"
+		
+		if so_list:
+			print "Sales Order"
+			print so_list
+
+		if dn_list:
+			print "Delivery Notes"
+			print [d.name for d in dn_list]
+
+		if si_list:
+			print "Sales Invoice"
+			print [d.name for d in si_list]
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 		
 		
 def repost():
@@ -61,6 +81,7 @@ def repost():
 	frappe.db.commit()
 	
 	if dn_failed_list:
+<<<<<<< HEAD
 		print("-"*40)
 		print("Delivery Note Failed to Repost")
 		print(dn_failed_list)
@@ -76,19 +97,45 @@ If above Delivery Notes / Sales Invoice failed due to negative stock, follow the
 	- Ensure that stock is available for those items in the mentioned warehouse on the date mentioned in the error
 	- Run this patch again
 """)
+=======
+		print "-"*40
+		print "Delivery Note Failed to Repost"
+		print dn_failed_list
+
+	if si_failed_list:
+		print "-"*40
+		print "Sales Invoice Failed to Repost"
+		print si_failed_list
+		print 
+		
+		print """
+If above Delivery Notes / Sales Invoice failed due to negative stock, follow these steps:
+	- Ensure that stock is available for those items in the mentioned warehouse on the date mentioned in the error
+	- Run this patch again
+"""
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 	
 def repost_dn(dn_failed_list):
 	dn_list = get_affected_delivery_notes()
 		
 	if dn_list:
+<<<<<<< HEAD
 		print("-"*40)
 		print("Reposting Delivery Notes")
+=======
+		print "-"*40
+		print "Reposting Delivery Notes"
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 
 	for dn in dn_list:
 		if dn.docstatus == 0:
 			continue
 			
+<<<<<<< HEAD
 		print(dn.name)
+=======
+		print dn.name
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 	
 		try:
 			dn_doc = frappe.get_doc("Delivery Note", dn.name)
@@ -107,7 +154,11 @@ def repost_dn(dn_failed_list):
 		except Exception:
 			dn_failed_list.append(dn.name)
 			frappe.local.stockledger_exceptions = None
+<<<<<<< HEAD
 			print(frappe.get_traceback())
+=======
+			print frappe.get_traceback()
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 			frappe.db.rollback()
 		
 	frappe.db.sql("update `tabDelivery Note Item` set target_warehouse='' where docstatus=0")
@@ -116,14 +167,23 @@ def repost_si(si_failed_list):
 	si_list = get_affected_sales_invoice()
 
 	if si_list:
+<<<<<<< HEAD
 		print("-"*40)
 		print("Reposting Sales Invoice")
+=======
+		print "-"*40
+		print "Reposting Sales Invoice"
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 	
 	for si in si_list:
 		if si.docstatus == 0:
 			continue
 		
+<<<<<<< HEAD
 		print(si.name)
+=======
+		print si.name
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 	
 		try:
 			si_doc = frappe.get_doc("Sales Invoice", si.name)
@@ -141,7 +201,11 @@ def repost_si(si_failed_list):
 		except Exception:
 			si_failed_list.append(si.name)
 			frappe.local.stockledger_exceptions = None
+<<<<<<< HEAD
 			print(frappe.get_traceback())
+=======
+			print frappe.get_traceback()
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 			frappe.db.rollback()
 		
 	frappe.db.sql("update `tabSales Invoice Item` set target_warehouse='' where docstatus=0")
@@ -152,8 +216,13 @@ def repost_so():
 	frappe.db.sql("update `tabSales Order Item` set target_warehouse=''")
 	
 	if so_list:
+<<<<<<< HEAD
 		print("-"*40)
 		print("Sales Order reposted")
+=======
+		print "-"*40
+		print "Sales Order reposted"
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 	
 	
 def get_affected_delivery_notes():

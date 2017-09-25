@@ -4,7 +4,11 @@
 		"name": "_Test Attendance 1",
 		"employee": "_T-Employee-0001",
 		"status": "Present",
+<<<<<<< HEAD
 		"attendance_date": "2014-02-01",
+=======
+		"att_date": "2014-02-01",
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 		"company": "_Test Company"
 	}
 ]

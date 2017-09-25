@@ -28,6 +28,10 @@ Hier sehen Sie die Standardvorlage:
 
 ### Beispiel
 
+<<<<<<< HEAD
 <img class="screenshot" alt="Adressvorlage" src="/docs/assets/img/setup/print/address-format.png">
+=======
+<img class="screenshot" alt="Adressvorlage" src="{{docs_base_url}}/assets/img/setup/print/address-format.png">
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 
 {next}

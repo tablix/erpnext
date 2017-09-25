@@ -3,6 +3,10 @@
 
 Genauso wie Zuordnungen und Kommentare können Sie auch Ihre eigenen Schlagworte zu jeder Art von Transaktionen hinzufügen. Diese Schlagworte helfen Ihnen bei der Suche nach einem Dokument und klassifizieren dieses. ERPNext zeigt Ihnen die wichtigen Schlagworte in der Dokumentenliste an.
 
+<<<<<<< HEAD
 ![Schlagworte](/docs/assets/old_images/erpnext/tags-in-list.png)
+=======
+![Schlagworte]({{docs_base_url}}/assets/old_images/erpnext/tags-in-list.png)
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 
 {next}

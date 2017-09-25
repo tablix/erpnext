@@ -1,5 +1,8 @@
+<<<<<<< HEAD
 # Supplier Type
 
+=======
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 A supplier may be distinguished from a contractor or subcontractor, who
 commonly adds specialized input to deliverables. A supplier is also known as a
 vendor. There are different types of suppliers based on their goods and
@@ -16,7 +19,11 @@ You can create your own category of Supplier Type.
 
 > Buying > Setup > Supplier Type > New Supplier Type
 
+<<<<<<< HEAD
 <img class="screenshot" alt="Supplier Type" src="/docs/assets/img/buying/supplier-type.png">
+=======
+<img class="screenshot" alt="Supplier Type" src="{{docs_base_url}}/assets/img/buying/supplier-type.png">
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 
 You can classify your suppliers from a range of choice available in ERPNext.
 Choose from a set of given options like Distributor, Electrical,Hardware,
@@ -25,4 +32,10 @@ Local, Pharmaceutical, Raw material, Services etc.
 Classifying your supplier into different types facilitates accounting and
 payments.
 
+<<<<<<< HEAD
 Type your new supplier category and Save.
+=======
+Type your new supplier category and Save.
+
+{next}
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347

@@ -1,5 +1,8 @@
+<<<<<<< HEAD
 # Stock Reconciliation For Non Serialized Item
 
+=======
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 Stock Reconciliation is the process of counting and evaluating stock-in-trade,
 usually at an organisations year end in order to value the total stock for
 preparation of the accounts. In this process actual physical stocks are
@@ -29,17 +32,29 @@ To perform Stock Reconciliation, go to:
 
 A predefined template of an spreadsheet file should be followed for importing item's stock levels and valuations. Open new Stock Reconciliation form to see download option.
 
+<<<<<<< HEAD
 <img class="screenshot" alt="Stock Reconciliation" src="/docs/assets/img/setup/stock-recon-1.png">
 
 #### Step 2: Enter Data in csv file.
 
 <img class="screenshot" alt="Stock Reconciliation" src="/docs/assets/img/setup/stock-reco-data.png">
+=======
+<img class="screenshot" alt="Stock Reconciliation" src="{{docs_base_url}}/assets/img/setup/stock-recon-1.png">
+
+#### Step 2: Enter Data in csv file.
+
+![Stock Reco Data]({{docs_base_url}}/assets/old_images/erpnext/stock-reco-data.png)
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 
 The csv format is case-sensitive. Do not edit the headers which are preset in the template. In the Item Code and Warehouse column, enter exact Item Code and Warehouse as created in your ERPNext account. For quatity, enter stock level you wish to set for that item, in a specific warehouse.
 
 #### Step 3: Upload file and Enter Values in Stock Reconciliation Form
 
+<<<<<<< HEAD
 <img class="screenshot" alt="Stock Reconciliation" src="/docs/assets/img/setup/stock-recon-2.png">
+=======
+<img class="screenshot" alt="Stock Reconciliation" src="{{docs_base_url}}/assets/img/setup/stock-recon-2.png">
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 
 **Posting Date**
 
@@ -61,12 +76,20 @@ report. The report will show you all types of rates.
 
 #### Step 4: Review the reconciliation data
 
+<<<<<<< HEAD
 <img class="screenshot" alt="Stock Reconciliation" src="/docs/assets/img/setup/stock-reco-upload.gif">
 
 ### Stock Ledger Report
 
 <img class="screenshot" alt="Stock Reconciliation" src="/docs/assets/img/setup//stock-reco-ledger.png">
 
+=======
+![Stock Reco Review]({{docs_base_url}}/assets/old_images/erpnext/stock-reco-upload.png)
+
+### Stock Ledger Report
+
+![Stock Reco Ledger]({{docs_base_url}}/assets/old_images/erpnext/stock-reco-ledger.png)
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 
 **How Stock Reconciliation Works**
 

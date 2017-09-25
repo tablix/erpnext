@@ -7,13 +7,22 @@
 from __future__ import unicode_literals
 import frappe
 
+<<<<<<< HEAD
 from frappe.utils import cstr, flt, getdate, new_line_sep
+=======
+from frappe.utils import cstr, flt, getdate, new_line_sep, get_link_to_form, money_in_words
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 from frappe import msgprint, _
 from frappe.model.mapper import get_mapped_doc
 from erpnext.stock.stock_balance import update_bin_qty, get_indented_qty
 from erpnext.controllers.buying_controller import BuyingController
 from erpnext.manufacturing.doctype.production_order.production_order import get_item_details
+<<<<<<< HEAD
 from erpnext.buying.utils import check_for_closed_status, validate_for_items
+=======
+from frappe.desk.form import assign_to
+
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 
 form_grid_templates = {
 	"items": "templates/form_grid/material_request_grid.html"
@@ -46,7 +55,11 @@ class MaterialRequest(BuyingController):
 					docstatus = 1 and parent != %s""", (item, so_no, self.name))
 				already_indented = already_indented and flt(already_indented[0][0]) or 0
 
+<<<<<<< HEAD
 				actual_so_qty = frappe.db.sql("""select sum(stock_qty) from `tabSales Order Item`
+=======
+				actual_so_qty = frappe.db.sql("""select sum(qty) from `tabSales Order Item`
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 					where parent = %s and item_code = %s and docstatus = 1""", (so_no, item))
 				actual_so_qty = actual_so_qty and flt(actual_so_qty[0][0]) or 0
 
@@ -68,6 +81,7 @@ class MaterialRequest(BuyingController):
 
 		if not self.status:
 			self.status = "Draft"
+<<<<<<< HEAD
 
 		from erpnext.controllers.status_updater import validate_status
 		validate_status(self.status, ["Draft", "Submitted", "Stopped", "Cancelled", "Pending",
@@ -80,6 +94,39 @@ class MaterialRequest(BuyingController):
 		# self.validate_qty_against_so()
 		# NOTE: Since Item BOM and FG quantities are combined, using current data, it cannot be validated
 		# Though the creation of Material Request from a Production Plan can be rethought to fix this
+=======
+		
+		proj = self.project	
+		frappe.db.set(self, 'project_name', proj)
+		frappe.db.commit()
+		
+		from erpnext.controllers.status_updater import validate_status
+		validate_status(self.status, ["Draft", "Submitted", "Stopped", "Cancelled"])
+
+		pc_obj = frappe.get_doc('Purchase Common')
+		pc_obj.validate_for_items(self)
+		
+		
+		#new addition
+		#self.validate_item_code()
+		# self.set_title()
+
+
+		# self.validate_qty_against_so()
+		# NOTE: Since Item BOM and FG quantities are combined, using current data, it cannot be validated
+		# Though the creation of Material Request from a Production Plan can be rethought to fix this
+		
+	
+	#new addition
+	
+	def validate_item_code(self):
+		 so = self.customer_order
+		 if so is not None and so != "":
+			 for d in self.get("items"):
+				 item_code = frappe.db.get_value("Sales Order Item", {"parent":so, "item_code":d.item_code})
+				 if item_code is None:
+					frappe.throw(_("Item {0}: Item is not available in SO.").format(d.item_code))
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 
 	def set_title(self):
 		'''Set title as comma separated list of items'''
@@ -93,6 +140,7 @@ class MaterialRequest(BuyingController):
 		self.title = ', '.join(items)
 
 	def on_submit(self):
+<<<<<<< HEAD
 		# frappe.db.set(self, 'status', 'Submitted')
 		self.update_requested_qty()
 
@@ -107,6 +155,13 @@ class MaterialRequest(BuyingController):
 		check_for_closed_status(self.doctype, self.name)
 		self.set_status(update=True, status='Cancelled')
 
+=======
+		if self.approval != "Approved":
+			frappe.throw(_("{0} cannot be submitted unless it is in Approved state").format(self.name))
+		frappe.db.set(self, 'status', 'Submitted')
+		self.update_requested_qty()
+
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 	def check_modified_date(self):
 		mod_db = frappe.db.sql("""select modified from `tabMaterial Request` where name = %s""",
 			self.name)
@@ -118,6 +173,7 @@ class MaterialRequest(BuyingController):
 
 	def update_status(self, status):
 		self.check_modified_date()
+<<<<<<< HEAD
 		self.status_can_change(status)
 		self.set_status(update=True, status=status)
 		self.update_requested_qty()
@@ -148,6 +204,20 @@ class MaterialRequest(BuyingController):
 	def on_cancel(self):
 		self.update_requested_qty()
 
+=======
+		frappe.db.set(self, 'status', cstr(status))
+		self.update_requested_qty()
+
+	def on_cancel(self):
+		pc_obj = frappe.get_doc('Purchase Common')
+
+		pc_obj.check_for_closed_status(self.doctype, self.name)
+
+		self.update_requested_qty()
+
+		frappe.db.set(self,'status','Cancelled')
+
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 	def update_completed_qty(self, mr_items=None, update_modified=True):
 		if self.material_request_type == "Purchase":
 			return
@@ -196,6 +266,141 @@ class MaterialRequest(BuyingController):
 			update_bin_qty(item_code, warehouse, {
 				"indented_qty": get_indented_qty(item_code, warehouse)
 			})
+<<<<<<< HEAD
+=======
+	
+	#new addition
+	def send_notification(self, reason, remark=""):
+		commercial_mgnr = "heena@tablix.ae"
+		if self.project_name is None:
+			project_name = self.project
+		else:
+			project_name = self.project_name
+			
+		if project_name is None:
+			project_name = ""
+		owner = self.owner
+		
+		#msgprint("Entry")
+		if reason == "cm_review":
+			val = 0
+			if (self.approval == "Open" or self.approval == "Commercial Rejected"):
+				#msgprint("Approval")
+				self.notify_employee(commercial_mgnr, project_name, val)
+				frappe.db.set_value("Material Request", self.name, "approval", "Commercial Review")
+			else:
+				self.notify_employee(commercial_mgnr, project_name, val)
+				frappe.db.set_value("Material Request", self.name, "assigned", 1)
+			frappe.db.set_value("Material Request", self.name, "reason", "")
+			frappe.db.commit()
+				
+		elif reason == "cm_approved":
+			val = 1
+			so_no = 420
+			so = 0
+			if self.customer_order is not None and self.customer_order != "":
+				#msgprint("Success!!")
+				so = self.customer_order
+				so = so.replace("SO-", "")
+				so = so.split("-")
+				so = int(so[0])
+			if self.customer_order is not None :
+				if so > so_no:
+					self.notify_employee(owner, project_name, val)
+			frappe.db.set_value("Material Request", self.name, "approval", "Approved")
+			frappe.db.set_value("Material Request", self.name, "reason", "")
+			frappe.db.commit()
+		
+		elif reason == "cm_rejected":
+			val = 2
+			self.notify_employee(owner, project_name, val)
+			frappe.db.set_value("Material Request", self.name, "approval", "Commercial Rejected")
+			frappe.db.set_value("Material Request", self.name, "reason", remark)
+			frappe.db.commit()
+			
+		elif reason == "kam_review":
+			val = 0
+			acc_manager = frappe.db.get_value("Sales Order", self.customer_order, "account_manager")
+			self.notify_employee(acc_manager, project_name, val)
+			frappe.db.set_value("Material Request", self.name, "approval", "KAM Review")
+			frappe.db.commit()
+		
+		elif reason == "kam_approved":
+			val = 3
+			self.notify_employee(owner, project_name, val)
+			frappe.db.set_value("Material Request", self.name, "approval", "Approved")
+			frappe.db.set_value("Material Request", self.name, "reason", "")
+			frappe.db.commit()
+			
+		elif reason == "kam_rejected":
+			val = 4
+			self.notify_employee(owner, project_name, val)
+			frappe.db.set_value("Material Request", self.name, "approval", "KAM Rejected")
+			frappe.db.set_value("Material Request", self.name, "reason", remark)
+			frappe.db.commit()
+			
+		return True
+	
+	
+	def notify_employee(self, employee, subject, val):
+		
+		
+		#msgprint("Success" + str(val))
+		
+		def _get_message(url=False):
+			if url:
+				name = get_link_to_form(self.doctype, self.name)
+			else:
+				name = self.name
+			if val == 0:
+				return (_("MR")+ "- %s" + _("assigned for approval") + ": %s") % (subject, name)
+			elif val ==1:
+				return (_("MR")+ "- %s " + _("approved by Commercial Manager") + ": %s") % (subject, name)
+			elif val == 2:
+				return (_("MR")+ "- %s " + _("rejected by Commercial Manager") + ": %s") % (subject, name)
+			elif val == 3:
+				return (_("MR")+ "- %s " + _("approved by KAM") + ": %s") % (subject, name)
+			elif val == 4:
+				return (_("MR")+ "- %s " + _("rejected by KAM") + ": %s") % (subject, name)
+			
+		
+			
+		self.notify({
+			# for post in messages
+			"message": _get_message(url=True),
+			"message_to": employee,
+			"subject": _get_message(),
+			"subject": _get_message(),
+		})
+	
+		desc = ''	
+		assign_to.clear(self.doctype, self.name)
+		proj_name = subject.encode('ascii','ignore')
+		if val == 0:
+			desc = "MR- " + str(proj_name) + " requies approval"
+		elif (val == 1 or val == 3):
+			desc = "MR- " + str(proj_name) + " approved"
+		elif val == 2:
+			desc = "MR- " + str(proj_name) + " rejected by Commercial Manager"
+		elif val == 4:
+			desc = "MR- " + str(proj_name) + " rejected by KAM"
+			
+		assign_to.add({
+			"assign_to": employee,
+			"doctype": self.doctype,
+			"name": self.name,
+			"description": desc
+		})
+		
+		
+	def notify(self, args):
+		args = frappe._dict(args)
+		from frappe.desk.page.chat.chat import post
+		post(**{"txt": args.message, "contact": args.message_to, "subject": args.subject, "notify": 1})
+		
+		
+		
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 
 def update_completed_and_requested_qty(stock_entry, method):
 	if stock_entry.doctype == "Stock Entry":
@@ -400,7 +605,10 @@ def raise_production_orders(material_request):
 	mr= frappe.get_doc("Material Request", material_request)
 	errors =[]
 	production_orders = []
+<<<<<<< HEAD
 	default_wip_warehouse = frappe.db.get_single_value("Manufacturing Settings", "default_wip_warehouse")
+=======
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 	for d in mr.items:
 		if (d.qty - d.ordered_qty) >0:
 			if frappe.db.get_value("BOM", {"item": d.item_code, "is_default": 1}):
@@ -408,7 +616,10 @@ def raise_production_orders(material_request):
 				prod_order.production_item = d.item_code
 				prod_order.qty = d.qty - d.ordered_qty
 				prod_order.fg_warehouse = d.warehouse
+<<<<<<< HEAD
 				prod_order.wip_warehouse = default_wip_warehouse
+=======
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 				prod_order.description = d.description
 				prod_order.stock_uom = d.uom
 				prod_order.expected_delivery_date = d.schedule_date
@@ -421,6 +632,7 @@ def raise_production_orders(material_request):
 				prod_order.save()
 				production_orders.append(prod_order.name)
 			else:
+<<<<<<< HEAD
 				errors.append(_("Row {0}: Bill of Materials not found for the Item {1}").format(d.idx, d.item_code))
 	if production_orders:
 		message = ["""<a href="#Form/Production Order/%s" target="_blank">%s</a>""" % \
@@ -428,4 +640,13 @@ def raise_production_orders(material_request):
 		msgprint(_("The following Production Orders were created:") + '\n' + new_line_sep(message))
 	if errors:
 		frappe.throw(_("Productions Orders cannot be raised for:") + '\n' + new_line_sep(errors))
+=======
+				errors.append(d.item_code + " in Row " + cstr(d.idx))
+	if production_orders:
+		message = ["""<a href="#Form/Production Order/%s" target="_blank">%s</a>""" % \
+			(p, p) for p in production_orders]
+		msgprint(_("The following Production Orders were created:" + '\n' + new_line_sep(message)))
+	if errors:
+		msgprint(_("Productions Orders cannot be raised for:" + '\n' + new_line_sep(errors)))
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 	return production_orders

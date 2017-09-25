@@ -44,7 +44,11 @@ def get_data():
 				},
 				{
 					"type": "help",
+<<<<<<< HEAD
 					"label": _("Setting up Email Account"),
+=======
+					"label": _("Setting up Email"),
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 					"youtube_id": "YFYe0DrB95o"
 				},
 				{
@@ -64,6 +68,14 @@ def get_data():
 				},
 				{
 					"type": "help",
+<<<<<<< HEAD
+=======
+					"label": _("Email Account"),
+					"youtube_id": "YFYe0DrB95o"
+				},
+				{
+					"type": "help",
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 					"label": _("File Manager"),
 					"youtube_id": "4-osLW3E_Rk"
 				},

@@ -18,6 +18,10 @@ erpnext.SalesAnalytics = frappe.views.TreeGridReport.extend({
 	init: function(wrapper) {
 		this._super({
 			title: __("Sales Analytics"),
+<<<<<<< HEAD
+=======
+			page: wrapper,
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 			parent: $(wrapper).find('.layout-main'),
 			page: wrapper.page,
 			doctypes: ["Item", "Item Group", "Customer", "Customer Group", "Company", "Territory",
@@ -33,16 +37,24 @@ erpnext.SalesAnalytics = frappe.views.TreeGridReport.extend({
 				show: true,
 				item_key: "customer",
 				parent_field: "parent_customer_group",
+<<<<<<< HEAD
 				formatter: function(item) {
 					return item.customer_name? item.customer_name + " (" + item.name + ")" : item.name; 
 				}
+=======
+				formatter: function(item) { return item.customer_name || item.name; }
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 			},
 			"Customer": {
 				label: __("Customer"),
 				show: false,
 				item_key: "customer",
 				formatter: function(item) {
+<<<<<<< HEAD
 					return item.customer_name? item.customer_name + " (" + item.name + ")" : item.name;
+=======
+					return item.customer_name || item.name;
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 				}
 			},
 			"Item Group": {
@@ -68,7 +80,11 @@ erpnext.SalesAnalytics = frappe.views.TreeGridReport.extend({
 				item_key: "customer",
 				parent_field: "parent_territory",
 				formatter: function(item) {
+<<<<<<< HEAD
 					return item.customer_name? item.customer_name + " (" + item.name + ")" : item.name;
+=======
+					return item.name;
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 				}
 			}
 		}
@@ -193,12 +209,18 @@ erpnext.SalesAnalytics = frappe.views.TreeGridReport.extend({
 	},
 	prepare_balances: function() {
 		var me = this;
+<<<<<<< HEAD
 		var from_date = frappe.datetime.str_to_obj(this.from_date);
 		var to_date = frappe.datetime.str_to_obj(this.to_date);
+=======
+		var from_date = dateutil.str_to_obj(this.from_date);
+		var to_date = dateutil.str_to_obj(this.to_date);
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 		var is_val = this.value_or_qty == 'Value';
 
 		$.each(this.tl[this.based_on], function(i, tl) {
 			if (me.is_default('company') ? true : tl.company === me.company) {
+<<<<<<< HEAD
 				var posting_date = frappe.datetime.str_to_obj(tl.posting_date);
 				if (posting_date >= from_date && posting_date <= to_date) {
 					var item = me.item_by_name[tl[me.tree_grid.item_key]] ||
@@ -206,6 +228,13 @@ erpnext.SalesAnalytics = frappe.views.TreeGridReport.extend({
 					if(item){
 						item[me.column_map[tl.posting_date].field] += (is_val ? tl.base_net_amount : tl.qty);
 					}
+=======
+				var posting_date = dateutil.str_to_obj(tl.posting_date);
+				if (posting_date >= from_date && posting_date <= to_date) {
+					var item = me.item_by_name[tl[me.tree_grid.item_key]] ||
+						me.item_by_name['Not Set'];
+					item[me.column_map[tl.posting_date].field] += (is_val ? tl.base_net_amount : tl.qty);
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 				}
 			}
 		});
@@ -216,7 +245,11 @@ erpnext.SalesAnalytics = frappe.views.TreeGridReport.extend({
 		$.each(this.data, function(i, item) {
 			var parent = me.parent_map[item.name];
 			while(parent) {
+<<<<<<< HEAD
 				var parent_group = me.item_by_name[parent];
+=======
+				parent_group = me.item_by_name[parent];
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 
 				$.each(me.columns, function(c, col) {
 					if (col.formatter == me.currency_formatter) {

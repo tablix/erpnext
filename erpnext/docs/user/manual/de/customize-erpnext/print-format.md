@@ -14,13 +14,21 @@ Um Ihre eigenen Versionen zu erstellen, öffnen Sie eine bereits vorhandene Vorl
 
 > Einstellungen > Druck > Druckformate
 
+<<<<<<< HEAD
 ![Druckformat](/docs/assets/img/customize/print-settings.png)
+=======
+![Druckformat]({{docs_base_url}}/assets/img/customize/print-settings.png)
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 
 Wählen Sie den Typ des Druckformats, welches Sie bearbeiten wollen, und klicken Sie auf die Schaltfläche "Kopieren" in der rechten Spalte. Es öffnet sich ein neues Druckformat mit der Einstellung NEIN für "für "Ist Standard" und Sie kännen das Druckformat bearbeiten.
 
 Ein Druckformat zu bearbeiten ist eine langwierige Angelegenheit und Sie müssen etwas Grundwissen über HTML, CSS und Python mitbringen, um dies verstehen zu können. Wenn Sie Hilfe benötigen, erstellen Sie bitte im Forum eine Anfrage.
 
+<<<<<<< HEAD
 Printformate werden auf der Serverseite über die [Programmiersprache Jinja Templating](http://jinja.pocoo.org/docs/templates/) erstellt. Alle Formulare haben Zugriff auf doc object, das Informationen über das Dokument enthält, welches formatiert wird. Sie können über das Frappé-Modul auch auf oft verwendete Hilfswerkzeuge zugreifen.
+=======
+Printformate werden auf der Serverseite über die [Programmiersprache Jinja Templating](http://jinja.pocoo.org/docs/templates/) erstellt. Alle Formulare haben Zugriff auf doc object, das Informationen über das Dokument enthält, welches formatiert wird. Sie können über das Frappe-Modul auch auf oft verwendete Hilfswerkzeuge zugreifen.
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 
 Zum Bearbeiten des Erscheinungsbildes bietet sich das [Bootstrap CSS Framework](http://getbootstrap.com/)  an und Sie können die volle Bandbreite dieses Werkzeuges nutzen.
 
@@ -37,7 +45,11 @@ Um Ihre Druck- und PDF-Einstellungen zu bearbeiten/zu aktualisieren, gehen Sie z
 
 > Einstellungen > Druck und Branding > Druckeinstellungen
 
+<<<<<<< HEAD
 ![Druckformat](/docs/assets/img/customize/print-settings.png)
+=======
+![Druckformat]({{docs_base_url}}/assets/img/customize/print-settings.png)
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 
 ### Beispiel
 

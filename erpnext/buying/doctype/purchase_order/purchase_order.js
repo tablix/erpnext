@@ -3,6 +3,7 @@
 
 frappe.provide("erpnext.buying");
 
+<<<<<<< HEAD
 {% include 'erpnext/public/js/controllers/buying.js' %};
 
 frappe.ui.form.on("Purchase Order", {
@@ -14,6 +15,24 @@ frappe.ui.form.on("Purchase Order", {
 		}
 	},
 
+=======
+{% include 'erpnext/buying/doctype/purchase_common/purchase_common.js' %};
+
+frappe.ui.form.on("Purchase Order", {
+	
+	setup: function(frm) {
+		console.log(frm.get_field('items'));
+        frm.get_field('items').grid.editable_fields = [
+            {fieldname: 'item_code', columns: 2},
+            {fieldname: 'qty', columns: 2},
+            {fieldname: 'rate', columns: 2},
+            {fieldname: 'amount', columns: 2},
+			{fieldname: 'check', columns: 1},
+        ];
+    },
+	
+	
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 	onload: function(frm) {
 		erpnext.queries.setup_queries(frm, "Warehouse", function() {
 			return erpnext.queries.warehouse(frm.doc);
@@ -21,7 +40,12 @@ frappe.ui.form.on("Purchase Order", {
 
 		frm.set_indicator_formatter('item_code',
 			function(doc) { return (doc.qty<=doc.received_qty) ? "green" : "orange" })
+<<<<<<< HEAD
 	},
+=======
+
+	}
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 });
 
 erpnext.buying.PurchaseOrderController = erpnext.buying.BuyingController.extend({
@@ -30,13 +54,24 @@ erpnext.buying.PurchaseOrderController = erpnext.buying.BuyingController.extend(
 		this._super();
 		var allow_receipt = false;
 		var is_drop_ship = false;
+<<<<<<< HEAD
+=======
+		
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 
 		for (var i in cur_frm.doc.items) {
 			var item = cur_frm.doc.items[i];
 			if(item.delivered_by_supplier !== 1) {
 				allow_receipt = true;
+<<<<<<< HEAD
 			} else {
 				is_drop_ship = true;
+=======
+			}
+
+			else {
+				is_drop_ship = true
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 			}
 
 			if(is_drop_ship && allow_receipt) {
@@ -45,7 +80,12 @@ erpnext.buying.PurchaseOrderController = erpnext.buying.BuyingController.extend(
 		}
 
 		cur_frm.set_df_property("drop_ship", "hidden", !is_drop_ship);
+<<<<<<< HEAD
 
+=======
+		
+		
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 		if(doc.docstatus == 1 && !in_list(["Closed", "Delivered"], doc.status)) {
 			if (this.frm.has_perm("submit")) {
 				if(flt(doc.per_billed, 2) < 100 || doc.per_received < 100) {
@@ -55,7 +95,11 @@ erpnext.buying.PurchaseOrderController = erpnext.buying.BuyingController.extend(
 
 			if(is_drop_ship && doc.status!="Delivered"){
 				cur_frm.add_custom_button(__('Delivered'),
+<<<<<<< HEAD
 					this.delivered_by_supplier, __("Status"));
+=======
+					 this.delivered_by_supplier, __("Status"));
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 
 				cur_frm.page.set_inner_btn_group_as_primary(__("Status"));
 			}
@@ -71,7 +115,11 @@ erpnext.buying.PurchaseOrderController = erpnext.buying.BuyingController.extend(
 
 		if(doc.docstatus == 1 && doc.status != "Closed") {
 			if(flt(doc.per_received, 2) < 100 && allow_receipt) {
+<<<<<<< HEAD
 				cur_frm.add_custom_button(__('Receipt'), this.make_purchase_receipt, __("Make"));
+=======
+				cur_frm.add_custom_button(__('Receive'), this.make_purchase_receipt, __("Make"));
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 
 				if(doc.is_subcontracted==="Yes") {
 					cur_frm.add_custom_button(__('Material to Supplier'),
@@ -86,6 +134,7 @@ erpnext.buying.PurchaseOrderController = erpnext.buying.BuyingController.extend(
 			if(flt(doc.per_billed)==0 && doc.status != "Delivered") {
 				cur_frm.add_custom_button(__('Payment'), cur_frm.cscript.make_payment_entry, __("Make"));
 			}
+<<<<<<< HEAD
 
 			if(!doc.subscription) {
 				cur_frm.add_custom_button(__('Subscription'), function() {
@@ -94,6 +143,39 @@ erpnext.buying.PurchaseOrderController = erpnext.buying.BuyingController.extend(
 			}
 			cur_frm.page.set_inner_btn_group_as_primary(__("Make"));
 		}
+=======
+			cur_frm.page.set_inner_btn_group_as_primary(__("Make"));
+
+		}
+		if((cur_frm.doc.approval == "Open" || cur_frm.doc.approval == "Manager Disapproved" || cur_frm.doc.approval == "Finance Disapproved")  && frappe.user.has_role("Purchase User") && !(frappe.user.has_role("Commercial Manager")))
+		{
+			cur_frm.add_custom_button(__('Manager Approval'),
+				cur_frm.cscript['Send for Approval']);
+		}
+		
+		if(cur_frm.doc.approval == "Open" && frappe.user.has_role("Commercial Manager"))
+		{
+			cur_frm.add_custom_button(__('Approve'),
+				cur_frm.cscript['Manager Approve']);
+			cur_frm.add_custom_button(__('Disapprove'),
+				cur_frm.cscript['Manager Disapprove']);
+		}
+		
+		if(cur_frm.doc.approval == "Manager Approved" && frappe.user.has_role("CFO"))
+		{
+			cur_frm.add_custom_button(__('Approve'),
+				cur_frm.cscript['CFO Approve']);
+			cur_frm.add_custom_button(__('Disapprove'),
+				cur_frm.cscript['CFO Disapprove']);
+		}
+		
+		if(cur_frm.doc.reason != "")
+		{	
+			cur_frm.set_intro(__(cur_frm.doc.reason));
+		}
+		
+
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 	},
 
 	get_items_from_open_material_requests: function() {
@@ -106,6 +188,7 @@ erpnext.buying.PurchaseOrderController = erpnext.buying.BuyingController.extend(
 		});
 	},
 
+<<<<<<< HEAD
 	validate: function() {
 		// set default schedule date as today if missing.
 		(this.frm.doc.items || []).forEach(function(d) {
@@ -115,6 +198,8 @@ erpnext.buying.PurchaseOrderController = erpnext.buying.BuyingController.extend(
 		})
 	},
 
+=======
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 	make_stock_entry: function() {
 		var items = $.map(cur_frm.doc.items, function(d) { return d.bom ? d.item_code : false; });
 		var me = this;
@@ -128,6 +213,11 @@ erpnext.buying.PurchaseOrderController = erpnext.buying.BuyingController.extend(
 			me._make_stock_entry(data.item);
 		}, __("Select Item"), __("Make"));
 	},
+<<<<<<< HEAD
+=======
+	
+	
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 
 	_make_stock_entry: function(item) {
 		frappe.call({
@@ -158,30 +248,46 @@ erpnext.buying.PurchaseOrderController = erpnext.buying.BuyingController.extend(
 	},
 
 	add_from_mappers: function() {
+<<<<<<< HEAD
 		var me = this;
 		this.frm.add_custom_button(__('Material Request'),
+=======
+		cur_frm.add_custom_button(__('Material Request'),
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 			function() {
 				erpnext.utils.map_current_doc({
 					method: "erpnext.stock.doctype.material_request.material_request.make_purchase_order",
 					source_doctype: "Material Request",
+<<<<<<< HEAD
 					target: me.frm,
 					setters: {
 						company: me.frm.doc.company
 					},
+=======
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 					get_query_filters: {
 						material_request_type: "Purchase",
 						docstatus: 1,
 						status: ["!=", "Stopped"],
 						per_ordered: ["<", 99.99],
+<<<<<<< HEAD
+=======
+						company: cur_frm.doc.company
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 					}
 				})
 			}, __("Add items from"));
 
+<<<<<<< HEAD
 		this.frm.add_custom_button(__('Supplier Quotation'),
+=======
+		cur_frm.add_custom_button(__('Supplier Quotation'),
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 			function() {
 				erpnext.utils.map_current_doc({
 					method: "erpnext.buying.doctype.supplier_quotation.supplier_quotation.make_purchase_order",
 					source_doctype: "Supplier Quotation",
+<<<<<<< HEAD
 					target: me.frm,
 					setters: {
 						company: me.frm.doc.company
@@ -189,6 +295,12 @@ erpnext.buying.PurchaseOrderController = erpnext.buying.BuyingController.extend(
 					get_query_filters: {
 						docstatus: 1,
 						status: ["!=", "Stopped"],
+=======
+					get_query_filters: {
+						docstatus: 1,
+						status: ["!=", "Stopped"],
+						company: cur_frm.doc.company
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 					}
 				})
 			}, __("Add items from"));
@@ -225,8 +337,26 @@ erpnext.buying.PurchaseOrderController = erpnext.buying.BuyingController.extend(
 				cur_frm.cscript.calculate_taxes_and_totals();
 			}
 		})
+<<<<<<< HEAD
 	}
 
+=======
+	},
+	//new addition
+	check_all: function() {
+		cur_frm.cscript.check_all();
+	},
+	
+	uncheck_all: function() {
+		cur_frm.cscript.uncheck_all();
+	},
+	
+	delete: function() {
+		cur_frm.cscript.delete_all();
+	}
+
+
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 });
 
 // for backward compatibility: combine new and previous states
@@ -243,6 +373,21 @@ cur_frm.cscript.update_status= function(label, status){
 	})
 }
 
+<<<<<<< HEAD
+=======
+cur_frm.fields_dict['supplier_address'].get_query = function(doc, cdt, cdn) {
+	return {
+		filters: {'supplier': doc.supplier}
+	}
+}
+
+cur_frm.fields_dict['contact_person'].get_query = function(doc, cdt, cdn) {
+	return {
+		filters: {'supplier': doc.supplier}
+	}
+}
+
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 cur_frm.fields_dict['items'].grid.get_field('project').get_query = function(doc, cdt, cdn) {
 	return {
 		filters:[
@@ -272,6 +417,175 @@ cur_frm.cscript.schedule_date = function(doc, cdt, cdn) {
 	erpnext.utils.copy_value_in_all_row(doc, cdt, cdn, "items", "schedule_date");
 }
 
+<<<<<<< HEAD
+=======
+//new addition
+
+cur_frm.cscript.check_all = function(){
+	var rm = cur_frm.doc.items || [];
+	for(var i=0;i<rm.length;i++) 
+	{
+		set_multiple('Purchase Order Item',rm[i].name, {'check': 1}, 'items');
+	}
+}
+
+cur_frm.cscript.uncheck_all = function(){
+	var rm = cur_frm.doc.items || [];
+	for(var i=0;i<rm.length;i++) 
+	{
+		set_multiple('Purchase Order Item',rm[i].name, {'check': 0}, 'items');
+	}
+}
+
+cur_frm.cscript.delete_all = function()
+{
+	var tbl = cur_frm.doc.items || [];
+	var i = tbl.length;
+	while (i--)
+	{
+		if(tbl[i].check == 1)
+		{
+         cur_frm.get_field("items").grid.grid_rows[i].remove();
+		}
+	}
+	
+}
+
+
+//new addition
+
+cur_frm.cscript['Send for Approval']=function(){
+	//alert("testing");
+	return cur_frm.call({
+				doc: cur_frm.doc,
+				method: "send_notification",
+				args: "approval",
+				callback: function(r) {
+					if(r.exc) {
+						msgprint(__("There were errors."));
+					} else {
+						msgprint(__("Succesfully send to the respected tablix rep !!!!!"));
+						cur_frm.timeline.insert_comment("Workflow", "PO sent for Approval");
+						location.reload();
+					}
+				}
+			});
+}
+
+cur_frm.cscript['Manager Approve']=function(){
+	
+	return cur_frm.call({
+				doc: cur_frm.doc,
+				method: "send_notification",
+				args: "manager_approved",
+				callback: function(r) {
+					if(r.exc) {
+						msgprint(__("There were errors."));
+					} else {
+						msgprint(__("Succesfully send to the respected tablix rep !!!!!"));
+						cur_frm.timeline.insert_comment("Workflow", "PO Approved by Commercial Manager");
+						location.reload();
+					}
+				}
+			});
+}
+
+cur_frm.cscript['Manager Disapprove'] = function(){
+	
+	var dialog = new frappe.ui.Dialog({
+		title: "Send for Approval with Remark",
+		fields: [
+			{"fieldtype": "Text", "label": __("Remarks"), "fieldname": "reason",
+				"reqd": 1 },
+			{"fieldtype": "Button", "label": __("Send"), "fieldname": "finish"},
+		]
+		
+	});
+	dialog.show();
+	
+	dialog.fields_dict.finish.$input.click(function() {	
+		arg = dialog.get_values();
+		if(!arg) return;
+		var reason = arg.reason;
+		return cur_frm.call({
+			doc: cur_frm.doc,
+			method: "send_notification",
+			args: {"reason": "cm_rejected", "remark": reason},
+			callback: function(r) {
+				if(r.exc) {
+					dialog.hide();
+					msgprint(__("There were errors."));
+				} else {
+					dialog.hide();
+					cur_frm.timeline.insert_comment("Workflow", "PO disapproved by Commercial Manager");
+					msgprint(__("Succesfully Send to Commercial Team !!!!!"));
+					location.reload();
+				}
+			}
+		});
+	});	
+	
+}
+
+
+cur_frm.cscript['CFO Approve']=function(){
+	
+	return cur_frm.call({
+				doc: cur_frm.doc,
+				method: "send_notification",
+				args: "cfo_approved",
+				callback: function(r) {
+					if(r.exc) {
+						msgprint(__("There were errors."));
+					} else {
+						msgprint(__("Succesfully send to the respected tablix rep !!!!!"));
+						cur_frm.timeline.insert_comment("Workflow", "PO Approved by CFO");
+						location.reload();
+					}
+				}
+			});
+}
+
+
+cur_frm.cscript['CFO Disapprove'] = function(){
+	
+	var dialog = new frappe.ui.Dialog({
+		title: "Send for Approval with Remark",
+		fields: [
+			{"fieldtype": "Text", "label": __("Remarks"), "fieldname": "reason",
+				"reqd": 1 },
+			{"fieldtype": "Button", "label": __("Send"), "fieldname": "finish"},
+		]
+		
+	});
+	dialog.show();
+	
+	dialog.fields_dict.finish.$input.click(function() {	
+		arg = dialog.get_values();
+		if(!arg) return;
+		var reason = arg.reason;
+		return cur_frm.call({
+			doc: cur_frm.doc,
+			method: "send_notification",
+			args: {"reason": "cfo_rejected", "remark": reason},
+			callback: function(r) {
+				if(r.exc) {
+					dialog.hide();
+					msgprint(__("There were errors."));
+				} else {
+					dialog.hide();
+					cur_frm.timeline.insert_comment("Workflow", "PO disapproved by CFO");
+					msgprint(__("Succesfully Send to Commercial Team !!!!!"));
+					location.reload();
+				}
+			}
+		});
+	});	
+	
+}
+
+
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 frappe.provide("erpnext.buying");
 
 frappe.ui.form.on("Purchase Order", "is_subcontracted", function(frm) {

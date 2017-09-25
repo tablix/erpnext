@@ -1,19 +1,33 @@
+<<<<<<< HEAD
 # Issue
 
+=======
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 Issue is an incoming query from your Customer, usually via email or
 from the “Contact” section of your website. (To fully integrate the Support
 Ticket to email, see the Email Settings section).
 
+<<<<<<< HEAD
 > Tip: A dedicated support Email Address is a good way to integrate incoming
 queries via email. For example, you can send support queries to ERPNext at
 support@erpnext.com and it will automatically create a Issue in the
 Frappé system.
+=======
+> Tip: A dedicated support email id is a good way to integrate incoming
+queries via email. For example, you can send support queries to ERPNext at
+support@erpnext.com and it will automatically create a Issue in the
+Frappe system.
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 
 
 
 > Support > Issue > New Issue
 
+<<<<<<< HEAD
 <img class="screenshot" alt="Issue" src="/docs/assets/img/support/issue.png">
+=======
+<img class="screenshot" alt="Issue" src="{{docs_base_url}}/assets/img/support/issue.png">
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 
 #### Discussion Thread
 

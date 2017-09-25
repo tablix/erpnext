@@ -19,11 +19,19 @@ def execute():
 	if not frappe.db.exists("Role", "Newsletter Manager"):
 		frappe.get_doc({"doctype": "Role", "role": "Newsletter Manager"}).insert()
 
+<<<<<<< HEAD
 	for userrole in frappe.get_all("Has Role", "parent", {"role": "Sales Manager", "parenttype": "User"}):
 		if frappe.db.exists("User", userrole.parent):
 			user = frappe.get_doc("User", userrole.parent)
 			user.append("roles", {
 				"doctype": "Has Role",
+=======
+	for userrole in frappe.get_all("UserRole", "parent", {"role": "Sales Manager"}):
+		if frappe.db.exists("User", userrole.parent):
+			user = frappe.get_doc("User", userrole.parent)
+			user.append("user_roles", {
+				"doctype": "UserRole",
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 				"role": "Newsletter Manager"
 			})
 			user.flags.ignore_mandatory = True

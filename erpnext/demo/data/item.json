@@ -167,7 +167,10 @@
   "item_group": "Products",
   "item_name": "Wind Turbine-S",
   "variant_of": "Wind Turbine",
+<<<<<<< HEAD
   "valuation_rate": 300,
+=======
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
   "attributes":[
       {
        "attribute": "Size",
@@ -184,7 +187,10 @@
   "item_group": "Products",
   "item_name": "Wind Turbine-M",
   "variant_of": "Wind Turbine",
+<<<<<<< HEAD
   "valuation_rate": 300,
+=======
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
   "attributes":[
       {
        "attribute": "Size",
@@ -201,7 +207,10 @@
   "item_group": "Products",
   "item_name": "Wind Turbine-L",
   "variant_of": "Wind Turbine",
+<<<<<<< HEAD
   "valuation_rate": 300,
+=======
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
   "attributes":[
       {
        "attribute": "Size",

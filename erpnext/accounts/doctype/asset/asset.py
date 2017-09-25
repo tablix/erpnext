@@ -18,9 +18,13 @@ class Asset(Document):
 		self.set_missing_values()
 		self.validate_asset_values()
 		self.make_depreciation_schedule()
+<<<<<<< HEAD
 		self.set_accumulated_depreciation()
 		if self.get("schedules"):
 			self.validate_expected_value_after_useful_life()
+=======
+		self.validate_expected_value_after_useful_life()
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 		# Validate depreciation related accounts
 		get_depreciation_accounts(self)
 
@@ -33,7 +37,11 @@ class Asset(Document):
 		self.set_status()
 
 	def validate_item(self):
+<<<<<<< HEAD
 		item = frappe.db.get_value("Item", self.item_code,
+=======
+		item = frappe.db.get_value("Item", self.item_code, 
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 			["is_fixed_asset", "is_stock_item", "disabled"], as_dict=1)
 		if not item:
 			frappe.throw(_("Item {0} does not exist").format(self.item_code))
@@ -43,15 +51,24 @@ class Asset(Document):
 			frappe.throw(_("Item {0} must be a Fixed Asset Item").format(self.item_code))
 		elif item.is_stock_item:
 			frappe.throw(_("Item {0} must be a non-stock item").format(self.item_code))
+<<<<<<< HEAD
 
+=======
+			
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 	def set_missing_values(self):
 		if self.item_code:
 			item_details = get_item_details(self.item_code)
 			for field, value in item_details.items():
 				if not self.get(field):
 					self.set(field, value)
+<<<<<<< HEAD
 
 		self.value_after_depreciation = (flt(self.gross_purchase_amount) -
+=======
+					
+		self.value_after_depreciation = (flt(self.gross_purchase_amount) - 
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 			flt(self.opening_accumulated_depreciation))
 
 	def validate_asset_values(self):
@@ -60,7 +77,11 @@ class Asset(Document):
 
 		if not flt(self.gross_purchase_amount):
 			frappe.throw(_("Gross Purchase Amount is mandatory"), frappe.MandatoryError)
+<<<<<<< HEAD
 
+=======
+		
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 		if not self.is_existing_asset:
 			self.opening_accumulated_depreciation = 0
 			self.number_of_depreciations_booked = 0
@@ -71,12 +92,17 @@ class Asset(Document):
 			if flt(self.opening_accumulated_depreciation) > depreciable_amount:
 					frappe.throw(_("Opening Accumulated Depreciation must be less than equal to {0}")
 						.format(depreciable_amount))
+<<<<<<< HEAD
 
+=======
+						
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 			if self.opening_accumulated_depreciation:
 				if not self.number_of_depreciations_booked:
 					frappe.throw(_("Please set Number of Depreciations Booked"))
 			else:
 				self.number_of_depreciations_booked = 0
+<<<<<<< HEAD
 
 			if cint(self.number_of_depreciations_booked) > cint(self.total_number_of_depreciations):
 				frappe.throw(_("Number of Depreciations Booked cannot be greater than Total Number of Depreciations"))
@@ -88,16 +114,34 @@ class Asset(Document):
 			frappe.throw(_("Next Depreciation Date cannot be before Purchase Date"))
 
 		if (flt(self.value_after_depreciation) > flt(self.expected_value_after_useful_life)
+=======
+				
+			if cint(self.number_of_depreciations_booked) > cint(self.total_number_of_depreciations):
+				frappe.throw(_("Number of Depreciations Booked cannot be greater than Total Number of Depreciations"))
+						
+		if self.next_depreciation_date and getdate(self.next_depreciation_date) < getdate(nowdate()):
+			frappe.msgprint(_("Next Depreciation Date is entered as past date"))
+			
+		if (flt(self.value_after_depreciation) > flt(self.expected_value_after_useful_life) 
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 			and not self.next_depreciation_date):
 				frappe.throw(_("Please set Next Depreciation Date"))
 
 	def make_depreciation_schedule(self):
+<<<<<<< HEAD
 		if self.depreciation_method != 'Manual':
 			self.schedules = []
 
 		if not self.get("schedules") and self.next_depreciation_date:
 			value_after_depreciation = flt(self.value_after_depreciation)
 
+=======
+		self.schedules = []
+		if not self.get("schedules") and self.next_depreciation_date:
+			accumulated_depreciation = flt(self.opening_accumulated_depreciation)
+			value_after_depreciation = flt(self.value_after_depreciation)
+			
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 			number_of_pending_depreciations = cint(self.total_number_of_depreciations) - \
 				cint(self.number_of_depreciations_booked)
 			if number_of_pending_depreciations:
@@ -106,10 +150,16 @@ class Asset(Document):
 						n * cint(self.frequency_of_depreciation))
 
 					depreciation_amount = self.get_depreciation_amount(value_after_depreciation)
+<<<<<<< HEAD
+=======
+				
+					accumulated_depreciation += flt(depreciation_amount)
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 					value_after_depreciation -= flt(depreciation_amount)
 
 					self.append("schedules", {
 						"schedule_date": schedule_date,
+<<<<<<< HEAD
 						"depreciation_amount": depreciation_amount
 					})
 
@@ -132,6 +182,16 @@ class Asset(Document):
 		if self.depreciation_method in ("Straight Line", "Manual"):
 			depreciation_amount = (flt(self.value_after_depreciation) -
 				flt(self.expected_value_after_useful_life)) / (cint(self.total_number_of_depreciations) -
+=======
+						"depreciation_amount": depreciation_amount,
+						"accumulated_depreciation_amount": accumulated_depreciation
+					})
+
+	def get_depreciation_amount(self, depreciable_value):
+		if self.depreciation_method == "Straight Line":
+			depreciation_amount = (flt(self.value_after_depreciation) -
+				flt(self.expected_value_after_useful_life)) / (cint(self.total_number_of_depreciations) - 
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 				cint(self.number_of_depreciations_booked))
 		else:
 			factor = 200.0 /  self.total_number_of_depreciations
@@ -142,6 +202,7 @@ class Asset(Document):
 				depreciation_amount = flt(depreciable_value) - flt(self.expected_value_after_useful_life)
 
 		return depreciation_amount
+<<<<<<< HEAD
 
 	def validate_expected_value_after_useful_life(self):
 		accumulated_depreciation_after_full_schedule = \
@@ -154,6 +215,20 @@ class Asset(Document):
 		if self.expected_value_after_useful_life < asset_value_after_full_schedule:
 			frappe.throw(_("Expected value after useful life must be greater than or equal to {0}")
 				.format(asset_value_after_full_schedule))
+=======
+		
+	def validate_expected_value_after_useful_life(self):
+		if self.depreciation_method == "Double Declining Balance":
+			accumulated_depreciation_after_full_schedule = \
+				max([d.accumulated_depreciation_amount for d in self.get("schedules")])
+			
+			asset_value_after_full_schedule = (flt(self.gross_purchase_amount) - 
+				flt(accumulated_depreciation_after_full_schedule))
+			
+			if self.expected_value_after_useful_life < asset_value_after_full_schedule:
+				frappe.throw(_("Expected value after useful life must be greater than or equal to {0}")
+					.format(asset_value_after_full_schedule))
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 
 	def validate_cancellation(self):
 		if self.status not in ("Submitted", "Partially Depreciated", "Fully Depreciated"):
@@ -167,8 +242,13 @@ class Asset(Document):
 			if d.journal_entry:
 				frappe.get_doc("Journal Entry", d.journal_entry).cancel()
 				d.db_set("journal_entry", None)
+<<<<<<< HEAD
 
 		self.db_set("value_after_depreciation",
+=======
+		
+		self.db_set("value_after_depreciation", 
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 			(flt(self.gross_purchase_amount) - flt(self.opening_accumulated_depreciation)))
 
 	def set_status(self, status=None):
@@ -199,7 +279,10 @@ def make_purchase_invoice(asset, item_code, gross_purchase_amount, company, post
 	pi = frappe.new_doc("Purchase Invoice")
 	pi.company = company
 	pi.currency = frappe.db.get_value("Company", company, "default_currency")
+<<<<<<< HEAD
 	pi.set_posting_time = 1
+=======
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 	pi.posting_date = posting_date
 	pi.append("items", {
 		"item_code": item_code,
@@ -212,7 +295,11 @@ def make_purchase_invoice(asset, item_code, gross_purchase_amount, company, post
 	})
 	pi.set_missing_values()
 	return pi
+<<<<<<< HEAD
 
+=======
+	
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 @frappe.whitelist()
 def make_sales_invoice(asset, item_code, company):
 	si = frappe.new_doc("Sales Invoice")
@@ -229,7 +316,11 @@ def make_sales_invoice(asset, item_code, company):
 	})
 	si.set_missing_values()
 	return si
+<<<<<<< HEAD
 
+=======
+	
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 @frappe.whitelist()
 def transfer_asset(args):
 	import json
@@ -238,6 +329,7 @@ def transfer_asset(args):
 	movement_entry.update(args)
 	movement_entry.insert()
 	movement_entry.submit()
+<<<<<<< HEAD
 
 	frappe.db.commit()
 
@@ -258,3 +350,25 @@ def get_item_details(item_code):
 	})
 
 	return ret
+=======
+	
+	frappe.db.commit()
+	
+	frappe.msgprint(_("Asset Movement record {0} created").format("<a href='#Form/Asset Movement/{0}'>{0}</a>".format(movement_entry.name)))
+	
+@frappe.whitelist()
+def get_item_details(item_code):
+	asset_category = frappe.db.get_value("Item", item_code, "asset_category")
+	
+	if not asset_category:
+		frappe.throw(_("Please enter Asset Category in Item {0}").format(item_code))
+	
+	ret = frappe.db.get_value("Asset Category", asset_category, 
+		["depreciation_method", "total_number_of_depreciations", "frequency_of_depreciation"], as_dict=1)
+		
+	ret.update({
+		"asset_category": asset_category
+	})
+		
+	return ret
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347

@@ -2,6 +2,7 @@
 # License: GNU General Public License v3. See license.txt
 
 from __future__ import unicode_literals
+<<<<<<< HEAD
 
 import frappe, time
 from frappe.utils.selenium_testdriver import TestDriver
@@ -63,3 +64,16 @@ def run_setup_wizard_test():
 	driver.close()
 
 	return True
+=======
+import frappe
+
+from erpnext.setup.setup_wizard.test_setup_data import args
+from frappe.desk.page.setup_wizard.setup_wizard import setup_complete
+import frappe.utils.scheduler
+
+if __name__=="__main__":
+	frappe.connect()
+	frappe.local.form_dict = frappe._dict(args)
+	setup_complete()
+	frappe.utils.scheduler.disable_scheduler()
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347

@@ -55,7 +55,11 @@ erpnext.ItemSelector = Class.extend({
 		$.each(this.frm.doc.items || [], function(i, d) {
 			if(d.item_code===item_code) {
 				frappe.model.set_value(d.doctype, d.name, 'qty', d.qty + 1);
+<<<<<<< HEAD
 				frappe.show_alert(__("Added {0} ({1})", [item_code, d.qty]));
+=======
+				show_alert(__("Added {0} ({1})", [item_code, d.qty]));
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 				added = true;
 				return false;
 			}
@@ -69,7 +73,11 @@ erpnext.ItemSelector = Class.extend({
 			frappe.after_ajax(function() {
 				setTimeout(function() {
 					frappe.model.set_value(d.doctype, d.name, 'qty', 1);
+<<<<<<< HEAD
 					frappe.show_alert(__("Added {0} ({1})", [item_code, 1]));
+=======
+					show_alert(__("Added {0} ({1})", [item_code, 1]));
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 				}, 100);
 			});
 		}

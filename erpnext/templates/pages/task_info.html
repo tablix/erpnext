@@ -4,7 +4,11 @@
 <div class="page-breadcrumbs" data-html-block="breadcrumbs">
 	<ul class="breadcrumb">
 		<li>
+<<<<<<< HEAD
 			<span class="fa fa-angle-left"></span>
+=======
+			<span class="icon icon-angle-left"></span>
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 			<a href="/projects?project={{ doc.project }}">{{ doc.project }}</a>
 		</li>
 	</ul>
@@ -19,9 +23,15 @@
 	<div class="col-sm-4">
 		<div class="page-header-actions-block" data-html-block="header-actions">
 			<button type="submit" class="btn btn-primary btn-sm btn-form-submit">
+<<<<<<< HEAD
 	    		{{ __("Update") }}</button>
 	    		<a href="tasks" class="btn btn-default btn-sm">
 	    		{{ __("Cancel") }}</a>
+=======
+	    		Update</button>
+	    		<a href="tasks" class="btn btn-default btn-sm">
+	    		Cancel</a>
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 		</div>
     </div>
 </div>
@@ -36,36 +46,61 @@
 		<div class="row">
 			<div class="col-sm-12" style="max-width: 500px;">
 				<div class="form-group">
+<<<<<<< HEAD
 					<label for="project" class="control-label text-muted small">{{ __("Project") }}</label>
+=======
+					<label for="project" class="control-label text-muted small">Project</label>
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 						<input type="text" class="form-control" name="project" readonly value= "{{ doc.project }}">
 				</div>
 
 				<div class="form-group">
+<<<<<<< HEAD
 					<label for="subject" class="control-label text-muted small">{{ __("Subject") }}</label>
+=======
+					<label for="subject" class="control-label text-muted small">Subject</label>
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 					<input type="text" class="form-control" name="subject" readonly value="{{ doc.subject }}">
 				</div>
 
 				<div class="form-group">
+<<<<<<< HEAD
 					<label for="description" class="control-label text-muted small">{{ __("Details") }}</label>
+=======
+					<label for="description" class="control-label text-muted small">Details</label>
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 					<textarea class="form-control" style="height: 200px;" name="description">{{ doc.description }}</textarea>
 				</div>
 
 				<div class="form-group">
+<<<<<<< HEAD
 					<label for="priority" class="control-label text-muted small">{{ __("Priority") }}</label>
+=======
+					<label for="priority" class="control-label text-muted small">Priority</label>
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 					<input type="text" class="form-control" name="priority" readonly value="{{ doc.priority }}">
 				</div>
 
 				<div class="form-group">
+<<<<<<< HEAD
 					<label for="exp_start_date" class="control-label text-muted small">{{ __("Expected Start Date") }}</label>
+=======
+					<label for="exp_start_date" class="control-label text-muted small">Expected Start Date</label>
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 					<input type="text" class="form-control hasDatepicker" name="exp_start_date" readonly value="{{ doc.exp_start_date }}">
 				</div>
 
 				<div class="form-group">
+<<<<<<< HEAD
 					<label for="exp_end_date" class="control-label text-muted small">{{ __("Expected End Date") }}</label>
+=======
+					<label for="exp_end_date" class="control-label text-muted small">Expected End Date</label>
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 					<input type="text" class="form-control hasDatepicker" name="exp_end_date" readonly value="{{ doc.exp_end_date }}">
 				</div>
 
 				<div class="form-group">
+<<<<<<< HEAD
 					<label for="status" class="control-label text-muted small">{{ __("Status") }}</label>
 					<select class="form-control" name="status" id="status" data-label="Status" data-fieldtype="Select">
 						<option value="Open" selected="selected">
@@ -75,6 +110,17 @@
 							{{ __("Overdue") }}</option><option value="Closed">
 							{{ __("Closed") }}</option><option value="Cancelled">
 							{{ __("Cancelled") }}</option>
+=======
+					<label for="status" class="control-label text-muted small">Status</label>
+					<select class="form-control" name="status" id="status" data-label="Status" data-fieldtype="Select">
+						<option value="Open" selected="selected">
+							Open</option><option value="Working">
+							Working</option><option value="Pending Review">
+							Pending Review</option><option value="Overdue">
+							Overdue</option><option value="Closed">
+							Closed</option><option value="Cancelled">
+							Cancelled</option>
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 					</select>
 				</div>
 			</div>
@@ -83,6 +129,7 @@
 </div>
 
 <div class="comments">
+<<<<<<< HEAD
 	<h3>{{ __("Comments") }}</h3>
 	<div class="no-comment">
 		{% for comment in comments %}
@@ -94,11 +141,27 @@
 		<a class="add-comment btn btn-default btn-sm">{{ __("Add Comment") }}</a>
 		<div style="display: none;" id="comment-form">
 			<p>{{ __("Add Comment") }}</p>
+=======
+	<h3>Comments</h3>
+	<div class="no-comment">
+		{% for comment in comments %}
+			<p class="text-muted">{{comment.sender_full_name}} : {{comment.subject}} on 									   									{{comment.communication_date.strftime('%Y-%m-%d')}}</p>
+		{% endfor %}
+	</div>
+	<div class="comment-form-wrapper">
+		<a class="add-comment btn btn-default btn-sm">Add Comment</a>
+		<div style="display: none;" id="comment-form">
+			<p>Add Comment</p>
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 			<form>
 				<fieldset>
 					<textarea class="form-control" name="comment" rows="5" placeholder="Comment"></textarea>
 					<p>
+<<<<<<< HEAD
 						<button class="btn btn-primary btn-sm" id="submit-comment">{{ __("Submit") }}</button>
+=======
+						<button class="btn btn-primary btn-sm" id="submit-comment">Submit</button>
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 					</p>
 				</fieldset>
 			</form>

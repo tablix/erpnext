@@ -60,7 +60,11 @@ def get_data():
 			"link": "List/Lead"
 		},
 		{
+<<<<<<< HEAD
 			"module_name": "Profit and Loss Statement",
+=======
+			"module_name": "Profit and Loss Statment",
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 			"_doctype": "Account",
 			"color": "#3498db",
 			"icon": "octicon octicon-repo",
@@ -79,7 +83,11 @@ def get_data():
 		{
 			"module_name": "Stock",
 			"color": "#f39c12",
+<<<<<<< HEAD
 			"icon": "fa fa-truck",
+=======
+			"icon": "icon-truck",
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 			"icon": "octicon octicon-package",
 			"type": "module",
 			"hidden": 1
@@ -94,7 +102,11 @@ def get_data():
 		{
 			"module_name": "Selling",
 			"color": "#1abc9c",
+<<<<<<< HEAD
 			"icon": "fa fa-tag",
+=======
+			"icon": "icon-tag",
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 			"icon": "octicon octicon-tag",
 			"type": "module",
 			"hidden": 1
@@ -102,15 +114,25 @@ def get_data():
 		{
 			"module_name": "Buying",
 			"color": "#c0392b",
+<<<<<<< HEAD
 			"icon": "fa fa-shopping-cart",
 			"icon": "octicon octicon-briefcase",
+=======
+			"icon": "icon-shopping-cart",
+			"icon": "octicon octicon-briefcase",
+			"label": _("Commercial"),
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 			"type": "module",
 			"hidden": 1
 		},
 		{
 			"module_name": "HR",
 			"color": "#2ecc71",
+<<<<<<< HEAD
 			"icon": "fa fa-group",
+=======
+			"icon": "icon-group",
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 			"icon": "octicon octicon-organization",
 			"label": _("Human Resources"),
 			"type": "module",
@@ -119,7 +141,11 @@ def get_data():
 		{
 			"module_name": "Manufacturing",
 			"color": "#7f8c8d",
+<<<<<<< HEAD
 			"icon": "fa fa-cogs",
+=======
+			"icon": "icon-cogs",
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 			"icon": "octicon octicon-tools",
 			"type": "module",
 			"hidden": 1
@@ -127,7 +153,11 @@ def get_data():
 		{
 			"module_name": "POS",
 			"color": "#589494",
+<<<<<<< HEAD
 			"icon": "fa fa-th",
+=======
+			"icon": "icon-th",
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 			"icon": "octicon octicon-credit-card",
 			"type": "page",
 			"link": "pos",
@@ -136,7 +166,11 @@ def get_data():
 		{
 			"module_name": "Projects",
 			"color": "#8e44ad",
+<<<<<<< HEAD
 			"icon": "fa fa-puzzle-piece",
+=======
+			"icon": "icon-puzzle-piece",
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 			"icon": "octicon octicon-rocket",
 			"type": "module",
 			"hidden": 1
@@ -144,7 +178,11 @@ def get_data():
 		{
 			"module_name": "Support",
 			"color": "#2c3e50",
+<<<<<<< HEAD
 			"icon": "fa fa-phone",
+=======
+			"icon": "icon-phone",
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 			"icon": "octicon octicon-issue-opened",
 			"type": "module",
 			"hidden": 1
@@ -229,9 +267,24 @@ def get_data():
 			"type": "list"
 		},
 		{
+<<<<<<< HEAD
 			"module_name": "Fees",
 			"color": "#83C21E",
 			"icon": "fa fa-money",
+=======
+			"module_name": "Assessment",
+			"color": "#8a70be",
+			"icon": "icon-file-text-alt",
+			"label": _("Assessment"),
+			"link": "List/Assessment",
+			"_doctype": "Assessment",
+			"type": "list"
+		},
+		{
+			"module_name": "Fees",
+			"color": "#83C21E",
+			"icon": "icon-money",
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 			"label": _("Fees"),
 			"link": "List/Fees",
 			"_doctype": "Fees",
@@ -249,7 +302,11 @@ def get_data():
 		{
 			"module_name": "Room",
 			"color": "#f22683",
+<<<<<<< HEAD
 			"icon": "fa fa-map-marker",
+=======
+			"icon": "icon-map-marker",
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 			"label": _("Room"),
 			"link": "List/Room",
 			"_doctype": "Room",
@@ -261,6 +318,7 @@ def get_data():
 			"icon": "octicon octicon-mortar-board",
 			"type": "module",
 			"label": _("Schools")
+<<<<<<< HEAD
 		},
 		{
 			"module_name": "Healthcare",
@@ -268,5 +326,7 @@ def get_data():
 			"icon": "octicon octicon-plus",
 			"type": "module",
 			"label": _("Healthcare")
+=======
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 		}
 	]

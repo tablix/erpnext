@@ -12,7 +12,11 @@ Leave Type refers to types of leave allotted to an employee by a company. An emp
 requirement.
 
 <img class="screenshot" alt="New Leave Type" 
+<<<<<<< HEAD
 	src="/docs/assets/img/human-resources/new-leave-type.png">
+=======
+	src="{{docs_base_url}}/assets/img/human-resources/new-leave-type.png">
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 
 **Max Days Leave Allowed:** It refers to maximum number of days this particular Leave Type can be availed at a stretch. If an employee exceeds the maximum number of days under a particular Leave Type, his/her extended leave may be considered as ‘Leave Without Pay’ and this may affect his/her salary calculation.
 
@@ -45,7 +49,11 @@ Leave Allocation enables you to allot a specific number of leaves to a particula
 To allocate leaves to an Employee, select the period and the number of leaves you want to allocate. You can also add unused leaves from previous allocation period.
 
 <img class="screenshot" alt="Manual Leave Allocation" 
+<<<<<<< HEAD
 	src="/docs/assets/img/human-resources/manual-leave-allocation.png">
+=======
+	src="{{docs_base_url}}/assets/img/human-resources/manual-leave-allocation.png">
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 
 ###Via Leave Allocation Tool
 > Human Resources > Tools > Leave Allocation Tool
@@ -53,7 +61,11 @@ To allocate leaves to an Employee, select the period and the number of leaves yo
 This tool enables you to allocate leaves for a category of employees, instead of individual ones. You can allocate leaves based on Employee Type, Branch, Department and Designation. Leave Allocation Tool is also known as Leave Control Panel.
 
 <img class="screenshot" alt="Leave Allocation Tool"
+<<<<<<< HEAD
 	src="/docs/assets/img/human-resources/leave-allocation-tool.png">
+=======
+	src="{{docs_base_url}}/assets/img/human-resources/leave-allocation-tool.png">
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 
 ---
 
@@ -71,7 +83,11 @@ Leave Application section enables an employee to apply for leaves. Employee can 
 - Employee gets notification on the status of his/her Leave Application
 
 <img class="screenshot" alt="Leave Allocation Tool"
+<<<<<<< HEAD
 	src="/docs/assets/img/human-resources/new-leave-application.png">
+=======
+	src="{{docs_base_url}}/assets/img/human-resources/new-leave-application.png">
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 
 	
 **Notes:**
@@ -89,4 +105,8 @@ Leave Application section enables an employee to apply for leaves. Employee can 
 Leave Block List is a list of dates in a year, on which employees can not apply for leave. You can define a list of users who can approve Leave Application on blocked days, in case of urgency. You can also define whether the list will applied on entire company or any specific departments.
 
 <img class="screenshot" alt="Leave Allocation Tool"
+<<<<<<< HEAD
 	src="/docs/assets/img/human-resources/leave-block-list.png">
+=======
+	src="{{docs_base_url}}/assets/img/human-resources/leave-block-list.png">
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347

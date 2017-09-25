@@ -30,11 +30,16 @@ def get_columns(leave_types):
 	return columns
 	
 def get_data(filters, leave_types):
+<<<<<<< HEAD
 	user = frappe.session.user
+=======
+
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 	allocation_records_based_on_to_date = get_leave_allocation_records(filters.to_date)
 
 	active_employees = frappe.get_all("Employee", 
 		filters = { "status": "Active", "company": filters.company}, 
+<<<<<<< HEAD
 		fields = ["name", "employee_name", "department", "user_id"])
 	
 	data = []
@@ -56,5 +61,25 @@ def get_data(filters, leave_types):
 				row += [leaves_taken, closing]
 			
 			data.append(row)
+=======
+		fields = ["name", "employee_name", "department"])
+	
+	data = []
+	for employee in active_employees:
+		row = [employee.name, employee.employee_name, employee.department]
+
+		for leave_type in leave_types:	
+			# leaves taken
+			leaves_taken = get_approved_leaves_for_period(employee.name, leave_type, 
+				filters.from_date, filters.to_date)
+	
+			# closing balance
+			closing = get_leave_balance_on(employee.name, leave_type, filters.to_date, 
+				allocation_records_based_on_to_date.get(employee.name, frappe._dict()))
+
+			row += [leaves_taken, closing]
+			
+		data.append(row)
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 		
 	return data

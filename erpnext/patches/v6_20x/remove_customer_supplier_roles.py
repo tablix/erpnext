@@ -8,10 +8,17 @@ def execute():
 	frappe.reload_doc("projects", "doctype", "timesheet")
 	
 	for role in ('Customer', 'Supplier'):
+<<<<<<< HEAD
 		frappe.db.sql('''delete from `tabHas Role`
 			where role=%s and parent in ("Administrator", "Guest")''', role)
 
 		if not frappe.db.sql('select name from `tabHas Role` where role=%s', role):
+=======
+		frappe.db.sql('''delete from `tabUserRole`
+			where role=%s and parent in ("Administrator", "Guest")''', role)
+
+		if not frappe.db.sql('select name from `tabUserRole` where role=%s', role):
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 
 			# delete DocPerm
 			for doctype in frappe.db.sql('select parent from tabDocPerm where role=%s', role):

@@ -7,4 +7,8 @@ import frappe
 from frappe.model.document import Document
 
 class StudentGroupStudent(Document):
+<<<<<<< HEAD
 	pass
+=======
+	pass
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347

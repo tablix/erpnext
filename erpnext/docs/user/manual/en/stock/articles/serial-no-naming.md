@@ -14,11 +14,19 @@ If received items already has its Serial No. barcoded, you can simply scan that 
 
 On submission of Purchase Receipt or Stock entry for the serialized item, Serial Nos. will be auto-generated.
 
+<<<<<<< HEAD
 <img alt="Serial Nos Entry" class="screenshot" src="/docs/assets/img/articles/serial-naming-1.png">
 
 Generated Serial numbers will be updated for each item.
 
 <img alt="Serial Nos Created" class="screenshot" src="/docs/assets/img/articles/serial-naming-2.png">
+=======
+<img alt="Serial Nos Entry" class="screenshot" src="{{docs_base_url}}/assets/img/articles/serial-naming-1.png">
+
+Generated Serial numbers will be updated for each item.
+
+<img alt="Serial Nos Created" class="screenshot" src="{{docs_base_url}}/assets/img/articles/serial-naming-2.png">
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 
 ###2. Serializing Manufacturing Item
 
@@ -28,12 +36,20 @@ To Serialize Manufacturing Item, you can define Series for Serial No. Generation
 
 When Item is set as serialized, it will allow you to mentioned Series for it.
 
+<<<<<<< HEAD
 <img alt="Serial Nos Created" class="screenshot" src="/docs/assets/img/articles/serial-naming-3.png">
+=======
+<img alt="Serial Nos Created" class="screenshot" src="{{docs_base_url}}/assets/img/articles/serial-naming-3.png">
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 
 ####2.2 Production Entry for Serialized Item
 
 On submission of production entry for manufacturing item, system will automatically generate Serial Nos. following Series as specified in the Item master.
 
+<<<<<<< HEAD
 <img alt="Serial Nos Created" class="screenshot" src="/docs/assets/img/articles/serial-naming-4.png">
+=======
+<img alt="Serial Nos Created" class="screenshot" src="{{docs_base_url}}/assets/img/articles/serial-naming-4.png">
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 
 <!-- markdown -->

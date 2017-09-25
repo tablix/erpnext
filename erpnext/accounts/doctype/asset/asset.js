@@ -14,7 +14,11 @@ frappe.ui.form.on('Asset', {
 				}
 			};
 		});
+<<<<<<< HEAD
 
+=======
+		
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 		frm.set_query("warehouse", function() {
 			return {
 				"filters": {
@@ -24,12 +28,20 @@ frappe.ui.form.on('Asset', {
 			};
 		});
 	},
+<<<<<<< HEAD
 
 	refresh: function(frm) {
 		frappe.ui.form.trigger("Asset", "is_existing_asset");
 		frm.toggle_display("next_depreciation_date", frm.doc.docstatus < 1);
 		frm.events.make_schedules_editable(frm);
 
+=======
+	
+	refresh: function(frm) {
+		frappe.ui.form.trigger("Asset", "is_existing_asset");
+		frm.toggle_display("next_depreciation_date", frm.doc.docstatus < 1);
+				
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 		if (frm.doc.docstatus==1) {
 			if (frm.doc.status=='Submitted' && !frm.doc.is_existing_asset && !frm.doc.purchase_invoice) {
 				frm.add_custom_button("Make Purchase Invoice", function() {
@@ -40,6 +52,7 @@ frappe.ui.form.on('Asset', {
 				frm.add_custom_button("Transfer Asset", function() {
 					erpnext.asset.transfer_asset(frm);
 				});
+<<<<<<< HEAD
 
 				frm.add_custom_button("Scrap Asset", function() {
 					erpnext.asset.scrap_asset(frm);
@@ -49,11 +62,23 @@ frappe.ui.form.on('Asset', {
 					erpnext.asset.make_sales_invoice(frm);
 				});
 
+=======
+				
+				frm.add_custom_button("Scrap Asset", function() {
+					erpnext.asset.scrap_asset(frm);
+				});
+				
+				frm.add_custom_button("Sale Asset", function() {
+					erpnext.asset.make_sales_invoice(frm);
+				});
+				
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 			} else if (frm.doc.status=='Scrapped') {
 				frm.add_custom_button("Restore Asset", function() {
 					erpnext.asset.restore_asset(frm);
 				});
 			}
+<<<<<<< HEAD
 
 			frm.trigger("show_graph");
 		}
@@ -77,23 +102,60 @@ frappe.ui.form.on('Asset', {
 			x_intervals.push(v.schedule_date);
 			var asset_value = flt(frm.doc.gross_purchase_amount) - flt(v.accumulated_depreciation_amount);
 			if(v.journal_entry) {
+=======
+			
+			frm.trigger("show_graph");
+		}
+	},
+	
+	show_graph: function(frm) {		
+		var x_intervals = ["x", frm.doc.purchase_date];
+		var asset_values = ["Asset Value", frm.doc.gross_purchase_amount];
+		var last_depreciation_date = frm.doc.purchase_date;
+		
+		if(frm.doc.opening_accumulated_depreciation) {
+			last_depreciation_date = frappe.datetime.add_months(frm.doc.next_depreciation_date, 
+				-1*frm.doc.frequency_of_depreciation);
+			
+			x_intervals.push(last_depreciation_date);
+			asset_values.push(flt(frm.doc.gross_purchase_amount) - 
+				flt(frm.doc.opening_accumulated_depreciation));
+		}
+		
+		$.each(frm.doc.schedules || [], function(i, v) {
+			x_intervals.push(v.schedule_date);
+			asset_value = flt(frm.doc.gross_purchase_amount) - flt(v.accumulated_depreciation_amount);
+			if(v.journal_entry) {				
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 				last_depreciation_date = v.schedule_date;
 				asset_values.push(asset_value)
 			} else {
 				if (in_list(["Scrapped", "Sold"], frm.doc.status)) {
+<<<<<<< HEAD
 					asset_values.push(null)
+=======
+	 				asset_values.push(null)
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 				} else {
 					asset_values.push(asset_value)
 				}
 			}
 		})
+<<<<<<< HEAD
 
+=======
+		
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 		if(in_list(["Scrapped", "Sold"], frm.doc.status)) {
 			x_intervals.push(frm.doc.disposal_date);
 			asset_values.push(0);
 			last_depreciation_date = frm.doc.disposal_date;
 		}
+<<<<<<< HEAD
 
+=======
+		
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 		frm.dashboard.setup_chart({
 			data: {
 				x: 'x',
@@ -117,9 +179,15 @@ frappe.ui.form.on('Asset', {
 					padding: {bottom: 10}
 				}
 			}
+<<<<<<< HEAD
 		});
 	},
 
+=======
+		});		
+	},
+	
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 	item_code: function(frm) {
 		if(frm.doc.item_code) {
 			frappe.call({
@@ -137,11 +205,16 @@ frappe.ui.form.on('Asset', {
 			})
 		}
 	},
+<<<<<<< HEAD
 
+=======
+	
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 	is_existing_asset: function(frm) {
 		frm.toggle_enable("supplier", frm.doc.is_existing_asset);
 		frm.toggle_reqd("next_depreciation_date", !frm.doc.is_existing_asset);
 	},
+<<<<<<< HEAD
 
 	opening_accumulated_depreciation: function(frm) {
 		erpnext.asset.set_accululated_depreciation(frm);
@@ -158,6 +231,8 @@ frappe.ui.form.on('Asset', {
 		frm.fields_dict["schedules"].grid.toggle_enable("depreciation_amount", is_editable);
 	}
 
+=======
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 });
 
 frappe.ui.form.on('Depreciation Schedule', {
@@ -176,6 +251,7 @@ frappe.ui.form.on('Depreciation Schedule', {
 				}
 			})
 		}
+<<<<<<< HEAD
 	},
 
 	depreciation_amount: function(frm, cdt, cdn) {
@@ -195,6 +271,11 @@ erpnext.asset.set_accululated_depreciation = function(frm) {
 	})
 }
 
+=======
+	}
+})
+
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 erpnext.asset.make_purchase_invoice = function(frm) {
 	frappe.call({
 		args: {
@@ -260,9 +341,15 @@ erpnext.asset.transfer_asset = function(frm) {
 		title: __("Transfer Asset"),
 		fields: [
 			{
+<<<<<<< HEAD
 				"label": __("Target Warehouse"),
 				"fieldname": "target_warehouse",
 				"fieldtype": "Link",
+=======
+				"label": __("Target Warehouse"), 
+				"fieldname": "target_warehouse",
+				"fieldtype": "Link", 
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 				"options": "Warehouse",
 				"get_query": function () {
 					return {
@@ -271,6 +358,7 @@ erpnext.asset.transfer_asset = function(frm) {
 							["Warehouse", "is_group", "=", 0]
 						]
 					}
+<<<<<<< HEAD
 				},
 				"reqd": 1
 			},
@@ -278,6 +366,15 @@ erpnext.asset.transfer_asset = function(frm) {
 				"label": __("Date"),
 				"fieldname": "transfer_date",
 				"fieldtype": "Datetime",
+=======
+				}, 
+				"reqd": 1 
+			},
+			{
+				"label": __("Date"), 
+				"fieldname": "transfer_date",
+				"fieldtype": "Datetime", 
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 				"reqd": 1,
 				"default": frappe.datetime.now_datetime()
 			}
@@ -285,7 +382,11 @@ erpnext.asset.transfer_asset = function(frm) {
 	});
 
 	dialog.set_primary_action(__("Transfer"), function() {
+<<<<<<< HEAD
 		var args = dialog.get_values();
+=======
+		args = dialog.get_values();
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 		if(!args) return;
 		dialog.hide();
 		return frappe.call({

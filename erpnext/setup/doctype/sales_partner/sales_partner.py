@@ -5,7 +5,11 @@ from __future__ import unicode_literals
 import frappe
 from frappe.utils import cstr, filter_strip_join
 from frappe.website.website_generator import WebsiteGenerator
+<<<<<<< HEAD
 from frappe.contacts.address_and_contact import load_address_and_contact
+=======
+from erpnext.utilities.address_and_contact import load_address_and_contact
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 
 class SalesPartner(WebsiteGenerator):
 	website = frappe._dict(
@@ -16,7 +20,11 @@ class SalesPartner(WebsiteGenerator):
 
 	def onload(self):
 		"""Load address and contacts in `__onload`"""
+<<<<<<< HEAD
 		load_address_and_contact(self)
+=======
+		load_address_and_contact(self, "sales_partner")
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 
 	def autoname(self):
 		self.name = self.partner_name
@@ -28,6 +36,18 @@ class SalesPartner(WebsiteGenerator):
 		if self.partner_website and not self.partner_website.startswith("http"):
 			self.partner_website = "http://" + self.partner_website
 
+<<<<<<< HEAD
+=======
+	def get_contacts(self, nm):
+		if nm:
+			return frappe.db.convert_to_lists(frappe.db.sql("""
+				select name, CONCAT(IFNULL(first_name,''),
+					' ',IFNULL(last_name,'')),contact_no,email_id
+				from `tabContact` where sales_partner = %s""", nm))
+		else:
+			return ''
+
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 	def get_context(self, context):
 		address = frappe.db.get_value("Address",
 			{"sales_partner": self.name, "is_primary_address": 1},

@@ -36,7 +36,11 @@ def add_header(w):
 	w.writerow(["Please do not change the template headings"])
 	w.writerow(["Status should be one of these values: " + status])
 	w.writerow(["If you are overwriting existing attendance records, 'ID' column mandatory"])
+<<<<<<< HEAD
 	w.writerow(["ID", "Employee", "Employee Name", "Date", "Status", "Leave Type",
+=======
+	w.writerow(["ID", "Employee", "Employee Name", "Date", "Status",
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 		 "Company", "Naming Series"])
 	return w
 
@@ -53,8 +57,12 @@ def add_data(w, args):
 			row = [
 				existing_attendance and existing_attendance.name or "",
 				employee.name, employee.employee_name, date,
+<<<<<<< HEAD
 				existing_attendance and existing_attendance.status or "",
 				existing_attendance and existing_attendance.leave_type or "", employee.company,
+=======
+				existing_attendance and existing_attendance.status or "", employee.company,
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 				existing_attendance and existing_attendance.naming_series or get_naming_series(),
 			]
 			w.writerow(row)
@@ -72,13 +80,22 @@ def get_active_employees():
 	return employees
 
 def get_existing_attendance_records(args):
+<<<<<<< HEAD
 	attendance = frappe.db.sql("""select name, attendance_date, employee, status, leave_type, naming_series
 		from `tabAttendance` where attendance_date between %s and %s and docstatus < 2""",
+=======
+	attendance = frappe.db.sql("""select name, att_date, employee, status, naming_series
+		from `tabAttendance` where att_date between %s and %s and docstatus < 2""",
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 		(args["from_date"], args["to_date"]), as_dict=1)
 
 	existing_attendance = {}
 	for att in attendance:
+<<<<<<< HEAD
 		existing_attendance[tuple([att.attendance_date, att.employee])] = att
+=======
+		existing_attendance[tuple([att.att_date, att.employee])] = att
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 
 	return existing_attendance
 
@@ -104,7 +121,11 @@ def upload():
 		return {"messages": msg, "error": msg}
 	columns = [scrub(f) for f in rows[4]]
 	columns[0] = "name"
+<<<<<<< HEAD
 	columns[3] = "attendance_date"
+=======
+	columns[3] = "att_date"
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 	ret = []
 	error = False
 
@@ -121,7 +142,11 @@ def upload():
 		try:
 			check_record(d)
 			ret.append(import_doc(d, "Attendance", 1, row_idx, submit=True))
+<<<<<<< HEAD
 		except Exception as e:
+=======
+		except Exception, e:
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 			error = True
 			ret.append('Error for row (#%d) %s : %s' % (row_idx,
 				len(row)>1 and row[1] or "", cstr(e)))

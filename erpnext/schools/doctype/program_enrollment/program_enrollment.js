@@ -4,6 +4,7 @@
 cur_frm.add_fetch('fee_structure', 'total_amount', 'amount');
 
 frappe.ui.form.on("Program Enrollment", {
+<<<<<<< HEAD
 	onload: function(frm, cdt, cdn){
 		frm.set_query("academic_term", "fees", function(){
 			return{
@@ -44,21 +45,32 @@ frappe.ui.form.on("Program Enrollment", {
 
 	program: function(frm) {
 		frm.events.get_courses(frm);
+=======
+	program: function(frm) {
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 		if (frm.doc.program) {
 			frappe.call({
 				method: "erpnext.schools.api.get_fee_schedule",
 				args: {
+<<<<<<< HEAD
 					"program": frm.doc.program,
 					"student_category": frm.doc.student_category
+=======
+					"program": frm.doc.program
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 				},
 				callback: function(r) {
 					if(r.message) {
 						frm.set_value("fees" ,r.message);
+<<<<<<< HEAD
 						frm.events.get_courses(frm);
+=======
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 					}
 				}
 			});
 		}
+<<<<<<< HEAD
 	},
 
 	student_category: function() {
@@ -76,5 +88,7 @@ frappe.ui.form.on("Program Enrollment", {
 				}
 			}
 		})
+=======
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 	}
 });

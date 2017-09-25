@@ -7,6 +7,7 @@ from __future__ import unicode_literals
 import frappe
 from frappe import _
 from frappe.model.document import Document
+<<<<<<< HEAD
 from frappe.utils import get_datetime_str, formatdate, nowdate
 
 class CurrencyExchange(Document):
@@ -15,6 +16,12 @@ class CurrencyExchange(Document):
 			self.date = nowdate()
 		self.name = '{0}-{1}-{2}'.format(formatdate(get_datetime_str(self.date), "yyyy-MM-dd"),
 			self.from_currency, self.to_currency)
+=======
+
+class CurrencyExchange(Document):
+	def autoname(self):
+		self.name = self.from_currency + "-" + self.to_currency
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 
 	def validate(self):
 		self.validate_value("exchange_rate", ">", 0)

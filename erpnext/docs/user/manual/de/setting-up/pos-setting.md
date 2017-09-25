@@ -9,7 +9,11 @@ Wenn Sie im Endkundengeschäft tätig sind, möchten Sie, dass Ihr POS so schnel
 
 Setzen Sie die Standardeinstellungen wie definiert.
 
+<<<<<<< HEAD
 <img class="screenshot" alt="POS-Einstellungen" src="/docs/assets/img/pos-setting/pos-setting.png">
+=======
+<img class="screenshot" alt="POS-Einstellungen" src="{{docs_base_url}}/assets/img/pos-setting/pos-setting.png">
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 
 > Wichtig: Wenn Sie einen bestimmten Benutzer angeben, werden die POS-Einstellungen nur auf diesen Benutzer angewendet. Wenn diese Optin leer bleibt, werden die Einstellungen auf alle Benutzer angewendet. Um mehr über POS zu erfahren, gehen Sie zu POS.
 

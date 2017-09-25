@@ -10,6 +10,7 @@ frappe.ui.form.on('Budget', {
 				}
 			}
 		})
+<<<<<<< HEAD
 
 		frm.set_query("project", function() {
 			return {
@@ -18,6 +19,8 @@ frappe.ui.form.on('Budget', {
 				}
 			}
 		})
+=======
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 		
 		frm.set_query("account", "accounts", function() {
 			return {
@@ -36,6 +39,7 @@ frappe.ui.form.on('Budget', {
 				}
 			}
 		})
+<<<<<<< HEAD
 	},
 
 	refresh: function(frm) {
@@ -58,5 +62,7 @@ frappe.ui.form.on('Budget', {
 	toggle_reqd_fields: function(frm) {
 		frm.toggle_reqd("cost_center", frm.doc.budget_against=="Cost Center");
 		frm.toggle_reqd("project", frm.doc.budget_against=="Project");
+=======
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 	}
 });

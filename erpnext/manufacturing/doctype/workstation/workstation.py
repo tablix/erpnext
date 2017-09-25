@@ -58,6 +58,7 @@ def check_if_within_operating_hours(workstation, operation, from_datetime, to_da
 def is_within_operating_hours(workstation, operation, from_datetime, to_datetime):
 	operation_length = time_diff_in_seconds(to_datetime, from_datetime)
 	workstation = frappe.get_doc("Workstation", workstation)
+<<<<<<< HEAD
 	
 	if not workstation.working_hours:
 		return
@@ -67,6 +68,13 @@ def is_within_operating_hours(workstation, operation, from_datetime, to_datetime
 			slot_length = (to_timedelta(working_hour.end_time or "") - to_timedelta(working_hour.start_time or "")).total_seconds()
 			if slot_length >= operation_length:
 				return
+=======
+
+	for working_hour in workstation.working_hours:
+		slot_length = (to_timedelta(working_hour.end_time or "") - to_timedelta(working_hour.start_time or "")).total_seconds()
+		if slot_length >= operation_length:
+			return
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 
 	frappe.throw(_("Operation {0} longer than any available working hours in workstation {1}, break down the operation into multiple operations").format(operation, workstation.name), NotInWorkingHoursError)
 

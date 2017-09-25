@@ -1,7 +1,11 @@
 # Copyright (c) 2015, Frappe Technologies Pvt. Ltd. and Contributors
 # License: GNU General Public License v3. See license.txt
 
+<<<<<<< HEAD
 from __future__ import print_function, unicode_literals
+=======
+from __future__ import unicode_literals
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 import frappe
 
 def execute():
@@ -109,7 +113,11 @@ def delete_individual_party_account():
 		and exists(select gle.name from `tabGL Entry` gle where gle.account = tabAccount.name)""")
 		
 	if accounts_not_deleted:
+<<<<<<< HEAD
 		print("Accounts not deleted: " + "\n".join(accounts_not_deleted))
+=======
+		print "Accounts not deleted: " + "\n".join(accounts_not_deleted)
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 		
 
 def remove_customer_supplier_account_report():

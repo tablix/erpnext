@@ -3,7 +3,11 @@
 {% block title %} {{ title }} {% endblock %}
 
 {% block breadcrumbs %}
+<<<<<<< HEAD
 	{% include "templates/includes/breadcrumbs.html" %}
+=======
+    {% include "templates/includes/breadcrumbs.html" %}
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 {% endblock %}
 
 {% block page_content %}
@@ -25,6 +29,7 @@
 					{{ _("Item Code") }}: <span itemprop="productID">{{ variant and variant.name or name }}</span></p>
 				<br>
 				<div class="item-attribute-selectors">
+<<<<<<< HEAD
 					{% if has_variants %}
 					{% for d in attributes %}
 					{% if attribute_values[d.attribute] -%}
@@ -36,6 +41,19 @@
 							data-attribute="{{ d.attribute }}">
 						{% for value in attribute_values[d.attribute] %}
 						<option value="{{ value }}"
+=======
+                    {% if has_variants %}
+                    {% for d in attributes %}
+					{% if attribute_values[d.attribute] -%}
+                    <div class="item-view-attribute {% if (attribute_values[d.attribute] | len)==1 -%} hidden {%- endif %}"
+                            style="margin-bottom: 10px;">
+                        <h6 class="text-muted">{{ _(d.attribute) }}</h6>
+                        <select class="form-control"
+                            style="max-width: 140px"
+                            data-attribute="{{ d.attribute }}">
+						{% for value in attribute_values[d.attribute] %}
+                        <option value="{{ value }}"
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 						{% if selected_attributes and selected_attributes[d.attribute]==value -%}
 							selected
 						{%- elif disabled_attributes and value in disabled_attributes.get(d.attribute, []) -%}
@@ -43,12 +61,21 @@
 						{%- endif %}>
 							{{ _(value) }}
 						</option>
+<<<<<<< HEAD
 						{% endfor %}
 						</select>
 					</div>
 					{%- endif %}
 					{% endfor %}
 					{% endif %}
+=======
+                        {% endfor %}
+                        </select>
+                    </div>
+					{%- endif %}
+                    {% endfor %}
+                    {% endif %}
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 				</div>
 				<br>
 				<div style="min-height: 100px; margin: 10px 0;">
@@ -56,6 +83,7 @@
 						<h4 class="item-price" itemprop="price"></h4>
 						<div class="item-stock" itemprop="availability"></div>
 					</div>
+<<<<<<< HEAD
 					<div class="item-cart hide">
 						<div id="item-add-to-cart">
 							<button class="btn btn-primary btn-sm">
@@ -67,6 +95,20 @@
 								{{ _("View in Cart") }}</a>
 						</div>
 					</div>
+=======
+                    <div class="item-cart hide">
+    					<div id="item-add-to-cart">
+    						<button class="btn btn-primary btn-sm">
+    							{{ _("Add to Cart") }}</button>
+    					</div>
+    					<div id="item-update-cart"
+                            style="display: none;
+    						padding-left: 0px; padding-right: 0px;
+                            padding-top: 10px;">
+    						<a href="/cart">{{ _("Goto Cart") }}</a>
+    					</div>
+                    </div>
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 				</div>
 			</div>
 		</div>
@@ -87,7 +129,11 @@
 				<table class="table borderless" style="width: 100%">
 				{% for d in website_specifications -%}
 					<tr>
+<<<<<<< HEAD
 						<td class="text-muted" style="width: 30%;">{{ d.label }}</td>
+=======
+						<td class="product-label text-muted" style="width: 30%;">{{ d.label }}</td>
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 						<td>{{ d.description }}</td>
 					</tr>
 				{%- endfor %}
@@ -100,10 +146,18 @@
 <script>
 	{% include "templates/includes/product_page.js" %}
 
+<<<<<<< HEAD
 	{% if variant_info %}
 	window.variant_info = {{ variant_info }};
 	{% else %}
 	window.variant_info = null;
 	{% endif %}
+=======
+    {% if variant_info %}
+    window.variant_info = {{ variant_info }};
+    {% else %}
+    window.variant_info = null;
+    {% endif %}
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 </script>
 {% endblock %}

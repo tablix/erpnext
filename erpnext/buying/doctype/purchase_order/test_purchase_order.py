@@ -110,6 +110,7 @@ class TestPurchaseOrder(unittest.TestCase):
 		po.update_status("Closed")
 
 		self.assertEquals(get_ordered_qty(item_code="_Test Item", warehouse="_Test Warehouse - _TC"), existing_ordered_qty)
+<<<<<<< HEAD
 		
 	def test_group_same_items(self):
 		frappe.db.set_value("Buying Settings", None, "allow_multiple_items", 1)
@@ -142,6 +143,8 @@ def get_same_items():
 					"schedule_date": add_days(nowdate(), 1)
 				}
 			]		
+=======
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 
 def create_purchase_order(**args):
 	po = frappe.new_doc("Purchase Order")

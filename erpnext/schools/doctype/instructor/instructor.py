@@ -4,6 +4,7 @@
 
 from __future__ import unicode_literals
 import frappe
+<<<<<<< HEAD
 from frappe import _
 from frappe.model.document import Document
 from frappe.model.naming import make_autoname
@@ -22,3 +23,9 @@ class Instructor(Document):
 				self.name = self.employee
 			elif naming_method == 'Full Name':
 				self.name = self.instructor_name
+=======
+from frappe.model.document import Document
+
+class Instructor(Document):
+	pass
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347

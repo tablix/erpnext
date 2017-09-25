@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <h2 class="text-center">{%= __("Statement of Account") %}</h2>
 <h4 class="text-center">
 	{% if (filters.party_name) { %}
@@ -8,6 +9,13 @@
 		{%= filters.account %}
 	{% } %}
 </h4>
+=======
+<div style="margin-bottom: 7px;" class="text-center">
+	{%= frappe.boot.letter_heads[filters.letter_head || frappe.get_doc(":Company", filters.company).default_letter_head || frappe.defaults.get_default("letter_head")] %}
+</div>
+<h2 class="text-center">{%= __("Statement of Account") %}</h2>
+<h4 class="text-center">{%= (filters.party || filters.account) && ((filters.party || filters.account) + ", ")  || "" %} {%= filters.company %}</h4>
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 <h5 class="text-center">
 	{%= dateutil.str_to_user(filters.from_date) %}
 	{%= __("to") %}

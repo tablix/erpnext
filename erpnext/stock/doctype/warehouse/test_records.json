@@ -10,6 +10,7 @@
   "company": "_Test Company",
   "create_account_under": "Stock Assets - _TC",
   "doctype": "Warehouse",
+<<<<<<< HEAD
   "warehouse_name": "_Test Scrap Warehouse",
   "is_group": 0
  },
@@ -17,6 +18,8 @@
   "company": "_Test Company",
   "create_account_under": "Stock Assets - _TC",
   "doctype": "Warehouse",
+=======
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
   "warehouse_name": "_Test Warehouse",
   "is_group": 0
  },

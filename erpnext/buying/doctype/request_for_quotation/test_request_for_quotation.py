@@ -3,6 +3,7 @@
 # See license.txt
 from __future__ import unicode_literals
 
+<<<<<<< HEAD
 import unittest
 
 import frappe
@@ -40,16 +41,38 @@ class TestRequestforQuotation(unittest.TestCase):
 		sq1 = make_supplier_quotation(rfq.name, rfq.get('suppliers')[1].supplier)
 		sq1.submit()
 
+=======
+import frappe
+import unittest
+from frappe.utils import nowdate
+
+class TestRequestforQuotation(unittest.TestCase):
+	def test_make_supplier_quotation(self):
+		from erpnext.buying.doctype.request_for_quotation.request_for_quotation import make_supplier_quotation
+		rfq = make_request_for_quotation()
+		
+		sq = make_supplier_quotation(rfq.name, rfq.get('suppliers')[0].supplier)
+		sq.submit()
+		
+		sq1 = make_supplier_quotation(rfq.name, rfq.get('suppliers')[1].supplier)
+		sq1.submit()
+		
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 		self.assertEquals(sq.supplier, rfq.get('suppliers')[0].supplier)
 		self.assertEquals(sq.get('items')[0].request_for_quotation, rfq.name)
 		self.assertEquals(sq.get('items')[0].item_code, "_Test Item")
 		self.assertEquals(sq.get('items')[0].qty, 5)
+<<<<<<< HEAD
 
+=======
+		
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 		self.assertEquals(sq1.supplier, rfq.get('suppliers')[1].supplier)
 		self.assertEquals(sq1.get('items')[0].request_for_quotation, rfq.name)
 		self.assertEquals(sq1.get('items')[0].item_code, "_Test Item")
 		self.assertEquals(sq1.get('items')[0].qty, 5)
 
+<<<<<<< HEAD
 	def test_make_supplier_quotation_with_special_characters(self):
 		from erpnext.buying.doctype.request_for_quotation.request_for_quotation import make_supplier_quotation
 
@@ -75,20 +98,29 @@ class TestRequestforQuotation(unittest.TestCase):
 		# reset form_dict
 		frappe.form_dict.name = None
 
+=======
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 	def test_make_supplier_quotation_from_portal(self):
 		from erpnext.buying.doctype.request_for_quotation.request_for_quotation import create_supplier_quotation
 		rfq = make_request_for_quotation()
 		rfq.get('items')[0].rate = 100
 		rfq.supplier = rfq.suppliers[0].supplier
 		supplier_quotation_name = create_supplier_quotation(rfq)
+<<<<<<< HEAD
 
 		supplier_quotation_doc = frappe.get_doc('Supplier Quotation', supplier_quotation_name)
 
+=======
+		
+		supplier_quotation_doc = frappe.get_doc('Supplier Quotation', supplier_quotation_name)
+		
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 		self.assertEquals(supplier_quotation_doc.supplier, rfq.get('suppliers')[0].supplier)
 		self.assertEquals(supplier_quotation_doc.get('items')[0].request_for_quotation, rfq.name)
 		self.assertEquals(supplier_quotation_doc.get('items')[0].item_code, "_Test Item")
 		self.assertEquals(supplier_quotation_doc.get('items')[0].qty, 5)
 		self.assertEquals(supplier_quotation_doc.get('items')[0].amount, 500)
+<<<<<<< HEAD
 
 
 def make_request_for_quotation(supplier_data=None):
@@ -96,15 +128,28 @@ def make_request_for_quotation(supplier_data=None):
 	:param supplier_data: List containing supplier data
 	"""
 	supplier_data = supplier_data if supplier_data else get_supplier_data()
+=======
+		
+
+def make_request_for_quotation():
+	supplier_data = get_supplier_data()
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 	rfq = frappe.new_doc('Request for Quotation')
 	rfq.transaction_date = nowdate()
 	rfq.status = 'Draft'
 	rfq.company = '_Test Company'
 	rfq.message_for_supplier = 'Please supply the specified items at the best possible rates.'
+<<<<<<< HEAD
 
 	for data in supplier_data:
 		rfq.append('suppliers', data)
 
+=======
+	
+	for data in supplier_data:
+		rfq.append('suppliers', data)
+	
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 	rfq.append("items", {
 		"item_code": "_Test Item",
 		"description": "_Test Item",
@@ -113,11 +158,19 @@ def make_request_for_quotation(supplier_data=None):
 		"warehouse": "_Test Warehouse - _TC",
 		"schedule_date": nowdate()
 	})
+<<<<<<< HEAD
 
 	rfq.submit()
 
 	return rfq
 
+=======
+	
+	rfq.submit()
+	
+	return rfq
+	
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 def get_supplier_data():
 	return [{
 		"supplier": "_Test Supplier",
@@ -127,8 +180,11 @@ def get_supplier_data():
 		"supplier": "_Test Supplier 1",
 		"supplier_name": "_Test Supplier 1"
 	}]
+<<<<<<< HEAD
 
 supplier_wt_appos = [{
 	"supplier": "_Test Supplier '1",
 	"supplier_name": "_Test Supplier '1",
 }]
+=======
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347

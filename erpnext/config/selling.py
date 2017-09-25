@@ -5,7 +5,11 @@ def get_data():
 	return [
 		{
 			"label": _("Sales"),
+<<<<<<< HEAD
 			"icon": "fa fa-star",
+=======
+			"icon": "icon-star",
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 			"items": [
 				{
 					"type": "doctype",
@@ -31,7 +35,11 @@ def get_data():
 					"type": "doctype",
 					"label": _("Customer Group"),
 					"name": "Customer Group",
+<<<<<<< HEAD
 					"icon": "fa fa-sitemap",
+=======
+					"icon": "icon-sitemap",
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 					"link": "Tree/Customer Group",
 					"description": _("Manage Customer Group Tree."),
 				},
@@ -69,7 +77,11 @@ def get_data():
 				{
 					"type": "doctype",
 					"name": "Item Group",
+<<<<<<< HEAD
 					"icon": "fa fa-sitemap",
+=======
+					"icon": "icon-sitemap",
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 					"label": _("Item Group"),
 					"link": "Tree/Item Group",
 					"description": _("Tree of Item Groups."),
@@ -100,7 +112,11 @@ def get_data():
 					"type": "doctype",
 					"label": _("Territory"),
 					"name": "Territory",
+<<<<<<< HEAD
 					"icon": "fa fa-sitemap",
+=======
+					"icon": "icon-sitemap",
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 					"link": "Tree/Territory",
 					"description": _("Manage Territory Tree."),
 				},
@@ -113,13 +129,18 @@ def get_data():
 					"type": "doctype",
 					"label": _("Sales Person"),
 					"name": "Sales Person",
+<<<<<<< HEAD
 					"icon": "fa fa-sitemap",
+=======
+					"icon": "icon-sitemap",
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 					"link": "Tree/Sales Person",
 					"description": _("Manage Sales Person Tree."),
 				},
 				{
 					"type": "report",
 					"is_query_report": True,
+<<<<<<< HEAD
 					"name": "Addresses And Contacts",
 					"label": _("Sales Partner Addresses And Contacts"),
 					"doctype": "Address",
@@ -130,6 +151,8 @@ def get_data():
 				{
 					"type": "report",
 					"is_query_report": True,
+=======
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 					"name": "Territory Target Variance (Item Group-Wise)",
 					"route": "query-report/Territory Target Variance Item Group-Wise",
 					"doctype": "Territory"
@@ -145,7 +168,11 @@ def get_data():
 		},
 		{
 			"label": _("Setup"),
+<<<<<<< HEAD
 			"icon": "fa fa-cog",
+=======
+			"icon": "icon-cog",
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 			"items": [
 				{
 					"type": "doctype",
@@ -177,26 +204,42 @@ def get_data():
 		},
 		{
 			"label": _("Analytics"),
+<<<<<<< HEAD
 			"icon": "fa fa-table",
+=======
+			"icon": "icon-table",
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 			"items": [
 				{
 					"type": "page",
 					"name": "sales-analytics",
 					"label": _("Sales Analytics"),
+<<<<<<< HEAD
 					"icon": "fa fa-bar-chart",
+=======
+					"icon": "icon-bar-chart",
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 				},
 				{
 					"type": "page",
 					"name": "sales-funnel",
 					"label": _("Sales Funnel"),
+<<<<<<< HEAD
 					"icon": "fa fa-bar-chart",
+=======
+					"icon": "icon-bar-chart",
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 				},
 				{
 					"type": "report",
 					"is_query_report": True,
 					"name": "Customer Acquisition and Loyalty",
 					"doctype": "Customer",
+<<<<<<< HEAD
 					"icon": "fa fa-bar-chart",
+=======
+					"icon": "icon-bar-chart",
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 				},
 				{
 					"type": "report",
@@ -214,7 +257,11 @@ def get_data():
 		},
 		{
 			"label": _("Other Reports"),
+<<<<<<< HEAD
 			"icon": "fa fa-list",
+=======
+			"icon": "icon-list",
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 			"items": [
 				{
 					"type": "report",
@@ -225,12 +272,17 @@ def get_data():
 				{
 					"type": "report",
 					"is_query_report": True,
+<<<<<<< HEAD
 					"name": "Addresses And Contacts",
 					"label": _("Customer Addresses And Contacts"),
 					"doctype": "Address",
 					"route_options": {
 						"party_type": "Customer"
 					}
+=======
+					"name": "Customer Addresses And Contacts",
+					"doctype": "Contact"
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 				},
 				{
 					"type": "report",
@@ -284,7 +336,11 @@ def get_data():
 		},
 		{
 			"label": _("SMS"),
+<<<<<<< HEAD
 			"icon": "fa fa-wrench",
+=======
+			"icon": "icon-wrench",
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 			"items": [
 				{
 					"type": "doctype",

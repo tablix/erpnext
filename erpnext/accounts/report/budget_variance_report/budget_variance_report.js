@@ -8,7 +8,11 @@ frappe.query_reports["Budget Variance Report"] = {
 			label: __("Fiscal Year"),
 			fieldtype: "Link",
 			options: "Fiscal Year",
+<<<<<<< HEAD
 			default: frappe.sys_defaults.fiscal_year,
+=======
+			default: sys_defaults.fiscal_year,
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 			reqd: 1
 		},
 		{
@@ -31,6 +35,7 @@ frappe.query_reports["Budget Variance Report"] = {
 			options: "Company",
 			default: frappe.defaults.get_user_default("Company"),
 			reqd: 1
+<<<<<<< HEAD
 		},
 		{
 			fieldname: "budget_against",
@@ -39,6 +44,8 @@ frappe.query_reports["Budget Variance Report"] = {
 			options: ["Cost Center", "Project"],
 			default: "Cost Center",
 			reqd: 1
+=======
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 		}
 	]
 }

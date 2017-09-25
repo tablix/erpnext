@@ -4,7 +4,11 @@
 from __future__ import unicode_literals
 import frappe
 from frappe.geo.country_info import get_all
+<<<<<<< HEAD
 from frappe.utils.install import import_country_and_currency
+=======
+from erpnext.setup.install import import_country_and_currency
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 
 def execute():
 	frappe.reload_doc("setup", "doctype", "country")

@@ -47,6 +47,10 @@ frappe.ready(function() {
 				project: '{{ doc.name }}',
 				item_status: item_status,
 			},
+<<<<<<< HEAD
+=======
+			dataType: "json",
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 			success: function(data) {
 				if(typeof data.message == 'undefined') {
 					$('.project-'+ item).html("No "+ item_status +" "+ item);
@@ -67,7 +71,12 @@ frappe.ready(function() {
 	}
 
 	var more_items = function(item, item_status){
+<<<<<<< HEAD
 		if(item_status) {
+=======
+		if(item_status)
+		{
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 			var item_status = $('.project-'+ item +'-section .btn-group .bold').hasClass('btn-closed-'+ item)
 				? 'closed' : 'open';
 		}
@@ -81,13 +90,21 @@ frappe.ready(function() {
 				start: start,
 				item_status: item_status,
 			},
+<<<<<<< HEAD
+=======
+			dataType: "json",
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 			success: function(data) {
 
 				$(data.message).appendTo('.project-'+ item);
 				if(typeof data.message == 'undefined') {
 					$(".more-"+ item).toggle(false);
 				}
+<<<<<<< HEAD
 				start = start+10;
+=======
+			start = start+10;
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 			}
 		});
 	}

@@ -4,6 +4,7 @@
 
 from __future__ import unicode_literals
 import frappe
+<<<<<<< HEAD
 from frappe import _
 from frappe.utils import getdate
 from frappe.model.document import Document
@@ -38,3 +39,9 @@ def validate_duplication(self):
     and docstatus<2 and name != %s""", (self.academic_year, self.term_name, self.name))
     if term:
         frappe.throw(_("An academic term with this 'Academic Year' {0} and 'Term Name' {1} already exists. Please modify these entries and try again.").format(self.academic_year,self.term_name))
+=======
+from frappe.model.document import Document
+
+class AcademicTerm(Document):
+	pass
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347

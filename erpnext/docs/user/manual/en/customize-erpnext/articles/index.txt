@@ -14,6 +14,9 @@ search-record-by-specific-field
 set-language
 set-precision
 user-restriction
+<<<<<<< HEAD
 maximum-numbers-of-fields-in-a-form
 child-table
 fetching-data-from-a-document
+=======
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347

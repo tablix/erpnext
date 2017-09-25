@@ -1,5 +1,8 @@
+<<<<<<< HEAD
 # Migrate To Perpetual Inventory
 
+=======
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 Perpetual Inventory Valuation is activated by default in the system.
 
 For the users who are currently following periodic inventory valuation system, and wish to migrate to perpetual inventory valuation system, please follow the steps explained below.
@@ -22,7 +25,11 @@ Steps:
 
 	`Explore > Accounts > Accounts Settings`
 	
+<<<<<<< HEAD
 	<img class="screenshot" alt="Perpetual Inventory" src="/docs/assets/img/accounts/perpetual-1.png">
+=======
+	<img class="screenshot" alt="Perpetual Inventory" src="{{docs_base_url}}/assets/img/accounts/perpetual-1.png">
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
   
 
   * Create Stock Entry (Material Transfer) to transfer available stock from existing warehouse to new warehouse. As stock will be available in the new warehouse, you should select the new warehouse for all the future transactions.

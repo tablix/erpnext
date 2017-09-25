@@ -1,6 +1,7 @@
 // Copyright (c) 2015, Frappe Technologies Pvt. Ltd. and Contributors
 // License: GNU General Public License v3. See license.txt
 
+<<<<<<< HEAD
 frappe.ui.form.on('Sales Partner', {
 	refresh: function(frm) {
 		frappe.dynamic_link = {doc: frm.doc, fieldname: 'name', doctype: 'Sales Person'}
@@ -15,3 +16,16 @@ frappe.ui.form.on('Sales Partner', {
 		}
 	}
 });
+=======
+cur_frm.cscript.refresh = function(doc,dt,dn){
+
+	if(doc.__islocal){
+		hide_field(['address_html', 'contact_html']);
+		erpnext.utils.clear_address_and_contact(cur_frm);
+	}
+	else{
+		unhide_field(['address_html', 'contact_html']);
+		erpnext.utils.render_address_and_contact(cur_frm);
+	}
+}
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347

@@ -6,12 +6,19 @@ import frappe
 from frappe import _
 from erpnext.accounts.report.financial_statements import (get_period_list, get_columns, get_data)
 from erpnext.accounts.report.profit_and_loss_statement.profit_and_loss_statement import get_net_profit_loss
+<<<<<<< HEAD
 from erpnext.accounts.utils import get_fiscal_year
 
 
 def execute(filters=None):
 	period_list = get_period_list(filters.from_fiscal_year, filters.to_fiscal_year, 
 		filters.periodicity, filters.accumulated_values, filters.company)
+=======
+
+
+def execute(filters=None):
+	period_list = get_period_list(filters.fiscal_year, filters.periodicity)
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 
 	operation_accounts = {
 		"section_name": "Operations",
@@ -51,9 +58,15 @@ def execute(filters=None):
 
 	# compute net profit / loss
 	income = get_data(filters.company, "Income", "Credit", period_list, 
+<<<<<<< HEAD
 		accumulated_values=filters.accumulated_values, ignore_closing_entries=True, ignore_accumulated_values_for_fy= True)
 	expense = get_data(filters.company, "Expense", "Debit", period_list, 
 		accumulated_values=filters.accumulated_values, ignore_closing_entries=True, ignore_accumulated_values_for_fy= True)
+=======
+		accumulated_values=filters.accumulated_values, ignore_closing_entries=True)
+	expense = get_data(filters.company, "Expense", "Debit", period_list, 
+		accumulated_values=filters.accumulated_values, ignore_closing_entries=True)
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 		
 	net_profit_loss = get_net_profit_loss(income, expense, period_list, filters.company)
 
@@ -100,26 +113,40 @@ def execute(filters=None):
 
 	return columns, data
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 def get_account_type_based_data(company, account_type, period_list, accumulated_values):
 	data = {}
 	total = 0
 	for period in period_list:
+<<<<<<< HEAD
 		start_date = get_start_date(period, accumulated_values, company)
+=======
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 		gl_sum = frappe.db.sql_list("""
 			select sum(credit) - sum(debit)
 			from `tabGL Entry`
 			where company=%s and posting_date >= %s and posting_date <= %s 
 				and voucher_type != 'Period Closing Voucher'
 				and account in ( SELECT name FROM tabAccount WHERE account_type = %s)
+<<<<<<< HEAD
 		""", (company, start_date if accumulated_values else period['from_date'],
 			period['to_date'], account_type))
 
+=======
+		""", (company, period["year_start_date"] if accumulated_values else period['from_date'], 
+			period['to_date'], account_type))
+		
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 		if gl_sum and gl_sum[0]:
 			amount = gl_sum[0]
 			if account_type == "Depreciation":
 				amount *= -1
 		else:
 			amount = 0
+<<<<<<< HEAD
 
 		total += amount
 		data.setdefault(period["key"], amount)
@@ -133,6 +160,15 @@ def get_start_date(period, accumulated_values, company):
 		start_date = get_fiscal_year(period.to_date, company=company)[1]
 
 	return start_date
+=======
+			
+		total += amount
+		data.setdefault(period["key"], amount)
+		
+	data["total"] = total
+	return data
+
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 
 def add_total_row_account(out, data, label, period_list, currency):
 	total_row = {

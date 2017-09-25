@@ -28,6 +28,7 @@ frappe.pages['stock-balance'].on_page_load = function(wrapper) {
 		}
 	});
 
+<<<<<<< HEAD
 	page.item_group_field = page.add_field({
 		fieldname: 'item_group',
 		label: __('Item Group'),
@@ -39,6 +40,8 @@ frappe.pages['stock-balance'].on_page_load = function(wrapper) {
 		}
 	});
 
+=======
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 	page.sort_selector = new frappe.ui.SortSelector({
 		parent: page.wrapper.find('.page-form'),
 		args: {
@@ -48,7 +51,11 @@ frappe.pages['stock-balance'].on_page_load = function(wrapper) {
 				{fieldname: 'projected_qty', label: __('Projected qty')},
 				{fieldname: 'reserved_qty', label: __('Reserved for sale')},
 				{fieldname: 'reserved_qty_for_production', label: __('Reserved for manufacturing')},
+<<<<<<< HEAD
 				{fieldname: 'actual_qty', label: __('Actual qty in stock')},
+=======
+				{fieldname: 'actual_qty', label: __('Acutal qty in stock')},
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 			]
 		},
 		change: function(sort_by, sort_order) {
@@ -69,7 +76,10 @@ frappe.pages['stock-balance'].on_page_load = function(wrapper) {
 		page.item_dashboard.before_refresh = function() {
 			this.item_code = page.item_field.get_value();
 			this.warehouse = page.warehouse_field.get_value();
+<<<<<<< HEAD
 			this.item_group = page.item_group_field.get_value();
+=======
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 		}
 
 		page.item_dashboard.refresh();
@@ -93,4 +103,8 @@ frappe.pages['stock-balance'].on_page_load = function(wrapper) {
 	});
 
 
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347

@@ -10,6 +10,10 @@ You will find Copy option under:
 
 `Menu > Copy`
 
+<<<<<<< HEAD
 <img alt="Duplicate" class="screenshot" src="/docs/assets/img/articles/duplicate.gif">
+=======
+<img alt="Duplicate" class="screenshot" src="{{docs_base_url}}/assets/img/articles/duplicate.gif">
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 
 <!-- markdown -->

@@ -5,6 +5,7 @@ frappe.require("assets/erpnext/js/financial_statements.js", function() {
 	frappe.query_reports["Profit and Loss Statement"] = $.extend({},
 		erpnext.financial_statements);
 
+<<<<<<< HEAD
 	frappe.query_reports["Profit and Loss Statement"]["filters"].push(
 		{
 			"fieldname":"cost_center",
@@ -24,4 +25,11 @@ frappe.require("assets/erpnext/js/financial_statements.js", function() {
 			"fieldtype": "Check"
 		}
 	);
+=======
+	frappe.query_reports["Profit and Loss Statement"]["filters"].push({
+		"fieldname": "accumulated_values",
+		"label": __("Accumulated Values"),
+		"fieldtype": "Check"
+	});
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 });

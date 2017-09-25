@@ -7,7 +7,11 @@ Um eine neue Webseite zu erstellen, gehen Sie zu:
 
 > Webseite > Webseite > Neu
 
+<<<<<<< HEAD
 <img class="screenshot" alt="Webseit" src="/docs/assets/img/website/web-page.png">
+=======
+<img class="screenshot" alt="Webseit" src="{{docs_base_url}}/assets/img/website/web-page.png">
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 
 ### Bezeichnung
 

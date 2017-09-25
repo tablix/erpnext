@@ -1,5 +1,8 @@
+<<<<<<< HEAD
 # Custom Script Examples
 
+=======
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 ### How to Create a Custom Script
 
 Create a Custom Script (you must have System Manager role for this):

@@ -28,8 +28,12 @@
 					},
 					"Petty Cash": {
 						"account_type": "Cash"
+<<<<<<< HEAD
 					},
 					"account_type": "Cash"
+=======
+					}
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 				},
 				"Loans and Advances-Assets": {
 					"Prepayments": {}
@@ -40,9 +44,14 @@
 					"Rental Deposits": {}
 				},
 				"Stock Assets": {
+<<<<<<< HEAD
                     "Stock in Hand": {
                         "account_type": "Stock"
                     }
+=======
+					"account_type": "Stock",
+					"is_group": 1
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 				},
 				"Tax Assets": {
 					"GST-Input": {}
@@ -51,6 +60,7 @@
 			"Non-current assets": {
 				"Fixed Assets": {
 					"Accumulated Depreciation": {
+<<<<<<< HEAD
 						"AccDep-Equipment-AV": {
 							"account_type": "Accumulated Depreciation"
 						},
@@ -118,6 +128,31 @@
 					"Renovation": {
 						"account_type": "Fixed Asset"
 					}
+=======
+						"AccDep-Equipment-AV": {},
+						"AccDep-Equipment-Bar": {},
+						"AccDep-Equipment-ICT": {},
+						"AccDep-Equipment-Electrical": {},
+						"AccDep-Furniture and Fixtures": {},
+						"AccDep-Equipment-Kitchen": {},
+						"AccDep-Equipment-Lighting": {},
+						"AccDep-Equipment-Office": {},
+						"AccDep-Motor Vehicle": {},
+						"AccDep-Plant and Machinery": {},
+						"AccDep-Renovation": {}
+					},
+					"Equipment-AV": {},
+					"Equipment-Bar": {},
+					"Equipment-ICT": {},
+					"Equipment-Electrical": {},
+					"Furniture and Fixtures": {},
+					"Equipment-Kitchen": {},
+					"Equipment-Lighting": {},
+					"Equipment-Office": {},
+					"Motor Vehicle": {},
+					"Plant and Machinery": {},
+					"Renovation": {}
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 				},
 				"Non-Fixed Assets": {
 					"Goodwill": {},
@@ -143,8 +178,12 @@
 				"Accounts Payable": {
 					"Creditors":{
 						"account_type": "Payable"
+<<<<<<< HEAD
 					},
 					"Payroll Payable": {}
+=======
+					}
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 			 	},
 			 	"Duties and Taxes": {
 					"account_type": "Tax",
@@ -339,6 +378,7 @@
 			"Expenses-Other": {
 				"Bad Debts Written Off": {},
 				"Depreciation": {
+<<<<<<< HEAD
 					"Dep-AV Equipment": {
 						 "account_type": "Depreciation"
 					},
@@ -379,6 +419,24 @@
 				},
 				"Tax Expenses": {
 					"is_group": 1
+=======
+					"Dep-AV Equipment": {},
+					"Dep-Bar Equipment": {},
+					"Dep-ICT Equipment": {},
+					"Dep-Electrical Equipment": {},
+					"Dep-Fixtures & Furniture": {},
+					"Dep-Kitchen Equipment": {},
+					"Dep-Lighting Equipment": {},
+					"Dep-Motor Vehicle": {},
+					"Dep-Office Equipment": {},
+					"Dep-Plant & Machinery": {},
+					"Dep-Renovation": {}
+				},
+				"Donations": {},
+				"Round Off": {},
+				"Tax Expenses": {
+					"Tax Expenses": {}
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 				}
 			},
 			"Expenses-Staff": {

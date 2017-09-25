@@ -13,6 +13,10 @@ window.get_product_list = function() {
 	$.ajax({
 		method: "GET",
 		url: "/",
+<<<<<<< HEAD
+=======
+		dataType: "json",
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 		data: {
 			cmd: "erpnext.templates.pages.product_search.get_product_list",
 			start: window.start,
@@ -39,10 +43,17 @@ window.render_product_list = function(data) {
 	if(data.length < 10) {
 		if(!table) {
 			$(".more-btn")
+<<<<<<< HEAD
 				.replaceWith("<div class='alert alert-warning'>{{ _("No products found.") }}</div>");
 		} else {
 			$(".more-btn")
 				.replaceWith("<div class='text-muted'>{{ _("Nothing more to show.") }}</div>");
+=======
+				.replaceWith("<div class='alert alert-warning'>No products found.</div>");
+		} else {
+			$(".more-btn")
+				.replaceWith("<div class='text-muted'>Nothing more to show.</div>");
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 		}
 	} else {
 		$(".more-btn").toggle(true)

@@ -42,6 +42,7 @@ erpnext.utils.get_party_details = function(frm, method, args, callback) {
 		callback: function(r) {
 			if(r.message) {
 				frm.updating_party_details = true;
+<<<<<<< HEAD
 				frappe.run_serially([
 					() => frm.set_value(r.message),
 					() => {
@@ -51,11 +52,18 @@ erpnext.utils.get_party_details = function(frm, method, args, callback) {
 						erpnext.utils.add_item(frm);
 					}
 				]);
+=======
+				frm.set_value(r.message);
+				frm.updating_party_details = false;
+				if(callback) callback();
+				frm.refresh();
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 			}
 		}
 	});
 }
 
+<<<<<<< HEAD
 erpnext.utils.add_item = function(frm) {
 	if(frm.is_new()) {
 		var prev_route = frappe.get_prev_route();
@@ -70,6 +78,8 @@ erpnext.utils.add_item = function(frm) {
 	}
 }
 
+=======
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 erpnext.utils.get_address_display = function(frm, address_field, display_field, is_your_company_address) {
 	if(frm.updating_party_details) return;
 
@@ -84,7 +94,11 @@ erpnext.utils.get_address_display = function(frm, address_field, display_field, 
 	if(!display_field) display_field = "address_display";
 	if(frm.doc[address_field]) {
 		frappe.call({
+<<<<<<< HEAD
 			method: "frappe.contacts.doctype.address.address.get_address_display",
+=======
+			method: "erpnext.utilities.doctype.address.address.get_address_display",
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 			args: {"address_dict": frm.doc[address_field] },
 			callback: function(r) {
 				if(r.message) {
@@ -94,7 +108,11 @@ erpnext.utils.get_address_display = function(frm, address_field, display_field, 
 			}
 		})
 	} else {
+<<<<<<< HEAD
 		frm.set_value(display_field, '');
+=======
+		frm.set_value(display_field, null);
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 	}
 };
 
@@ -102,8 +120,13 @@ erpnext.utils.set_taxes = function(frm, address_field, display_field, is_your_co
 	if(frappe.meta.get_docfield(frm.doc.doctype, "taxes") && !is_your_company_address) {
 		if(!erpnext.utils.validate_mandatory(frm, "Lead/Customer/Supplier",
 			frm.doc.customer || frm.doc.supplier || frm.doc.lead, address_field)) {
+<<<<<<< HEAD
 			return;
 		}
+=======
+				return;
+			}
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 
 		if(!erpnext.utils.validate_mandatory(frm, "Posting/Transaction Date",
 			frm.doc.posting_date || frm.doc.transaction_date, address_field)) {
@@ -148,7 +171,11 @@ erpnext.utils.get_contact_details = function(frm) {
 
 	if(frm.doc["contact_person"]) {
 		frappe.call({
+<<<<<<< HEAD
 			method: "frappe.contacts.doctype.contact.contact.get_contact_details",
+=======
+			method: "erpnext.utilities.doctype.contact.contact.get_contact_details",
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 			args: {contact: frm.doc.contact_person },
 			callback: function(r) {
 				if(r.message)
@@ -170,7 +197,11 @@ erpnext.utils.validate_mandatory = function(frm, label, value, trigger_on) {
 
 erpnext.utils.get_shipping_address = function(frm, callback){
 	frappe.call({
+<<<<<<< HEAD
 		method: "frappe.contacts.doctype.address.address.get_shipping_address",
+=======
+		method: "erpnext.utilities.doctype.address.address.get_shipping_address",
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 		args: {company: frm.doc.company},
 		callback: function(r){
 			if(r.message){

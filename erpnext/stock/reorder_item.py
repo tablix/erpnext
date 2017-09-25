@@ -164,7 +164,11 @@ def send_email_notification(mr_list):
 	""" Notify user about auto creation of indent"""
 
 	email_list = frappe.db.sql_list("""select distinct r.parent
+<<<<<<< HEAD
 		from `tabHas Role` r, tabUser p
+=======
+		from tabUserRole r, tabUser p
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 		where p.name = r.parent and p.enabled = 1 and p.docstatus < 2
 		and r.role in ('Purchase Manager','Stock Manager')
 		and p.name not in ('Administrator', 'All', 'Guest')""")

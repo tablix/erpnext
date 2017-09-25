@@ -9,8 +9,14 @@ import frappe.defaults
 from frappe.utils import flt, cint, cstr
 from frappe.desk.reportview import build_match_conditions
 from erpnext.utilities.transaction_base import TransactionBase
+<<<<<<< HEAD
 from erpnext.accounts.party import validate_party_accounts, get_dashboard_info, get_timeline_data # keep this
 from frappe.contacts.address_and_contact import load_address_and_contact, delete_contact_and_address
+=======
+from erpnext.utilities.address_and_contact import load_address_and_contact
+from erpnext.accounts.party import validate_party_accounts, get_timeline_data # keep this
+from erpnext.accounts.party_status import get_party_status
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 
 class Customer(TransactionBase):
 	def get_feed(self):
@@ -18,12 +24,16 @@ class Customer(TransactionBase):
 
 	def onload(self):
 		"""Load address and contacts in `__onload`"""
+<<<<<<< HEAD
 		load_address_and_contact(self)
 		self.load_dashboard_info()
 
 	def load_dashboard_info(self):
 		info = get_dashboard_info(self.doctype, self.name)
 		self.set_onload('dashboard_info', info)
+=======
+		load_address_and_contact(self, "customer")
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 
 	def autoname(self):
 		cust_master_name = frappe.defaults.get_global_default('cust_master_name')
@@ -37,13 +47,18 @@ class Customer(TransactionBase):
 
 	def get_customer_name(self):
 		if frappe.db.get_value("Customer", self.customer_name):
+<<<<<<< HEAD
 			count = frappe.db.sql("""select ifnull(MAX(CAST(SUBSTRING_INDEX(name, ' ', -1) AS UNSIGNED)), 0) from tabCustomer
+=======
+			count = frappe.db.sql("""select ifnull(max(SUBSTRING_INDEX(name, ' ', -1)), 0) from tabCustomer
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 				 where name like %s""", "%{0} - %".format(self.customer_name), as_list=1)[0][0]
 			count = cint(count) + 1
 			return "{0} - {1}".format(self.customer_name, cstr(count))
 
 		return self.customer_name
 
+<<<<<<< HEAD
 	def after_insert(self):
 		'''If customer created from Lead, update customer id in quotations, opportunities'''
 		self.update_lead_status()
@@ -112,11 +127,61 @@ class Customer(TransactionBase):
 			contact.autoname()
 			if not frappe.db.exists("Contact", contact.name):
 				contact.insert()
+=======
+	def validate(self):
+		self.flags.is_new_doc = self.is_new()
+		validate_party_accounts(self)
+		self.status = get_party_status(self)
+
+	def update_lead_status(self):
+		if self.lead_name:
+			frappe.db.sql("update `tabLead` set status='Converted' where name = %s", self.lead_name)
+
+	def update_address(self):
+		frappe.db.sql("""update `tabAddress` set customer_name=%s, modified=NOW()
+			where customer=%s""", (self.customer_name, self.name))
+
+	def update_contact(self):
+		frappe.db.sql("""update `tabContact` set customer_name=%s, modified=NOW()
+			where customer=%s""", (self.customer_name, self.name))
+
+	def create_lead_address_contact(self):
+		if self.lead_name:
+			if not frappe.db.get_value("Address", {"lead": self.lead_name, "customer": self.name}):
+				frappe.db.sql("""update `tabAddress` set customer=%s, customer_name=%s where lead=%s""",
+					(self.name, self.customer_name, self.lead_name))
+
+			lead = frappe.db.get_value("Lead", self.lead_name, ["lead_name", "email_id", "phone", "mobile_no"], as_dict=True)
+
+			c = frappe.new_doc('Contact')
+			c.first_name = lead.lead_name
+			c.email_id = lead.email_id
+			c.phone = lead.phone
+			c.mobile_no = lead.mobile_no
+			c.customer = self.name
+			c.customer_name = self.customer_name
+			c.is_primary_contact = 1
+			c.flags.ignore_permissions = self.flags.ignore_permissions
+			c.autoname()
+			if not frappe.db.exists("Contact", c.name):
+				c.insert()
+
+	def on_update(self):
+		self.validate_name_with_customer_group()
+
+		self.update_lead_status()
+		self.update_address()
+		self.update_contact()
+
+		if self.flags.is_new_doc:
+			self.create_lead_address_contact()
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 
 	def validate_name_with_customer_group(self):
 		if frappe.db.exists("Customer Group", self.name):
 			frappe.throw(_("A Customer Group exists with same name please change the Customer name or rename the Customer Group"), frappe.NameError)
 
+<<<<<<< HEAD
 	def validate_credit_limit_on_change(self):
 		if self.get("__islocal") or self.credit_limit == frappe.db.get_value("Customer", self.name, "credit_limit"):
 			return
@@ -134,6 +199,42 @@ class Customer(TransactionBase):
 	def after_rename(self, olddn, newdn, merge=False):
 		if frappe.defaults.get_global_default('cust_master_name') == 'Customer Name':
 			frappe.db.set(self, "customer_name", newdn)
+=======
+	def delete_customer_address(self):
+		addresses = frappe.db.sql("""select name, lead from `tabAddress`
+			where customer=%s""", (self.name,))
+
+		for name, lead in addresses:
+			if lead:
+				frappe.db.sql("""update `tabAddress` set customer=null, customer_name=null
+					where name=%s""", name)
+			else:
+				frappe.db.sql("""delete from `tabAddress` where name=%s""", name)
+
+	def delete_customer_contact(self):
+		for contact in frappe.db.sql_list("""select name from `tabContact`
+			where customer=%s""", self.name):
+				frappe.delete_doc("Contact", contact)
+
+	def on_trash(self):
+		self.delete_customer_address()
+		self.delete_customer_contact()
+		if self.lead_name:
+			frappe.db.sql("update `tabLead` set status='Interested' where name=%s",self.lead_name)
+
+	def after_rename(self, olddn, newdn, merge=False):
+		set_field = ''
+		if frappe.defaults.get_global_default('cust_master_name') == 'Customer Name':
+			frappe.db.set(self, "customer_name", newdn)
+			self.update_contact()
+			set_field = ", customer_name=%(newdn)s"
+		self.update_customer_address(newdn, set_field)
+
+	def update_customer_address(self, newdn, set_field):
+		frappe.db.sql("""update `tabAddress` set address_title=%(newdn)s
+			{set_field} where customer=%(newdn)s"""\
+			.format(set_field=set_field), ({"newdn": newdn}))
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 
 
 def get_customer_list(doctype, txt, searchfield, start, page_len, filters):

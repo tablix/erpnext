@@ -6,14 +6,20 @@ from __future__ import unicode_literals
 import frappe
 from frappe import msgprint, _
 from frappe.model.document import Document
+<<<<<<< HEAD
 from frappe.desk.reportview import get_match_cond, get_filters_cond
+=======
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 from frappe.utils import comma_and
 
 class ProgramEnrollment(Document):
 	def validate(self):
 		self.validate_duplication()
+<<<<<<< HEAD
 		if not self.student_name:
 			self.student_name = frappe.db.get_value("Student", self.student, "title")
+=======
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 	
 	def on_submit(self):
 		self.update_student_joining_date()
@@ -54,6 +60,7 @@ class ProgramEnrollment(Document):
 		if fee_list:
 			fee_list = ["""<a href="#Form/Fees/%s" target="_blank">%s</a>""" % \
 				(fee, fee) for fee in fee_list]
+<<<<<<< HEAD
 			msgprint(_("Fee Records Created - {0}").format(comma_and(fee_list)))
 
 	def get_courses(self):
@@ -108,3 +115,6 @@ def get_students(doctype, txt, searchfield, start, page_len, filters):
 		)
 	)
 
+=======
+			msgprint(_("Fee Records Created - {0}").format(comma_and(fee_list)))
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347

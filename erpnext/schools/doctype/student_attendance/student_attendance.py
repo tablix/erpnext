@@ -6,6 +6,7 @@ from __future__ import unicode_literals
 import frappe
 from frappe.model.document import Document
 from frappe import _
+<<<<<<< HEAD
 from frappe.utils import cstr
 from erpnext.schools.api import get_student_group_students
 
@@ -55,3 +56,18 @@ class StudentAttendance(Document):
 		if attendance_records:
 			frappe.throw(_("Attendance Record {0} exists against Student {1}")
 				.format(attendance_records[0][0], self.student))
+=======
+
+class StudentAttendance(Document):
+	def validate(self):
+		self.validate_duplication()
+		
+	def validate_duplication(self):
+		"""Check if the Attendance Record is Unique"""
+		attendance_records= frappe.db.sql("""select name from `tabStudent Attendance` where \
+			student= %s and course_schedule= %s and name != %s""",
+			(self.student, self.course_schedule, self.name))
+		if attendance_records:
+			frappe.throw(_("Attendance Record {0} exists against Student {1} for Course Schedule {2}")
+				.format(attendance_records[0][0], self.student, self.course_schedule))
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347

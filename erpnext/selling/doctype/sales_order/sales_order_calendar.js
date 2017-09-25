@@ -33,7 +33,11 @@ frappe.views.calendar["Sales Order"] = {
 	get_events_method: "erpnext.selling.doctype.sales_order.sales_order.get_events",
 	get_css_class: function(data) {
 		if(data.status=="Closed") {
+<<<<<<< HEAD
 			return "success";
+=======
+			return "";
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 		} if(data.delivery_status=="Not Delivered") {
 			return "danger";
 		} else if(data.delivery_status=="Partly Delivered") {

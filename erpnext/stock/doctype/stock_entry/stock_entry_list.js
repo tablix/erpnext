@@ -4,6 +4,7 @@ frappe.listview_settings['Stock Entry'] = {
 	column_render: {
 		"from_warehouse": function(doc) {
 			var html = "";
+<<<<<<< HEAD
 			if(doc.from_warehouse) {
 				html += '<span class="filterable h6"\
 					data-filter="from_warehouse,=,'+doc.from_warehouse+'">'
@@ -12,6 +13,15 @@ frappe.listview_settings['Stock Entry'] = {
 			// if(doc.from_warehouse || doc.to_warehouse) {
 			// 	html += '<i class="fa fa-arrow-right text-muted"></i> ';
 			// }
+=======
+	 		if(doc.from_warehouse) {
+				html += '<span class="filterable h6"\
+					data-filter="from_warehouse,=,'+doc.from_warehouse+'">'+doc.from_warehouse+' </span>';
+			}
+			if(doc.from_warehouse || doc.to_warehouse) {
+				html += '<i class="octicon octicon-arrow-right text-muted"></i> ';
+			}
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 			if(doc.to_warehouse) {
 				html += '<span class="filterable h6"\
 				data-filter="to_warehouse,=,'+doc.to_warehouse+'">'+doc.to_warehouse+'</span>';

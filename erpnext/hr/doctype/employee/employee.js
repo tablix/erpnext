@@ -5,11 +5,15 @@ frappe.provide("erpnext.hr");
 erpnext.hr.EmployeeController = frappe.ui.form.Controller.extend({
 	setup: function() {
 		this.frm.fields_dict.user_id.get_query = function(doc, cdt, cdn) {
+<<<<<<< HEAD
 			return {
 				query: "frappe.core.doctype.user.user.user_query",
 				filters: {ignore_user_type: 1}
 			}
 		}
+=======
+			return { query:"frappe.core.doctype.user.user.user_query"} }
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 		this.frm.fields_dict.reports_to.get_query = function(doc, cdt, cdn) {
 			return { query: "erpnext.controllers.queries.employee_query"} }
 	},
@@ -46,6 +50,7 @@ erpnext.hr.EmployeeController = frappe.ui.form.Controller.extend({
 		}
 	},
 
+<<<<<<< HEAD
 });
 frappe.ui.form.on('Employee',{
 	prefered_contact_email:function(frm){		
@@ -86,6 +91,12 @@ frappe.ui.form.on('Employee',{
 			{
 				frm.set_value("user_id", r.message)
 			}
+=======
+	make_salary_structure: function(btn) {
+		frappe.model.open_mapped_doc({
+			method: "erpnext.hr.doctype.employee.employee.make_salary_structure",
+			frm: cur_frm
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 		});
 	}
 });

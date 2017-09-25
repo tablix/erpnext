@@ -9,6 +9,10 @@ from erpnext.selling.doctype.sales_order.test_sales_order import make_sales_orde
 from erpnext.accounts.doctype.payment_request.payment_request import make_payment_request
 from erpnext.accounts.doctype.sales_invoice.test_sales_invoice import create_sales_invoice
 from erpnext.setup.utils import get_exchange_rate
+<<<<<<< HEAD
+=======
+# test_records = frappe.get_test_records('Payment Request')
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 
 test_dependencies = ["Currency Exchange", "Journal Entry", "Contact", "Address"]
 
@@ -70,7 +74,11 @@ class TestPaymentRequest(unittest.TestCase):
 		
 		so_inr = make_sales_order(currency="INR")
 		pr = make_payment_request(dt="Sales Order", dn=so_inr.name, recipient_id="saurabh@erpnext.com",
+<<<<<<< HEAD
 			mute_email=1, submit_doc=1, return_doc=1)
+=======
+			mute_email=1, submit_doc=1)
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 		pe = pr.set_as_paid()
 
 		so_inr = frappe.get_doc("Sales Order", so_inr.name)
@@ -81,14 +89,23 @@ class TestPaymentRequest(unittest.TestCase):
 			currency="USD", conversion_rate=50)
 
 		pr = make_payment_request(dt="Sales Invoice", dn=si_usd.name, recipient_id="saurabh@erpnext.com",
+<<<<<<< HEAD
 			mute_email=1, payment_gateway="_Test Gateway - USD", submit_doc=1, return_doc=1)
+=======
+			mute_email=1, payment_gateway="_Test Gateway - USD", submit_doc=1)
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 		
 		pe = pr.set_as_paid()
 		
 		expected_gle = dict((d[0], d) for d in [
 			["_Test Receivable USD - _TC", 0, 5000, si_usd.name],
+<<<<<<< HEAD
 			[pr.payment_account, 6290.0, 0, None],
 			["_Test Exchange Gain/Loss - _TC", 0, 1290, None]
+=======
+			[pr.payment_account, 6000.0, 0, None],
+			["_Test Exchange Gain/Loss - _TC", 0, 1000, None]
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 		])
 		
 		gl_entries = frappe.db.sql("""select account, debit, credit, against_voucher

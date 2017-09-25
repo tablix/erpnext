@@ -1,5 +1,6 @@
 from frappe import _
 
+<<<<<<< HEAD
 def get_data():
 	return {
 		'heatmap': True,
@@ -28,3 +29,18 @@ def get_data():
 			}
 		]
 	}
+=======
+data = {
+	'heatmap': True,
+	'heatmap_message': _('This is based on the attendance of this Student'),
+	'fieldname': 'student',
+	'transactions': [
+		{
+			'items': ['Student Log', 'Student Group', 'Student Attendance']
+		},
+		{
+			'items': ['Program Enrollment', 'Fees', 'Assessment', 'Guardian']
+		}
+	]
+}
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347

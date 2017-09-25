@@ -1,4 +1,5 @@
 {
+<<<<<<< HEAD
  "add_total_row": 0, 
  "apply_user_permissions": 1, 
  "creation": "2013-06-21 13:40:05", 
@@ -8,12 +9,22 @@
  "idx": 3, 
  "is_standard": "Yes", 
  "modified": "2017-02-24 20:09:56.200184", 
+=======
+ "apply_user_permissions": 1, 
+ "creation": "2013-06-21 13:40:05", 
+ "docstatus": 0, 
+ "doctype": "Report", 
+ "idx": 1, 
+ "is_standard": "Yes", 
+ "modified": "2015-07-06 06:11:10.534423", 
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
  "modified_by": "Administrator", 
  "module": "Selling", 
  "name": "Available Stock for Packing Items", 
  "owner": "Administrator", 
  "ref_doctype": "Product Bundle", 
  "report_name": "Available Stock for Packing Items", 
+<<<<<<< HEAD
  "report_type": "Script Report", 
  "roles": [
   {
@@ -26,4 +37,7 @@
    "role": "Sales User"
   }
  ]
+=======
+ "report_type": "Script Report"
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 }

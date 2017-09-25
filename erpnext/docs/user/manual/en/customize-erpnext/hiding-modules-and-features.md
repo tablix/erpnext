@@ -1,12 +1,33 @@
+<<<<<<< HEAD
 # Hiding Module Icons
+=======
+As you have seen from this manual that ERPNext contains tons of features which you may not use. We have observed that most users start with using 20% of the features, though a different 20%. To hide fields belonging to features you
+dont require, go to:
+
+`Setup > Customize > Features Setup`
+
+<img alt="Hide Features" class="screenshot" src="{{docs_base_url}}/assets/img/customize/feature-setup.png">
+
+Check the features you want to use. The features which are not checked, relevant fields will get hidden from the forms.
+
+* * *
+
+### Hiding Module Icons
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 
 To hide modules (icons) from the home page, go to:
 
 `Setup > Permissions > Show / Hide Modules`
 
+<<<<<<< HEAD
 <img alt="Hide Features" class="screenshot" src="/docs/assets/img/customize/show-hide-modules.png">
 
 Click [here](/docs/user/manual/en/customize-erpnext/articles/module-visibility.html) to learn about other features from where icons from the desktop can be hidden.
+=======
+<img alt="Hide Features" class="screenshot" src="{{docs_base_url}}/assets/img/customize/show-hide-modules.png">
+
+Click [here]({{docs_base_url}}/user/manual/en/customize-erpnext/articles/module-visibility.html) to learn about other features from where icons from the desktop can be hidden.
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 
 > Note: Modules are automatically hidden for users that have no permissions on the documents within that module. For example, if a User has no permissions on Purchase Order, Purchase Request, Supplier, the “Buying” module will automatically hidden for that User.
 

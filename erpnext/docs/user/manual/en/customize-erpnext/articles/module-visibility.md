@@ -6,7 +6,11 @@ As step zero, ensure that you have "Website Manager" role assigned. It is a stan
 
 If module is hidden in-spite of assignment of required Role, then you should check if Website is not disabled from All Application.
 
+<<<<<<< HEAD
 <img alt="All Applications" class="screenshot" src="/docs/assets/img/articles/module-visibility-1.gif">
+=======
+<img alt="All Applications" class="screenshot" src="{{docs_base_url}}/assets/img/articles/module-visibility-1.gif">
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 
 If Website is checked in All Application, but still not visible for the User, check if is hidden by System Manager. In the Setup module, feature called Show/Hide Modules allows System Manager to hide specific module from all the Users.
 

@@ -67,7 +67,11 @@
  ], 
  "hide_heading": 0, 
  "hide_toolbar": 0, 
+<<<<<<< HEAD
  "icon": "fa fa-font", 
+=======
+ "icon": "icon-font", 
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
  "idx": 1, 
  "image_view": 0, 
  "in_create": 0, 

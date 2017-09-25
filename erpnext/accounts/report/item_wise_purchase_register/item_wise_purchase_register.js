@@ -7,14 +7,22 @@ frappe.query_reports["Item-wise Purchase Register"] = {
 			"fieldname":"from_date",
 			"label": __("From Date"),
 			"fieldtype": "Date",
+<<<<<<< HEAD
 			"default": frappe.datetime.add_months(frappe.datetime.get_today(), -1),
+=======
+			"default": frappe.defaults.get_user_default("year_start_date"),
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 			"width": "80"
 		},
 		{
 			"fieldname":"to_date",
 			"label": __("To Date"),
 			"fieldtype": "Date",
+<<<<<<< HEAD
 			"default": frappe.datetime.get_today()
+=======
+			"default": get_today()
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 		},
 		{
 			"fieldname": "item_code",

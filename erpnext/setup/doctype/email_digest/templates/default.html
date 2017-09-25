@@ -1,13 +1,18 @@
 {% macro show_card(card) %}
 <div style="width: 50%; float:left; min-height: 80px; padding-top: 20px;">
+<<<<<<< HEAD
     <h6 style="color: {{ text_muted }}; font-size: 12px; margin-bottom: 0px; margin-top: 0px;">{{ _(card.label) }}
     {% if card.count %}
     <span class="badge">({{ card.count }})</span>
     {% endif %}</h6>
+=======
+    <h6 style="color: {{ text_muted }}; font-size: 12px; margin-bottom: 0px; margin-top: 0px;">{{ card.label }}</h6>
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
     <h4 style="margin-top: 7px; font-size: 16px; margin-botom: 5px;">{{ card.value }}</h4>
     {% if card.diff %}
     <p style="color: {{ text_muted }}; font-size: 12px; margin-top: 0px;">{{ card.diff }}%</p>
     {% endif %}
+<<<<<<< HEAD
     {% if card.billed %}
     <p style="color: {{ text_muted }}; font-size: 12px; margin-top: 0px;">{{ card.billed }}%</p>
     {% endif %}
@@ -15,6 +20,8 @@
     <p style="color: {{ text_muted }}; font-size: 12px; margin-top: 0px;">{{ card.delivered }}%</p>
     {% endif %}
 
+=======
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 </div>
 {% endmacro %}
 
@@ -41,6 +48,7 @@
 <div style="clear: both"></div>
 {% endif %}
 
+<<<<<<< HEAD
 <!-- issue list -->
 {% if issue_list %}
 <h4 style="{{ section_head }}">{{ _("Open Issues ") }}
@@ -88,14 +96,20 @@
 {% endfor %}
 </div>
 {% endif %}
+=======
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 
 {% if events or todo_list or notifications %}
 <h1 style="{{ h1 }}">{{ _("Pending Activities") }}</h1>
 
 <!-- events -->
 {% if events %}
+<<<<<<< HEAD
 <h4 style="{{ section_head }}">{{ _("Upcoming Calendar Events ") }}
 	<span class="badge">({{ event_count }})</span></h4>
+=======
+<h4 style="{{ section_head }}">{{ _("Upcoming Events") }}</h4>
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 <div>
 {% for e in events %}
     {% if loop.index==1 or events[loop.index-1].date != e.date %}
@@ -127,8 +141,12 @@
 
 <!-- todo list -->
 {% if todo_list %}
+<<<<<<< HEAD
 <h4 style="{{ section_head }}">{{ _("Open To Do ") }}
 	<span class="badge">({{ todo_count }})</span></h4>
+=======
+<h4 style="{{ section_head }}">{{ _("To Do List") }}</h4>
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 <div>
 {% for t in todo_list %}
     <div style="{{ line_item }}">

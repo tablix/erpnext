@@ -1,5 +1,9 @@
 execute:import unidecode # new requirement
+<<<<<<< HEAD
 erpnext.patches.v8_0.move_perpetual_inventory_setting
+=======
+
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 erpnext.patches.v4_0.validate_v3_patch
 erpnext.patches.v4_0.fix_employee_user_id
 erpnext.patches.v4_0.remove_employee_role_if_no_employee
@@ -8,7 +12,11 @@ erpnext.patches.v4_0.apply_user_permissions
 erpnext.patches.v4_0.move_warehouse_user_to_restrictions
 erpnext.patches.v4_0.global_defaults_to_system_settings
 erpnext.patches.v4_0.update_incharge_name_to_sales_person_in_maintenance_schedule
+<<<<<<< HEAD
 execute:frappe.reload_doc('stock', 'doctype', 'warehouse') # 2017-04-24
+=======
+execute:frappe.reload_doc('stock', 'doctype', 'warehouse')
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 execute:frappe.reload_doc('accounts', 'doctype', 'sales_invoice') # 2016-08-31
 execute:frappe.reload_doc('selling', 'doctype', 'sales_order') # 2014-01-29
 execute:frappe.reload_doc('selling', 'doctype', 'quotation') # 2014-01-29
@@ -143,7 +151,10 @@ erpnext.patches.v5_0.update_time_log_title
 erpnext.patches.v7_0.create_warehouse_nestedset
 erpnext.patches.v7_0.merge_account_type_stock_and_warehouse_to_stock
 erpnext.patches.v7_0.set_is_group_for_warehouse
+<<<<<<< HEAD
 erpnext.patches.v7_2.stock_uom_in_selling
+=======
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 erpnext.patches.v4_2.repost_sle_for_si_with_no_warehouse
 erpnext.patches.v5_0.newsletter
 execute:frappe.delete_doc("DocType", "Chart of Accounts")
@@ -292,14 +303,21 @@ erpnext.patches.v7_0.rename_prevdoc_fields
 erpnext.patches.v7_0.rename_time_sheet_doctype
 execute:frappe.delete_doc_if_exists("Report", "Customers Not Buying Since Long Time")
 erpnext.patches.v7_0.make_is_group_fieldtype_as_check
+<<<<<<< HEAD
 execute:frappe.reload_doc('projects', 'doctype', 'timesheet') #2016-09-12
 erpnext.patches.v7_1.rename_field_timesheet
+=======
+execute:frappe.reload_doc('projects', 'doctype', 'timesheet', force=True)
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 execute:frappe.delete_doc_if_exists("Report", "Employee Holiday Attendance")
 execute:frappe.delete_doc_if_exists("DocType", "Payment Tool")
 execute:frappe.delete_doc_if_exists("DocType", "Payment Tool Detail")
 erpnext.patches.v7_0.setup_account_table_for_expense_claim_type_if_exists
 erpnext.patches.v7_0.migrate_schools_to_erpnext
+<<<<<<< HEAD
 erpnext.patches.v7_1.update_lead_source
+=======
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 erpnext.patches.v6_20x.remove_customer_supplier_roles
 erpnext.patches.v7_0.remove_administrator_role_in_doctypes
 erpnext.patches.v7_0.rename_fee_amount_to_fee_component
@@ -314,14 +332,18 @@ erpnext.patches.v7_0.set_portal_settings
 erpnext.patches.v7_0.update_change_amount_account
 erpnext.patches.v7_0.repost_future_gle_for_purchase_invoice
 erpnext.patches.v7_0.fix_duplicate_icons
+<<<<<<< HEAD
 erpnext.patches.v7_0.move_employee_parent_to_child_in_salary_structure
 erpnext.patches.v7_0.repost_gle_for_pos_sales_return
 erpnext.patches.v7_1.update_total_billing_hours
 erpnext.patches.v7_1.update_component_type
+=======
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 erpnext.patches.v7_0.repost_gle_for_pos_sales_return
 erpnext.patches.v7_0.update_missing_employee_in_timesheet
 erpnext.patches.v7_0.update_status_for_timesheet
 erpnext.patches.v7_0.set_party_name_in_payment_entry
+<<<<<<< HEAD
 erpnext.patches.v7_1.set_student_guardian
 erpnext.patches.v7_0.update_conversion_factor_in_supplier_quotation_item
 erpnext.patches.v7_1.move_sales_invoice_from_parent_to_child_timesheet
@@ -447,3 +469,10 @@ erpnext.patches.v8_9.set_default_customer_group
 erpnext.patches.v8_9.remove_employee_from_salary_structure_parent
 erpnext.patches.v8_9.delete_gst_doctypes_for_outside_india_accounts
 erpnext.patches.v8_9.set_default_fields_in_variant_settings
+=======
+execute:frappe.db.sql("update `tabTimesheet` ts, `tabEmployee` emp set ts.employee_name = emp.employee_name where emp.name = ts.employee and ts.employee_name is null and ts.employee is not null")
+execute:frappe.db.sql("delete from `tabTimesheet Detail` where NOT EXISTS (select name from `tabTimesheet` where name = `tabTimesheet Detail`.parent)")
+erpnext.patches.v7_0.update_mode_of_payment_type
+finally:erpnext.patches.v7_0.update_timesheet_communications
+erpnext.patches.v7_0.update_status_of_zero_amount_sales_order
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347

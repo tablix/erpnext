@@ -1,5 +1,8 @@
+<<<<<<< HEAD
 # Payment Reconciliation
 
+=======
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 In complex scenarios, especially in the capital goods industry, sometimes there is no direct link between payments and invoices. You send invoices to your Customers and your Customer sends you block payments or payments based on some schedule that is not linked to your invoices.
 
 In such cases, you can use the Payment to Invoice Matching Tool.
@@ -10,7 +13,11 @@ In this tool, you can select an account (your Customer’s account) and click on
 
 To cancel off some payments and invoices, select the Invoices and Journal Vouchers and click on “Reconcile”.
 
+<<<<<<< HEAD
 <img class="screenshot" alt="Payment Reconciliation" src="/docs/assets/img/accounts/payment-reconcile-tool.png">
+=======
+<img class="screenshot" alt="Payment Reconciliation" src="{{docs_base_url}}/assets/img/accounts/payment-reconcile-tool.png">
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 
 __Step 1:__ Select the Account against whom the payments need to be reconciled.
 

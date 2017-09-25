@@ -12,7 +12,11 @@ Below are the steps to insert Custom Dynamic Field. For an instance, we will ins
 
 Firstly we will create a link field which will be linked to the Doctype.
 
+<<<<<<< HEAD
 <img alt="Custom Link Field" class="screenshot" src="/docs/assets/img/articles/dynamic-field-1.gif">
+=======
+<img alt="Custom Link Field" class="screenshot" src="{{docs_base_url}}/assets/img/articles/dynamic-field-1.gif">
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 
 By **Doctype** mentioned in the Option field, we mean parent Doctype. So, just like Quotation is one Doctype, which has multiple Quotation under it. Same way, Doctype is also a Doctype which has Sales Order, Purchase Order and other doctypes created as Doctype records.
 
@@ -27,17 +31,29 @@ By **Doctype** mentioned in the Option field, we mean parent Doctype. So, just l
 
 So linking this field with parent Doctype will list all the Doctype records.
 
+<<<<<<< HEAD
 <img alt="journal Voucher Link Field" class="screenshot" src="/docs/assets/img/articles/dynamic-field-2.png">
+=======
+<img alt="journal Voucher Link Field" class="screenshot" src="{{docs_base_url}}/assets/img/articles/dynamic-field-2.png">
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 
 #### Step 2: Insert Dynamic Link Field
 
 This custom field's type will be "Dynamic Link". In the Option field, name of Doctype link field will be mentioned.
 
+<<<<<<< HEAD
 <img alt="Custom Dynamic Field" class="screenshot" src="/docs/assets/img/articles/dynamic-field-3.gif">
 
 This field will allow selecting document id, based on value selected in the Doctype link field. For example, if we select Sales Order in the prior field, Dynamic Link field will list all the Sales Orders ids.
 
 <img alt="Custom Dynamic Field" class="screenshot" src="/docs/assets/img/articles/dynamic-field-4.gif">
+=======
+<img alt="Custom Dynamic Field" class="screenshot" src="{{docs_base_url}}/assets/img/articles/dynamic-field-3.gif">
+
+This field will allow selecting document id, based on value selected in the Doctype link field. For example, if we select Sales Order in the prior field, Dynamic Link field will list all the Sales Orders ids.
+
+<img alt="Custom Dynamic Field" class="screenshot" src="{{docs_base_url}}/assets/img/articles/dynamic-field-4.gif">
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 
 <div class="well">
 **Customizing options in the Doctype Link field**

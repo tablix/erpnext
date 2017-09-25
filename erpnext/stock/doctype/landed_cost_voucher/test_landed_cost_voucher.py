@@ -5,6 +5,7 @@
 from __future__ import unicode_literals
 import unittest
 import frappe
+<<<<<<< HEAD
 from frappe.utils import flt
 from erpnext.stock.doctype.purchase_receipt.test_purchase_receipt \
 	import set_perpetual_inventory, get_gl_entries, test_records as pr_test_records, make_purchase_receipt
@@ -14,6 +15,14 @@ from erpnext.accounts.doctype.account.test_account import get_inventory_account
 class TestLandedCostVoucher(unittest.TestCase):
 	def test_landed_cost_voucher(self):
 		frappe.db.set_value("Buying Settings", None, "allow_multiple_items", 1)
+=======
+from erpnext.stock.doctype.purchase_receipt.test_purchase_receipt \
+	import set_perpetual_inventory, get_gl_entries, test_records as pr_test_records
+from erpnext.accounts.doctype.purchase_invoice.test_purchase_invoice import make_purchase_invoice
+
+class TestLandedCostVoucher(unittest.TestCase):
+	def test_landed_cost_voucher(self):
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 		set_perpetual_inventory(1)
 		pr = frappe.copy_doc(pr_test_records[0])
 		pr.submit()
@@ -26,7 +35,11 @@ class TestLandedCostVoucher(unittest.TestCase):
 			},
 			fieldname=["qty_after_transaction", "stock_value"], as_dict=1)
 
+<<<<<<< HEAD
 		submit_landed_cost_voucher("Purchase Receipt", pr.name)
+=======
+		self.submit_landed_cost_voucher("Purchase Receipt", pr.name)
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 
 		pr_lc_value = frappe.db.get_value("Purchase Receipt Item", {"parent": pr.name}, "landed_cost_voucher_amount")
 		self.assertEquals(pr_lc_value, 25.0)
@@ -47,6 +60,7 @@ class TestLandedCostVoucher(unittest.TestCase):
 
 		self.assertTrue(gl_entries)
 
+<<<<<<< HEAD
 		stock_in_hand_account = get_inventory_account(pr.company, pr.get("items")[0].warehouse)
 		fixed_asset_account = get_inventory_account(pr.company, pr.get("items")[1].warehouse)  
 
@@ -64,6 +78,18 @@ class TestLandedCostVoucher(unittest.TestCase):
 				"Stock Received But Not Billed - _TC": [0.0, 500.0],
 				"Expenses Included In Valuation - _TC": [0.0, 300.0]
 			}
+=======
+		stock_in_hand_account = pr.get("items")[0].warehouse
+		fixed_asset_account = pr.get("items")[1].warehouse
+
+
+		expected_values = {
+			stock_in_hand_account: [400.0, 0.0],
+			fixed_asset_account: [400.0, 0.0],
+			"Stock Received But Not Billed - _TC": [0.0, 500.0],
+			"Expenses Included In Valuation - _TC": [0.0, 300.0]
+		}
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 
 		for gle in gl_entries:
 			self.assertEquals(expected_values[gle.account][0], gle.debit)
@@ -85,7 +111,11 @@ class TestLandedCostVoucher(unittest.TestCase):
 			},
 			fieldname=["qty_after_transaction", "stock_value"], as_dict=1)
 
+<<<<<<< HEAD
 		submit_landed_cost_voucher("Purchase Invoice", pi.name)
+=======
+		self.submit_landed_cost_voucher("Purchase Invoice", pi.name)
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 		
 		pi_lc_value = frappe.db.get_value("Purchase Invoice Item", {"parent": pi.name}, 
 			"landed_cost_voucher_amount")
@@ -107,10 +137,16 @@ class TestLandedCostVoucher(unittest.TestCase):
 		gl_entries = get_gl_entries("Purchase Invoice", pi.name)
 
 		self.assertTrue(gl_entries)
+<<<<<<< HEAD
 		stock_in_hand_account = get_inventory_account(pi.company, pi.get("items")[0].warehouse)
 
 		expected_values = {
 			stock_in_hand_account: [300.0, 0.0],
+=======
+
+		expected_values = {
+			pi.get("items")[0].warehouse: [300.0, 0.0],
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 			"Creditors - _TC": [0.0, 250.0],
 			"Expenses Included In Valuation - _TC": [0.0, 50.0]
 		}
@@ -132,7 +168,11 @@ class TestLandedCostVoucher(unittest.TestCase):
 
 		serial_no_rate = frappe.db.get_value("Serial No", "SN001", "purchase_rate")
 
+<<<<<<< HEAD
 		submit_landed_cost_voucher("Purchase Receipt", pr.name)
+=======
+		self.submit_landed_cost_voucher("Purchase Receipt", pr.name)
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 
 		serial_no = frappe.db.get_value("Serial No", "SN001",
 			["warehouse", "purchase_rate"], as_dict=1)
@@ -142,6 +182,7 @@ class TestLandedCostVoucher(unittest.TestCase):
 
 		set_perpetual_inventory(0)
 
+<<<<<<< HEAD
 	def test_landed_cost_voucher_for_odd_numbers (self):
 		set_perpetual_inventory(1)
 
@@ -200,5 +241,29 @@ def distribute_landed_cost_on_items(lcv):
 	for item in lcv.get("items"):
 		item.applicable_charges = flt(item.get(based_on)) * flt(lcv.total_taxes_and_charges) / flt(total)
 		item.applicable_charges = flt(item.applicable_charges, lcv.precision("applicable_charges", item))
+=======
+	def submit_landed_cost_voucher(self, receipt_document_type, receipt_document):
+		ref_doc = frappe.get_doc(receipt_document_type, receipt_document)
+		
+		lcv = frappe.new_doc("Landed Cost Voucher")
+		lcv.company = "_Test Company"
+		lcv.set("purchase_receipts", [{
+			"receipt_document_type": receipt_document_type,
+			"receipt_document": receipt_document,
+			"supplier": ref_doc.supplier,
+			"posting_date": ref_doc.posting_date,
+			"grand_total": ref_doc.base_grand_total
+		}])
+		
+		lcv.set("taxes", [{
+			"description": "Insurance Charges",
+			"account": "_Test Account Insurance Charges - _TC",
+			"amount": 50
+		}])
+
+		lcv.insert()
+		lcv.submit()
+
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 
 test_records = frappe.get_test_records('Landed Cost Voucher')

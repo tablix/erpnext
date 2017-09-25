@@ -11,7 +11,11 @@ a Sales Order.
 
 ### Sales Order Flow-Chart
 
+<<<<<<< HEAD
 <img class="screenshot" alt="Sales Order flow" src="/docs/assets/img/selling/sales-order-f.jpg">
+=======
+![Sales Order]({{docs_base_url}}/assets/old_images/erpnext/sales-order-f.jpg)
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 
 To create a new Sales Order go to:
 
@@ -21,17 +25,29 @@ To create a new Sales Order go to:
 
 You can also create a Sales Order from a submitted Quotation.
 
+<<<<<<< HEAD
 <img class="screenshot" alt="Make Sales Order from Quotation" src="/docs/assets/img/selling/make-SO-from-quote.png">
 
 Or you can create a new Sales Order and pull details from an Quotation.
 
 <img class="screenshot" alt="Make Sales Order from Quotation" src="/docs/assets/img/selling/make-so.gif">
+=======
+<img class="screenshot" alt="Make Sales Order from Quotation" src="{{docs_base_url}}/assets/img/selling/make-SO-from-quote.png">
+
+Or you can create a new Sales Order and pull details from an Quotation.
+
+<img class="screenshot" alt="Make Sales Order from Quotation" src="{{docs_base_url}}/assets/img/selling/make-so.gif">
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 
 Most of the information in your Sales Order is the same as the Quotation.
 There are a few amongst other things that a Sales Order will ask you to
 update.
 
+<<<<<<< HEAD
   * Enter delivery date agaist each item. If there are multiple items and if you enter delivery date in the first row, the date will be copied to other rows as well where it is blank.
+=======
+  * Expected date of delivery.
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
   * Customer Purchase Order number: If your customer has sent you a Purchase Order, you can update its number for future reference (in billing).
 
 ### Packing List
@@ -50,6 +66,7 @@ Warehouse here.
 This “reserved” quantity will help you project what is the quantity you need
 to purchase based on all your commitments.
 
+<<<<<<< HEAD
 ### Taxes
 
 To add taxes to your Quotation, you can select a **Sales Taxes and Charges Template** or add the taxes on your own.
@@ -60,6 +77,8 @@ For e.g
 
 To understand taxes in detail visit [Taxes](/docs/user/manual/en/setting-up/setting-up-taxes.html).
 
+=======
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 ### Sales Team
 
 **Sales Partner:** If this Sale was booked via a Sales Partner, you can update the Sales Partner’s details with commission and other info that you can aggregate.
@@ -80,18 +99,30 @@ Here you can fill in the details like; of how frequently you want to generate an
 
 On updating the Sales Order, a Recurring ID will be generated which will be same for all recurring orders generated from this particular Sales Order.
 
+<<<<<<< HEAD
 ERPNext will automatically create new Order and mail a notification to the Email Addresses you set in the 'Notification Email Address'field.
 
 <img class="screenshot" alt="Reccuring Sales Order" src="/docs/assets/img/selling/recurring-sales-order.png">
+=======
+ERPNext will automatically create new Order and mail a notification to the email IDs you set in the 'Notification Email Address'field.
+
+<img class="screenshot" alt="Reccuring Sales Order" src="{{docs_base_url}}/assets/img/selling/recurring-sales-order.png">
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 
 ### Next Steps
 
 Once you “Submit” your Sales Order, you can now trigger different aspects of
 your organization:
 
+<<<<<<< HEAD
   * To begin purchase click on Make -> Purchase Request
   * To make a shipment entry click on Make -> Delivery Note. You can also make Delivery Note for selected items based on delivery date.
   * To bill, make Make -> Sales Invoice
+=======
+  * To begin purchase click on “Make Purchase Request”
+  * To make a shipment entry click on “Make Delivery Note”
+  * To bill, make “Make Sales Invoice”
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
   * To stop further process on this Sales Order, click on “Stop”
 
 ### Submission

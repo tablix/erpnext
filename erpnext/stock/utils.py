@@ -41,12 +41,19 @@ def get_stock_value_on(warehouse=None, posting_date=None, item_code=None):
 
 	sle_map = {}
 	for sle in stock_ledger_entries:
+<<<<<<< HEAD
 		if not sle_map.has_key((sle.item_code, sle.warehouse)):
 			sle_map[(sle.item_code, sle.warehouse)] = flt(sle.stock_value)
 		
 	return sum(sle_map.values())
 
 @frappe.whitelist()
+=======
+		sle_map[sle.item_code] = sle_map.get(sle.item_code, 0.0) + flt(sle.stock_value)
+		
+	return sum(sle_map.values())
+
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 def get_stock_balance(item_code, warehouse, posting_date=None, posting_time=None, with_valuation_rate=False):
 	"""Returns stock balance quantity at given warehouse on given posting date or current date.
 
@@ -66,6 +73,7 @@ def get_stock_balance(item_code, warehouse, posting_date=None, posting_time=None
 	if with_valuation_rate:
 		return (last_entry.qty_after_transaction, last_entry.valuation_rate) if last_entry else (0.0, 0.0)
 	else:
+<<<<<<< HEAD
 		return last_entry.qty_after_transaction if last_entry else 0.0
 
 @frappe.whitelist()
@@ -89,6 +97,9 @@ def get_latest_stock_qty(item_code, warehouse=None):
 
 	return actual_qty
 
+=======
+		return last_entry.qty_after_transaction or 0.0
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 
 def get_latest_stock_balance():
 	bin_map = {}
@@ -215,4 +226,8 @@ def validate_warehouse_company(warehouse, company):
 def is_group_warehouse(warehouse):
 	if frappe.db.get_value("Warehouse", warehouse, "is_group"):
 		frappe.throw(_("Group node warehouse is not allowed to select for transactions"))
+<<<<<<< HEAD
 	
+=======
+	
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347

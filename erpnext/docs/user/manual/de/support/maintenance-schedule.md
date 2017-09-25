@@ -9,7 +9,11 @@ Um einen neuen Wartungsplan zu erstellen, gehen Sie zu:
 
 > Support > Dokumente > Wartungsplan > Neu
 
+<<<<<<< HEAD
 <img class="screenshot" alt="Wartungsplan" src="/docs/assets/img/support/maintenance-schedule.png">
+=======
+<img class="screenshot" alt="Wartungsplan" src="{{docs_base_url}}/assets/img/support/maintenance-schedule.png">
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 
 Im Wartungsplan gibt es zwei Abschnitte:
 

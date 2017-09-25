@@ -8,7 +8,10 @@ import frappe
 from frappe import _, msgprint
 from frappe.utils import comma_and
 from frappe.model.document import Document
+<<<<<<< HEAD
 from frappe.utils import get_datetime, get_datetime_str, now_datetime
+=======
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 
 class ShoppingCartSetupError(frappe.ValidationError): pass
 
@@ -39,6 +42,7 @@ class ShoppingCartSettings(Document):
 		expected_to_exist = [currency + "-" + company_currency
 			for currency in price_list_currency_map.values()
 			if currency != company_currency]
+<<<<<<< HEAD
 		
 		# manqala 20/09/2016: set up selection parameters for query from tabCurrency Exchange	
 		from_currency = [currency for currency in price_list_currency_map.values() if currency != company_currency]
@@ -51,6 +55,13 @@ class ShoppingCartSettings(Document):
 			exists = frappe.db.sql_list("""select CONCAT(from_currency,'-',to_currency) from `tabCurrency Exchange`
 				where from_currency in (%s) and to_currency = "%s" and date <= curdate()""" % (", ".join(["%s"]*len(from_currency)), to_currency), tuple(from_currency))
 			# manqala end
+=======
+
+		if expected_to_exist:
+			exists = frappe.db.sql_list("""select name from `tabCurrency Exchange`
+				where name in (%s)""" % (", ".join(["%s"]*len(expected_to_exist)),),
+				tuple(expected_to_exist))
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 
 			missing = list(set(expected_to_exist).difference(exists))
 
@@ -82,14 +93,20 @@ def get_shopping_cart_settings():
 def is_cart_enabled():
 	return get_shopping_cart_settings().enabled
 
+<<<<<<< HEAD
 def show_quantity_in_website():
 	return get_shopping_cart_settings().show_quantity_in_website
 
+=======
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 def check_shopping_cart_enabled():
 	if not get_shopping_cart_settings().enabled:
 		frappe.throw(_("You need to enable Shopping Cart"), ShoppingCartSetupError)
 
+<<<<<<< HEAD
 def show_attachments():
         return get_shopping_cart_settings().show_attachments
 
 
+=======
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347

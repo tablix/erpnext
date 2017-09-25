@@ -1,5 +1,8 @@
+<<<<<<< HEAD
 # Journal Entry
 
+=======
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 All types of accounting entries other than **Sales Invoice** and **Purchase
 Invoice** are made using the **Journal Entry**. A **Journal Entry** 
 is a standard accounting transaction that affects
@@ -9,7 +12,11 @@ To create a Journal Entry go to:
 
 > Accounts > Documents > Journal Entry > New
 
+<<<<<<< HEAD
 <img class="screenshot" alt="Journal Entry" src="/docs/assets/img/accounts/journal-entry.png">
+=======
+<img class="screenshot" alt="Journal Entry" src="{{docs_base_url}}/assets/img/accounts/journal-entry.png">
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 
 In a Journal Entry, you must select.
 
@@ -70,6 +77,7 @@ of each year reducing its value by a certain percentage.
 > Note: There may be regulations in your country that define by how much
 amount you can depreciate a class of Assets.
 
+<<<<<<< HEAD
 #### Credit Note
 
 "Credit Note" is made for a Customer against a Sales Invoice when the 
@@ -110,4 +118,6 @@ in Govt. account.
 > Note: Applicable in India, might not be applicable for your Country. 
 Please check your country regulations.
 
+=======
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 {next}

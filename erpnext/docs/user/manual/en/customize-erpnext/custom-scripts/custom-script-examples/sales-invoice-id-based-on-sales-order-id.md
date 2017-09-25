@@ -1,5 +1,8 @@
+<<<<<<< HEAD
 # Sales Invoice Id Based On Sales Order Id
 
+=======
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 Below script allows you to get naming series in Sales Invoice, same as of corresponding Sales Order.
 Invoice uses a prefix M- but the number duplicates the SO doc name (number).
 

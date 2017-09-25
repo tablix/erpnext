@@ -1,5 +1,8 @@
+<<<<<<< HEAD
 # Introduction
 
+=======
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 ## What is an ERP and why should I care?
 
 (If you are already convinced you need an all-in-one system for your

@@ -1,7 +1,11 @@
 # Copyright (c) 2015, Frappe Technologies Pvt. Ltd. and Contributors
 # License: GNU General Public License v3. See license.txt
 
+<<<<<<< HEAD
 from __future__ import print_function, unicode_literals
+=======
+from __future__ import unicode_literals
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 
 import frappe, random
 from frappe.desk import query_report
@@ -36,7 +40,10 @@ def make_purchase_receipt():
 			try:
 				pr.submit()
 			except NegativeStockError:
+<<<<<<< HEAD
 				print('Negative stock for {0}'.format(po))
+=======
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 				pass
 			frappe.db.commit()
 
@@ -89,7 +96,10 @@ def submit_draft_stock_entries():
 		DuplicateEntryForProductionOrderError, OperationsNotCompleteError
 
 	# try posting older drafts (if exists)
+<<<<<<< HEAD
 	frappe.db.commit()
+=======
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 	for st in frappe.db.get_values("Stock Entry", {"docstatus":0}, "name"):
 		try:
 			ste = frappe.get_doc("Stock Entry", st[0])
@@ -102,6 +112,7 @@ def submit_draft_stock_entries():
 			frappe.db.rollback()
 
 def make_sales_return_records():
+<<<<<<< HEAD
 	if random.random() < 0.1:
 		for data in frappe.get_all('Delivery Note', fields=["name"], filters={"docstatus": 1}):
 			if random.random() < 0.1:
@@ -124,3 +135,27 @@ def make_purchase_return_records():
 					frappe.db.commit()
 				except Exception:
 					frappe.db.rollback()
+=======
+	for data in frappe.get_all('Delivery Note', fields=["name"], filters={"docstatus": 1}):
+		if random.random() < 0.2:
+			print "dn"
+			try:
+				dn = make_sales_return(data.name)
+				dn.insert()
+				dn.submit()
+				frappe.db.commit()
+			except Exception, e:
+				frappe.db.rollback()
+
+def make_purchase_return_records():
+	for data in frappe.get_all('Purchase Receipt', fields=["name"], filters={"docstatus": 1}):
+		if random.random() < 0.2:
+			print "purchase"
+			try:
+				pr = make_purchase_return(data.name)
+				pr.insert()
+				pr.submit()
+				frappe.db.commit()
+			except Exception, e:
+				frappe.db.rollback()
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347

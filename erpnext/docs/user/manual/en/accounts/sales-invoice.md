@@ -1,14 +1,25 @@
+<<<<<<< HEAD
 # Sales Invoice
 
+=======
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 A Sales Invoice is a bill that you send to your customers, against which the customer processes the payment. Sales Invoice is an accounting transaction. On submission of Sales Invoice,  the system updates the receivable and books income against a Customer Account.
 
 You can create a Sales Invoice directly from
 
+<<<<<<< HEAD
 > Accounts > Billing > Sales Invoice > New Sales Invoice
 
 or you can Make a new Sales Invoice after you submit the Delivery Note.
 
 <img class="screenshot" alt="Sales Invoice" src="/docs/assets/img/accounts/sales-invoice.png">
+=======
+> Accounting > Documents > Sales Invoice > New Sales Invoice
+
+or Click on Make Invoice at the right hand corner of the Delivery Note.
+
+<img class="screenshot" alt="Sales Invoice" src="{{docs_base_url}}/assets/img/accounts/sales-invoice.png">
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 
 #### Accounting Impact
 
@@ -53,6 +64,7 @@ monthly, quarterly, half-yearly or annual basis, you can check the “Recurring
 Invoice” box. Here you can fill in the details of how frequently you want to
 bill this Invoice and the period for which the contract is valid.
 
+<<<<<<< HEAD
 ERPNext will automatically create new Invoices and mail it to the Email Addresses
 you set.
 
@@ -75,6 +87,11 @@ corresponding Timesheet entries for that Project will be fetched.
 
 <img class="screenshot" alt="POS Invoice" src="/docs/assets/img/accounts/billing-timesheet-sales-invoice.png">
 
+=======
+ERPNext will automatically create new Invoices and mail it to the email ids
+you set.
+
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 * * *
 
 #### "Pro Forma" Invoice
@@ -90,5 +107,10 @@ not ideal as your Customer may or may not decide to pay up. But since your
 Customer wants an “Invoice”, you could give the Customer a Quotation (in
 ERPNext) titled as “Pro Forma Invoice”. This way everyone is happy.
 
+<<<<<<< HEAD
 This is a fairly common practice. We follow this at Frappé too.
+=======
+This is a fairly common practice. We follow this at Frappe too.
+
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 {next}

@@ -85,10 +85,13 @@ class SerialNo(StockController):
 				self.supplier, self.supplier_name = \
 					frappe.db.get_value("Purchase Receipt", purchase_sle.voucher_no,
 						["supplier", "supplier_name"])
+<<<<<<< HEAD
 
 			# If sales return entry
 			if self.purchase_document_type == 'Delivery Note':
 				self.sales_invoice = None
+=======
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 		else:
 			for fieldname in ("purchase_document_type", "purchase_document_no",
 				"purchase_date", "purchase_time", "purchase_rate", "supplier", "supplier_name"):
@@ -164,12 +167,20 @@ class SerialNo(StockController):
 	def after_rename(self, old, new, merge=False):
 		"""rename serial_no text fields"""
 		for dt in frappe.db.sql("""select parent from tabDocField
+<<<<<<< HEAD
 			where fieldname='serial_no' and fieldtype in ('Text', 'Small Text')"""):
+=======
+			where fieldname='serial_no' and fieldtype='Text'"""):
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 
 			for item in frappe.db.sql("""select name, serial_no from `tab%s`
 				where serial_no like '%%%s%%'""" % (dt[0], frappe.db.escape(old))):
 
+<<<<<<< HEAD
 				serial_nos = map(lambda i: new if i.upper()==old.upper() else i, item[1].split('\n'))
+=======
+				serial_nos = map(lambda i: i==old and new or i, item[1].split('\n'))
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 				frappe.db.sql("""update `tab%s` set serial_no = %s
 					where name=%s""" % (dt[0], '%s', '%s'),
 					('\n'.join(serial_nos), item[0]))
@@ -213,7 +224,11 @@ def validate_serial_no(sle, item_det):
 							frappe.throw(_("Serial No {0} does not belong to Item {1}").format(serial_no,
 								sle.item_code), SerialNoItemError)
 
+<<<<<<< HEAD
 					if sle.actual_qty > 0 and has_duplicate_serial_no(sr, sle):
+=======
+					if sr.warehouse and sle.actual_qty > 0:
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 						frappe.throw(_("Serial No {0} has already been received").format(serial_no),
 							SerialNoDuplicateError)
 
@@ -234,6 +249,7 @@ def validate_serial_no(sle, item_det):
 			frappe.throw(_("Serial Nos Required for Serialized Item {0}").format(sle.item_code),
 				SerialNoRequiredError)
 
+<<<<<<< HEAD
 def has_duplicate_serial_no(sn, sle):
 	if sn.warehouse:
 		return True
@@ -250,6 +266,8 @@ def has_duplicate_serial_no(sn, sle):
 
 	return status
 
+=======
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 def allow_serial_nos_with_different_item(sle_serial_no, sle):
 	"""
 		Allows same serial nos for raw materials and finished goods
@@ -344,6 +362,7 @@ def update_serial_nos_after_submit(controller, parentfield):
 						update_rejected_serial_nos = False
 						if accepted_serial_nos_updated:
 							break
+<<<<<<< HEAD
 
 def update_maintenance_status():
 	serial_nos = frappe.db.sql('''select name from `tabSerial No` where (amc_expiry_date<%s or
@@ -367,3 +386,5 @@ def get_delivery_note_serial_no(item_code, qty, delivery_note):
 		serial_nos = '\n'.join(dn_serial_nos)
 
 	return serial_nos
+=======
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347

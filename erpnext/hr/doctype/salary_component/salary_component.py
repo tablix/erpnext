@@ -5,6 +5,7 @@
 from __future__ import unicode_literals
 import frappe
 from frappe.model.document import Document
+<<<<<<< HEAD
 from frappe.model.naming import append_number_if_name_exists
 
 class SalaryComponent(Document):
@@ -20,3 +21,8 @@ class SalaryComponent(Document):
 
 		self.salary_component_abbr = append_number_if_name_exists('Salary Component',
 			self.salary_component_abbr, 'salary_component_abbr', separator='_')
+=======
+
+class SalaryComponent(Document):
+	pass
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347

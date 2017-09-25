@@ -1,5 +1,8 @@
+<<<<<<< HEAD
 # Customer Portal
 
+=======
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 Customer Portal is designed to give easy accesibility to customers of a
 company.
 

@@ -11,7 +11,11 @@ from frappe.model.document import Document
 class LeaveControlPanel(Document):
 	def get_employees(self):
 		conditions, values = [], []
+<<<<<<< HEAD
 		for field in ["company", "employment_type", "branch", "designation", "department"]:
+=======
+		for field in ["employment_type", "branch", "designation", "department"]:
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 			if self.get(field):
 				conditions.append("{0}=%s".format(field))
 				values.append(self.get(field))

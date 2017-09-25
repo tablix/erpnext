@@ -1,5 +1,8 @@
+<<<<<<< HEAD
 # Bar Code
 
+=======
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 A Barcode is a machine-readable code in the form of numbers and a pattern of
 parallel lines of varying widths, printed on a commodity and used especially
 for stock control.
@@ -20,7 +23,11 @@ setup, check the box that says Item Barcode.
 
 #### Figure 1: Check the box 'Item Barcode'
 
+<<<<<<< HEAD
 <img class="screenshot" alt="Barcode" src="/docs/assets/img/setup/barcode-1.png">
+=======
+<img class="screenshot" alt="Barcode" src="{{docs_base_url}}/assets/img/setup/barcode-1.png">
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 
 
 To start scanning with a bar-code, go to  
@@ -41,7 +48,11 @@ Then go to Accounts and click on Sales Invoice. Check the box 'Is POS'
   
 #### Figure 2: Check the box 'Is POS'
 
+<<<<<<< HEAD
 <img class="screenshot" alt="Barcode" src="/docs/assets/img/setup/barcode-2.png">
+=======
+<img class="screenshot" alt="Barcode" src="{{docs_base_url}}/assets/img/setup/barcode-2.png">
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 
 
 Go to Item and click on Add new row.  

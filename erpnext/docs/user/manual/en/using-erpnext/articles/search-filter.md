@@ -8,20 +8,32 @@ Each filter option has three fields.
 
 Select field of the document based on which you wish to filter records.
 
+<<<<<<< HEAD
 <img alt="Search Filter Field" class="screenshot" src="/docs/assets/img/articles/search-filter-field.gif">
+=======
+<img alt="Search Filter Field" class="screenshot" src="{{docs_base_url}}/assets/img/articles/search-filter-field.gif">
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 
 
 #### Based On
 
 With Field, you will provide a value. In the based on field, you can define a criterion that when filter should be applied in record. It will be when value define for the field if filter is:
 
+<<<<<<< HEAD
 <img alt="Search Filter Based On" class="screenshot" src="/docs/assets/img/articles/search-filter-based-on.gif">
+=======
+<img alt="Search Filter Based On" class="screenshot" src="{{docs_base_url}}/assets/img/articles/search-filter-based-on.gif">
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 
 #### Value
 
 A value should be entered in this field based on while records will be filtered. After filter is applied, records will be filtered based on it. And filter will shrunk under one field/button.
 
+<<<<<<< HEAD
 <img alt="Search Filter Based On" class="screenshot" src="/docs/assets/img/articles/search-filter-result.png">
+=======
+<img alt="Search Filter Based On" class="screenshot" src="{{docs_base_url}}/assets/img/articles/search-filter-result.png">
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 
 
 You can apply multiple filters at a time. To remove specific filter, just click on cancelled (X) sign ahead of it.
@@ -30,6 +42,10 @@ You can apply multiple filters at a time. To remove specific filter, just click 
 
 From the list views, you can also apply filters by clicking on the Status field.
 
+<<<<<<< HEAD
 <img alt="Renamed Item" class="screenshot" src="/docs/assets/img/articles/search-filter-auto.gif">
+=======
+<img alt="Renamed Item" class="screenshot" src="{{docs_base_url}}/assets/img/articles/search-filter-auto.gif">
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 
 <!-- markdown -->

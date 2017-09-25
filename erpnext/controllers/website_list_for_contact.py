@@ -5,7 +5,11 @@ from __future__ import unicode_literals
 import json
 import frappe
 from frappe import _
+<<<<<<< HEAD
 from frappe.utils import flt, has_common
+=======
+from frappe.utils import flt
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 from frappe.utils.user import is_website_user
 
 def get_list_context(context=None):
@@ -18,19 +22,30 @@ def get_list_context(context=None):
 		"get_list": get_transaction_list
 	}
 
+<<<<<<< HEAD
 
 def get_transaction_list(doctype, txt=None, filters=None, limit_start=0, limit_page_length=20, order_by="modified"):
+=======
+def get_transaction_list(doctype, txt=None, filters=None, limit_start=0, limit_page_length=20):
+	from frappe.www.list import get_list
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 	user = frappe.session.user
 	key = None
 
 	if not filters: filters = []
 
+<<<<<<< HEAD
 	if doctype == 'Supplier Quotation':
 		filters.append((doctype, "docstatus", "<", 2))
 	else:
 		filters.append((doctype, "docstatus", "=", 1))
 
 	if (user != "Guest" and is_website_user()) or doctype == 'Request for Quotation':
+=======
+	filters.append((doctype, "docstatus", "=", 1))
+
+	if user != "Guest" and is_website_user():
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 		parties_doctype = 'Request for Quotation Supplier' if doctype == 'Request for Quotation' else doctype
 		# find party for this contact
 		customers, suppliers = get_customers_suppliers(parties_doctype, user)
@@ -45,6 +60,7 @@ def get_transaction_list(doctype, txt=None, filters=None, limit_start=0, limit_p
 		filters.append((doctype, key, "in", parties))
 
 		if key:
+<<<<<<< HEAD
 			return post_process(doctype, get_list_for_transactions(doctype, txt,
 				filters=filters, fields="name",limit_start=limit_start,
 				limit_page_length=limit_page_length,ignore_permissions=True,
@@ -82,6 +98,18 @@ def get_list_for_transactions(doctype, txt, filters, limit_start, limit_page_len
 			data.append(r)
 
 	return data
+=======
+			return post_process(doctype, get_list(doctype, txt,
+				filters=filters, fields = "name",
+				limit_start=limit_start, limit_page_length=limit_page_length,
+				ignore_permissions=True,
+				order_by = "modified desc"))
+		else:
+			return []
+
+	return post_process(doctype, get_list(doctype, txt, filters, limit_start, limit_page_length,
+		fields="name", order_by = "modified desc"))
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 
 def get_party_details(customers, suppliers):
 	if customers:
@@ -126,6 +154,7 @@ def post_process(doctype, data):
 	return result
 
 def get_customers_suppliers(doctype, user):
+<<<<<<< HEAD
 	customers = []
 	suppliers = []
 	meta = frappe.get_meta(doctype)
@@ -150,6 +179,14 @@ def get_customers_suppliers(doctype, user):
 			if meta.get_field("customer") else None
 		suppliers = [supplier.name for supplier in frappe.get_list("Customer")] \
 			if meta.get_field("supplier") else None
+=======
+	meta = frappe.get_meta(doctype)
+	contacts = frappe.get_all("Contact", fields=["customer", "supplier", "email_id"],
+		filters={"email_id": user})
+
+	customers = [c.customer for c in contacts if c.customer] if meta.get_field("customer") else None
+	suppliers = [c.supplier for c in contacts if c.supplier] if meta.get_field("supplier") else None
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 
 	return customers, suppliers
 
@@ -160,8 +197,12 @@ def has_website_permission(doc, ptype, user, verbose=False):
 		return frappe.get_all(doctype, filters=[(doctype, "customer", "in", customers),
 			(doctype, "name", "=", doc.name)]) and True or False
 	elif suppliers:
+<<<<<<< HEAD
 		fieldname = 'suppliers' if doctype == 'Request for Quotation' else 'supplier'
 		return frappe.get_all(doctype, filters=[(doctype, fieldname, "in", suppliers),
+=======
+		return frappe.get_all(doctype, filters=[(doctype, "suppliers", "in", suppliers),
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 			(doctype, "name", "=", doc.name)]) and True or False
 	else:
 		return False

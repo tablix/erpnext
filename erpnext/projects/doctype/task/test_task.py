@@ -16,7 +16,10 @@ class TestTask(unittest.TestCase):
 		task1.update({
 			"status": "Open",
 			"subject": "_Test Task 1",
+<<<<<<< HEAD
 			"project": "_Test Project",
+=======
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 			"exp_start_date": "2015-1-1",
 			"exp_end_date": "2015-1-10"
 		})
@@ -26,7 +29,10 @@ class TestTask(unittest.TestCase):
 		task2.update({
 			"status": "Open",
 			"subject": "_Test Task 2",
+<<<<<<< HEAD
 			"project": "_Test Project",
+=======
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 			"exp_start_date": "2015-1-11",
 			"exp_end_date": "2015-1-15",
 			"depends_on":[
@@ -41,7 +47,10 @@ class TestTask(unittest.TestCase):
 		task3.update({
 			"status": "Open",
 			"subject": "_Test Task 2",
+<<<<<<< HEAD
 			"project": "_Test Project",
+=======
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 			"exp_start_date": "2015-1-11",
 			"exp_end_date": "2015-1-15",
 			"depends_on":[
@@ -83,7 +92,10 @@ class TestTask(unittest.TestCase):
 		task1.update({
 			"status": "Open",
 			"subject": "_Test Task 1",
+<<<<<<< HEAD
 			"project": "_Test Project",
+=======
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 			"exp_start_date": "2015-1-1",
 			"exp_end_date": "2015-1-10"
 		})
@@ -93,13 +105,20 @@ class TestTask(unittest.TestCase):
 		task2.update({
 			"status": "Open",
 			"subject": "_Test Task 2",
+<<<<<<< HEAD
 			"project": "_Test Project",
+=======
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 			"exp_start_date": "2015-1-11",
 			"exp_end_date": "2015-1-15",
 			"depends_on":[
 				{
+<<<<<<< HEAD
 					"task": task1.name,
 					"project": "_Test Project"
+=======
+					"task": task1.name
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 				}
 			]
 		})
@@ -109,13 +128,20 @@ class TestTask(unittest.TestCase):
 		task3.update({
 			"status": "Open",
 			"subject": "_Test Task 3",
+<<<<<<< HEAD
 			"project": "_Test Project",
+=======
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 			"exp_start_date": "2015-1-16",
 			"exp_end_date": "2015-1-18",
 			"depends_on":[
 				{
+<<<<<<< HEAD
 					"task": task2.name,
 					"project": "_Test Project"
+=======
+					"task": task2.name
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 				}
 			]
 		})

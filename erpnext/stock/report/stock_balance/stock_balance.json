@@ -5,15 +5,21 @@
  "disabled": 0, 
  "docstatus": 0, 
  "doctype": "Report", 
+<<<<<<< HEAD
  "idx": 2, 
  "is_standard": "Yes", 
  "modified": "2017-02-24 20:10:13.764665", 
+=======
+ "is_standard": "Yes", 
+ "modified": "2015-05-22 02:16:24.614986", 
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
  "modified_by": "Administrator", 
  "module": "Stock", 
  "name": "Stock Balance", 
  "owner": "Administrator", 
  "ref_doctype": "Stock Ledger Entry", 
  "report_name": "Stock Balance", 
+<<<<<<< HEAD
  "report_type": "Script Report", 
  "roles": [
   {
@@ -23,4 +29,7 @@
    "role": "Accounts Manager"
   }
  ]
+=======
+ "report_type": "Script Report"
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 }

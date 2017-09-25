@@ -30,10 +30,15 @@ def get():
 	                _("Earnest Money"): {}
 	            },
 	            _("Stock Assets"): {
+<<<<<<< HEAD
 	                _("Stock In Hand"): {
 	                    "account_type": "Stock"
 	                },
 	                "account_type": "Stock",
+=======
+	                "account_type": "Stock",
+					"is_group": 1
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 	            },
 	            _("Tax Assets"): {
 					"is_group": 1
@@ -109,7 +114,11 @@ def get():
 	            _("Office Maintenance Expenses"): {},
 	            _("Office Rent"): {},
 	            _("Postal Expenses"): {},
+<<<<<<< HEAD
 	            _("Print and Stationery"): {},
+=======
+	            _("Print and Stationary"): {},
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 	            _("Round Off"): {
 	                "account_type": "Round Off"
 	            },
@@ -139,8 +148,12 @@ def get():
 			    _("Accounts Payable"): {
 			        _("Creditors"): {
 			            "account_type": "Payable"
+<<<<<<< HEAD
 			        },
 			        _("Payroll Payable"): {},
+=======
+			        }
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 			    },
 			    _("Stock Liabilities"): {
 				    _("Stock Received But Not Billed"): {

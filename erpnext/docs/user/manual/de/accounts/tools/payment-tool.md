@@ -23,6 +23,7 @@ Um zum Zahlungswerkzeug zu gelangen, gehen Sie zu
 
 * **Hinweis**: Für den Fall, dass der Benutzer an einen Kunden zahlt oder von einem Lieferanten eine Zahlung erhält, fügen Sie manuell Anmerkungen hinzu, die sich auf zutreffende Rechnungen oder Aufträge beziehen.
 
+<<<<<<< HEAD
 <img class="screenshot" alt="Zahlungswerkzeug" src="/docs/assets/img/accounts/payment-tool-1.png">
 
 7\. Sobald die Daten angezogen wurden, klicken Sie auf die detaillierte Buchung und geben Sie den Zahlungsbetrag zur Rechnung/Bestellung/zum Beleg ein.
@@ -32,5 +33,16 @@ Um zum Zahlungswerkzeug zu gelangen, gehen Sie zu
 8\. Klicken Sie auf "Buchungssatz erstellen" um einen neuen Buchungssatz mit den entsprechenden Einzelheiten zu erstellen.
 
 <img class="screenshot" alt="Zahlungswerkzeug" src="/docs/assets/img/accounts/payment-tool-3.png">
+=======
+<img class="screenshot" alt="Zahlungswerkzeug" src="{{docs_base_url}}/assets/img/accounts/payment-tool-1.png">
+
+7\. Sobald die Daten angezogen wurden, klicken Sie auf die detaillierte Buchung und geben Sie den Zahlungsbetrag zur Rechnung/Bestellung/zum Beleg ein.
+
+<img class="screenshot" alt="Zahlungswerkzeug" src="{{docs_base_url}}/assets/img/accounts/payment-tool-2.png">
+
+8\. Klicken Sie auf "Buchungssatz erstellen" um einen neuen Buchungssatz mit den entsprechenden Einzelheiten zu erstellen.
+
+<img class="screenshot" alt="Zahlungswerkzeug" src="{{docs_base_url}}/assets/img/accounts/payment-tool-3.png">
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 
 {next}

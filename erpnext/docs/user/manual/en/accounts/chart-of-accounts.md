@@ -1,5 +1,8 @@
+<<<<<<< HEAD
 # Chart Of Accounts
 
+=======
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 The Chart of Accounts forms the blueprint of your organization. The overall
 structure of your Chart of Accounts is based on a system of double entry
 accounting that has become a standard all over the world to quantify how a
@@ -21,6 +24,7 @@ figure this out) it's a good opportunity to start learning about this. It will
 be worth the effort. You can also take the help of your accountant to setup
 your Chart of Accounts.
 
+<<<<<<< HEAD
 Financial statements for your company are easily viewable in ERPNext. You can view financial statements
 such as  Balance Sheet, Profit and Loss statement and Cash flow statement.
 
@@ -34,6 +38,12 @@ An Example of various financial statement are given below:
 
 #### Balance Sheet Report
 <img class="screenshot" alt="Balance Sheet Report" src="/docs/assets/img/accounts/balance_sheet_report.png">
+=======
+Financial statement of your company is easily viewable in ERPNext. An Example
+of a financial statement is given below:
+
+<img class="screenshot" alt="Financial Analytics Balance Sheet" src="{{docs_base_url}}/assets/img/accounts/financial-analytics-bl.png">
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 
 To edit your Chart of Accounts in ERPNext go to:
 
@@ -48,7 +58,11 @@ based on statutory (tax, compliance to government regulations) requirements.
 
 Let us understand the main groups of the Chart of Accounts.
 
+<<<<<<< HEAD
 <img class="screenshot" alt="Chart of Accounts" src="/docs/assets/img/accounts/chart-of-accounts-1.png">
+=======
+<img class="screenshot" alt="Chart of Accounts" src="{{docs_base_url}}/assets/img/accounts/chart-of-accounts-1.png">
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 
 ### Balance Sheet Accounts
 
@@ -86,7 +100,11 @@ beginning and end of your Fiscal Year, they become zero.
 In ERPNext it is easy to create a Profit and Loss analysis chart. An example
 of a Profit and Loss analysis chart is given below:
 
+<<<<<<< HEAD
 <img class="screenshot" alt="Financial Analytics Profit and Loss Statement" src="/docs/assets/img/accounts/financial-analytics-pl.png">
+=======
+<img class="screenshot" alt="Financial Analytics Profit and Loss Statement" src="{{docs_base_url}}/assets/img/accounts/financial-analytics-pl.png">
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 
 (On the first day of the year you have not made any profit or loss, but you
 still have assets, hence balance sheet accounts never become zero at the
@@ -106,7 +124,11 @@ Supplier).
 
 > Note: An Account “Ledger” is also sometimes called as Account “Head”.
 
+<<<<<<< HEAD
 <img class="screenshot" alt="Chart of Accounts" src="/docs/assets/img/accounts/chart-of-accounts-2.png">
+=======
+<img class="screenshot" alt="Chart of Accounts" src="{{docs_base_url}}/assets/img/accounts/chart-of-accounts-2.png">
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 
 ### Other Account Types
 
@@ -121,7 +143,11 @@ To create new Accounts, explore your Chart of Accounts and click on an Account
 group under which you want to create the new Account. On the right side, you
 will see an option to “Open” or “Add Child” a new Account.
 
+<<<<<<< HEAD
 <img class="screenshot" alt="Chart of Accounts" src="/docs/assets/img/accounts/chart-of-accounts-3.png">
+=======
+<img class="screenshot" alt="Chart of Accounts" src="{{docs_base_url}}/assets/img/accounts/chart-of-accounts-3.png">
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 
 Option to create will only appear if you click on a Group (folder) type
 Account.

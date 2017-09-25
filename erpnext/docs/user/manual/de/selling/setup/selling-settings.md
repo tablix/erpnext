@@ -3,7 +3,11 @@
 
 In den Vertriebseinstellungen können Sie Eigenheiten angeben, die bei Ihren Vertriebstransaktionen mit berücksichtigt werden. Im Folgenden sprechen wir jeden einzelnen Punkt an.
 
+<<<<<<< HEAD
 <img class="screenshot" alt="Vertriebseinstellungen" src="/docs/assets/img/selling/selling-settings.png">
+=======
+<img class="screenshot" alt="Vertriebseinstellungen" src="{{docs_base_url}}/assets/img/selling/selling-settings.png">
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 
 ### 1\. Benennung der Kunden nach
 

@@ -5,8 +5,13 @@
  <div class="page-breadcrumbs" data-html-block="breadcrumbs">
  	<ul class="breadcrumb">
  		<li>
+<<<<<<< HEAD
  			<span class="fa fa-angle-left"></span>
  			<a href="/me">{{ _("My Account") }}</a>
+=======
+ 			<span class="icon icon-angle-left"></span>
+ 			<a href="/me">My Account</a>
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
  		</li>
  	</ul>
  </div>
@@ -25,14 +30,20 @@
 	<div>
 		{% if items %}
 		<div id="search-list" {% if not products_as_list -%} class="row" {%- endif %}>
+<<<<<<< HEAD
 			{% for i in range(0, page_length) %}
 				{% if items[i] %}
 					{{ items[i] }}
 				{% endif %}
+=======
+			{% for item in items %}
+				{{ item }}
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 			{% endfor %}
 		</div>
 		<div class="text-center item-group-nav-buttons">
 			{% if frappe.form_dict.start|int > 0 %}
+<<<<<<< HEAD
 			<a class="btn btn-default" href="/{{ pathname }}?start={{ frappe.form_dict.start|int - page_length }}">{{ _("Prev") }}</a>
 			{% endif %}
 			{% if items|length > page_length %}
@@ -41,6 +52,16 @@
 		</div>
 		{% else %}
 			<div class="text-muted">{{ _("No items listed") }}.</div>
+=======
+			<a class="btn btn-default" href="/{{ pathname }}?start={{ frappe.form_dict.start|int - page_length }}">Prev</a>
+			{% endif %}
+			{% if items|length == page_length %}
+			<a class="btn btn-default" href="/{{ pathname }}?start={{ frappe.form_dict.start|int + page_length }}">Next</a>
+			{% endif %}
+		</div>
+		{% else %}
+			<div class="text-muted">No items listed.</div>
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 		{% endif %}
 	</div>
 </div>

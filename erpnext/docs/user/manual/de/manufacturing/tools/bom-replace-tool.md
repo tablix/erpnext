@@ -34,7 +34,11 @@ Wenn zur Stückliste der Zentraleinheit weitere Artikel hinzugefügt werden soll
 
 Um die Stückliste, bei der die Zentraleinheit als Rohmaterial enthalten ist, in der Stückliste des fertigen Produktes zu aktualisieren, können Sie das Stücklisten-Austauschwerkzeug verwenden.
 
+<<<<<<< HEAD
 <img class="screenshot" alt="Stücklistenaustauschwerkzeug" src="/docs/assets/img/manufacturing/bom-replace-tool.png">
+=======
+<img class="screenshot" alt="Stücklistenaustauschwerkzeug" src="{{docs_base_url}}/assets/img/manufacturing/bom-replace-tool.png">
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 
 In diesem Werkzeug  wählen Sie die aktuelle und die neue Stückliste aus. Wenn Sie auf die Schaltfläche "Austauschen" klicken, wird in der Stückliste des fertigen Produktes (Computer) die aktuelle Stückliste der Zentraleinheit durch die neue Stückliste ersetzt.
 

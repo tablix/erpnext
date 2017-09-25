@@ -18,7 +18,10 @@ rfq = Class.extend({
 		this.change_rate();
 		this.terms();
 		this.submit_rfq();
+<<<<<<< HEAD
 		this.navigate_quotations();
+=======
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 	},
 
 	onfocus_select_all: function(){
@@ -34,7 +37,11 @@ rfq = Class.extend({
 			me.qty = parseFloat($(this).val()) || 0;
 			me.rate = parseFloat($(repl('.rfq-rate[data-idx=%(idx)s]',{'idx': me.idx})).val());
 			me.update_qty_rate();
+<<<<<<< HEAD
 			$(this).val(format_number(me.qty, doc.number_format, 2));
+=======
+			$(this).val(format_number(me.qty, 2));
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 		})
 	},
 
@@ -45,7 +52,11 @@ rfq = Class.extend({
 			me.rate = parseFloat($(this).val()) || 0;
 			me.qty = parseFloat($(repl('.rfq-qty[data-idx=%(idx)s]',{'idx': me.idx})).val());
 			me.update_qty_rate();
+<<<<<<< HEAD
 			$(this).val(format_number(me.rate, doc.number_format, 2));
+=======
+			$(this).val(format_number(me.rate, 2));
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 		})
 	},
 
@@ -82,6 +93,7 @@ rfq = Class.extend({
 				},
 				btn: this,
 				callback: function(r){
+<<<<<<< HEAD
 					frappe.unfreeze();
 					if(r.message){
 						$('.btn-sm').hide()
@@ -97,5 +109,12 @@ rfq = Class.extend({
 			name = $(this).attr('idx')
 			window.location.href = "/quotations/" + encodeURIComponent(name);
 		})
+=======
+					$('.btn-sm').hide()
+					frappe.unfreeze();
+				}
+			})
+		})
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 	}
 })

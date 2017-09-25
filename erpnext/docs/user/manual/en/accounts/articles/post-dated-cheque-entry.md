@@ -14,7 +14,11 @@ To open new journal voucher go to
 
 Assuming your Cheque Date is 31st December, 2016 (or any future date). As a result, this posting in your bank ledger will appear on Posting Date updated.
 
+<<<<<<< HEAD
 <img alt="JE Posting Date" class="screenshot" src="/docs/assets/img/articles/post-dated-1.png">
+=======
+<img alt="JE Posting Date" class="screenshot" src="{{docs_base_url}}/assets/img/articles/post-dated-1.png">
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 
 Note: Payment Entry Reference Date should equal to or less than Posting Date.
 
@@ -24,9 +28,15 @@ After entering required details, Save and Submit the Payment Entry.
 
 ####Adjusting Post Dated  Cheque Entry
 
+<<<<<<< HEAD
 You can adjust Post Dated Payment Entry against an invoice via [Payment Reconciliation Tool](/docs/user/manual/en/accounts/tools/payment-reconciliation.html).
 
 When cheque is cleared, i.e. on actual date on the cheque, you can update its Clearance Date via [Bank Reconciliation Tool](/docs/user/manual/en/accounts/tools/bank-reconciliation.html).
+=======
+You can adjust Post Dated Payment Entry against an invoice via [Payment Reconciliation Tool]({{docs_base_url}}/user/manual/en/accounts/tools/payment-reconciliation.html).
+
+When cheque is cleared, i.e. on actual date on the cheque, you can update its Clearance Date via [Bank Reconciliation Tool]({{docs_base_url}}/user/manual/en/accounts/tools/bank-reconciliation.html).
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 
 In the Chart of Accounts, you might find value of this Payment Entry already reflecting against bank Account. You should check **Bank Reconciliation Statement**, a report in the account module to know difference of bank balance as per system, and actual balance in the bank's statement.
 <!-- markdown -->

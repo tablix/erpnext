@@ -4,18 +4,24 @@
 from __future__ import unicode_literals
 import frappe
 from frappe import _
+<<<<<<< HEAD
 from frappe.utils import flt
+=======
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 from frappe.model.document import Document
 from erpnext.controllers.accounts_controller import validate_taxes_and_charges, validate_inclusive_tax
 
 class SalesTaxesandChargesTemplate(Document):
 	def validate(self):
 		valdiate_taxes_and_charges_template(self)
+<<<<<<< HEAD
 		
 	def set_missing_values(self):
 		for data in self.taxes:
 			if data.charge_type == 'On Net Total' and flt(data.rate) == 0.0:
 				data.rate = frappe.db.get_value('Account', data.account_head, 'tax_rate')
+=======
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 
 def valdiate_taxes_and_charges_template(doc):
 	# default should not be disabled

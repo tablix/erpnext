@@ -6,6 +6,7 @@ test_ignore = ["Account", "Cost Center"]
 
 import frappe
 import unittest
+<<<<<<< HEAD
 from frappe.utils import random_string
 from erpnext.accounts.doctype.account.chart_of_accounts.chart_of_accounts import get_charts_for_country
 
@@ -86,3 +87,11 @@ class TestCompany(unittest.TestCase):
 	def delete_mode_of_payment(self, company):
 		frappe.db.sql(""" delete from `tabMode of Payment Account`
 			where company =%s """, (company))
+=======
+
+class TestCompany(unittest.TestCase):
+	pass
+
+
+test_records = frappe.get_test_records('Company')
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347

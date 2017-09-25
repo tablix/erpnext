@@ -14,6 +14,7 @@ $(document).bind('toolbar_setup', function() {
 	$('.navbar-home').html('<img class="erpnext-icon" src="'+
 			frappe.urllib.get_base_url()+'/assets/erpnext/images/erp-icon.svg" />');
 
+<<<<<<< HEAD
 	$('[data-link="docs"]').attr("href", "https://frappe.github.io/erpnext/")
 	$('[data-link="issues"]').attr("href", "https://github.com/frappe/erpnext/issues")
 
@@ -35,6 +36,12 @@ $(document).bind('toolbar_setup', function() {
 
 
 
+=======
+	$('[data-link="docs"]').attr("href", "https://manual.erpnext.com")
+	$('[data-link="issues"]').attr("href", "https://github.com/frappe/erpnext/issues")
+});
+
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 // doctypes created via tree
 $.extend(frappe.create_routes, {
 	"Customer Group": "Tree/Customer Group",

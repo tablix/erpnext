@@ -92,7 +92,11 @@ def get_achieved_details(filters, sales_person, all_sales_persons, target_item_g
 
 	item_details = frappe.db.sql("""
 		select
+<<<<<<< HEAD
 			sum(soi.stock_qty * (st.allocated_percentage/100)) as qty,
+=======
+			sum(soi.qty * (st.allocated_percentage/100)) as qty,
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 			sum(soi.base_net_amount * (st.allocated_percentage/100)) as amount,
 			st.sales_person, MONTHNAME(so.transaction_date) as month_name
 		from

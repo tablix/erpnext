@@ -14,22 +14,38 @@ Click on Account for which Parent Account is to be changed.
 
 ####2. Edit Account
 
+<<<<<<< HEAD
 <img alt="Project Default Cost Center" class="screenshot" src="/docs/assets/img/articles/change-parent-1.png"> 
+=======
+<img alt="Project Default Cost Center" class="screenshot" src="{{docs_base_url}}/assets/img/articles/change-parent-1.png"> 
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 
 ####3. Change Parent Account
 
 Search and select preferred Parent Account and save.
 
+<<<<<<< HEAD
 <img alt="Project Default Cost Center" class="screenshot" src="/docs/assets/img/articles/change-parent-2.png">
 
 Refresh system from Help menu to experience the change.
 
 <img alt="Project Default Cost Center" class="screenshot" src="/docs/assets/img/articles/change-parent-3.png">
+=======
+<img alt="Project Default Cost Center" class="screenshot" src="{{docs_base_url}}/assets/img/articles/change-parent-2.png">
+
+Refresh system from Help menu to experience the change.
+
+<img alt="Project Default Cost Center" class="screenshot" src="{{docs_base_url}}/assets/img/articles/change-parent-3.png">
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 
 <div class="well"> Note: Parent cannot be customized for the Root Accounts, like Asset, Liability, Income, Expense, Equity.</div>
 
 #### Quick Help
 
+<<<<<<< HEAD
 <img alt="Project Default Cost Center" class="screenshot" src="/docs/assets/img/articles/change-parent-account-1.gif">
+=======
+<img alt="Project Default Cost Center" class="screenshot" src="{{docs_base_url}}/assets/img/articles/change-parent-account-1.gif">
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 
 <!-- markdown -->

@@ -1,5 +1,8 @@
+<<<<<<< HEAD
 # Sales Person Target Allocation
 
+=======
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 With management of Sales Person, ERPNext also allow you to assign target to Sales Persons based on Item Group and Territory. Based on target allocated and actual sales booked by Sales Person, you will get target variance report for the Sales Person.
 
 ###1. Sales Person - Item Groupwise Target Allocation
@@ -14,7 +17,11 @@ To allocate target, you should open specific Sales Person master.
 
 In the Sales Person master, you will find table called Sales Person Target.
 
+<<<<<<< HEAD
 <img class="screenshot" alt="Sales person target " src="/docs/assets/img/selling/sales-person-target-item-group.png">
+=======
+![Sales Person Target Item Group]({{docs_base_url}}/assets/old_images/erpnext/sales-person-target-item-group.png)
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 
 In this table, you should select Item Group, Fiscal Year, Target Qty and Amount. 
 
@@ -24,8 +31,12 @@ In this table, you should select Item Group, Fiscal Year, Target Qty and Amount.
 
 If you wish to spread allocated target across months, then you should setup Monthly Distribution master, and select it in the Sales Person master. Considering our example, target for the month of December will be set as 5 qty (10% of total allocation).
 
+<<<<<<< HEAD
 
 <img class="screenshot" alt="Target Distribution" src="/docs/assets/im/selling/sales-person-target-distribution.gif">
+=======
+![Sales Person Target Distribution]({{docs_base_url}}/assets/old_images/erpnext/sales-person-target-distribution.png)
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 
 ####Report - Sales Person Target Variance Item Groupwise
 
@@ -35,8 +46,12 @@ To check this report, go to:
 
 This report will provide you variance between target and actual performance of Sales Person. This report is based on Sales Order report.
 
+<<<<<<< HEAD
 
 <img class="screenshot" alt="Target Item Group" src="/docs/assets/img/selling/sales-person-item-group-report.png">
+=======
+![Sales Person Item Group Report]({{docs_base_url}}/assets/old_images/erpnext/sales-person-item-group-report.png)
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 
 As per the report, allocated target to Sales Person for the month of December was 5 qty. However, Sales Order was made for this employee and Item Group for only 3 qty. Hence, variance of 2 qty is shown in the report.
 
@@ -52,7 +67,11 @@ To allocate target to Sales Person based on Territory, you can should select spe
 
 In the Territory master, you will find field to select Territory Manager. This field is linked to "Sales Person" master.
 
+<<<<<<< HEAD
 <img class="screenshot" alt="Sales Person Territory Manager" src="/docs/assets/img/selling/sales-person-territory-manager.png">
+=======
+![Sales Person Territory Manager]({{docs_base_url}}/assets/old_images/erpnext/sales-person-territory-manager.png)
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 
 ####2.2 Allocating Target
 
@@ -66,7 +85,11 @@ Using this Monthly Distribution document, you can divide target Qty or Amount ac
 
 This report will provide you variance between target and actual performance of Sales in particular territory. This report is based on Sales Order report. Though Sales Person is defined in the Territory master, its details are not pulled in the report.
 
+<<<<<<< HEAD
 <img class="screenshot" alt="Sales Person Territory Report" src="/docs/assets/img/selling/sales-person-territory-report.png">
+=======
+![Sales Person Territory Report]({{docs_base_url}}/assets/old_images/erpnext/sales-person-territory-report.png)
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 
 ---
 
@@ -78,13 +101,22 @@ To create new Monthly Distriibution, go to:
 
 `Accounts > Monthly Distributon`
 
+<<<<<<< HEAD
 <img class="screenshot" alt="Target Distribution" src="/docs/assets/img.selling/erpnext/target-distribution.png">
+=======
+![Target Distribution]({{docs_base_url}}/assets/old_images/erpnext/target-distribution.png)
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 
 You can link Monthly Distribution while allocating targets in Sales Person as well as in Territory master.
 
 ###See Also
 
+<<<<<<< HEAD
 1. [Sales Person Target Allocation](/docs/user/manual/en/selling/setup/sales-person-target-allocation)
 2. [Using Sales Person in transactions](/docs/user/manual/en/selling/articles/sales-persons-in-the-sales-transactions)
+=======
+1. [Managing Sales Person](https://erpnext.com/selling/selling-setup/sales-person)
+2. [Using Sales Person in transactions](https://erpnext.com/kb/selling/managing-sales-persons-in-sales-transactions)
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 
 {next}

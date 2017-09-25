@@ -33,6 +33,7 @@ def get_data():
 					"description": _("Point of Sale")
 				},
 				{
+<<<<<<< HEAD
 					"type": "doctype",
 					"name": "Subscription",
 					"label": _("Subscription"),
@@ -42,6 +43,11 @@ def get_data():
 					"type": "report",
 					"name": "Accounts Receivable",
 					"doctype": "Sales Invoice",
+=======
+					"type": "report",
+					"name": "Accounts Receivable",
+					"doctype": "Sales Invoice",	
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 					"is_query_report": True
 				},
 				{
@@ -69,7 +75,11 @@ def get_data():
 				{
 					"type": "doctype",
 					"name": "Account",
+<<<<<<< HEAD
 					"icon": "fa fa-sitemap",
+=======
+					"icon": "icon-sitemap",
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 					"label": _("Chart of Accounts"),
 					"route": "Tree/Account",
 					"description": _("Tree of financial accounts."),
@@ -165,11 +175,14 @@ def get_data():
 					"is_query_report": True,
 					"doctype": "Journal Entry"
 				},
+<<<<<<< HEAD
 				{
 					"type": "doctype",
 					"name": "Bank Guarantee",
 					"doctype": "Bank Guarantee"
 				},
+=======
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 			]
 		},
 		{
@@ -205,6 +218,7 @@ def get_data():
 			]
 		},
 		{
+<<<<<<< HEAD
 			"label": _("Goods and Services Tax (GST India)"),
 			"items": [
 				{
@@ -238,12 +252,18 @@ def get_data():
 			]
 		},
 		{
+=======
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 			"label": _("Budget and Cost Center"),
 			"items": [
 				{
 					"type": "doctype",
 					"name": "Cost Center",
+<<<<<<< HEAD
 					"icon": "fa fa-sitemap",
+=======
+					"icon": "icon-sitemap",
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 					"label": _("Chart of Cost Centers"),
 					"route": "Tree/Cost Center",
 					"description": _("Tree of financial Cost Centers."),
@@ -288,7 +308,11 @@ def get_data():
 		},
 		{
 			"label": _("Setup"),
+<<<<<<< HEAD
 			"icon": "fa fa-cog",
+=======
+			"icon": "icon-cog",
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 			"items": [
 				{
 					"type": "doctype",
@@ -395,7 +419,11 @@ def get_data():
 		},
 		{
 			"label": _("Other Reports"),
+<<<<<<< HEAD
 			"icon": "fa fa-table",
+=======
+			"icon": "icon-table",
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 			"items": [
 				{
 					"type": "report",
@@ -417,12 +445,15 @@ def get_data():
 				},
 				{
 					"type": "report",
+<<<<<<< HEAD
 					"name": "Profitability Analysis",
 					"doctype": "GL Entry",
 					"is_query_report": True,
 				},
 				{
 					"type": "report",
+=======
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 					"name": "Payment Period Based On Invoice Date",
 					"is_query_report": True,
 					"doctype": "Journal Entry"
@@ -467,7 +498,11 @@ def get_data():
 		},
 		{
 			"label": _("Help"),
+<<<<<<< HEAD
 			"icon": "fa fa-facetime-video",
+=======
+			"icon": "icon-facetime-video",
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 			"items": [
 				{
 					"type": "help",

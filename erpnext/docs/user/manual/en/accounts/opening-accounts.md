@@ -8,7 +8,11 @@ We recommend that you start using accounting in a new financial year, but you co
 
 * List of outstanding sales and purchase invoices (Payables and Receivables).
 
+<<<<<<< HEAD
 If you were using another accounting software before, firstly you should close financial statements in that software. The closing balance of the accounts should be updated as an opening balance in the ERPNext. Before starting to update opening balance, ensure that your [Chart of Accounts](/docs/user/manual/en/accounts/chart-of-accounts.html) has all the Accounts required.
+=======
+If you were using another accounting software before, firstly you should close financial statements in that software. The closing balance of the accounts should be updated as an opening balance in the ERPNext. Before starting to update opening balance, ensure that your [Chart of Accounts]({{docs_base_url}}/user/manual/en/accounts/chart-of-accounts.html) has all the Accounts required.
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 
 > Opening entry is only for Balance Sheet accounts and not for the Accounts in the Profit and Loss statement.
 
@@ -28,7 +32,11 @@ To open new Journal Entry, go to:
 
 If Entry Type is selected as Opening Entry, all the Balance Sheet Accounts will be auto-fetched in the Journal Entry.
 
+<<<<<<< HEAD
 <img class="screenshot" alt="Opening Account" src="/docs/assets/img/accounts/opening-account-1.png">
+=======
+<img class="screenshot" alt="Opening Account" src="{{docs_base_url}}/assets/img/accounts/opening-account-1.png">
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 
 ####Step 3: Posting Date
 
@@ -38,13 +46,21 @@ Select Posting Date on which Accounts Opening Balance will be updated.
 
 For each Account, enter opening value in the Debit or Credit column. As per the double entry valuation system, Total Debit value in a entry must be equal to Total Credit value.
 
+<<<<<<< HEAD
 <img class="screenshot" alt="Opening Account" src="/docs/assets/img/accounts/opening-6.png">
+=======
+<img class="screenshot" alt="Opening Account" src="{{docs_base_url}}/assets/img/accounts/opening-6.png">
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 
 ####Step 5: Is Opening
 
 Set field `Is Opening` as `Yes`.
 
+<<<<<<< HEAD
 <img class="screenshot" alt="Opening Account" src="/docs/assets/img/accounts/opening-3.png">
+=======
+<img class="screenshot" alt="Opening Account" src="{{docs_base_url}}/assets/img/accounts/opening-3.png">
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 
 ####Step 6: Save and Submit
 
@@ -56,13 +72,21 @@ If your Balance Sheet has many Accounts, then updating Account Opening balance f
 
 If you are updating account opening balance in few accounts at a time, you can use **Temporary Opening** account for balancing purpose. In the standard chart of accounts, a Temporary Opening Account is auto-created under Assets.
 
+<<<<<<< HEAD
 <img class="screenshot" alt="Opening Account" src="/docs/assets/img/accounts/opening-7.png">
+=======
+<img class="screenshot" alt="Opening Account" src="{{docs_base_url}}/assets/img/accounts/opening-7.png">
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 
 In the Journal Entry, manually select an Account for which opening balance is to be updated. For each Account, enter opening balance value in the Debit or Credit column, based on it's Account Type (Asset or Liability).
 
 For example, if you want to update balance in bank accounts, create Journal Entry as following.
 
+<<<<<<< HEAD
 <img class="screenshot" alt="Opening Account" src="/docs/assets/img/accounts/opening-2.png">
+=======
+<img class="screenshot" alt="Opening Account" src="{{docs_base_url}}/assets/img/accounts/opening-2.png">
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 
 Once all your invoices are entered, your **Temporary Opening** account will have a balance of zero!
 
@@ -70,7 +94,11 @@ Once all your invoices are entered, your **Temporary Opening** account will have
 
 After completing the accounting entries, the trial balance report will look like the one given below:
 
+<<<<<<< HEAD
 <img class="screenshot" alt="Opening Account" src="/docs/assets/img/accounts/opening-4.png">
+=======
+<img class="screenshot" alt="Opening Account" src="{{docs_base_url}}/assets/img/accounts/opening-4.png">
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 
 ###Stock Opening
 
@@ -78,6 +106,7 @@ To track stock balance in the Chart of Account, an Account is created for each W
 
 `Chart of Accounts > Assets > Current Asset > StocK Assets > (Warehouse Account)`
 
+<<<<<<< HEAD
 <img class="screenshot" alt="Opening Account" src="/docs/assets/img/accounts/opening-5.png">
 
 To update stock opening balance, create [Stock Reconciliation entry](/docs/user/manual/en/stock/opening-stock.html). Based on the valuation of items's update in the Warehouse, balance will be updated in the Warehouse account.
@@ -85,6 +114,15 @@ To update stock opening balance, create [Stock Reconciliation entry](/docs/user/
 ###Fixed Asset Opening
 
 Opening balance for the fixed asset account should be updated via Journal Entry. Assets which are not fully depreciated should be added in the [Asset master](/docs/user/manual/en/accounts/managing-fixed-assets.html). For adding Assets in your possession, ensure to check **Is Existing Asset** field.
+=======
+<img class="screenshot" alt="Opening Account" src="{{docs_base_url}}/assets/img/accounts/opening-5.png">
+
+To update stock opening balance, create [Stock Reconciliation entry]({{docs_base_url}}/user/manual/en/stock/opening-stock.html). Based on the valuation of items's update in the Warehouse, balance will be updated in the Warehouse account.
+
+###Fixed Asset Opening
+
+Opening balance for the fixed asset account should be updated via Journal Entry. Assets which are not fully depreciated should be added in the [Asset master]({{docs_base_url}}/user/manual/en/accounts/managing-fixed-assets.html). For adding Assets in your possession, ensure to check **Is Existing Asset** field.
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 
 ### Outstanding Invoices
 

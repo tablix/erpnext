@@ -2,11 +2,19 @@
  "allow_copy": 1, 
  "allow_import": 0, 
  "allow_rename": 0, 
+<<<<<<< HEAD
+=======
+ "beta": 0, 
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
  "creation": "2016-01-27 14:59:47.849379", 
  "custom": 0, 
  "docstatus": 0, 
  "doctype": "DocType", 
  "document_type": "", 
+<<<<<<< HEAD
+=======
+ "editable_grid": 1, 
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
  "fields": [
   {
    "allow_on_submit": 0, 
@@ -17,6 +25,10 @@
    "fieldtype": "Date", 
    "hidden": 0, 
    "ignore_user_permissions": 0, 
+<<<<<<< HEAD
+=======
+   "ignore_xss_filter": 0, 
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
    "in_filter": 0, 
    "in_list_view": 0, 
    "label": "Date", 
@@ -41,6 +53,10 @@
    "fieldtype": "Link", 
    "hidden": 0, 
    "ignore_user_permissions": 0, 
+<<<<<<< HEAD
+=======
+   "ignore_xss_filter": 0, 
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
    "in_filter": 0, 
    "in_list_view": 0, 
    "label": "Department", 
@@ -66,6 +82,10 @@
    "fieldtype": "Column Break", 
    "hidden": 0, 
    "ignore_user_permissions": 0, 
+<<<<<<< HEAD
+=======
+   "ignore_xss_filter": 0, 
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
    "in_filter": 0, 
    "in_list_view": 0, 
    "label": "", 
@@ -90,6 +110,10 @@
    "fieldtype": "Link", 
    "hidden": 0, 
    "ignore_user_permissions": 0, 
+<<<<<<< HEAD
+=======
+   "ignore_xss_filter": 0, 
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
    "in_filter": 0, 
    "in_list_view": 0, 
    "label": "Branch", 
@@ -115,6 +139,10 @@
    "fieldtype": "Link", 
    "hidden": 0, 
    "ignore_user_permissions": 0, 
+<<<<<<< HEAD
+=======
+   "ignore_xss_filter": 0, 
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
    "in_filter": 0, 
    "in_list_view": 0, 
    "label": "Company", 
@@ -141,6 +169,10 @@
    "fieldtype": "Section Break", 
    "hidden": 0, 
    "ignore_user_permissions": 0, 
+<<<<<<< HEAD
+=======
+   "ignore_xss_filter": 0, 
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
    "in_filter": 0, 
    "in_list_view": 0, 
    "label": "Unmarked Attendance", 
@@ -165,6 +197,10 @@
    "fieldtype": "HTML", 
    "hidden": 0, 
    "ignore_user_permissions": 0, 
+<<<<<<< HEAD
+=======
+   "ignore_xss_filter": 0, 
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
    "in_filter": 0, 
    "in_list_view": 0, 
    "label": "Employees HTML", 
@@ -190,6 +226,10 @@
    "fieldtype": "Section Break", 
    "hidden": 0, 
    "ignore_user_permissions": 0, 
+<<<<<<< HEAD
+=======
+   "ignore_xss_filter": 0, 
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
    "in_filter": 0, 
    "in_list_view": 0, 
    "label": "Marked Attendance", 
@@ -214,6 +254,10 @@
    "fieldtype": "HTML", 
    "hidden": 0, 
    "ignore_user_permissions": 0, 
+<<<<<<< HEAD
+=======
+   "ignore_xss_filter": 0, 
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
    "in_filter": 0, 
    "in_list_view": 0, 
    "label": "Marked Attendance HTML", 
@@ -234,13 +278,21 @@
  "hide_heading": 1, 
  "hide_toolbar": 1, 
  "idx": 0, 
+<<<<<<< HEAD
+=======
+ "image_view": 0, 
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
  "in_create": 0, 
  "in_dialog": 0, 
  "is_submittable": 0, 
  "issingle": 1, 
  "istable": 0, 
  "max_attachments": 0, 
+<<<<<<< HEAD
  "modified": "2016-01-29 02:14:36.034952", 
+=======
+ "modified": "2017-08-02 13:16:33.589846", 
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
  "modified_by": "Administrator", 
  "module": "HR", 
  "name": "Employee Attendance Tool", 
@@ -268,8 +320,17 @@
    "write": 1
   }
  ], 
+<<<<<<< HEAD
  "read_only": 0, 
  "read_only_onload": 0, 
  "sort_field": "modified", 
  "sort_order": "DESC"
+=======
+ "quick_entry": 1, 
+ "read_only": 0, 
+ "read_only_onload": 0, 
+ "sort_field": "modified", 
+ "sort_order": "DESC", 
+ "track_seen": 0
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 }

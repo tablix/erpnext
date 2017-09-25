@@ -3,13 +3,17 @@
 from __future__ import unicode_literals
 
 import frappe
+<<<<<<< HEAD
 from frappe.utils import today
 from erpnext.crm.doctype.opportunity.opportunity import make_quotation
+=======
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 import unittest
 
 test_records = frappe.get_test_records('Opportunity')
 
 class TestOpportunity(unittest.TestCase):
+<<<<<<< HEAD
 	def test_opportunity_status(self):
 		doc = make_opportunity(with_items=0)
 		quotation = make_quotation(doc.name)
@@ -50,3 +54,6 @@ def make_opportunity(**args):
 
 	opp_doc.insert()
 	return opp_doc
+=======
+	pass
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347

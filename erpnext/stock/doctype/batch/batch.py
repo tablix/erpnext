@@ -5,6 +5,7 @@ from __future__ import unicode_literals
 import frappe
 from frappe import _
 from frappe.model.document import Document
+<<<<<<< HEAD
 from frappe.utils import flt
 
 class UnableToSelectBatchError(frappe.ValidationError): pass
@@ -28,6 +29,10 @@ class Batch(Document):
 
 	def onload(self):
 		self.image = frappe.db.get_value('Item', self.item, 'image')
+=======
+
+class Batch(Document):
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 
 	def validate(self):
 		self.item_has_batch_enabled()
@@ -35,6 +40,7 @@ class Batch(Document):
 	def item_has_batch_enabled(self):
 		if frappe.db.get_value("Item",self.item,"has_batch_no") == 0:
 			frappe.throw(_("The selected item cannot have Batch"))
+<<<<<<< HEAD
 
 @frappe.whitelist()
 def get_batch_qty(batch_no=None, warehouse=None, item_code=None):
@@ -131,3 +137,5 @@ def get_batch_no(item_code, warehouse, qty, throw=False):
 		if throw: raise UnableToSelectBatchError
 
 	return batch_no
+=======
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347

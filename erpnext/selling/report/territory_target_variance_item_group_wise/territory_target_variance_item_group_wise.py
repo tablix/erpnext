@@ -92,7 +92,11 @@ def get_achieved_details(filters, territory, item_groups):
 
 	item_details = frappe.db.sql("""
 		select
+<<<<<<< HEAD
 			soi.item_code, sum(soi.stock_qty) as qty, sum(soi.base_net_amount) as amount,
+=======
+			soi.item_code, sum(soi.qty) as qty, sum(soi.base_net_amount) as amount,
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 			MONTHNAME(so.transaction_date) as month_name
 		from
 			`tabSales Order Item` soi, `tabSales Order` so

@@ -37,7 +37,11 @@ Wählen Sie die Rolle des Genehmigers aus. Das könnte z. B. die Rolle des Vertr
 
 Geben Sie "Autorisierter Wert" ein. Im Beispiel stellen wir das auf 10.000 Euro ein.
 
+<<<<<<< HEAD
 <img class="screenshot" alt="Autorisierungsregel" src="/docs/assets/img/setup/auth-rule.png">
+=======
+<img class="screenshot" alt="Autorisierungsregel" src="{{docs_base_url}}/assets/img/setup/auth-rule.png">
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 
 Wenn ein Benutzer aus dem Vertrieb versucht eine Kundenbestellung mit einem Wert über 10.000 Euro zu übertragen, dann bekommt er eine Fehlermeldung.
 

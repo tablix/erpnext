@@ -1,5 +1,8 @@
+<<<<<<< HEAD
 # Serial No
 
+=======
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 As we discussed in the **Item** section, if an **Item** is _serialized_, a
 **Serial Number** (Serial No) record is maintained for each quantity of that
 **Item**. This information is helpful in tracking the location of the Serial
@@ -22,7 +25,11 @@ Stock transaction (Stock Entry, Purchase Receipt, Delivery Note, Sales
 Invoice). When a new Serial No is created directly, its warehouse cannot be
 set.
 
+<<<<<<< HEAD
 <img class="screenshot" alt="Serial Number" src="/docs/assets/img/stock/serial-no.png">
+=======
+<img class="screenshot" alt="Serial Number" src="{{docs_base_url}}/assets/img/stock/serial-no.png">
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 
 * The Status is set based on Stock Entry.
 

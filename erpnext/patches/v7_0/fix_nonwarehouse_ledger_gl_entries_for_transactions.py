@@ -1,6 +1,7 @@
 # Copyright (c) 2015, Frappe Technologies Pvt. Ltd. and Contributors
 # License: GNU General Public License v3. See license.txt
 
+<<<<<<< HEAD
 from __future__ import print_function, unicode_literals
 import frappe, erpnext
 
@@ -13,6 +14,21 @@ def execute():
 	warehouses = [d.name for d in warehouses if erpnext.is_perpetual_inventory_enabled(d.company)]
 
 	if len(warehouses) > 0:
+=======
+from __future__ import unicode_literals
+import frappe
+
+def execute():
+	if not frappe.db.get_single_value("Accounts Settings", "auto_accounting_for_stock"):
+		return
+	
+	frappe.reload_doctype("Account")
+
+	warehouses = frappe.db.sql_list("""select name from tabAccount
+		where account_type = 'Stock' and is_group = 0
+		and (warehouse is null or warehouse = '')""")
+	if warehouses:
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 		warehouses = set_warehouse_for_stock_account(warehouses)
 		if not warehouses:
 			return
@@ -34,12 +50,21 @@ def execute():
 				voucher = frappe.get_doc(voucher_type, voucher_no)
 				voucher.make_gl_entries()
 				frappe.db.commit()
+<<<<<<< HEAD
 			except Exception as e:
 				print(frappe.get_traceback())
 				rejected.append([voucher_type, voucher_no])
 				frappe.db.rollback()
 
 		print(rejected)
+=======
+			except Exception, e:
+				print frappe.get_traceback()
+				rejected.append([voucher_type, voucher_no])
+				frappe.db.rollback()
+
+		print rejected
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 
 def set_warehouse_for_stock_account(warehouse_account):
 	for account in warehouse_account:

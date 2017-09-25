@@ -4,8 +4,12 @@
 // js inside blog page
 
 // shopping cart
+<<<<<<< HEAD
 frappe.provide("erpnext.shopping_cart");
 var shopping_cart = erpnext.shopping_cart;
+=======
+frappe.provide("shopping_cart");
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 
 $.extend(shopping_cart, {
 	show_error: function(title, text) {
@@ -19,12 +23,17 @@ $.extend(shopping_cart, {
 		shopping_cart.bind_change_qty();
 		shopping_cart.bind_dropdown_cart_buttons();
 	},
+<<<<<<< HEAD
 
+=======
+	
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 	bind_address_select: function() {
 		$(".cart-addresses").find('input[data-address-name]').on("click", function() {
 			if($(this).prop("checked")) {
 				var me = this;
 
+<<<<<<< HEAD
 				// uncheck other shipping or billing addresses:
 				if ( $(this).is('input[data-fieldname=customer_address]') ) {
 					$('input[data-fieldname=customer_address]').not(this).prop('checked', false);
@@ -36,6 +45,11 @@ $.extend(shopping_cart, {
 					type: "POST",
 					method: "erpnext.shopping_cart.cart.update_cart_address",
 					freeze: true,
+=======
+				return frappe.call({
+					type: "POST",
+					method: "erpnext.shopping_cart.cart.update_cart_address",
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 					args: {
 						address_fieldname: $(this).attr("data-fieldname"),
 						address_name: $(this).attr("data-address-name")
@@ -66,13 +80,22 @@ $.extend(shopping_cart, {
 			var newVal = $(this).val();
 			shopping_cart.shopping_cart_update(item_code, newVal);
 		});
+<<<<<<< HEAD
 
 		$(".cart-items").on('click', '.number-spinner button', function () {
+=======
+		
+		$(".cart-items").on('click', '.number-spinner button', function () {  
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 			var btn = $(this),
 				input = btn.closest('.number-spinner').find('input'),
 				oldValue = input.val().trim(),
 				newVal = 0;
+<<<<<<< HEAD
 
+=======
+	
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 			if (btn.attr('data-dir') == 'up') {
 				newVal = parseInt(oldValue) + 1;
 			} else {
@@ -81,17 +104,30 @@ $.extend(shopping_cart, {
 				}
 			}
 			input.val(newVal);
+<<<<<<< HEAD
 			var item_code = input.attr("data-item-code");
 			shopping_cart.shopping_cart_update(item_code, newVal);
 		});
 	},
 
+=======
+			var item_code = input.attr("data-item-code"); 
+			shopping_cart.shopping_cart_update(item_code, newVal);
+		});
+	},
+	
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 	render_tax_row: function($cart_taxes, doc, shipping_rules) {
 		var shipping_selector;
 		if(shipping_rules) {
 			shipping_selector = '<select class="form-control">' + $.map(shipping_rules, function(rule) {
+<<<<<<< HEAD
 				return '<option value="' + rule[0] + '">' + rule[1] + '</option>' }).join("\n") +
 			'</select>';
+=======
+					return '<option value="' + rule[0] + '">' + rule[1] + '</option>' }).join("\n") +
+				'</select>';
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 		}
 
 		var $tax_row = $(repl('<div class="row">\
@@ -163,6 +199,11 @@ frappe.ready(function() {
 });
 
 function show_terms() {
+<<<<<<< HEAD
 	var html = $(".cart-terms").html();
 	frappe.msgprint(html);
+=======
+  var html = $(".cart-terms").html();
+    frappe.msgprint(html);
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 }

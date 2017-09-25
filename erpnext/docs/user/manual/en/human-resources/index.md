@@ -1,5 +1,8 @@
+<<<<<<< HEAD
 # Human Resources
 
+=======
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 The Human Resources (HR) Module covers the processes linked to managing a team
 of co-workers. Most important feature here is processing the payroll by using
 Process Payroll to generate Salary Slips. Most countries have complex tax

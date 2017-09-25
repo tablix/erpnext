@@ -36,12 +36,18 @@ $.extend(erpnext.queries, {
 
 	customer_filter: function(doc) {
 		if(!doc.customer) {
+<<<<<<< HEAD
 			frappe.throw(__("Please set {0}", [__(frappe.meta.get_label(doc.doctype, "customer", doc.name))]));
+=======
+			frappe.throw(__("Please specify a") + " " +
+				__(frappe.meta.get_label(doc.doctype, "customer", doc.name)));
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 		}
 
 		return { filters: { customer: doc.customer } };
 	},
 
+<<<<<<< HEAD
 	contact_query: function(doc) {
 		if(frappe.dynamic_link) {
 			if(!doc[frappe.dynamic_link.fieldname]) {
@@ -86,6 +92,12 @@ $.extend(erpnext.queries, {
 	supplier_filter: function(doc) {
 		if(!doc.supplier) {
 			frappe.throw(__("Please set {0}", [__(frappe.meta.get_label(doc.doctype, "supplier", doc.name))]));
+=======
+	supplier_filter: function(doc) {
+		if(!doc.supplier) {
+			frappe.throw(__("Please specify a") + " " +
+				__(frappe.meta.get_label(doc.doctype, "supplier", doc.name)));
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 		}
 
 		return { filters: { supplier: doc.supplier } };
@@ -93,8 +105,13 @@ $.extend(erpnext.queries, {
 
 	lead_filter: function(doc) {
 		if(!doc.lead) {
+<<<<<<< HEAD
 			frappe.throw(__("Please specify a {0}",
 				[__(frappe.meta.get_label(doc.doctype, "lead", doc.name))]));
+=======
+			frappe.throw(__("Please specify a") + " " +
+				__(frappe.meta.get_label(doc.doctype, "lead", doc.name)));
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 		}
 
 		return { filters: { lead: doc.lead } };
@@ -113,7 +130,11 @@ $.extend(erpnext.queries, {
 			filters: [
 				["Warehouse", "company", "in", ["", cstr(doc.company)]],
 				["Warehouse", "is_group", "=",0]
+<<<<<<< HEAD
 
+=======
+				
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 			]
 		}
 	}
@@ -141,6 +162,7 @@ erpnext.queries.setup_queries = function(frm, options, query_fn) {
 			set_query(df.options, df.fieldname);
 		});
 }
+<<<<<<< HEAD
 
 /* 	if item code is selected in child table
 	then list down warehouses with its quantity
@@ -157,3 +179,5 @@ erpnext.queries.setup_warehouse_query = function(frm){
 		return filters
 	});
 }
+=======
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347

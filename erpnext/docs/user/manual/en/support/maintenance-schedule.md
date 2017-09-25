@@ -1,5 +1,8 @@
+<<<<<<< HEAD
 # Maintenance Schedule
 
+=======
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 All machines require regular maintenance, specially those that contain a lot
 of moving parts, so if you are in the business of maintaining those or have
 some of them in your own premises, this is a useful tool to plan a calendar of
@@ -12,7 +15,11 @@ To create a new Maintenance Schedule go to:
 
 > Support > Maintenance Schedule > New Maintenance Schedule
 
+<<<<<<< HEAD
 <img class="screenshot" alt="Maintenance Schedule" src="/docs/assets/img/support/maintenance-schedule.png">
+=======
+<img class="screenshot" alt="Maintenance Schedule" src="{{docs_base_url}}/assets/img/support/maintenance-schedule.png">
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 
 In the Maintenance Schedule, there are two sections:
 

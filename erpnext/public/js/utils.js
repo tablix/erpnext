@@ -31,12 +31,15 @@ $.extend(erpnext, {
 		}
 	},
 
+<<<<<<< HEAD
 	is_perpetual_inventory_enabled: function(company) {
 		if(company) {
 			return frappe.get_doc(":Company", company).enable_perpetual_inventory
 		}
 	},
 
+=======
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 	setup_serial_no: function() {
 		var grid_row = cur_frm.open_grid_row();
 		if(!grid_row || !grid_row.grid_form.fields_dict.serial_no ||
@@ -53,7 +56,10 @@ $.extend(erpnext, {
 				fields: [
 					{
 						"fieldtype": "Link",
+<<<<<<< HEAD
 						"fieldname": "serial_no",
+=======
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 						"options": "Serial No",
 						"label": __("Serial No"),
 						"get_query": function () {
@@ -67,7 +73,10 @@ $.extend(erpnext, {
 					},
 					{
 						"fieldtype": "Button",
+<<<<<<< HEAD
 						"fieldname": "add",
+=======
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 						"label": __("Add")
 					}
 				]
@@ -90,6 +99,7 @@ $.extend(erpnext, {
 
 
 $.extend(erpnext.utils, {
+<<<<<<< HEAD
 	set_party_dashboard_indicators: function(frm) {
 		if(frm.doc.__onload && frm.doc.__onload.dashboard_info) {
 			var info = frm.doc.__onload.dashboard_info;
@@ -98,6 +108,31 @@ $.extend(erpnext.utils, {
 			frm.dashboard.add_indicator(__('Total Unpaid: {0}',
 				[format_currency(info.total_unpaid, info.currency)]),
 				info.total_unpaid ? 'orange' : 'green');
+=======
+	clear_address_and_contact: function(frm) {
+		$(frm.fields_dict['address_html'].wrapper).html("");
+		frm.fields_dict['contact_html'] && $(frm.fields_dict['contact_html'].wrapper).html("");
+	},
+
+	render_address_and_contact: function(frm) {
+		// render address
+		$(frm.fields_dict['address_html'].wrapper)
+			.html(frappe.render_template("address_list",
+				cur_frm.doc.__onload))
+			.find(".btn-address").on("click", function() {
+				frappe.new_doc("Address");
+			});
+
+		// render contact
+		if(frm.fields_dict['contact_html']) {
+			$(frm.fields_dict['contact_html'].wrapper)
+				.html(frappe.render_template("contact_list",
+					cur_frm.doc.__onload))
+				.find(".btn-contact").on("click", function() {
+					frappe.new_doc("Contact");
+				}
+			);
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 		}
 	},
 
@@ -110,6 +145,7 @@ $.extend(erpnext.utils, {
 			}
 		}
 		refresh_field(table_fieldname);
+<<<<<<< HEAD
 	},
 
 	get_terms: function(tc_name, doc, callback) {
@@ -166,6 +202,9 @@ $.extend(erpnext.utils, {
 		}
 		return rows;
 	},
+=======
+	}
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 });
 
 erpnext.utils.map_current_doc = function(opts) {
@@ -175,6 +214,7 @@ erpnext.utils.map_current_doc = function(opts) {
 		}
 	}
 	var _map = function() {
+<<<<<<< HEAD
 		if($.isArray(cur_frm.doc.items) && cur_frm.doc.items.length > 0) {
 			// remove first item row if empty
 			if(!cur_frm.doc.items[0].item_code) {
@@ -226,17 +266,31 @@ erpnext.utils.map_current_doc = function(opts) {
 
 				})
 			}
+=======
+		// remove first item row if empty
+		if($.isArray(cur_frm.doc.items) && cur_frm.doc.items.length > 0) {
+			if(!cur_frm.doc.items[0].item_code) {
+				cur_frm.doc.items = cur_frm.doc.items.splice(1);
+			}
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 		}
 
 		return frappe.call({
 			// Sometimes we hit the limit for URL length of a GET request
 			// as we send the full target_doc. Hence this is a POST request.
 			type: "POST",
+<<<<<<< HEAD
 			method: 'frappe.model.mapper.map_docs',
 			args: {
 				"method": opts.method,
 				"source_names": opts.source_name,
 				"target_doc": cur_frm.doc,
+=======
+			method: opts.method,
+			args: {
+				"source_name": opts.source_name,
+				"target_doc": cur_frm.doc
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 			},
 			callback: function(r) {
 				if(!r.exc) {
@@ -247,6 +301,7 @@ erpnext.utils.map_current_doc = function(opts) {
 		});
 	}
 	if(opts.source_doctype) {
+<<<<<<< HEAD
 		var d = new frappe.ui.form.MultiSelectDialog({
 			doctype: opts.source_doctype,
 			target: opts.target,
@@ -267,13 +322,42 @@ erpnext.utils.map_current_doc = function(opts) {
 		});
 	} else if(opts.source_name) {
 		opts.source_name = [opts.source_name];
+=======
+		var d = new frappe.ui.Dialog({
+			title: __("Get From ") + __(opts.source_doctype),
+			fields: [
+				{
+					fieldtype: "Link",
+					label: __(opts.source_doctype),
+					fieldname: opts.source_doctype,
+					options: opts.source_doctype,
+					get_query: opts.get_query,
+					reqd:1
+				},
+			]
+		});
+		d.set_primary_action(__('Get Items'), function() {
+			var values = d.get_values();
+			if(!values)
+				return;
+			opts.source_name = values[opts.source_doctype];
+			d.hide();
+			_map();
+		})
+		d.show();
+	} else if(opts.source_name) {
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 		_map();
 	}
 }
 
 frappe.form.link_formatters['Item'] = function(value, doc) {
 	if(doc && doc.item_name && doc.item_name !== value) {
+<<<<<<< HEAD
 		return value? value + ': ' + doc.item_name: doc.item_name;
+=======
+		return value + ': ' + doc.item_name;
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 	} else {
 		return value;
 	}
@@ -281,7 +365,11 @@ frappe.form.link_formatters['Item'] = function(value, doc) {
 
 frappe.form.link_formatters['Employee'] = function(value, doc) {
 	if(doc && doc.employee_name && doc.employee_name !== value) {
+<<<<<<< HEAD
 		return value? value + ': ' + doc.employee_name: doc.employee_name;
+=======
+		return value + ': ' + doc.employee_name;
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 	} else {
 		return value;
 	}
@@ -294,7 +382,11 @@ $(document).on('app_ready', function() {
 			"Delivery Note", "Purchase Receipt", "Sales Invoice"], function(i, d) {
 			frappe.ui.form.on(d, "onload", function(frm) {
 				cur_frm.set_df_property("posting_time", "description",
+<<<<<<< HEAD
 					frappe.sys_defaults.time_zone);
+=======
+					sys_defaults.time_zone);
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 			});
 		});
 	}

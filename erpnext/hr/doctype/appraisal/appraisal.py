@@ -16,9 +16,12 @@ class Appraisal(Document):
 		if not self.status:
 			self.status = "Draft"
 
+<<<<<<< HEAD
 		if not self.goals:
 			frappe.throw(_("Goals cannot be empty"))
 
+=======
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 		set_employee_name(self)
 		self.validate_dates()
 		self.validate_existing_appraisal()

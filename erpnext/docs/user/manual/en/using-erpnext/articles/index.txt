@@ -8,5 +8,9 @@ bulk-rename
 renaming-documents
 search-filter
 tree-master-renaming
+<<<<<<< HEAD
 pos-view
 letter-head-in-the-report
+=======
+pos-view
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347

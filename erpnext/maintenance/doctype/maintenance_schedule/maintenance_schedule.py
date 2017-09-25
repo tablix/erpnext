@@ -66,7 +66,12 @@ class MaintenanceSchedule(TransactionBase):
 				parent=%s""", (d.sales_person, d.item_code, self.name), as_dict=1)
 
 			for key in scheduled_date:
+<<<<<<< HEAD
 				description =frappe._("Reference: {0}, Item Code: {1} and Customer: {2}").format(self.name, d.item_code, self.customer)	
+=======
+				description = frappe._("Reference: %s, Item Code: %s and Customer: %s") % \
+					(self.name, d.item_code, self.customer)
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 				frappe.get_doc({
 					"doctype": "Event",
 					"owner": email_map.get(d.sales_person, self.owner),
@@ -162,7 +167,11 @@ class MaintenanceSchedule(TransactionBase):
 					`tabMaintenance Schedule Item` msi where msi.parent=ms.name and
 					msi.sales_order=%s and ms.docstatus=1""", d.sales_order)
 				if chk:
+<<<<<<< HEAD
 					throw(_("Maintenance Schedule {0} exists against {1}").format(chk[0][0], d.sales_order))
+=======
+					throw(_("Maintenance Schedule {0} exists against {0}").format(chk[0][0], d.sales_order))
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 
 	def validate(self):
 		self.validate_maintenance_detail()

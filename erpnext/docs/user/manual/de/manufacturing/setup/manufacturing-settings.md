@@ -5,7 +5,11 @@ Die Fertigungseinstellungen finden Sie unter
 
 > Fertigung > Einstellungen > Fertigungseinstellungen
 
+<<<<<<< HEAD
 <img class="screenshot" alt="Fertigungseinstellungen" src="/docs/assets/img/manufacturing/manufacturing-settings.png">
+=======
+<img class="screenshot" alt="Fertigungseinstellungen" src="{{docs_base_url}}/assets/img/manufacturing/manufacturing-settings.png">
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 
 Überstunden zulassen: Hier können Sie angeben, ob an Arbeitsplätzen Überstunden erlaubt sind (wichtig zur Planung von Arbeitsgängen außerhalb der Betriebsstunden).
 

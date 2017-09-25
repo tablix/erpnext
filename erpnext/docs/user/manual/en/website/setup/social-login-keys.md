@@ -1,5 +1,8 @@
+<<<<<<< HEAD
 # Social Login Keys
 
+=======
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 Social Login enables users to login to ERPNext via their Google, Facebook or GitHub account.
 
 ### Enabling Social Logins.

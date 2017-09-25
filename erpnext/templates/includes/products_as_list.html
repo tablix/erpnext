@@ -6,12 +6,21 @@
 			{{ product_image_square(thumbnail or website_image) }}
 		</div>
 		<div class='col-xs-9 col-sm-10 text-left'>
+<<<<<<< HEAD
 			<div class="product-text strong">{{ item_name }}</div>
 			{% set website_description = website_description or description %}
 			{% if website_description != item_name %}
 				<div class="text-muted">{{ website_description or description }}</div>
 			{% elif item_code != item_name %}
 				<div class="text-muted">{{ _('Item Code') }}: {{ item_code }}</div>
+=======
+			<div class="text-ellipsis product-text strong">{{ item_name }}</div>
+			{% set website_description = website_description or description %}
+			{% if website_description != item_name %}
+				<div class="text-ellipsis text-muted">{{ website_description or description }}</div>
+			{% elif item_code != item_name %}
+				<div class="text-ellipsis text-muted">{{ _('Item Code') }}: {{ item_code }}</div>
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 			{% endif %}
 		</div>
 	</div>

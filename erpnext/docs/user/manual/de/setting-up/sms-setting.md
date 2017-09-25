@@ -10,8 +10,13 @@ Beispiel-URL:
     
     http://instant.smses.com/web2sms.php?username=<USERNAME>&password;=<PASSWORD>&to;=<MOBILENUMBER>&sender;=<SENDERID>&message;=<MESSAGE>
     
+<<<<<<< HEAD
 <img class="screenshot" alt="SMS-Einstellungen" src="/docs/assets/img/setup/sms-settings2.jpg">
 
+=======
+
+![SMS-Einstellungen]({{docs_base_url}}/assets/old_images/erpnext/sms-setting2.jpg)
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 
 > Anmerkung: Die Zeichenfolge bis zum "?" ist die URL des SMS-Gateways.
 
@@ -23,7 +28,11 @@ Die oben angegebene URL verschickt SMS über das Konto "abcd" an Mobilnummern "9
 
 Beachten Sie, dass einige Parameter in der URL statisch sind. Sie bekommen von Ihrem SMS-Anbieter statische Werte wie Benutzername, Passwort usw. Diese statischen Werte sollten in die Tabelle der statischen Parameter eingetragen werden.
 
+<<<<<<< HEAD
 <img class="screenshot" alt="SMS-Einstellungen" src="/docs/assets/img/setup/sms-settings1.png">
 
+=======
+![SMS-Einstellungen]({{docs_base_url}}/assets/old_images/erpnext/sms-settings1.png)
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 
 {next}

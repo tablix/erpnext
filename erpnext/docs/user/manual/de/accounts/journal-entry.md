@@ -7,7 +7,11 @@ Um einen neuen Buchungssatz zu erstellen, gehen Sie zu:
 
 > Rechnungswesen > Dokumente > Journalbuchung > Neu
 
+<<<<<<< HEAD
 <img class="screenshot" alt="Buchungssatz" src="/docs/assets/img/accounts/journal-entry.png">
+=======
+<img class="screenshot" alt="Buchungssatz" src="{{docs_base_url}}/assets/img/accounts/journal-entry.png">
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 
 In einem Buchungssatz müssen Sie folgendes tun:
 

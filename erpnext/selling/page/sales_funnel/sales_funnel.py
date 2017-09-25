@@ -12,9 +12,15 @@ def get_funnel_data(from_date, to_date):
 		where (date(`modified`) between %s and %s)
 		and status != "Do Not Contact" """, (from_date, to_date))[0][0]
 
+<<<<<<< HEAD
 	active_leads += frappe.db.sql("""select count(distinct contact.name) from `tabContact` contact
 		left join `tabDynamic Link` dl on (dl.parent=contact.name) where dl.link_doctype='Customer' 
 		and (date(contact.modified) between %s and %s) and status != "Passive" """, (from_date, to_date))[0][0]
+=======
+	active_leads += frappe.db.sql("""select count(distinct customer) from `tabContact`
+		where (date(`modified`) between %s and %s)
+		and status != "Passive" """, (from_date, to_date))[0][0]
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 
 	opportunities = frappe.db.sql("""select count(*) from `tabOpportunity`
 		where (date(`creation`) between %s and %s)

@@ -6,6 +6,19 @@ frappe.provide("erpnext.journal_entry");
 
 
 frappe.ui.form.on("Journal Entry", {
+<<<<<<< HEAD
+=======
+	setup: function(frm) {
+		frm.get_field('accounts').grid.editable_fields = [
+			{fieldname: 'account', columns: 3},
+			{fieldname: 'party', columns: 3},
+			{fieldname: 'debit_in_account_currency', columns: 2},
+			{fieldname: 'credit_in_account_currency', columns: 2}
+		];
+	},
+
+	
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 	refresh: function(frm) {
 		erpnext.toggle_naming_series();
 		frm.cscript.voucher_type(frm.doc);
@@ -20,7 +33,11 @@ frappe.ui.form.on("Journal Entry", {
 					group_by_voucher: 0
 				};
 				frappe.set_route("query-report", "General Ledger");
+<<<<<<< HEAD
 			}, "fa fa-table");
+=======
+			}, "icon-table");
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 		}
 
 		if (frm.doc.__islocal) {
@@ -35,6 +52,7 @@ frappe.ui.form.on("Journal Entry", {
 
 	multi_currency: function(frm) {
 		erpnext.journal_entry.toggle_fields_based_on_currency(frm);
+<<<<<<< HEAD
 	},
 	
 	posting_date: function(frm) {
@@ -63,6 +81,22 @@ frappe.ui.form.on("Journal Entry", {
 		});
 	}
 });
+=======
+	}
+})
+
+
+//frappe.ui.form.on("Journal Entry", "amt_words", function(frm) {
+	//console.log("Start")
+	//var amount =  frm.doc.total_amount_in_words
+	//console.log(amount)
+	//var amt_to_word = frappe.utils.money_in_words(amount)
+	//console.log(amount)
+	//frappe.set_value("amt_words", amt_to_word)
+//});
+
+
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 
 erpnext.accounts.JournalEntry = frappe.ui.form.Controller.extend({
 	onload: function() {
@@ -80,10 +114,18 @@ erpnext.accounts.JournalEntry = frappe.ui.form.Controller.extend({
 		if(this.frm.doc.__islocal && this.frm.doc.company) {
 			frappe.model.set_default_values(this.frm.doc);
 			$.each(this.frm.doc.accounts || [], function(i, jvd) {
+<<<<<<< HEAD
 				frappe.model.set_default_values(jvd);
 			});
 
 			if(!this.frm.doc.amended_from) this.frm.doc.posting_date = this.frm.posting_date || frappe.datetime.get_today();
+=======
+					frappe.model.set_default_values(jvd);
+				}
+			);
+
+			if(!this.frm.doc.amended_from) this.frm.doc.posting_date = this.frm.posting_date || get_today();
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 		}
 	},
 
@@ -103,9 +145,15 @@ erpnext.accounts.JournalEntry = frappe.ui.form.Controller.extend({
 			};
 		});
 
+<<<<<<< HEAD
 		me.frm.set_query("party_type", "accounts", function() {
 			return{
 				query: "erpnext.setup.doctype.party_type.party_type.get_party_type"
+=======
+		me.frm.set_query("party_type", "accounts", function(doc, cdt, cdn) {
+			return {
+				filters: {"name": ["in", ["Customer", "Supplier"]]}
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 			}
 		});
 
@@ -114,6 +162,7 @@ erpnext.accounts.JournalEntry = frappe.ui.form.Controller.extend({
 
 			// expense claim
 			if(jvd.reference_type==="Expense Claim") {
+<<<<<<< HEAD
 				return {
 					filters: {
 						'approval_status': 'Approved',
@@ -122,6 +171,9 @@ erpnext.accounts.JournalEntry = frappe.ui.form.Controller.extend({
 						'docstatus': 1
 					}
 				};
+=======
+				return {};
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 			}
 
 			// journal entry
@@ -147,11 +199,18 @@ erpnext.accounts.JournalEntry = frappe.ui.form.Controller.extend({
 
 				// account filter
 				frappe.model.validate_missing(jvd, "account");
+<<<<<<< HEAD
 				var party_account_field = jvd.reference_type==="Sales Invoice" ? "debit_to": "credit_to";
 				out.filters.push([jvd.reference_type, party_account_field, "=", jvd.account]);
 			}
 
 			if(in_list(["Sales Order", "Purchase Order"], jvd.reference_type)) {
+=======
+
+				party_account_field = jvd.reference_type==="Sales Invoice" ? "debit_to": "credit_to";
+				out.filters.push([jvd.reference_type, party_account_field, "=", jvd.account]);
+			} else {
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 				// party_type and party mandatory
 				frappe.model.validate_missing(jvd, "party_type");
 				frappe.model.validate_missing(jvd, "party");
@@ -252,7 +311,13 @@ erpnext.accounts.JournalEntry = frappe.ui.form.Controller.extend({
 cur_frm.script_manager.make(erpnext.accounts.JournalEntry);
 
 cur_frm.cscript.update_totals = function(doc) {
+<<<<<<< HEAD
 	var td=0.0; var tc =0.0;
+=======
+	var td=0.0; var tc =0.0; 
+	var amt_in_words= "";
+	var amt_2_words = "";
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 	var accounts = doc.accounts || [];
 	for(var i in accounts) {
 		td += flt(accounts[i].debit, precision("debit", accounts[i]));
@@ -261,14 +326,47 @@ cur_frm.cscript.update_totals = function(doc) {
 	var doc = locals[doc.doctype][doc.name];
 	doc.total_debit = td;
 	doc.total_credit = tc;
+<<<<<<< HEAD
 	doc.difference = flt((td - tc), precision("difference"));
 	refresh_many(['total_debit','total_credit','difference']);
+=======
+	//console.log("Success!!!!")
+	//console.log(td)
+	frappe.call({
+		type: "GET",
+		method: "erpnext.accounts.doctype.journal_entry.journal_entry.amount_to_words",
+				args: {
+					"amount": td
+				},
+				callback: function(r) {
+					if(r.message) {
+						amt_2_words = r.message;
+						console.log(amt_2_words);
+                        amt_2_words_aed = amt_2_words.replace("AED ","");
+                        amt_2_words_ = amt_2_words_aed.replace(/,/g,"");						
+						amt_in_words = amt_2_words_.replace(/And/g,"");	
+						console.log(amt_in_words);
+						cur_frm.set_value("amt_words", amt_in_words);
+					}
+				} 
+	});
+	
+	//amt_2_words = amt_2_words.replace("AED ","");
+	//console.log(amt_2_words);
+	//doc.amt_words = amt_2_words;
+	doc.difference = flt((td - tc), precision("difference"));
+	refresh_many(['total_debit','total_credit','difference','amt_words']);
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 }
 
 cur_frm.cscript.get_balance = function(doc,dt,dn) {
 	cur_frm.cscript.update_totals(doc);
 	return $c_obj(cur_frm.doc, 'get_balance', '', function(r, rt){
+<<<<<<< HEAD
 		cur_frm.refresh();
+=======
+	cur_frm.refresh();
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 	});
 }
 
@@ -292,6 +390,10 @@ cur_frm.cscript.voucher_type = function(doc, cdt, cdn) {
 	if(!doc.company) return;
 
 	var update_jv_details = function(doc, r) {
+<<<<<<< HEAD
+=======
+		var jvdetail = frappe.model.add_child(doc, "Journal Entry Account", "accounts");
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 		$.each(r, function(i, d) {
 			var row = frappe.model.add_child(doc, "Journal Entry Account", "accounts");
 			row.account = d.account;
@@ -299,8 +401,13 @@ cur_frm.cscript.voucher_type = function(doc, cdt, cdn) {
 		});
 		refresh_field("accounts");
 	}
+<<<<<<< HEAD
 	
 	if((!(doc.accounts || []).length) || ((doc.accounts || []).length==1 && !doc.accounts[0].account)) {
+=======
+
+	if(!(doc.accounts || []).length) {
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 		if(in_list(["Bank Entry", "Cash Entry"], doc.voucher_type)) {
 			return frappe.call({
 				type: "GET",
@@ -378,7 +485,11 @@ frappe.ui.form.on("Journal Entry Account", {
 			});
 		}
 	},
+<<<<<<< HEAD
 	
+=======
+
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 	debit_in_account_currency: function(frm, cdt, cdn) {
 		erpnext.journal_entry.set_exchange_rate(frm, cdt, cdn);
 	},
@@ -453,7 +564,10 @@ $.extend(erpnext.journal_entry, {
 			frappe.call({
 				method: "erpnext.accounts.doctype.journal_entry.journal_entry.get_exchange_rate",
 				args: {
+<<<<<<< HEAD
 					posting_date: frm.doc.posting_date,
+=======
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 					account: row.account,
 					account_currency: row.account_currency,
 					company: frm.doc.company,
@@ -526,6 +640,13 @@ $.extend(erpnext.journal_entry, {
 			var credit_row = frm.fields_dict.accounts.grid.add_new_row();
 			frappe.model.set_value(credit_row.doctype, credit_row.name, "account", values.credit_account);
 			frappe.model.set_value(credit_row.doctype, credit_row.name, "credit_in_account_currency", values.debit);
+<<<<<<< HEAD
+=======
+			
+			for(var i in accounts) {
+				frm.set_value(accounts[i].cost_center, "Main - Tab");
+			}
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 
 			frm.save();
 

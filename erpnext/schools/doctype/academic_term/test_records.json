@@ -1,4 +1,5 @@
 [
+<<<<<<< HEAD
     {
         "doctype": "Academic Term",
         "academic_year": "2014-2015",
@@ -25,3 +26,15 @@
         "term_name": "_Test AT2"
     }
 ]    
+=======
+	{
+		"term_name": "_Test Academic Term"
+	},
+	{
+		"term_name": "_Test Academic Term 1"
+	},
+	{
+		"term_name": "_Test Academic Term 2"
+	}
+]
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347

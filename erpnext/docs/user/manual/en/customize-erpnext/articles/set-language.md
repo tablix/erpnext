@@ -8,6 +8,7 @@ Following are the steps to set language in your ERPNext account.
 
 #### 1.1 Go to My Setting
 
+<<<<<<< HEAD
 <img alt="My Setting" class="screenshot" src="/docs/assets/img/articles/change-language-1.png">
 
 #### 1.2 Select Language
@@ -15,6 +16,15 @@ Following are the steps to set language in your ERPNext account.
 <img alt="Select Language" class="screenshot" src="/docs/assets/img/articles/change-language-2.png">
 
 <img alt="Select Language" class="screenshot" src="/docs/assets/img/articles/set-language-1.gif">
+=======
+<img alt="My Setting" class="screenshot" src="{{docs_base_url}}/assets/img/articles/change-language-1.png">
+
+#### 1.2 Select Language
+
+<img alt="Select Language" class="screenshot" src="{{docs_base_url}}/assets/img/articles/change-language-2.png">
+
+<img alt="Select Language" class="screenshot" src="{{docs_base_url}}/assets/img/articles/set-language-1.gif">
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 
 #### 1.3 Save User
 
@@ -30,13 +40,21 @@ Being a System Manager, you can set language in other user's master as well.
 
 #### Set Language
 
+<<<<<<< HEAD
 <img alt="Global Language" class="screenshot" src="/docs/assets/img/articles/change-language-3.png">
+=======
+<img alt="Global Language" class="screenshot" src="{{docs_base_url}}/assets/img/articles/change-language-3.png">
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 
 #### Save
 
 Save System Settings, and refresh your EPRNext account. On refreshing, you should language in your ERPNext account changed as per your preference.
 
+<<<<<<< HEAD
 <img alt="Select Language" class="screenshot" src="/docs/assets/img/articles/set-language-2.gif">
+=======
+<img alt="Select Language" class="screenshot" src="{{docs_base_url}}/assets/img/articles/set-language-2.gif">
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 
 Note: For now, we have translation available only for few languages. You can contribute to make translation better, and add new languages from [here](https://translate.erpnext.com).
 <!-- markdown -->

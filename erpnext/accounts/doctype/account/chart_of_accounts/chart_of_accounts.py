@@ -6,8 +6,14 @@ import frappe, os, json
 from frappe.utils import cstr
 from unidecode import unidecode
 
+<<<<<<< HEAD
 def create_charts(company, chart_template=None, existing_company=None):
 	chart = get_chart(chart_template, existing_company)
+=======
+def create_charts(chart_name, company):
+	chart = get_chart(chart_name)
+	
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 	if chart:
 		accounts = []
 
@@ -16,7 +22,11 @@ def create_charts(company, chart_template=None, existing_company=None):
 				if root_account:
 					root_type = child.get("root_type")
 
+<<<<<<< HEAD
 				if account_name not in ["account_type", "root_type", "is_group", "tax_rate"]:
+=======
+				if account_name not in ["account_type", "root_type", "is_group"]:
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 
 					account_name_in_db = unidecode(account_name.strip().lower())
 					if account_name_in_db in accounts:
@@ -56,19 +66,29 @@ def create_charts(company, chart_template=None, existing_company=None):
 def identify_is_group(child):
 	if child.get("is_group"):
 		is_group = child.get("is_group")
+<<<<<<< HEAD
 	elif len(set(child.keys()) - set(["account_type", "root_type", "is_group", "tax_rate"])):
+=======
+	elif len(set(child.keys()) - set(["account_type", "root_type", "is_group"])):
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 		is_group = 1
 	else:
 		is_group = 0
 
 	return is_group
 
+<<<<<<< HEAD
 def get_chart(chart_template, existing_company=None):
 	chart = {}
 	if existing_company:
 		return get_account_tree_from_existing_company(existing_company)
 	
 	elif chart_template == "Standard":
+=======
+def get_chart(chart_name):
+	chart = {}
+	if chart_name == "Standard":
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 		from erpnext.accounts.doctype.account.chart_of_accounts.verified import standard_chart_of_accounts
 		return standard_chart_of_accounts.get()
 	else:
@@ -78,11 +98,18 @@ def get_chart(chart_template, existing_company=None):
 		for folder in folders:
 			path = os.path.join(os.path.dirname(__file__), folder)
 			for fname in os.listdir(path):
+<<<<<<< HEAD
 				fname = frappe.as_unicode(fname)
 				if fname.endswith(".json"):
 					with open(os.path.join(path, fname), "r") as f:
 						chart = f.read()
 						if chart and json.loads(chart).get("name") == chart_template:
+=======
+				if fname.endswith(".json"):
+					with open(os.path.join(path, fname), "r") as f:
+						chart = f.read()
+						if chart and json.loads(chart).get("name") == chart_name:
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 							return json.loads(chart).get("tree")
 
 @frappe.whitelist()
@@ -106,8 +133,12 @@ def get_charts_for_country(country):
 			path = os.path.join(os.path.dirname(__file__), folder)
 
 			for fname in os.listdir(path):
+<<<<<<< HEAD
 				fname = frappe.as_unicode(fname)
 				if (fname.startswith(country_code) or fname.startswith(country)) and fname.endswith(".json"):
+=======
+				if fname.startswith(country_code) and fname.endswith(".json"):
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 					with open(os.path.join(path, fname), "r") as f:
 						_get_chart_name(f.read())
 
@@ -115,6 +146,7 @@ def get_charts_for_country(country):
 		charts.append("Standard")
 
 	return charts
+<<<<<<< HEAD
 
 
 def get_account_tree_from_existing_company(existing_company):
@@ -159,3 +191,5 @@ def build_account_tree(tree, parent, all_accounts):
 			
 		# call recursively to build a subtree for current account
 		build_account_tree(tree[child.account_name], child, all_accounts)
+=======
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347

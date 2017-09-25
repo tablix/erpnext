@@ -1,7 +1,11 @@
 # Copyright (c) 2015, Frappe Technologies Pvt. Ltd. and Contributors
 # License: GNU General Public License v3. See license.txt
 
+<<<<<<< HEAD
 from __future__ import print_function, unicode_literals
+=======
+from __future__ import unicode_literals
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 import frappe
 
 def execute():
@@ -31,4 +35,8 @@ def execute():
 				frappe.db.sql("""UPDATE tabAccount SET root_type=%s WHERE lft>%s and rgt<%s""",
 					(root.root_type, root.lft, root.rgt))
 			else:
+<<<<<<< HEAD
 				print(b"Root type not found for {0}".format(root.name.encode("utf-8")))
+=======
+				print b"Root type not found for {0}".format(root.name.encode("utf-8"))
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347

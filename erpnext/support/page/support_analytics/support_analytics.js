@@ -19,6 +19,10 @@ erpnext.SupportAnalytics = frappe.views.GridReportWithPlot.extend({
 	init: function(wrapper) {
 		this._super({
 			title: __("Support Analtyics"),
+<<<<<<< HEAD
+=======
+			page: wrapper,
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 			parent: $(wrapper).find('.layout-main'),
 			page: wrapper.page,
 			doctypes: ["Issue", "Fiscal Year"],
@@ -26,11 +30,19 @@ erpnext.SupportAnalytics = frappe.views.GridReportWithPlot.extend({
 	},
 
 	filters: [
+<<<<<<< HEAD
 		{fieldname: "fiscal_year", fieldtype:"Select", label: __("Fiscal Year"), link:"Fiscal Year",
 			default_value: __("Select Fiscal Year") + "..."},
 		{fieldname: "from_date", fieldtype:"Date", label: __("From Date")},
 		{fieldname: "to_date", fieldtype:"Date", label: __("To Date")},
 		{fieldname: "range", fieldtype:"Select", label: __("Range"),
+=======
+		{fieldtype:"Select", label: __("Fiscal Year"), link:"Fiscal Year",
+			default_value: __("Select Fiscal Year") + "..."},
+		{fieldtype:"Date", label: __("From Date")},
+		{fieldtype:"Date", label: __("To Date")},
+		{fieldtype:"Select", label: __("Range"),
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 			options:["Daily", "Weekly", "Monthly", "Quarterly", "Yearly"], default_value: "Monthly"}
 	],
 	
@@ -66,7 +78,11 @@ erpnext.SupportAnalytics = frappe.views.GridReportWithPlot.extend({
 
 
 		$.each(frappe.report_dump.data["Issue"], function(i, d) {
+<<<<<<< HEAD
 			var dateobj = frappe.datetime.str_to_obj(d.creation);
+=======
+			var dateobj = dateutil.str_to_obj(d.creation);
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 			var date = d.creation.split(" ")[0];
 			var col = me.column_map[date];
 			if(col) {
@@ -76,17 +92,28 @@ erpnext.SupportAnalytics = frappe.views.GridReportWithPlot.extend({
 					total_closed[col.field] = flt(total_closed[col.field]) + 1;
 
 					days_to_close[col.field] = flt(days_to_close[col.field])
+<<<<<<< HEAD
 						+ frappe.datetime.get_diff(d.resolution_date, d.creation);
 
 					hours_to_close[col.field] = flt(hours_to_close[col.field])
 						+ frappe.datetime.get_hour_diff(d.resolution_date, d.creation);
+=======
+						+ dateutil.get_diff(d.resolution_date, d.creation);
+
+					hours_to_close[col.field] = flt(hours_to_close[col.field])
+						+ dateutil.get_hour_diff(d.resolution_date, d.creation);
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 
 				}
 				if (d.first_responded_on) {
 					total_responded[col.field] = flt(total_responded[col.field]) + 1;
 
 					hours_to_respond[col.field] = flt(hours_to_respond[col.field])
+<<<<<<< HEAD
 						+ frappe.datetime.get_hour_diff(d.first_responded_on, d.creation);
+=======
+						+ dateutil.get_hour_diff(d.first_responded_on, d.creation);
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 				}
 			}
 		});

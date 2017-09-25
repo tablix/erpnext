@@ -4,6 +4,7 @@
 from __future__ import unicode_literals
 import frappe
 from frappe import _
+<<<<<<< HEAD
 from frappe.utils import flt, cint
 from erpnext.accounts.report.financial_statements import (get_period_list, get_columns, get_data)
 
@@ -27,11 +28,28 @@ def execute(filters=None):
 		period_list, filters.company)
 
 	message, opening_balance = check_opening_balance(asset, liability, equity)
+=======
+from frappe.utils import flt
+from erpnext.accounts.report.financial_statements import (get_period_list, get_columns, get_data)
+
+def execute(filters=None):
+	period_list = get_period_list(filters.fiscal_year, filters.periodicity)
+
+	asset = get_data(filters.company, "Asset", "Debit", period_list, only_current_fiscal_year=False)
+	liability = get_data(filters.company, "Liability", "Credit", period_list, only_current_fiscal_year=False)
+	equity = get_data(filters.company, "Equity", "Credit", period_list, only_current_fiscal_year=False)
+
+	provisional_profit_loss = get_provisional_profit_loss(asset, liability, equity,
+		period_list, filters.company)
+
+	message = check_opening_balance(asset, liability, equity)
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 
 	data = []
 	data.extend(asset or [])
 	data.extend(liability or [])
 	data.extend(equity or [])
+<<<<<<< HEAD
 	if opening_balance and round(opening_balance,2) !=0:
 		unclosed ={
 			"account_name": "'" + _("Unclosed Fiscal Years Profit / Loss (Credit)") + "'",
@@ -55,10 +73,19 @@ def execute(filters=None):
 	columns = get_columns(filters.periodicity, period_list, filters.accumulated_values, company=filters.company)
 	
 	chart = get_chart_data(filters, columns, asset, liability, equity)
+=======
+	if provisional_profit_loss:
+		data.append(provisional_profit_loss)
+
+	columns = get_columns(filters.periodicity, period_list, company=filters.company)
+	
+	chart = get_chart_data(columns, asset, liability, equity)
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 
 	return columns, data, message, chart
 
 def get_provisional_profit_loss(asset, liability, equity, period_list, company):
+<<<<<<< HEAD
 	provisional_profit_loss = {}
 	total_row = {}
 	if asset and (liability or equity):
@@ -70,6 +97,17 @@ def get_provisional_profit_loss(asset, liability, equity, period_list, company):
 			"warn_if_negative": True,
 			"currency": currency
 		}
+=======
+	if asset and (liability or equity):
+		total=0
+		provisional_profit_loss = {
+			"account_name": "'" + _("Provisional Profit / Loss (Credit)") + "'",
+			"account": None,
+			"warn_if_negative": True,
+			"currency": frappe.db.get_value("Company", company, "default_currency")
+		}
+
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 		has_value = False
 
 		for period in period_list:
@@ -80,13 +118,17 @@ def get_provisional_profit_loss(asset, liability, equity, period_list, company):
 				effective_liability += flt(equity[-2].get(period.key))
 
 			provisional_profit_loss[period.key] = flt(asset[-2].get(period.key)) - effective_liability
+<<<<<<< HEAD
 			total_row[period.key] = effective_liability + provisional_profit_loss[period.key]
+=======
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 
 			if provisional_profit_loss[period.key]:
 				has_value = True
 
 			total += flt(provisional_profit_loss[period.key])
 			provisional_profit_loss["total"] = total
+<<<<<<< HEAD
 			
 			total_row_total += flt(total_row[period.key])
 			total_row["total"] = total_row_total
@@ -100,10 +142,16 @@ def get_provisional_profit_loss(asset, liability, equity, period_list, company):
 			})
 			
 	return provisional_profit_loss, total_row
+=======
+
+		if has_value:
+			return provisional_profit_loss
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 
 def check_opening_balance(asset, liability, equity):
 	# Check if previous year balance sheet closed
 	opening_balance = 0
+<<<<<<< HEAD
 	float_precision = cint(frappe.db.get_default("float_precision")) or 2
 	if asset:
 		opening_balance = flt(asset[0].get("opening_balance", 0), float_precision)
@@ -118,6 +166,19 @@ def check_opening_balance(asset, liability, equity):
 	return None,None
 		
 def get_chart_data(filters, columns, asset, liability, equity):
+=======
+	if asset:
+		opening_balance = flt(asset[0].get("opening_balance", 0))
+	if liability:
+		opening_balance -= flt(liability[0].get("opening_balance", 0))
+	if equity:
+		opening_balance -= flt(asset[0].get("opening_balance", 0))
+
+	if opening_balance:
+		return _("Previous Financial Year is not closed")
+		
+def get_chart_data(columns, asset, liability, equity):
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 	x_intervals = ['x'] + [d.get("label") for d in columns[2:]]
 	
 	asset_data, liability_data, equity_data = [], [], []
@@ -138,14 +199,22 @@ def get_chart_data(filters, columns, asset, liability, equity):
 	if equity_data:
 		columns.append(["Equity"] + equity_data)
 
+<<<<<<< HEAD
 	chart = {
+=======
+	return {
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 		"data": {
 			'x': 'x',
 			'columns': columns
 		}
+<<<<<<< HEAD
 	}
 
 	if not filters.accumulated_values:
 		chart["chart_type"] = "bar"
 
 	return chart
+=======
+	}
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347

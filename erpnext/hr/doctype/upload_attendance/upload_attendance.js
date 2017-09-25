@@ -7,8 +7,13 @@ frappe.provide("erpnext.hr");
 
 erpnext.hr.AttendanceControlPanel = frappe.ui.form.Controller.extend({
 	onload: function() {
+<<<<<<< HEAD
 		this.frm.set_value("att_fr_date", frappe.datetime.get_today());
 		this.frm.set_value("att_to_date", frappe.datetime.get_today());
+=======
+		this.frm.set_value("att_fr_date", get_today());
+		this.frm.set_value("att_to_date", get_today());
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 	},
 
 	refresh: function() {
@@ -18,7 +23,11 @@ erpnext.hr.AttendanceControlPanel = frappe.ui.form.Controller.extend({
 
 	get_template:function() {
 		if(!this.frm.doc.att_fr_date || !this.frm.doc.att_to_date) {
+<<<<<<< HEAD
 			frappe.msgprint(__("Attendance From Date and Attendance To Date is mandatory"));
+=======
+			msgprint(__("Attendance From Date and Attendance To Date is mandatory"));
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 			return;
 		}
 		window.location.href = repl(frappe.request.url +

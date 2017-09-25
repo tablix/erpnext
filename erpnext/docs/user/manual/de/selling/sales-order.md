@@ -9,19 +9,35 @@ Wenn Ihr Kunde das Angebot annimmt, können Sie das Angebot in einen Kundenauftr
 
 ### Flußdiagramm des Kundenauftrags
 
+<<<<<<< HEAD
 <img class="screenshot" alt="Kundenauftrag aus Angebot erstellen" src="/docs/assets/img/selling/sales-order-f.jpg">
 
 Um einen neuen Kundenauftrag zu erstellen gehen Sie zu: > Vertrieb > Kundenauftrag > Neuer Kundenauftrag
+=======
+![Kundenauftrag]({{docs_base_url}}/assets/old_images/erpnext/sales-order-f.jpg)
+
+Um einen neuen Kundenauftrag zu erstellen gehen Sie zu:
+
+> Vertrieb > Kundenauftrag > Neuer Kundenauftrag
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 
 ### Einen Kundenauftrag aus einem Angebot erstellen
 
 Sie können einen Kundenauftrag auch aus einem übertragenen Angebot heraus erstellen.
 
+<<<<<<< HEAD
 <img class="screenshot" alt="Kundenauftrag aus Angebot erstellen" src="/docs/assets/img/selling/make-SO-from-quote.png">
 
 Oder Sie erstellen einen neuen Kundenauftrag und entnehmen die Details aus dem Angebot.
 
 <img class="screenshot" alt="Kundenauftrag aus Angebot erstellen" src="/docs/assets/img/selling/make-so.gif">
+=======
+<img class="screenshot" alt="Kundenauftrag aus Angebot erstellen" src="{{docs_base_url}}/assets/img/selling/make-SO-from-quote.png">
+
+Oder Sie erstellen einen neuen Kundenauftrag und entnehmen die Details aus dem Angebot.
+
+<img class="screenshot" alt="Kundenauftrag aus Angebot erstellen" src="{{docs_base_url}}/assets/img/selling/make-so.gif">
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 
 Die meisten Informationen im Kundenauftrag sind dieselben wie im Angebot. Einige Dinge möchte der Kundenauftrag aber aktualisiert haben.
 
@@ -60,7 +76,11 @@ Wenn Sie den Kundenauftrag aktualisieren, wird eine wiederkehrende ID generiert,
 
 ERPNext erstellt automatisch eine neue Bestellung und versendet eine E-Mail-Mitteilung an die E-Mail-Konten, die Sie im Feld "Benachrichtigungs-E-Mail-Adresse" eingestellt haben.
 
+<<<<<<< HEAD
 <img class="screenshot" alt="Wiederkehrende Kundenaufträge" src="/docs/assets/img/selling/recurring-sales-order.png">
+=======
+<img class="screenshot" alt="Wiederkehrende Kundenaufträge" src="{{docs_base_url}}/assets/img/selling/recurring-sales-order.png">
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 
 ### Die nächsten Schritte
 

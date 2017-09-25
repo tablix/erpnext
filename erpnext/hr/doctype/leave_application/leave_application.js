@@ -7,7 +7,11 @@ cur_frm.add_fetch('employee','company','company');
 frappe.ui.form.on("Leave Application", {
 	onload: function(frm) {
 		if (!frm.doc.posting_date) {
+<<<<<<< HEAD
 			frm.set_value("posting_date", frappe.datetime.get_today());
+=======
+			frm.set_value("posting_date", get_today());
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 		}
 
 		frm.set_query("leave_approver", function() {
@@ -23,10 +27,13 @@ frappe.ui.form.on("Leave Application", {
 
 	},
 
+<<<<<<< HEAD
 	validate: function(frm) {
 		frm.toggle_reqd("half_day_date", frm.doc.half_day == 1);
 	},
 
+=======
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 	refresh: function(frm) {
 		if (frm.is_new()) {
 			frm.set_value("status", "Open");
@@ -49,6 +56,7 @@ frappe.ui.form.on("Leave Application", {
 	},
 
 	half_day: function(frm) {
+<<<<<<< HEAD
 		if (frm.doc.from_date == frm.doc.to_date) {
 			frm.set_value("half_day_date", frm.doc.from_date);
 		}
@@ -60,10 +68,23 @@ frappe.ui.form.on("Leave Application", {
 
 	from_date: function(frm) {
 		frm.trigger("half_day_datepicker");
+=======
+		if (frm.doc.from_date) {
+			frm.set_value("to_date", frm.doc.from_date);
+			frm.trigger("calculate_total_days");
+		}
+	},
+
+	from_date: function(frm) {
+		if (cint(frm.doc.half_day)==1) {
+			frm.set_value("to_date", frm.doc.from_date);
+		}
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 		frm.trigger("calculate_total_days");
 	},
 
 	to_date: function(frm) {
+<<<<<<< HEAD
 		frm.trigger("half_day_datepicker");
 		frm.trigger("calculate_total_days");
 	},
@@ -81,6 +102,16 @@ frappe.ui.form.on("Leave Application", {
 		})
 	},
 
+=======
+		if (cint(frm.doc.half_day)==1 && cstr(frm.doc.from_date) && frm.doc.from_date != frm.doc.to_date) {
+			msgprint(__("To Date should be same as From Date for Half Day leave"));
+			frm.set_value("to_date", frm.doc.from_date);
+		}
+
+		frm.trigger("calculate_total_days");
+	},
+
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 	get_leave_balance: function(frm) {
 		if(frm.doc.docstatus==0 && frm.doc.employee && frm.doc.leave_type && frm.doc.from_date) {
 			return frappe.call({
@@ -101,6 +132,7 @@ frappe.ui.form.on("Leave Application", {
 	},
 
 	calculate_total_days: function(frm) {
+<<<<<<< HEAD
 		if(frm.doc.from_date && frm.doc.to_date && frm.doc.employee && frm.doc.leave_type) {
 				// server call is done to include holidays in leave days calculations
 			return frappe.call({
@@ -122,4 +154,31 @@ frappe.ui.form.on("Leave Application", {
 			});
 		}
 	},
+=======
+		if(frm.doc.from_date && frm.doc.to_date) {
+			if (cint(frm.doc.half_day)==1) {
+				frm.set_value("total_leave_days", 0.5);
+			} else if (frm.doc.employee && frm.doc.leave_type){
+				// server call is done to include holidays in leave days calculations
+				return frappe.call({
+					method: 'erpnext.hr.doctype.leave_application.leave_application.get_number_of_leave_days',
+					args: {
+						"employee": frm.doc.employee,
+						"leave_type": frm.doc.leave_type,
+						"from_date": frm.doc.from_date,
+						"to_date": frm.doc.to_date,
+						"half_day": frm.doc.half_day
+					},
+					callback: function(r) {
+						if (r && r.message) {
+							frm.set_value('total_leave_days', r.message);
+							frm.trigger("get_leave_balance");
+						}
+					}
+				});
+			}
+		}
+	},
+
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 });

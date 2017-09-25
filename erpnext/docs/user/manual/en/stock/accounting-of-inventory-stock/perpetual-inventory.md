@@ -1,13 +1,20 @@
+<<<<<<< HEAD
 # Perpetual Inventory
 
 As per the perpetual inventory system, accounts posting is done for every stock transaction.
 
 On creating new Warehouse, the system will automatically create an Account in the Chart of Account, with the same name as Warehouse Name.
+=======
+As per the perpetual inventory system, accounts posting is done for every stock transaction.
+
+On creating new Warehouse, the system will automatically create an Account in the Chart of Accout, with the same name as Warehouse Name.
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 
 On receipt of items in a particular warehouse, the balance in the Warehouse Account will increase. Similarly when items are delivered from the Warehouse, an expense will be booked, and balance in the Warehouse Account will reduce.
 
 ##Activation
 
+<<<<<<< HEAD
   * Activate Perpetual Inventory
 
 	 > Setup > Company > Stock Settings > "Enable Perpetual Inventory"
@@ -25,6 +32,22 @@ On receipt of items in a particular warehouse, the balance in the Warehouse Acco
   * If user wants to set an individual account for each warehouse, create account head for each account under `Assets > Current Asset > Stock Assets > (Warehouse)` and set it on the respective warehouse under field 'Account'.
 
   * For stock transactions, general ledger entries made against the account head set on the warehouse, if user had not set the account for the warhouse then system gets the account head from the parent warehouse. If account had not set for parent warehouse then system gets the account(Default Inventory Account) from the company master.
+=======
+  1. Setup the following default accounts for each Company. These accounts are created automatically in the new ERPNext accounts.
+
+    * Stock Received But Not Billed
+    * Stock Adjustment Account
+    * Expenses Included In Valuation
+    * Cost Center
+	
+  2. Ensure each Warehouse is an Account in the Chart of Accounts master. As per the default configuration, Accounts for Warehouse are created under `Assets > Current Asset > Stock Assets > (Warehouse)`
+
+  3. Activate Perpetual Inventory
+
+	 > Explore > Accounts > Accounts Settings > "Make Accounting Entry For Every Stock Movement"
+
+<img class="screenshot" alt="Perpetual Inventory" src="{{docs_base_url}}/assets/img/accounts/perpetual-1.png">
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 
 * * *
 
@@ -74,9 +97,15 @@ Consider following Chart of Accounts and Warehouse setup for your company:
 
 ###Purchase Receipt
 
+<<<<<<< HEAD
 Suppose you have purchased _10 nos_ of item "RM0001" at _$200_ and _5 nos_ of item "Base Plate" at **$100** from supplier "Arcu Vel Quam Fabricators". Following are the details of Purchase Receipt:
 
 **Supplier:** Arcu Vel Quam Fabricators
+=======
+Suppose you have purchased _10 nos_ of item "RM0001" at _$200_ and _5 nos_ of item "Base Plate" at **$100** from supplier "East Wind Inc". Following are the details of Purchase Receipt:
+
+**Supplier:** East Wind Inc.
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 
 **Items:**
 
@@ -133,11 +162,19 @@ Suppose you have purchased _10 nos_ of item "RM0001" at _$200_ and _5 nos_ of it
 
 **Stock Ledger**
 
+<<<<<<< HEAD
 <img class="screenshot" alt="Perpetual Inventory" src="/docs/assets/img/accounts/perpetual-receipt-sl-1.png">
 
 **General Ledger**
 
 <img class="screenshot" alt="Perpetual Inventory" src="/docs/assets/img/accounts/perpetual-receipt-gl-2.png">
+=======
+<img class="screenshot" alt="Perpetual Inventory" src="{{docs_base_url}}/assets/img/accounts/perpetual-2.png">
+
+**General Ledger**
+
+<img class="screenshot" alt="Perpetual Inventory" src="{{docs_base_url}}/assets/img/accounts/perpetual-3.png">
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 
 As stock balance increases through Purchase Receipt, "Store" accounts are debited and a temporary account "Stock Receipt But Not Billed" account is credited, to maintain double entry accounting system. At the same time, negative expense is booked in account "Expense included in Valuation" for the amount added for valuation purpose, to avoid double expense booking.
 
@@ -149,7 +186,11 @@ On receiving Bill from supplier, for the above Purchase Receipt, you will make P
 
 **General Ledger**
 
+<<<<<<< HEAD
 <img class="screenshot" alt="Perpetual Inventory" src="/docs/assets/img/accounts/perpetual-pinv-gl-3.png">
+=======
+<img alt="General" class="screenshot" src="{{docs_base_url}}/assets/old_images/erpnext/accounting-for-stock-4.png">
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 
 Here "Stock Received But Not Billed" account is debited and nullified the
 effect of Purchase Receipt.
@@ -158,10 +199,17 @@ effect of Purchase Receipt.
 
 ###Delivery Note
 
+<<<<<<< HEAD
 Lets say, you have an order from "Utah Automation Services" to deliver 5 nos of item "RM0001"
 at $300. Following are the details of Delivery Note:
 
 **Customer:** Utah Automation Services
+=======
+Lets say, you have an order from "Jane Doe" to deliver 5 nos of item "RM0001"
+at $300. Following are the details of Delivery Note:
+
+**Customer:** Jane Doe
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 
 **Items:**
 <table class="table table-bordered">
@@ -207,20 +255,37 @@ at $300. Following are the details of Delivery Note:
 
 **Stock Ledger**
 
+<<<<<<< HEAD
 <img class="screenshot" alt="Perpetual Inventory" src="/docs/assets/img/accounts/perpetual-dn-sl-4.png">
 
 **General Ledger**
 
 <img class="screenshot" alt="Perpetual Inventory" src="/docs/assets/img/accounts/perpetual-dn-gl-5.png">
+=======
+<img alt="Stock" class="screenshot" src="{{docs_base_url}}/assets/old_images/erpnext/accounting-for-stock-5.png">
+
+**General Ledger**
+
+<img alt="General" class="screenshot" src="{{docs_base_url}}/assets/old_images/erpnext/accounting-for-stock-6.png">
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 
 As item is delivered from "Stores" warehouse, "Stores" account is credited and
 equal amount is debited to the expense account "Cost of Goods Sold". The
 debit/credit amount is equal to the total valuation amount (buying cost) of
+<<<<<<< HEAD
 the selling items. And valuation amount is calculated based on your preferred
 valuation method (FIFO / Moving Average) or actual cost of serialized items.
 
     
      
+=======
+the selling items. And valuation amount is calculated based on your prefferred
+valuation method (FIFO / Moving Average) or actual cost of serialized items.
+
+    
+    
+        
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
     In this example, we have considered valuation method as FIFO. 
     Valuation Rate  = Purchase Rate + Charges Included in Valuation 
                     = 200 + (250 * (2000 / 2500) / 10) 
@@ -240,11 +305,19 @@ of the Sales Invoice are same as the above Delivery Note.
 
 **Stock Ledger**
 
+<<<<<<< HEAD
 <img class="screenshot" alt="Perpetual Inventory" src="/docs/assets/img/accounts/perpetual-inv-sl-6.png">
 
 **General Ledger**
 
 <img class="screenshot" alt="Perpetual Inventory" src="/docs/assets/img/accounts/perpetual-inv-gl-7.png">
+=======
+<img alt="Stock" class="screenshot" src="{{docs_base_url}}/assets/old_images/erpnext/accounting-for-stock-7.png">
+
+**General Ledger**
+
+<img alt="General" class="screenshot" src="{{docs_base_url}}/assets/old_images/erpnext/accounting-for-stock-8.png">
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 
 Here, apart from normal account entries for invoice, "Stores" and "Cost of
 Goods Sold" accounts are also affected based on the valuation amount.
@@ -278,11 +351,19 @@ Goods Sold" accounts are also affected based on the valuation amount.
 
 **Stock Ledger**
 
+<<<<<<< HEAD
 <img class="screenshot" alt="Perpetual Inventory" src="/docs/assets/img/accounts/perpetual-st-receipt-sl.png">
 
 **General Ledger**
 
 <img class="screenshot" alt="Perpetual Inventory" src="/docs/assets/img/accounts/perpetual-st-receipt-gl.png">
+=======
+<img alt="Stock" class="screenshot" src="{{docs_base_url}}/assets/old_images/erpnext/accounting-for-stock-9.png">
+
+**General Ledger**
+
+<img alt="General" class="screenshot" src="{{docs_base_url}}/assets/old_images/erpnext/accounting-for-stock-10.png">
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 
 * * *
 
@@ -313,11 +394,19 @@ Goods Sold" accounts are also affected based on the valuation amount.
 
 **Stock Ledger**
 
+<<<<<<< HEAD
 <img class="screenshot" alt="Perpetual Inventory" src="/docs/assets/img/accounts/perpetual-st-issue-sl.png">
 
 **General Ledger**
 
 <img class="screenshot" alt="Perpetual Inventory" src="/docs/assets/img/accounts/perpetual-st-issue-gl.png">
+=======
+<img alt="Stock" class="screenshot" src="{{docs_base_url}}/assets/old_images/erpnext/accounting-for-stock-11.png">
+
+**General Ledger**
+
+<img alt="Stock" class="screenshot" src="{{docs_base_url}}/assets/old_images/erpnext/accounting-for-stock-12.png">
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 
 * * *
 
@@ -350,10 +439,19 @@ Goods Sold" accounts are also affected based on the valuation amount.
 
 **Stock Ledger**
 
+<<<<<<< HEAD
 <img class="screenshot" alt="Perpetual Inventory" src="/docs/assets/img/accounts/perpetual-st-transfer-sl.png">
 
 **General Ledger**
 
 <img class="screenshot" alt="Perpetual Inventory" src="/docs/assets/img/accounts/perpetual-st-transfer-gl.png">
 	
+=======
+<img alt="Stock" class="screenshot" src="{{docs_base_url}}/assets/old_images/erpnext/accounting-for-stock-13.png">
+
+**General Ledger**
+
+<img alt="Stock" class="screenshot" src="{{docs_base_url}}/assets/old_images/erpnext/accounting-for-stock-14.png">
+
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 {next}

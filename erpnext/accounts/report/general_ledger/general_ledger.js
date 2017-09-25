@@ -33,7 +33,11 @@ frappe.query_reports["General Ledger"] = {
 			"fieldtype": "Link",
 			"options": "Account",
 			"get_query": function() {
+<<<<<<< HEAD
 				var company = frappe.query_report_filters_by_name.company.get_value();
+=======
+				var company = frappe.query_report.filters_by_name.company.get_value();
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 				return {
 					"doctype": "Account",
 					"filters": {
@@ -48,19 +52,27 @@ frappe.query_reports["General Ledger"] = {
 			"fieldtype": "Data",
 		},
 		{
+<<<<<<< HEAD
 			"fieldname":"project",
 			"label": __("Project"),
 			"fieldtype": "Link",
 			"options": "Project"
 		},
 		{
+=======
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 			"fieldtype": "Break",
 		},
 		{
 			"fieldname":"party_type",
 			"label": __("Party Type"),
+<<<<<<< HEAD
 			"fieldtype": "Link",
 			"options": "Party Type",
+=======
+			"fieldtype": "Select",
+			"options": ["", "Customer", "Supplier"],
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 			"default": ""
 		},
 		{
@@ -68,12 +80,18 @@ frappe.query_reports["General Ledger"] = {
 			"label": __("Party"),
 			"fieldtype": "Dynamic Link",
 			"get_options": function() {
+<<<<<<< HEAD
 				var party_type = frappe.query_report_filters_by_name.party_type.get_value();
 				var party = frappe.query_report_filters_by_name.party.get_value();
+=======
+				var party_type = frappe.query_report.filters_by_name.party_type.get_value();
+				var party = frappe.query_report.filters_by_name.party.get_value();
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 				if(party && !party_type) {
 					frappe.throw(__("Please select Party Type first"));
 				}
 				return party_type;
+<<<<<<< HEAD
 			},
 			on_change: function() {
 				var party_type = frappe.query_report_filters_by_name.party_type.get_value();
@@ -96,6 +114,11 @@ frappe.query_reports["General Ledger"] = {
 			"hidden": 1
 		},
 		{
+=======
+			}
+		},
+		{
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 			"fieldname":"group_by_voucher",
 			"label": __("Group by Voucher"),
 			"fieldtype": "Check",
@@ -105,6 +128,16 @@ frappe.query_reports["General Ledger"] = {
 			"fieldname":"group_by_account",
 			"label": __("Group by Account"),
 			"fieldtype": "Check",
+<<<<<<< HEAD
+=======
+		},
+		{
+			"fieldname":"letter_head",
+			"label": __("Letter Head"),
+			"fieldtype": "Link",
+			"options": "Letter Head",
+			"default": frappe.defaults.get_default("letter_head"),
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 		}
 	]
 }

@@ -1,6 +1,7 @@
 # Copyright (c) 2015, Frappe Technologies Pvt. Ltd. and Contributors
 # License: GNU General Public License v3. See license.txt
 from __future__ import unicode_literals
+<<<<<<< HEAD
 import frappe, unittest
 from erpnext.setup.utils import get_exchange_rate
 
@@ -101,3 +102,9 @@ class TestCurrencyExchange(unittest.TestCase):
 		self.clear_cache()
 		exchange_rate = get_exchange_rate("USD", "INR", "2016-01-15")
 		self.assertEqual(exchange_rate, 67.79)
+=======
+
+
+import frappe
+test_records = frappe.get_test_records('Currency Exchange')
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347

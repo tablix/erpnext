@@ -11,11 +11,19 @@ Um ein neues Angebot zu erstellen gehen Sie zu:
 
 Sie können auch ein Angebot aus einer Opportunity heraus erstellen.
 
+<<<<<<< HEAD
 <img class="screenshot" alt="Angebot aus Opportunity erstellen" src="/docs/assets/img/selling/make-quote-from-opp.png">
 
 Oder Sie erstellen ein neues Angebot und übernehmen Details aus der Opportunity.
 
 <img class="screenshot" alt="Angebot aus Opportunity erstellen" src="/docs/assets/img/selling/make-quotation.gif">
+=======
+<img class="screenshot" alt="Angebot aus Opportunity erstellen" src="{{docs_base_url}}/assets/img/selling/make-quote-from-opp.png">
+
+Oder Sie erstellen ein neues Angebot und übernehmen Details aus der Opportunity.
+
+<img class="screenshot" alt="Angebot aus Opportunity erstellen" src="{{docs_base_url}}/assets/img/selling/make-quotation.gif">
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 
 Ein Angebot enthält Informationen über:
 
@@ -34,12 +42,20 @@ Ein Angebot enthält Informationen über:
 
 Die Preise, die sie abgeben, hängen von zwei Dingen ab:
 
+<<<<<<< HEAD
 * Die Preisliste: Wenn Sie mehrere verschiedene Preislisten haben, können Sie eine Preisliste auswählen oder sie mit dem Kunden markieren (so dass sie automatisch vorselektiert wird). Ihre Artikelpreise werden automatisch über die Preisliste aktualisert. Für weitere Informationen bitte bei [Preisliste](/docs/user/manual/de/setting-up/price-lists.html) weiterlesen.
+=======
+* Die Preisliste: Wenn Sie mehrere verschiedene Preislisten haben, können Sie eine Preisliste auswählen oder sie mit dem Kunden markieren (so dass sie automatisch vorselektiert wird). Ihre Artikelpreise werden automatisch über die Preisliste aktualisert. Für weitere Informationen bitte bei [Preisliste]({{docs_base_url}}/user/manual/de/setting-up/price-lists.html) weiterlesen.
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 * Die Währung: Wenn Sie einem Kunden in einer anderen Währung anbieten, müssen Sie die Umrechnungsfaktoren aktualisieren um ERPNext in die Lage zu versetzen die Information in Ihrer Standardwährung zu speichern. Das hilft Ihnen dabei den Wert Ihres Angebots in der Standardwährung zu analysieren.
 
 ### Steuern
 
+<<<<<<< HEAD
 Um Steuern zu Ihrem Angebot hinzu zu fügen, können Sie entweder eine Steuervorlage oder eine Verkaufssteuern- und Gebühren-Vorlage auswählen oder die Steuern selbst hinzufügen. Um Steuern im Einzelnen zu verstehen, lesen Sie bitte [Steuern](/docs/user/manual/de/setting-up/setting-up-taxes.html).
+=======
+Um Steuern zu Ihrem Angebot hinzu zu fügen, können Sie entweder eine Steuervorlage oder eine Verkaufssteuern- und Gebühren-Vorlage auswählen oder die Steuern selbst hinzufügen. Um Steuern im Einzelnen zu verstehen, lesen Sie bitte [Steuern]({{docs_base_url}}/user/manual/de/setting-up/setting-up-taxes.html).
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 
 Sie können Steuern auf die gleiche Art hinzufügen wie die Vorlage Verkaufssteuern und Gebühren.
 

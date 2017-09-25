@@ -1,4 +1,5 @@
 {
+<<<<<<< HEAD
  "add_total_row": 0, 
  "apply_user_permissions": 1, 
  "creation": "2013-11-29 17:08:23", 
@@ -8,12 +9,22 @@
  "idx": 3, 
  "is_standard": "Yes", 
  "modified": "2017-02-24 20:14:07.626391", 
+=======
+ "apply_user_permissions": 1, 
+ "creation": "2013-11-29 17:08:23", 
+ "docstatus": 0, 
+ "doctype": "Report", 
+ "idx": 1, 
+ "is_standard": "Yes", 
+ "modified": "2014-06-03 07:18:17.343291", 
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
  "modified_by": "Administrator", 
  "module": "Stock", 
  "name": "Stock Ledger", 
  "owner": "Administrator", 
  "ref_doctype": "Stock Ledger Entry", 
  "report_name": "Stock Ledger", 
+<<<<<<< HEAD
  "report_type": "Script Report", 
  "roles": [
   {
@@ -23,4 +34,7 @@
    "role": "Accounts Manager"
   }
  ]
+=======
+ "report_type": "Script Report"
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 }

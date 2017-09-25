@@ -4,17 +4,41 @@
 frappe.provide("erpnext.accounts");
 
 erpnext.accounts.PaymentReconciliationController = frappe.ui.form.Controller.extend({
+<<<<<<< HEAD
 	onload: function() {
 		var me = this
 		this.frm.set_query("party_type", function() {
 			return{
 				query: "erpnext.setup.doctype.party_type.party_type.get_party_type"
 			}
+=======
+	setup: function() {
+		this.frm.get_field('payments').grid.editable_fields = [
+			{fieldname: 'reference_name', columns: 3},
+			{fieldname: 'invoice_number', columns: 3},
+			{fieldname: 'amount', columns: 2},
+			{fieldname: 'allocated_amount', columns: 2}
+		];
+	},
+
+	onload: function() {
+		var me = this
+		this.frm.set_query('party_type', function() {
+			return {
+				filters: {
+					"name": ["in", ["Customer", "Supplier"]]
+				}
+			};
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 		});
 
 		this.frm.set_query('receivable_payable_account', function() {
 			if(!me.frm.doc.company || !me.frm.doc.party_type) {
+<<<<<<< HEAD
 				frappe.msgprint(__("Please select Company and Party Type first"));
+=======
+				msgprint(__("Please select Company and Party Type first"));
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 			} else {
 				return{
 					filters: {
@@ -29,7 +53,11 @@ erpnext.accounts.PaymentReconciliationController = frappe.ui.form.Controller.ext
 
 		this.frm.set_query('bank_cash_account', function() {
 			if(!me.frm.doc.company) {
+<<<<<<< HEAD
 				frappe.msgprint(__("Please select Company first"));
+=======
+				msgprint(__("Please select Company first"));
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 			} else {
 				return{
 					filters:[
@@ -96,11 +124,18 @@ erpnext.accounts.PaymentReconciliationController = frappe.ui.form.Controller.ext
 	},
 
 	set_invoice_options: function() {
+<<<<<<< HEAD
 		var me = this;
 		var invoices = [];
 
 		$.each(me.frm.doc.invoices || [], function(i, row) {
 			if (row.invoice_number && !in_list(invoices, row.invoice_number))
+=======
+		var invoices = [];
+
+		$.each(me.frm.doc.invoices || [], function(i, row) {
+			if (row.invoice_number && !inList(invoices, row.invoice_number))
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 				invoices.push(row.invoice_type + " | " + row.invoice_number);
 		});
 
@@ -109,7 +144,11 @@ erpnext.accounts.PaymentReconciliationController = frappe.ui.form.Controller.ext
 				me.frm.doc.name).options = "\n" + invoices.join("\n");
 
 			$.each(me.frm.doc.payments || [], function(i, p) {
+<<<<<<< HEAD
 				if(!in_list(invoices, cstr(p.invoice_number))) p.invoice_number = null;
+=======
+				if(!inList(invoices, cstr(p.invoice_number))) p.invoice_number = null;
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 			});
 		}
 

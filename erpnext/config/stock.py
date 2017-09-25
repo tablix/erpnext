@@ -50,11 +50,14 @@ def get_data():
 					"doctype": "Item",
 				},
 				{
+<<<<<<< HEAD
 					"type": "page",
 					"name": "stock-balance",
 					"label": _("Stock Summary")
 				},
 				{
+=======
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 					"type": "report",
 					"is_query_report": True,
 					"name": "Stock Ageing",
@@ -84,7 +87,11 @@ def get_data():
 				{
 					"type": "doctype",
 					"name": "Item Group",
+<<<<<<< HEAD
 					"icon": "fa fa-sitemap",
+=======
+					"icon": "icon-sitemap",
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 					"label": _("Item Group"),
 					"link": "Tree/Item Group",
 					"description": _("Tree of Item Groups."),
@@ -105,11 +112,14 @@ def get_data():
 					"name": "Pricing Rule",
 					"description": _("Rules for applying pricing and discount.")
 				},
+<<<<<<< HEAD
 				{
 					"type": "doctype",
 					"name": "Item Variant Settings",
 					"description": _("Item Variant Settings."),
 				},
+=======
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 
 			]
 		},
@@ -150,7 +160,11 @@ def get_data():
 		},
 		{
 			"label": _("Tools"),
+<<<<<<< HEAD
 			"icon": "fa fa-wrench",
+=======
+			"icon": "icon-wrench",
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 			"items": [
 				{
 					"type": "doctype",
@@ -176,7 +190,11 @@ def get_data():
 		},
 		{
 			"label": _("Setup"),
+<<<<<<< HEAD
 			"icon": "fa fa-cog",
+=======
+			"icon": "icon-cog",
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 			"items": [
 				{
 					"type": "doctype",
@@ -208,7 +226,11 @@ def get_data():
 		},
 		{
 			"label": _("Analytics"),
+<<<<<<< HEAD
 			"icon": "fa fa-table",
+=======
+			"icon": "icon-table",
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 			"items": [
 				{
 					"type": "report",
@@ -220,7 +242,11 @@ def get_data():
 					"type": "page",
 					"name": "stock-analytics",
 					"label": _("Stock Analytics"),
+<<<<<<< HEAD
 					"icon": "fa fa-bar-chart"
+=======
+					"icon": "icon-bar-chart"
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 				},
 				{
 					"type": "report",
@@ -239,7 +265,11 @@ def get_data():
 		},
 		{
 			"label": _("Reports"),
+<<<<<<< HEAD
 			"icon": "fa fa-list",
+=======
+			"icon": "icon-list",
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 			"items": [
 				{
 					"type": "report",
@@ -274,12 +304,15 @@ def get_data():
 				{
 					"type": "report",
 					"is_query_report": True,
+<<<<<<< HEAD
 					"name": "Batch Item Expiry Status",
 					"doctype": "Stock Ledger Entry"
 				},
 				{
 					"type": "report",
 					"is_query_report": True,
+=======
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 					"name": "Item Prices",
 					"doctype": "Price List"
 				},
@@ -293,7 +326,11 @@ def get_data():
 		},
 		{
 			"label": _("Help"),
+<<<<<<< HEAD
 			"icon": "fa fa-facetime-video",
+=======
+			"icon": "icon-facetime-video",
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 			"items": [
 				{
 					"type": "help",

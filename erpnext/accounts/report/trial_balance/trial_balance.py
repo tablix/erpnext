@@ -2,7 +2,11 @@
 # License: GNU General Public License v3. See license.txt
 
 from __future__ import unicode_literals
+<<<<<<< HEAD
 import frappe, erpnext
+=======
+import frappe
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 from frappe import _
 from frappe.utils import flt, getdate, formatdate, cstr
 from erpnext.accounts.report.financial_statements \
@@ -53,7 +57,10 @@ def validate_filters(filters):
 def get_data(filters):
 	accounts = frappe.db.sql("""select name, parent_account, account_name, root_type, report_type, lft, rgt
 		from `tabAccount` where company=%s order by lft""", filters.company, as_dict=True)
+<<<<<<< HEAD
 	company_currency = erpnext.get_company_currency(filters.company)
+=======
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 
 	if not accounts:
 		return None
@@ -66,6 +73,7 @@ def get_data(filters):
 	gl_entries_by_account = {}
 
 	set_gl_entries_by_account(filters.company, filters.from_date,
+<<<<<<< HEAD
 		filters.to_date, min_lft, max_rgt, filters, gl_entries_by_account, ignore_closing_entries=not flt(filters.with_period_closing_entry))
 
 	opening_balances = get_opening_balances(filters)
@@ -74,6 +82,16 @@ def get_data(filters):
 	accumulate_values_into_parents(accounts, accounts_by_name)
 
 	data = prepare_data(accounts, filters, total_row, parent_children_map, company_currency)
+=======
+		filters.to_date, min_lft, max_rgt, gl_entries_by_account, ignore_closing_entries=not flt(filters.with_period_closing_entry))
+
+	opening_balances = get_opening_balances(filters)
+
+	total_row = calculate_values(accounts, gl_entries_by_account, opening_balances, filters)
+	accumulate_values_into_parents(accounts, accounts_by_name)
+
+	data = prepare_data(accounts, filters, total_row, parent_children_map)
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 	data = filter_out_zero_value_rows(data, parent_children_map, 
 		show_zero_values=filters.get("show_zero_values"))
 		
@@ -88,10 +106,15 @@ def get_opening_balances(filters):
 
 
 def get_rootwise_opening_balances(filters, report_type):
+<<<<<<< HEAD
 	additional_conditions = ""
 	if not filters.show_unclosed_fy_pl_balances:
 		additional_conditions = " and posting_date >= %(year_start_date)s" \
 			if report_type == "Profit and Loss" else ""
+=======
+	additional_conditions = " and posting_date >= %(year_start_date)s" \
+		if report_type == "Profit and Loss" else ""
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 
 	if not flt(filters.with_period_closing_entry):
 		additional_conditions += " and ifnull(voucher_type, '')!='Period Closing Voucher'"
@@ -120,7 +143,11 @@ def get_rootwise_opening_balances(filters, report_type):
 
 	return opening
 
+<<<<<<< HEAD
 def calculate_values(accounts, gl_entries_by_account, opening_balances, filters, company_currency):
+=======
+def calculate_values(accounts, gl_entries_by_account, opening_balances, filters):
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 	init = {
 		"opening_debit": 0.0,
 		"opening_credit": 0.0,
@@ -131,6 +158,7 @@ def calculate_values(accounts, gl_entries_by_account, opening_balances, filters,
 	}
 
 	total_row = {
+<<<<<<< HEAD
 		"account": "'" + _("Total") + "'",
 		"account_name": "'" + _("Total") + "'",
 		"warn_if_negative": True,
@@ -140,6 +168,13 @@ def calculate_values(accounts, gl_entries_by_account, opening_balances, filters,
 		"indent": 0,
 		"has_value": True,
 		"currency": company_currency
+=======
+		"account": None,
+		"account_name": _("Total"),
+		"warn_if_negative": True,
+		"debit": 0.0,
+		"credit": 0.0
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 	}
 
 	for d in accounts:
@@ -166,8 +201,14 @@ def accumulate_values_into_parents(accounts, accounts_by_name):
 			for key in value_fields:
 				accounts_by_name[d.parent_account][key] += d[key]
 
+<<<<<<< HEAD
 def prepare_data(accounts, filters, total_row, parent_children_map, company_currency):
 	data = []
+=======
+def prepare_data(accounts, filters, total_row, parent_children_map):
+	data = []
+	company_currency = frappe.db.get_value("Company", filters.company, "default_currency")
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 	
 	for d in accounts:
 		has_value = False

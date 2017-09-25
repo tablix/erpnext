@@ -4,7 +4,11 @@
 from __future__ import unicode_literals
 import frappe
 from frappe import _
+<<<<<<< HEAD
 from frappe.utils import flt, cint, getdate
+=======
+from frappe.utils import flt, getdate
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 
 def execute(filters=None):
 	if not filters: filters = {}
@@ -13,18 +17,24 @@ def execute(filters=None):
 
 	columns = get_columns()
 	item_map = get_item_details(filters)
+<<<<<<< HEAD
 	item_reorder_detail_map = get_item_reorder_details(filters)
+=======
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 	iwb_map = get_item_warehouse_map(filters)
 
 	data = []
 	for (company, item, warehouse) in sorted(iwb_map):
 		qty_dict = iwb_map[(company, item, warehouse)]
+<<<<<<< HEAD
 		item_reorder_level = 0
 		item_reorder_qty = 0
 		if item + warehouse in item_reorder_detail_map:
 			item_reorder_level = item_reorder_detail_map[item + warehouse]["warehouse_reorder_level"]
 			item_reorder_qty = item_reorder_detail_map[item + warehouse]["warehouse_reorder_qty"]
 			
+=======
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 		data.append([item, item_map[item]["item_name"],
 			item_map[item]["item_group"],
 			item_map[item]["brand"],
@@ -34,8 +44,11 @@ def execute(filters=None):
 			qty_dict.in_val, qty_dict.out_qty,
 			qty_dict.out_val, qty_dict.bal_qty,
 			qty_dict.bal_val, qty_dict.val_rate,
+<<<<<<< HEAD
 			item_reorder_level,
 			item_reorder_qty,
+=======
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 			company
 		])
 
@@ -61,8 +74,11 @@ def get_columns():
 		_("Balance Qty")+":Float:100",
 		_("Balance Value")+":Float:100",
 		_("Valuation Rate")+":Float:90",
+<<<<<<< HEAD
 		_("Reorder Level")+":Float:80",
 		_("Reorder Qty")+":Float:80",
+=======
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 		_("Company")+":Link/Company:100"
 	]
 
@@ -74,6 +90,7 @@ def get_conditions(filters):
 		frappe.throw(_("'From Date' is required"))
 
 	if filters.get("to_date"):
+<<<<<<< HEAD
 		conditions += " and sle.posting_date <= '%s'" % frappe.db.escape(filters.get("to_date"))
 	else:
 		frappe.throw(_("'To Date' is required"))
@@ -90,6 +107,14 @@ def get_conditions(filters):
 		
 	if filters.get("item_code"):
 		conditions += " and sle.item_code = '%s'" % frappe.db.escape(filters.get("item_code"), percent=False)
+=======
+		conditions += " and posting_date <= '%s'" % frappe.db.escape(filters["to_date"])
+	else:
+		frappe.throw(_("'To Date' is required"))
+
+	if filters.get("item_code"):
+		conditions += " and item_code = '%s'" % frappe.db.escape(filters.get("item_code"), percent=False)
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 
 	if filters.get("warehouse"):
 		warehouse_details = frappe.db.get_value("Warehouse", filters.get("warehouse"), ["lft", "rgt"], as_dict=1)
@@ -102,6 +127,7 @@ def get_conditions(filters):
 
 def get_stock_ledger_entries(filters):
 	conditions = get_conditions(filters)
+<<<<<<< HEAD
 	
 	join_table_query = ""
 	if filters.get("item_group"):
@@ -121,6 +147,18 @@ def get_item_warehouse_map(filters):
 	iwb_map = {}
 	from_date = getdate(filters.get("from_date"))
 	to_date = getdate(filters.get("to_date"))
+=======
+	return frappe.db.sql("""select item_code, warehouse, posting_date, actual_qty, valuation_rate,
+			company, voucher_type, qty_after_transaction, stock_value_difference
+		from `tabStock Ledger Entry` sle force index (posting_sort_index)
+		where docstatus < 2 %s order by posting_date, posting_time, name""" %
+		conditions, as_dict=1)
+
+def get_item_warehouse_map(filters):
+	iwb_map = {}
+	from_date = getdate(filters["from_date"])
+	to_date = getdate(filters["to_date"])
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 
 	sle = get_stock_ledger_entries(filters)
 
@@ -132,7 +170,11 @@ def get_item_warehouse_map(filters):
 				"in_qty": 0.0, "in_val": 0.0,
 				"out_qty": 0.0, "out_val": 0.0,
 				"bal_qty": 0.0, "bal_val": 0.0,
+<<<<<<< HEAD
 				"val_rate": 0.0
+=======
+				"val_rate": 0.0, "uom": None
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 			})
 
 		qty_dict = iwb_map[(d.company, d.item_code, d.warehouse)]
@@ -159,6 +201,7 @@ def get_item_warehouse_map(filters):
 		qty_dict.val_rate = d.valuation_rate
 		qty_dict.bal_qty += qty_diff
 		qty_dict.bal_val += value_diff
+<<<<<<< HEAD
 		
 	iwb_map = filter_items_with_no_transactions(iwb_map)
 
@@ -178,6 +221,8 @@ def filter_items_with_no_transactions(iwb_map):
 		
 		if no_transactions:
 			iwb_map.pop((company, item, warehouse))
+=======
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 
 	return iwb_map
 
@@ -186,11 +231,16 @@ def get_item_details(filters):
 	value = ()
 	if filters.get("item_code"):
 		condition = "where item_code=%s"
+<<<<<<< HEAD
 		value = (filters.get("item_code"),)
+=======
+		value = (filters["item_code"],)
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 
 	items = frappe.db.sql("""select name, item_name, stock_uom, item_group, brand, description
 		from tabItem {condition}""".format(condition=condition), value, as_dict=1)
 
+<<<<<<< HEAD
 	return dict((d.name , d) for d in items)
 
 def get_item_reorder_details(filters):
@@ -204,6 +254,9 @@ def get_item_reorder_details(filters):
 		from `tabItem Reorder` {condition}""".format(condition=condition), value, as_dict=1)
 
 	return dict((d.parent + d.warehouse, d) for d in item_reorder_details)
+=======
+	return dict((d.name, d) for d in items)
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 
 def validate_filters(filters):
 	if not (filters.get("item_code") or filters.get("warehouse")):

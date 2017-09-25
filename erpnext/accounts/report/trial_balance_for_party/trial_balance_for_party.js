@@ -25,8 +25,13 @@ frappe.query_reports["Trial Balance for Party"] = {
 				}
 				frappe.model.with_doc("Fiscal Year", fiscal_year, function(r) {
 					var fy = frappe.model.get_doc("Fiscal Year", fiscal_year);
+<<<<<<< HEAD
 					frappe.query_report_filters_by_name.from_date.set_input(fy.year_start_date);
 					frappe.query_report_filters_by_name.to_date.set_input(fy.year_end_date);
+=======
+					query_report.filters_by_name.from_date.set_input(fy.year_start_date);
+					query_report.filters_by_name.to_date.set_input(fy.year_end_date);
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 					query_report.trigger_refresh();
 				});
 			}
@@ -51,6 +56,7 @@ frappe.query_reports["Trial Balance for Party"] = {
 			"default": "Customer"
 		},
 		{
+<<<<<<< HEAD
 			"fieldname":"party",
 			"label": __("Party"),
 			"fieldtype": "Dynamic Link",
@@ -64,6 +70,8 @@ frappe.query_reports["Trial Balance for Party"] = {
 			}
 		},
 		{
+=======
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 			"fieldname": "show_zero_values",
 			"label": __("Show zero values"),
 			"fieldtype": "Check"

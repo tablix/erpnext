@@ -5,5 +5,9 @@ def execute():
 		frappe.rename_doc("Role", "Material User", "Stock User")
 	if not frappe.db.exists("Role", "Stock Manager"):
 		frappe.rename_doc("Role", "Material Manager", "Stock Manager")
+<<<<<<< HEAD
 	if not frappe.db.exists("Role", "Item Manager"):
+=======
+	if not frappe.db.exists("Role", "Stock Manager"):
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 		frappe.rename_doc("Role", "Material Master Manager", "Item Manager")

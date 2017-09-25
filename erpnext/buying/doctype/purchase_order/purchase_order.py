@@ -4,15 +4,23 @@
 from __future__ import unicode_literals
 import frappe
 import json
+<<<<<<< HEAD
 from frappe.utils import cstr, flt
+=======
+from frappe.utils import cstr, flt, money_in_words, get_link_to_form
+from frappe.desk.form import assign_to
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 from frappe import msgprint, _
 from frappe.model.mapper import get_mapped_doc
 from erpnext.controllers.buying_controller import BuyingController
 from erpnext.stock.doctype.item.item import get_last_purchase_details
 from erpnext.stock.stock_balance import update_bin_qty, get_ordered_qty
 from frappe.desk.notifications import clear_doctype_notifications
+<<<<<<< HEAD
 from erpnext.buying.utils import (validate_for_items, check_for_closed_status,
 	update_last_purchase_rate)
+=======
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 
 
 form_grid_templates = {
@@ -37,6 +45,7 @@ class PurchaseOrder(BuyingController):
 
 	def validate(self):
 		super(PurchaseOrder, self).validate()
+<<<<<<< HEAD
 
 		self.set_status()
 
@@ -46,12 +55,70 @@ class PurchaseOrder(BuyingController):
 
 		self.validate_uom_is_integer("uom", "qty")
 		self.validate_uom_is_integer("stock_uom", "stock_qty")
+=======
+		
+		#new addition
+		#self.validate_mr()
+		
+		self.set_status()
+		pc_obj = frappe.get_doc('Purchase Common')
+		pc_obj.validate_for_items(self)
+		self.check_for_closed_status(pc_obj)
+
+		self.validate_uom_is_integer("uom", "qty")
+		self.validate_uom_is_integer("stock_uom", ["qty", "required_qty"])
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 
 		self.validate_with_previous_doc()
 		self.validate_for_subcontracting()
 		self.validate_minimum_order_qty()
 		self.create_raw_materials_supplied("supplied_items")
 		self.set_received_qty_for_drop_ship_items()
+<<<<<<< HEAD
+=======
+		self.validate_vat_duties_charges()
+		#new addition
+		self.validate_item_code()
+		#self.validate_delete_items()
+		self.validate_buying_cost()
+		
+		
+		
+	#new addition
+	def validate_mr(self):
+		mr = self.material_request
+		for data in self.items:
+			data.material_request = mr
+			
+			
+	def validate_vat_duties_charges(self):
+		self.grand_total = self.total
+		self.base_grand_total = self.base_total
+		if self.vat != None:
+			self.grand_total = self.grand_total + self.vat
+			if self.currency != "AED":
+				self.base_grand_total = self.base_grand_total + (self.vat * self.conversion_rate)
+			
+		if self.duties != None:
+			self.grand_total = self.grand_total + self.duties
+			self.base_grand_total = self.base_grand_total + (self.duties * self.conversion_rate)
+			
+		if self.other_charges !=None:
+			self.grand_total = self.grand_total + self.other_charges
+			self.base_grand_total = self.base_grand_total + (self.other_charges * self.conversion_rate)
+		
+		if self.discount_amount:
+			self.grand_total = self.grand_total - self.discount_amount
+			self.base_grand_total = self.base_grand_total - (self.discount_amount * self.conversion_rate)
+		
+		self.base_rounded_total = self.base_grand_total
+		in_words = money_in_words(self.grand_total)
+		self.base_in_words = money_in_words(self.base_grand_total)
+		in_words = in_words.replace("AED",self.currency)
+		fraction = frappe.db.sql("""select fraction from tabCurrency where name=%s""", self.currency)
+		in_words = in_words.replace("Fils",fraction[0][0])
+		self.in_words = in_words
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 
 	def validate_with_previous_doc(self):
 		super(PurchaseOrder, self).validate_with_previous_doc({
@@ -61,12 +128,17 @@ class PurchaseOrder(BuyingController):
 			},
 			"Supplier Quotation Item": {
 				"ref_dn_field": "supplier_quotation_item",
+<<<<<<< HEAD
 				"compare_fields": [["rate", "="], ["project", "="], ["item_code", "="], 
 					["uom", "="], ["conversion_factor", "="]],
+=======
+				"compare_fields": [["rate", "="], ["project", "="], ["item_code", "="]],
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 				"is_child_table": True
 			}
 		})
 
+<<<<<<< HEAD
 	def validate_supplier(self):
 		prevent_po = frappe.db.get_value("Supplier", self.supplier, 'prevent_pos')
 		if prevent_po:
@@ -78,6 +150,8 @@ class PurchaseOrder(BuyingController):
 			standing = frappe.db.get_value("Supplier Scorecard",self.supplier, 'status')
 			frappe.msgprint(_("{0} currently has a {1} Supplier Scorecard standing, and Purchase Orders to this supplier should be issued with caution.").format(self.supplier, standing), title=_("Caution"), indicator='orange')
 
+=======
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 	def validate_minimum_order_qty(self):
 		items = list(set([d.item_code for d in self.get("items")]))
 
@@ -126,12 +200,20 @@ class PurchaseOrder(BuyingController):
 							= d.rate = item_last_purchase_rate
 
 	# Check for Closed status
+<<<<<<< HEAD
 	def check_for_closed_status(self):
+=======
+	def check_for_closed_status(self, pc_obj):
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 		check_list =[]
 		for d in self.get('items'):
 			if d.meta.get_field('material_request') and d.material_request and d.material_request not in check_list:
 				check_list.append(d.material_request)
+<<<<<<< HEAD
 				check_for_closed_status('Material Request', d.material_request)
+=======
+				pc_obj.check_for_closed_status('Material Request', d.material_request)
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 
 	def update_requested_qty(self):
 		material_request_map = {}
@@ -180,9 +262,19 @@ class PurchaseOrder(BuyingController):
 		clear_doctype_notifications(self)
 
 	def on_submit(self):
+<<<<<<< HEAD
 		if self.is_against_so():
 			self.update_status_updater()
 
+=======
+		if self.approval != "Finance Approved":
+			frappe.throw(_("{0} cannot be submitted unless it is approved.").format(self.name))
+		if self.is_against_so():
+			self.update_status_updater()
+
+		purchase_controller = frappe.get_doc("Purchase Common")
+
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 		self.update_prevdoc_status()
 		self.update_requested_qty()
 		self.update_ordered_qty()
@@ -190,7 +282,11 @@ class PurchaseOrder(BuyingController):
 		frappe.get_doc('Authorization Control').validate_approving_authority(self.doctype,
 			self.company, self.base_grand_total)
 
+<<<<<<< HEAD
 		update_last_purchase_rate(self, is_submit = 1)
+=======
+		purchase_controller.update_last_purchase_rate(self, is_submit = 1)
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 
 	def on_cancel(self):
 		if self.is_against_so():
@@ -199,9 +295,16 @@ class PurchaseOrder(BuyingController):
 		if self.has_drop_ship_item():
 			self.update_delivered_qty_in_sales_order()
 
+<<<<<<< HEAD
 		self.check_for_closed_status()
 
 		frappe.db.set(self,'status','Cancelled')
+=======
+		pc_obj = frappe.get_doc('Purchase Common')
+		self.check_for_closed_status(pc_obj)
+
+		frappe.db.set(self,'status','Cancel')
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 
 		self.update_prevdoc_status()
 
@@ -209,7 +312,11 @@ class PurchaseOrder(BuyingController):
 		self.update_requested_qty()
 		self.update_ordered_qty()
 
+<<<<<<< HEAD
 		update_last_purchase_rate(self, is_submit = 0)
+=======
+		pc_obj.update_last_purchase_rate(self, is_submit = 0)
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 
 	def on_update(self):
 		pass
@@ -219,7 +326,10 @@ class PurchaseOrder(BuyingController):
 			"target_parent_dt": "Sales Order",
 			"target_dt": "Sales Order Item",
 			'target_field': 'ordered_qty',
+<<<<<<< HEAD
 			"join_field": "sales_order_item",
+=======
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 			"target_parent_field": ''
 		})
 
@@ -247,6 +357,197 @@ class PurchaseOrder(BuyingController):
 		for item in self.items:
 			if item.delivered_by_supplier == 1:
 				item.received_qty = item.qty
+<<<<<<< HEAD
+=======
+	
+	# new addition
+	def validate_delete_items(self):
+		to_remove = []
+		for d in self.get("items"):
+			if d.check == 1:
+				to_remove.append(d)
+		[self.remove(d) for d in to_remove]
+		
+	def validate_buying_cost(self):
+		so = self.customer_po	
+		boq_ref = ""
+		boq_lst = []
+		cost = None
+		qty = None
+		if(so != "SO-00265" and so != "SO-00348" and so != "SO-00349"):
+			so_data = frappe.get_doc("Sales Order", so)
+			#msgprint(str(boq_data))
+			for data in so_data.get("items"):
+				if data.boq_ref  != boq_ref:
+					boq_ref = data.boq_ref
+					boq_lst.append(boq_ref)
+			#msgprint(str(boq))
+			mr = self.material_request
+			if boq_lst != []:
+				for boq in boq_lst: 
+					for d in self.get("items"):
+						if d.item_code != "Services:":
+							cost_qty=frappe.db.get_value("Boq Item",{"parent":boq, "item_code":d.item_code},["current_cost", "qty", "item_group", "stock_uom"])
+							if cost_qty is None :
+								old_item_code = frappe.db.get_value("Material Request Item", {"parent":mr, "substitute_item":d.item_code}, "item_code")
+								if old_item_code is not None:
+									cost_qty=frappe.db.get_value("Boq Item",{"parent":boq, "item_code":old_item_code},["current_cost", "qty", "item_group", "stock_uom"])
+									if cost_qty is not None:
+										#msgprint(str(cost_qty))
+										cost = cost_qty[0]
+										qty = cost_qty[1]
+										item_group = cost_qty[2]
+										stock_uom = cost_qty[3]
+										#msgprint(str(cost))
+										#msgprint(str(qty))
+							else:
+								#msgprint(str(cost_qty))
+								cost = cost_qty[0]
+								qty = cost_qty[1]
+								item_group = cost_qty[2]
+								stock_uom = cost_qty[3]
+								#msgprint(str(cost))
+								#msgprint(str(qty))
+							if cost is not None and d.rate > cost:
+								frappe.throw(_("Item {0}: Buying cost is greater than Selling cost[{1}]").format(d.item_code, cost))
+							if qty is not None and d.qty > qty and item_group != "Services" and item_group != "Professional Services" and stock_uom != "LS" :
+								frappe.throw(_("Item {0}: Quantity cannot be more than {1}").format(d.item_code, qty))
+				
+	def validate_item_code(self):
+		 mr_old = self.material_request
+		 for d in self.get("items"):
+			#msgprint(str(d.item_code))
+			#msgprint(str(d.material_request))
+			#msgprint(str(mr_old))
+			if d.material_request != "" and d.material_request is not None and d.material_request != mr_old:
+				mr = d.material_request
+				#msgprint("Success11111!!")
+				#msgprint(str(mr))
+			else:
+				mr = mr_old
+				#msgprint("Success22222!!")
+			if d.item_code != "Services:":
+				 item_code = frappe.db.get_value("Material Request Item", {"parent":mr, "item_code":d.item_code}, "item_code")
+				 #msgprint(str(item_code))
+				 if item_code is None:
+					new_item_code = frappe.db.get_value("Material Request Item", {"parent":mr, "substitute_item":d.item_code}, "item_code")
+					#msgprint(str(new_item_code))
+					if new_item_code is None and d.rate > 0.00:
+						frappe.throw(_("Item {0}: Item is not available in MR.").format(d.item_code))
+					
+				
+	def send_notification(self, reason, remark=""):
+		commercial_mgnr = "ali@tablix.ae"
+		cfo = "bhavish@tablix.ae"
+		project_name = self.project
+		owner = self.owner
+		supplier_name = self.supplier
+		#msgprint("Entry")
+		if reason == "approval":
+			val = 0
+			if self.approval == "Open":
+				#msgprint("Approval")
+				self.notify_employee(cfo, project_name, val, supplier_name)
+			elif self.approval == "Manager Disapproved":
+				self.notify_employee(cfo, project_name, val, supplier_name)
+				frappe.db.set_value("Purchase Order", self.name, "approval", "Open")
+			elif self.approval == "Finance Disapproved":
+				self.notify_employee(cfo, project_name, val, supplier_name)
+				frappe.db.set_value("Purchase Order", self.name, "approval", "Manager Approved")
+			frappe.db.commit()	
+			
+		elif reason == "manager_approved":
+			val = 0
+			self.notify_employee(cfo, project_name, val, supplier_name)
+			val = 1
+			self.notify_employee(owner, project_name, val, supplier_name)
+			frappe.db.set_value("Purchase Order", self.name, "approval", "Manager Approved")
+			frappe.db.set_value("Purchase Order", self.name, "reason", "")
+			frappe.db.commit()
+		
+		elif reason == "cfo_approved":
+			val = 2
+			self.notify_employee(owner, project_name, val, supplier_name)
+			frappe.db.set_value("Purchase Order", self.name, "approval", "Finance Approved")
+			frappe.db.set_value("Purchase Order", self.name, "reason", "")
+			frappe.db.set_value("Purchase Order", self.name, "status", "Review")
+			frappe.db.commit()
+			
+		elif reason == "cm_rejected":
+			val = 3
+			self.notify_employee(owner, project_name, val, supplier_name)
+			frappe.db.set_value("Purchase Order", self.name, "approval", "Manager Disapproved")
+			frappe.db.set_value("Purchase Order", self.name, "reason", remark)
+			frappe.db.commit()
+		
+		elif reason == "cfo_rejected":
+			val = 4
+			self.notify_employee(owner, project_name, val, supplier_name)
+			frappe.db.set_value("Purchase Order", self.name, "approval", "Finance Disapproved")
+			frappe.db.set_value("Purchase Order", self.name, "reason", remark)
+			frappe.db.commit()
+			
+		return True
+	
+	
+	def notify_employee(self, employee, subject, val, supplier):
+		
+		
+		#msgprint("Success" + str(val))
+		
+		def _get_message(url=False):
+			if url:
+				name = get_link_to_form(self.doctype, self.name)
+			else:
+				name = self.name
+			if val == 0:
+				return (_("PO")+ "- %s of %s " + _("assigned for approval") + ": %s") % (subject, supplier, name)
+			elif val ==1:
+				return (_("PO")+ "- %s of %s " + _("approved by Commercial Manager") + ": %s") % (subject, supplier, name)
+			elif val == 2:
+				return (_("PO")+ "- %s of %s " + _("approved by CFO") + ": %s") % (subject, supplier, name)
+			elif val == 3:
+				return (_("PO")+ "- %s of %s " + _("disapproved by Commercial Manager") + ": %s") % (subject, supplier, name)
+			elif val == 4:
+				return (_("PO")+ "- %s of %s " + _("disapproved by CFO") + ": %s") % (subject, supplier, name)
+			
+		
+			
+		self.notify({
+			# for post in messages
+			"message": _get_message(url=True),
+			"message_to": employee,
+			"subject": _get_message(),
+			"subject": _get_message(),
+		})
+	
+		desc = ''	
+		if val != 1 :
+			assign_to.clear(self.doctype, self.name)
+			proj_name = self.project.encode('ascii','ignore')
+			if val == 0:
+				desc = "PO- " + str(proj_name) + " requies approval"
+			elif val == 2:
+				desc = "PO- " + str(proj_name) + " approved"
+			elif val == 3:
+				desc = "PO- " + str(proj_name) + " disapproved by Commercial Manager"
+			elif val == 4:
+				desc = "PO- " + str(proj_name) + " disapproved by CFO"
+				
+			assign_to.add({
+				"assign_to": employee,
+				"doctype": self.doctype,
+				"name": self.name,
+				"description": desc
+			})
+		
+		
+	def notify(self, args):
+		args = frappe._dict(args)
+		from frappe.desk.page.chat.chat import post
+		post(**{"txt": args.message, "contact": args.message_to, "subject": args.subject, "notify": 1})
+		
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 
 @frappe.whitelist()
 def close_or_unclose_purchase_orders(names, status):
@@ -258,7 +559,11 @@ def close_or_unclose_purchase_orders(names, status):
 		po = frappe.get_doc("Purchase Order", name)
 		if po.docstatus == 1:
 			if status == "Closed":
+<<<<<<< HEAD
 				if po.status not in ( "Cancelled", "Closed") and (po.per_received < 100 or po.per_billed < 100):
+=======
+				if po.status not in ( "Cancel", "Closed") and (po.per_received < 100 or po.per_billed < 100):
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 					po.update_status(status)
 			else:
 				if po.status == "Closed":
@@ -283,9 +588,12 @@ def make_purchase_receipt(source_name, target_doc=None):
 	doc = get_mapped_doc("Purchase Order", source_name,	{
 		"Purchase Order": {
 			"doctype": "Purchase Receipt",
+<<<<<<< HEAD
 			"field_map": {
 				"per_billed": "per_billed"
 			},
+=======
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 			"validation": {
 				"docstatus": ["=", 1],
 			}
@@ -295,7 +603,10 @@ def make_purchase_receipt(source_name, target_doc=None):
 			"field_map": {
 				"name": "purchase_order_item",
 				"parent": "purchase_order",
+<<<<<<< HEAD
 				"bom": "bom"
+=======
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 			},
 			"postprocess": update_item,
 			"condition": lambda doc: abs(doc.received_qty) < abs(doc.qty) and doc.delivered_by_supplier!=1
@@ -320,6 +631,7 @@ def make_purchase_invoice(source_name, target_doc=None):
 		target.base_amount = target.amount * flt(source_parent.conversion_rate)
 		target.qty = target.amount / flt(obj.rate) if (flt(obj.rate) and flt(obj.billed_amt)) else flt(obj.qty)
 
+<<<<<<< HEAD
 		item = frappe.db.get_value("Item", target.item_code, ["item_group", "buying_cost_center"], as_dict=1)
 		target.cost_center = frappe.db.get_value("Project", obj.project, "cost_center") \
 			or item.buying_cost_center \
@@ -331,6 +643,11 @@ def make_purchase_invoice(source_name, target_doc=None):
 			"field_map": {
 				"party_account_currency": "party_account_currency"
 			},
+=======
+	doc = get_mapped_doc("Purchase Order", source_name,	{
+		"Purchase Order": {
+			"doctype": "Purchase Invoice",
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 			"validation": {
 				"docstatus": ["=", 1],
 			}
@@ -361,8 +678,12 @@ def make_stock_entry(purchase_order, item_code):
 	stock_entry.purchase_order = purchase_order.name
 	stock_entry.supplier = purchase_order.supplier
 	stock_entry.supplier_name = purchase_order.supplier_name
+<<<<<<< HEAD
 	stock_entry.supplier_address = purchase_order.supplier_address
 	stock_entry.address_display = purchase_order.address_display
+=======
+	stock_entry.supplier_address = purchase_order.address_display
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 	stock_entry.company = purchase_order.company
 	stock_entry.from_bom = 1
 	po_item = [d for d in purchase_order.items if d.item_code == item_code][0]
@@ -376,3 +697,7 @@ def update_status(status, name):
 	po = frappe.get_doc("Purchase Order", name)
 	po.update_status(status)
 	po.update_delivered_qty_in_sales_order()
+<<<<<<< HEAD
+=======
+
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347

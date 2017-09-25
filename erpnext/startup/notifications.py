@@ -2,6 +2,7 @@
 # License: GNU General Public License v3. See license.txt
 
 from __future__ import unicode_literals
+<<<<<<< HEAD
 import frappe
 
 def get_notification_config():
@@ -12,6 +13,19 @@ def get_notification_config():
 			"Task": {"status": ("in", ("Open", "Overdue"))},
 			"Project": {"status": "Open"},
 			"Item": {"total_projected_qty": ("<", 0)},
+=======
+
+def get_notification_config():
+	return { "for_doctype":
+		{
+			"Issue": {"status": "Open"},
+			"Warranty Claim": {"status": "Open"},
+			"Task": {"status": "Overdue"},
+			"Project": {"status": "Open"},
+			"Item": {"total_projected_qty": ("<", 0)},
+			"Customer": {"status": "Open"},
+			"Supplier": {"status": "Open"},
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 			"Lead": {"status": "Open"},
 			"Contact": {"status": "Open"},
 			"Opportunity": {"status": "Open"},
@@ -22,6 +36,7 @@ def get_notification_config():
 			},
 			"Journal Entry": {"docstatus": 0},
 			"Sales Invoice": {
+<<<<<<< HEAD
 				"outstanding_amount": (">", 0),
 				"docstatus": ("<", 2)
 			},
@@ -30,6 +45,15 @@ def get_notification_config():
 				"docstatus": ("<", 2)
 			},
 			"Payment Entry": {"docstatus": 0},
+=======
+				"outstanding_amount": (">", 0), 
+				"docstatus": ("<", 2) 
+			},
+			"Purchase Invoice": {
+				"outstanding_amount": (">", 0), 
+				"docstatus": ("<", 2)
+			},
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 			"Leave Application": {"status": "Open"},
 			"Expense Claim": {"approval_status": "Draft"},
 			"Job Applicant": {"status": "Open"},
@@ -55,6 +79,7 @@ def get_notification_config():
 			},
 			"Production Order": { "status": ("in", ("Draft", "Not Started", "In Process")) },
 			"BOM": {"docstatus": 0},
+<<<<<<< HEAD
 
 			"Timesheet": {"status": "Draft"},
 
@@ -79,3 +104,8 @@ def get_notification_config():
 		notifications["for_doctype"][doc.name] = {"docstatus": 0}
 
 	return notifications
+=======
+			"Timesheet": {"status": "Draft"}
+		}
+	}
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347

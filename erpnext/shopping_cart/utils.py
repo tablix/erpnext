@@ -31,6 +31,7 @@ def update_website_context(context):
 
 def check_customer_or_supplier():
 	if frappe.session.user:
+<<<<<<< HEAD
 		contact_name = frappe.get_value("Contact", {"email_id": frappe.session.user})
 		if contact_name:
 			contact = frappe.get_doc('Contact', contact_name)
@@ -38,4 +39,14 @@ def check_customer_or_supplier():
 				if link.link_doctype in ('Customer', 'Supplier'):
 					return link.link_doctype, link.link_name
 
+=======
+		contacts = frappe.get_all("Contact", fields=["customer", "supplier", "email_id"],
+			filters={"email_id": frappe.session.user})
+
+		customer = [d.customer for d in contacts if d.customer] or None
+		supplier = [d.supplier for d in contacts if d.supplier] or None
+
+		if customer: return 'Customer', customer
+		if supplier : return 'Supplier', supplier
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 		return 'Customer', None

@@ -1,10 +1,16 @@
 # -*- coding: utf-8 -*-
 from __future__ import unicode_literals
+<<<<<<< HEAD
 import inspect
 import frappe
 from erpnext.hooks import regional_overrides
 
 __version__ = '8.11.4'
+=======
+import frappe
+
+__version__ = '7.0.58'
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 
 def get_default_company(user=None):
 	'''Get default company for user'''
@@ -21,12 +27,16 @@ def get_default_company(user=None):
 
 	return default_company
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 def get_default_currency():
 	'''Returns the currency of the default company'''
 	company = get_default_company()
 	if company:
 		return frappe.db.get_value('Company', company, 'default_currency')
+<<<<<<< HEAD
 
 def get_default_cost_center(company):
 	'''Returns the default cost center of the company'''
@@ -108,3 +118,5 @@ def allow_regional(fn):
 
 	return caller
 
+=======
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347

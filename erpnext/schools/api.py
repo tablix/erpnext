@@ -7,6 +7,7 @@ import frappe
 import json
 from frappe import _
 from frappe.model.mapper import get_mapped_doc
+<<<<<<< HEAD
 from frappe.utils import flt, cstr
 from frappe.email.doctype.email_group.email_group import add_subscribers
 
@@ -18,6 +19,9 @@ def get_course(program):
 			(program), as_dict=1)
 	return courses
 
+=======
+from frappe.utils import flt
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 
 @frappe.whitelist()
 def enroll_student(source_name):
@@ -25,19 +29,29 @@ def enroll_student(source_name):
 
 	:param source_name: Student Applicant.
 	"""
+<<<<<<< HEAD
 	frappe.publish_realtime('enroll_student_progress', {"progress": [1, 4]}, user=frappe.session.user)
+=======
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 	student = get_mapped_doc("Student Applicant", source_name,
 		{"Student Applicant": {
 			"doctype": "Student",
 			"field_map": {
 				"name": "student_applicant"
 			}
+<<<<<<< HEAD
 		}}, ignore_permissions=True)
 	student.save()
+=======
+		}})
+	student.save()
+
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 	program_enrollment = frappe.new_doc("Program Enrollment")
 	program_enrollment.student = student.name
 	program_enrollment.student_name = student.title
 	program_enrollment.program = frappe.db.get_value("Student Applicant", source_name, "program")
+<<<<<<< HEAD
 	frappe.publish_realtime('enroll_student_progress', {"progress": [4, 4]}, user=frappe.session.user)	
 	return program_enrollment
 
@@ -58,11 +72,26 @@ def check_attendance_records_exist(course_schedule=None, student_group=None, dat
 
 @frappe.whitelist()
 def mark_attendance(students_present, students_absent, course_schedule=None, student_group=None, date=None):
+=======
+	return program_enrollment
+
+@frappe.whitelist()
+def check_attendance_records_exist(course_schedule):
+	"""Check if Attendance Records are made against the specified Course Schedule.
+
+	:param course_schedule: Course Schedule.
+	"""
+	return frappe.get_list("Student Attendance", filters={"course_schedule": course_schedule})
+
+@frappe.whitelist()
+def mark_attendance(students_present, students_absent, course_schedule):
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 	"""Creates Multiple Attendance Records.
 
 	:param students_present: Students Present JSON.
 	:param students_absent: Students Absent JSON.
 	:param course_schedule: Course Schedule.
+<<<<<<< HEAD
 	:param student_group: Student Group.
 	:param date: Date.
 	"""
@@ -82,12 +111,29 @@ def mark_attendance(students_present, students_absent, course_schedule=None, stu
 
 def make_attendance_records(student, student_name, status, course_schedule=None, student_group=None, date=None):
 	"""Creates/Update Attendance Record.
+=======
+	"""
+	present = json.loads(students_present)
+	absent = json.loads(students_absent)
+
+	for d in present:
+		make_attendance_records(d["student"], d["student_name"], course_schedule, "Present")
+
+	for d in absent:
+		make_attendance_records(d["student"], d["student_name"], course_schedule, "Absent")
+
+	frappe.msgprint(_("Attendance has been marked successfully."))
+
+def make_attendance_records(student, student_name, course_schedule, status):
+	"""Creates Attendance Record.
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 
 	:param student: Student.
 	:param student_name: Student Name.
 	:param course_schedule: Course Schedule.
 	:param status: Status (Present/Absent)
 	"""
+<<<<<<< HEAD
 	student_attendance_list = frappe.get_list("Student Attendance", fields = ['name'], filters = {
 		"student": student,
 		"course_schedule": course_schedule,
@@ -121,10 +167,23 @@ def get_student_guardians(student):
 
 @frappe.whitelist()
 def get_student_group_students(student_group, include_inactive=0):
+=======
+	student_attendance = frappe.new_doc("Student Attendance")
+	student_attendance.student = student
+	student_attendance.student_name = student_name
+	student_attendance.course_schedule = course_schedule
+	student_attendance.status = status
+	student_attendance.submit()
+	frappe.db.commit()
+
+@frappe.whitelist()
+def get_student_group_students(student_group):
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 	"""Returns List of student, student_name in Student Group.
 
 	:param student_group: Student Group.
 	"""
+<<<<<<< HEAD
 	if include_inactive:
 		students = frappe.get_list("Student Group Student", fields=["student", "student_name"] ,
 			filters={"parent": student_group}, order_by= "group_roll_number")
@@ -134,6 +193,11 @@ def get_student_group_students(student_group, include_inactive=0):
 	return students
 
 
+=======
+	students = frappe.get_list("Student Group Student", fields=["student", "student_name"] , filters={"parent": student_group}, order_by= "idx")
+	return students
+
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 @frappe.whitelist()
 def get_fee_structure(program, academic_term=None):
 	"""Returns Fee Structure.
@@ -145,7 +209,10 @@ def get_fee_structure(program, academic_term=None):
 		"academic_term": academic_term}, 'name', as_dict=True)
 	return fee_structure[0].name if fee_structure else None
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 @frappe.whitelist()
 def get_fee_components(fee_structure):
 	"""Returns Fee Components.
@@ -156,6 +223,7 @@ def get_fee_components(fee_structure):
 		fs = frappe.get_list("Fee Component", fields=["fees_category", "amount"] , filters={"parent": fee_structure}, order_by= "idx")
 		return fs
 
+<<<<<<< HEAD
 
 @frappe.whitelist()
 def get_fee_schedule(program, student_category=None):
@@ -169,6 +237,18 @@ def get_fee_schedule(program, student_category=None):
 	return fs
 
 
+=======
+@frappe.whitelist()
+def get_fee_schedule(program):
+	"""Returns Fee Schedule.
+
+	:param program: Program.
+	"""
+	fs = frappe.get_list("Program Fee", fields=["academic_term", "fee_structure", "due_date", "amount"] ,
+		filters={"parent": program}, order_by= "idx")
+	return fs
+
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 @frappe.whitelist()
 def collect_fees(fees, amt):
 	paid_amount = flt(amt) + flt(frappe.db.get_value("Fees", fees, "paid_amount"))
@@ -177,7 +257,10 @@ def collect_fees(fees, amt):
 	frappe.db.set_value("Fees", fees, "outstanding_amount", (total_amount - paid_amount))
 	return paid_amount
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 @frappe.whitelist()
 def get_course_schedule_events(start, end, filters=None):
 	"""Returns events for Course Schedule Calendar view rendering.
@@ -201,6 +284,7 @@ def get_course_schedule_events(start, end, filters=None):
 			}, as_dict=True, update={"allDay": 0})
 
 	return data
+<<<<<<< HEAD
 
 
 @frappe.whitelist()
@@ -372,3 +456,5 @@ def get_current_enrollment(student, academic_year=None):
 		return program_enrollment_list[0]
 	else:
 		return None
+=======
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347

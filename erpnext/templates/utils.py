@@ -9,6 +9,7 @@ from frappe.utils import cint, formatdate
 
 @frappe.whitelist(allow_guest=True)
 def send_message(subject="Website Query", message="", sender="", status="Open"):
+<<<<<<< HEAD
     from frappe.www.contact import send_message as website_send_message
     lead = customer = None
 
@@ -56,3 +57,19 @@ def send_message(subject="Website Query", message="", sender="", status="Open"):
     comm.insert(ignore_permissions=True)
 
     return "okay"
+=======
+	from frappe.www.contact import send_message as website_send_message
+
+	website_send_message(subject, message, sender)
+
+	comm = frappe.get_doc({
+		"doctype":"Communication",
+		"subject": subject,
+		"content": message,
+		"sender": sender,
+		"sent_or_received": "Received"
+	})
+	comm.insert(ignore_permissions=True)
+
+	return "okay"
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347

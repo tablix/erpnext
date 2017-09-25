@@ -5,6 +5,7 @@ from __future__ import unicode_literals
 
 import frappe
 import unittest
+<<<<<<< HEAD
 from erpnext.stock.get_item_details import get_pos_profile
 from erpnext.accounts.doctype.sales_invoice.pos import get_items_list, get_customers_list
 
@@ -52,3 +53,10 @@ def make_pos_profile():
 
 	if not frappe.db.exists("POS Profile", "_Test POS Profile"):
 		pos_profile.insert()
+=======
+
+# test_records = frappe.get_test_records('POS Profile')
+
+class TestPOSProfile(unittest.TestCase):
+	pass
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347

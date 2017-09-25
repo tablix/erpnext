@@ -7,6 +7,7 @@ import frappe
 
 from frappe import _
 
+<<<<<<< HEAD
 default_lead_sources = ["Existing Customer", "Reference", "Advertisement",
 	"Cold Calling", "Exhibition", "Supplier Reference", "Mass Mailing",
 	"Customer's Vendor", "Campaign", "Walk In"]
@@ -46,6 +47,10 @@ def install(country=None):
 			{"action_name": _("Add Users"), "action_doctype": "User", "min_doc_count": 4, "is_completed": 0,
 				"domains": '[]' }
 		]},
+=======
+def install(country=None):
+	records = [
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 
 		# address template
 		{'doctype':"Address Template", "country": country},
@@ -65,12 +70,18 @@ def install(country=None):
 			'is_group': 0, 'parent_item_group': _('All Item Groups') },
 
 		# salary component
+<<<<<<< HEAD
 		{'doctype': 'Salary Component', 'salary_component': _('Income Tax'), 'description': _('Income Tax'), 'type': 'Deduction'},
 		{'doctype': 'Salary Component', 'salary_component': _('Basic'), 'description': _('Basic'), 'type': 'Earning'},
 		{'doctype': 'Salary Component', 'salary_component': _('Arrear'), 'description': _('Arrear'), 'type': 'Earning'},
 		{'doctype': 'Salary Component', 'salary_component': _('Leave Encashment'), 'description': _('Leave Encashment'), 'type': 'Earning'},
 
 
+=======
+		{'doctype': 'Salary Component', 'salary_component': _('Income Tax'), 'description': _('Income Tax')},
+		{'doctype': 'Salary Component', 'salary_component': _('Basic'), 'description': _('Basic')},
+		
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 		# expense claim type
 		{'doctype': 'Expense Claim Type', 'name': _('Calls'), 'expense_type': _('Calls')},
 		{'doctype': 'Expense Claim Type', 'name': _('Food'), 'expense_type': _('Food')},
@@ -187,7 +198,10 @@ def install(country=None):
 		{'doctype': 'Activity Type', 'activity_type': _('Execution')},
 		{'doctype': 'Activity Type', 'activity_type': _('Communication')},
 
+<<<<<<< HEAD
 		# Lead Source
+=======
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 		{'doctype': "Item Attribute", "attribute_name": _("Size"), "item_attribute_values": [
 			{"attribute_value": _("Extra Small"), "abbr": "XS"},
 			{"attribute_value": _("Small"), "abbr": "S"},
@@ -208,6 +222,7 @@ def install(country=None):
 		{'doctype': "Email Account", "email_id": "support@example.com", "append_to": "Issue"},
 		{'doctype': "Email Account", "email_id": "jobs@example.com", "append_to": "Job Applicant"},
 
+<<<<<<< HEAD
 		{'doctype': "Party Type", "party_type": "Customer"},
 		{'doctype': "Party Type", "party_type": "Supplier"},
 		{'doctype': "Party Type", "party_type": "Employee"},
@@ -216,6 +231,8 @@ def install(country=None):
 		{'doctype': "Project Type", "project_type": "External"},
 		{'doctype': "Project Type", "project_type": "Other"},
 
+=======
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 		{"doctype": "Offer Term", "offer_term": _("Date of Joining")},
 		{"doctype": "Offer Term", "offer_term": _("Annual Salary")},
 		{"doctype": "Offer Term", "offer_term": _("Probationary Period")},
@@ -232,22 +249,30 @@ def install(country=None):
 		{'doctype': "Print Heading", 'print_heading': _("Credit Note")},
 		{'doctype': "Print Heading", 'print_heading': _("Debit Note")},
 
+<<<<<<< HEAD
 		# Assessment Group
 		{'doctype': 'Assessment Group', 'assessment_group_name': _('All Assessment Groups'),
 			'is_group': 1, 'parent_assessment_group': ''},
 
+=======
+		{"doctype": "Salary Component", "salary_component": _("Basic")},
+		{"doctype": "Salary Component", "salary_component": _("Income Tax")},
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 	]
 
 	from erpnext.setup.setup_wizard.industry_type import get_industry_types
 	records += [{"doctype":"Industry Type", "industry": d} for d in get_industry_types()]
 	# records += [{"doctype":"Operation", "operation": d} for d in get_operations()]
 
+<<<<<<< HEAD
 	records += [{'doctype': 'Lead Source', 'source_name': _(d)} for d in default_lead_sources]
 
 	# Records for the Supplier Scorecard
 	from erpnext.buying.doctype.supplier_scorecard.supplier_scorecard import make_default_records
 	make_default_records()
 
+=======
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 	from frappe.modules import scrub
 	for r in records:
 		doc = frappe.new_doc(r.get("doctype"))
@@ -260,7 +285,11 @@ def install(country=None):
 
 		try:
 			doc.insert(ignore_permissions=True)
+<<<<<<< HEAD
 		except frappe.DuplicateEntryError as e:
+=======
+		except frappe.DuplicateEntryError, e:
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 			# pass DuplicateEntryError and continue
 			if e.args and e.args[0]==doc.doctype and e.args[1]==doc.name:
 				# make sure DuplicateEntryError is for the exact same doc and not a related doc
@@ -268,7 +297,10 @@ def install(country=None):
 			else:
 				raise
 
+<<<<<<< HEAD
 	# set default customer group and territory
 	selling_settings = frappe.get_doc("Selling Settings")
 	selling_settings.set_default_customer_group_and_territory()
 	selling_settings.save()
+=======
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347

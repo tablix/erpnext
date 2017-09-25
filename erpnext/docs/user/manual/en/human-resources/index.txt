@@ -7,13 +7,19 @@ appraisal
 job-applicant
 job-opening
 offer-letter
+<<<<<<< HEAD
 training
+=======
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 tools
 human-resources-reports
 setup
 holiday-list
 human-resource-setup
+<<<<<<< HEAD
 daily-work-summary
 fleet-management
 employee-loan-management
+=======
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 articles

@@ -2,8 +2,13 @@ course
 program
 instructor
 room
+<<<<<<< HEAD
 student-category
 student-batch-name
 academic-term
 academic-year
 school-settings
+=======
+academic-term
+academic-year
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347

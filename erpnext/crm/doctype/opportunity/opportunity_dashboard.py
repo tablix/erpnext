@@ -1,5 +1,6 @@
 from frappe import _
 
+<<<<<<< HEAD
 def get_data():
 	return {
 		'fieldname': 'prevdoc_docname',
@@ -12,3 +13,14 @@ def get_data():
 			},
 		]
 	}
+=======
+data = {
+	'fieldname': 'opportunity',
+	'transactions': [
+		{
+			'label': _('Related'),
+			'items': ['Boq', 'Quotation', 'Sales Order']
+		},
+	]
+}
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347

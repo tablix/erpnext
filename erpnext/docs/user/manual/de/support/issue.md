@@ -3,11 +3,19 @@
 
 Bei einem Fall handelt es ich um eine eingehende Nachricht vom Kunden, normalerweise per Email oder aus der Kontaktschnittstelle Ihrer Webseite (Um das Supportticket vollständig in Ihre Emails einzubinden, lesen Sie bitte bei "Email-Einstellungen" nach).
 
+<<<<<<< HEAD
 > Tipp: Eine eigens eingerichtete Email-Adresse für Supportanfragen ist eine gute Möglichkeit um per Email eingehende Anfragen zu handhaben. Beispiel: Sie können Supportanfragen über support@erpnext.com an ERPNext senden und es werden automatisch im Frappé-System Einträge erstellt.
 
 > Support > Dokumente > Anfrage > Neu
 
 <img class="screenshot" alt="Fall" src="/docs/assets/img/support/issue.png">
+=======
+> Tipp: Eine eigens eingerichtete Email-Adresse für Supportanfragen ist eine gute Möglichkeit um per Email eingehende Anfragen zu handhaben. Beispiel: Sie können Supportanfragen über support@erpnext.com an ERPNext senden und es werden automatisch im Frappe-System Einträge erstellt.
+
+> Support > Dokumente > Anfrage > Neu
+
+<img class="screenshot" alt="Fall" src="{{docs_base_url}}/assets/img/support/issue.png">
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 
 ### Gesprächsaufzeichnung
 

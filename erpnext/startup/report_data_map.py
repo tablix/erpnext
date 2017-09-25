@@ -121,7 +121,11 @@ data_map = {
 	},
 	"Purchase Order Item": {
 		"columns": ["item.name as name", "item_code", "warehouse",
+<<<<<<< HEAD
 			"(qty - received_qty)*conversion_factor as qty"],
+=======
+			"(qty - received_qty) as qty"],
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 		"from": "`tabPurchase Order Item` item, `tabPurchase Order` main",
 		"conditions": ["item.parent = main.name", "main.docstatus=1", "main.status != 'Stopped'",
 			"ifnull(warehouse, '')!=''", "qty > received_qty"],
@@ -132,7 +136,11 @@ data_map = {
 	},
 
 	"Sales Order Item": {
+<<<<<<< HEAD
 		"columns": ["item.name as name", "item_code", "(qty - delivered_qty)*conversion_factor as qty", "warehouse"],
+=======
+		"columns": ["item.name as name", "item_code", "(qty - delivered_qty) as qty", "warehouse"],
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 		"from": "`tabSales Order Item` item, `tabSales Order` main",
 		"conditions": ["item.parent = main.name", "main.docstatus=1", "main.status != 'Stopped'",
 			"ifnull(warehouse, '')!=''", "qty > delivered_qty"],
@@ -173,7 +181,11 @@ data_map = {
 		}
 	},
 	"Sales Invoice Item": {
+<<<<<<< HEAD
 		"columns": ["name", "parent", "item_code", "stock_qty as qty", "base_net_amount"],
+=======
+		"columns": ["name", "parent", "item_code", "qty", "base_net_amount"],
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 		"conditions": ["docstatus=1", "ifnull(parent, '')!=''"],
 		"order_by": "parent",
 		"links": {
@@ -191,7 +203,11 @@ data_map = {
 		}
 	},
 	"Sales Order Item[Sales Analytics]": {
+<<<<<<< HEAD
 		"columns": ["name", "parent", "item_code", "stock_qty as qty", "base_net_amount"],
+=======
+		"columns": ["name", "parent", "item_code", "qty", "base_net_amount"],
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 		"conditions": ["docstatus=1", "ifnull(parent, '')!=''"],
 		"order_by": "parent",
 		"links": {
@@ -209,7 +225,11 @@ data_map = {
 		}
 	},
 	"Delivery Note Item[Sales Analytics]": {
+<<<<<<< HEAD
 		"columns": ["name", "parent", "item_code", "stock_qty as qty", "base_net_amount"],
+=======
+		"columns": ["name", "parent", "item_code", "qty", "base_net_amount"],
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 		"conditions": ["docstatus=1", "ifnull(parent, '')!=''"],
 		"order_by": "parent",
 		"links": {
@@ -241,7 +261,11 @@ data_map = {
 		}
 	},
 	"Purchase Invoice Item": {
+<<<<<<< HEAD
 		"columns": ["name", "parent", "item_code", "stock_qty as qty", "base_net_amount"],
+=======
+		"columns": ["name", "parent", "item_code", "qty", "base_net_amount"],
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 		"conditions": ["docstatus=1", "ifnull(parent, '')!=''"],
 		"order_by": "parent",
 		"links": {
@@ -259,7 +283,11 @@ data_map = {
 		}
 	},
 	"Purchase Order Item[Purchase Analytics]": {
+<<<<<<< HEAD
 		"columns": ["name", "parent", "item_code", "stock_qty as qty", "base_net_amount"],
+=======
+		"columns": ["name", "parent", "item_code", "qty", "base_net_amount"],
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 		"conditions": ["docstatus=1", "ifnull(parent, '')!=''"],
 		"order_by": "parent",
 		"links": {
@@ -277,7 +305,11 @@ data_map = {
 		}
 	},
 	"Purchase Receipt Item[Purchase Analytics]": {
+<<<<<<< HEAD
 		"columns": ["name", "parent", "item_code", "stock_qty as qty", "base_net_amount"],
+=======
+		"columns": ["name", "parent", "item_code", "qty", "base_net_amount"],
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 		"conditions": ["docstatus=1", "ifnull(parent, '')!=''"],
 		"order_by": "parent",
 		"links": {
@@ -290,6 +322,7 @@ data_map = {
 		"columns": ["name","status","creation","resolution_date","first_responded_on"],
 		"conditions": ["docstatus < 2"],
 		"order_by": "creation"
+<<<<<<< HEAD
 	},
 
 	# Manufacturing
@@ -332,4 +365,8 @@ data_map = {
 		"columns": ["name"],
 		"order_by": "name"
 	}
+=======
+	}
+
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 }

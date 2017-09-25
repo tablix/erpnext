@@ -8,7 +8,11 @@ frappe.query_reports["Territory Target Variance Item Group-Wise"] = {
 			label: __("Fiscal Year"),
 			fieldtype: "Link",
 			options: "Fiscal Year",
+<<<<<<< HEAD
 			default: frappe.sys_defaults.fiscal_year
+=======
+			default: sys_defaults.fiscal_year
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 		},
 		{
 			fieldname: "period",

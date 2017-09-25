@@ -3,9 +3,23 @@
 
 from __future__ import unicode_literals
 import frappe
+<<<<<<< HEAD
 from frappe import _
 from frappe.utils import flt, add_days
 from frappe.utils import get_datetime_str, nowdate
+=======
+from frappe import _, throw
+from frappe.utils import flt
+
+def get_company_currency(company):
+	currency = frappe.db.get_value("Company", company, "default_currency", cache=True)
+	if not currency:
+		currency = frappe.db.get_default("currency")
+	if not currency:
+		throw(_('Please specify Default Currency in Company Master and Global Defaults'))
+
+	return currency
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 
 def get_root_of(doctype):
 	"""Get root element of a DocType with a tree structure"""
@@ -28,7 +42,12 @@ def before_tests():
 	if not frappe.get_list("Company"):
 		setup_complete({
 			"currency"			:"USD",
+<<<<<<< HEAD
 			"full_name"			:"Test User",
+=======
+			"first_name"		:"Test",
+			"last_name"			:"User",
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 			"company_name"		:"Wind Power LLC",
 			"timezone"			:"America/New_York",
 			"company_abbr"		:"WP",
@@ -41,7 +60,12 @@ def before_tests():
 			"email"				:"test@erpnext.com",
 			"password"			:"test",
 			"chart_of_accounts" : "Standard",
+<<<<<<< HEAD
 			"domain"			: "Manufacturing"
+=======
+			"domain"			: "Manufacturing",
+			
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 		})
 
 	frappe.db.sql("delete from `tabLeave Allocation`")
@@ -50,11 +74,15 @@ def before_tests():
 	frappe.db.sql("delete from `tabItem Price`")
 
 	frappe.db.set_value("Stock Settings", None, "auto_insert_price_list_rate_if_missing", 0)
+<<<<<<< HEAD
 	enable_all_roles_and_domains()
+=======
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 
 	frappe.db.commit()
 
 @frappe.whitelist()
+<<<<<<< HEAD
 def get_exchange_rate(from_currency, to_currency, transaction_date=None):
 	if not (from_currency and to_currency):
 		# manqala 19/09/2016: Should this be an empty return or should it throw and exception?
@@ -134,3 +162,38 @@ def enable_all_roles_and_domains():
 		row.domain=domain.get("name")
 
 	domain_settings.save()
+=======
+def get_exchange_rate(from_currency, to_currency):
+	if not (from_currency and to_currency):
+		return
+	
+	if from_currency == to_currency:
+		return 1
+	
+	exchange = "%s-%s" % (from_currency, to_currency)
+	value = flt(frappe.db.get_value("Currency Exchange", exchange, "exchange_rate"))
+
+	if not value:
+		try:
+			cache = frappe.cache()
+			key = "currency_exchange_rate:{0}:{1}".format(from_currency, to_currency)
+			value = cache.get(key)
+
+			if not value:
+				import requests
+				response = requests.get("http://api.fixer.io/latest", params={
+					"base": from_currency,
+					"symbols": to_currency
+				})
+				# expire in 6 hours
+				response.raise_for_status()
+				value = response.json()["rates"][to_currency]
+				cache.setex(key, value, 6 * 60 * 60)
+
+			return flt(value)
+		except:
+			frappe.msgprint(_("Unable to find exchange rate for {0} to {1}").format(from_currency, to_currency))
+			return 0.0
+	else:
+		return value
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347

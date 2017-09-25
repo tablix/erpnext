@@ -1,4 +1,5 @@
 {
+<<<<<<< HEAD
  "add_total_row": 0, 
  "apply_user_permissions": 1, 
  "creation": "2013-06-13 18:42:11", 
@@ -8,12 +9,22 @@
  "idx": 3, 
  "is_standard": "Yes", 
  "modified": "2017-02-24 20:18:32.793637", 
+=======
+ "apply_user_permissions": 1, 
+ "creation": "2013-06-13 18:42:11", 
+ "docstatus": 0, 
+ "doctype": "Report", 
+ "idx": 1, 
+ "is_standard": "Yes", 
+ "modified": "2014-06-03 07:18:17.040345", 
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
  "modified_by": "Administrator", 
  "module": "Stock", 
  "name": "Delivery Note Trends", 
  "owner": "Administrator", 
  "ref_doctype": "Delivery Note", 
  "report_name": "Delivery Note Trends", 
+<<<<<<< HEAD
  "report_type": "Script Report", 
  "roles": [
   {
@@ -29,4 +40,7 @@
    "role": "Accounts User"
   }
  ]
+=======
+ "report_type": "Script Report"
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 }

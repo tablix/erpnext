@@ -1,8 +1,27 @@
 frappe.listview_settings['Task'] = {
+<<<<<<< HEAD
 	add_fields: ["project", "status", "priority", "exp_start_date",
 		"exp_end_date", "subject", "progress", "depends_on_tasks"],
 	filters: [["status", "=", "Open"]],
 	onload: function(listview) {
+=======
+	add_fields: ["project", "status", "priority", "exp_end_date"],
+	filters: [["status", "=", "Open"]],
+	onload: function(listview) {
+		console.log(user_roles);
+		if (frappe.user.has_role("Task Users"))
+		{
+		 console.log("Yes");
+		 
+		frappe.route_options = {
+			"assigned_to": user
+			};
+		}
+		else
+		{
+		 console.log("No");
+		}
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 		var method = "erpnext.projects.doctype.task.task.set_multiple_status";
 
 		listview.page.add_menu_item(__("Set as Open"), function() {
@@ -23,6 +42,7 @@ frappe.listview_settings['Task'] = {
 			"Cancelled": "dark grey"
 		}
 		return [__(doc.status), colors[doc.status], "status,=," + doc.status];
+<<<<<<< HEAD
 	},
 	gantt_custom_popup_html: function(ganttobj, task) {
 		var html = `<h5>${ganttobj.name}</h5>`;
@@ -36,6 +56,8 @@ frappe.listview_settings['Task'] = {
 		}
 
 		return html;
+=======
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 	}
 
 };

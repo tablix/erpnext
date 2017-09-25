@@ -1,5 +1,8 @@
+<<<<<<< HEAD
 # Website
 
+=======
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 Websites are a core component of any business and having a good website
 usually means:
 

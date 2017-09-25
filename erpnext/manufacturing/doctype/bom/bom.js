@@ -5,6 +5,7 @@ frappe.provide("erpnext.bom");
 
 frappe.ui.form.on("BOM", {
 	setup: function(frm) {
+<<<<<<< HEAD
 		frm.add_fetch("item", "description", "description");
 		frm.add_fetch("item", "image", "image");
 		frm.add_fetch("item", "item_name", "item_name");
@@ -64,6 +65,18 @@ frappe.ui.form.on("BOM", {
 		frm.get_field("items").grid.set_multiple_add("item_code", "qty");
 	},
 
+=======
+		frm.get_field('items').grid.editable_fields = [
+			{fieldname: 'item_code', columns: 3},
+			{fieldname: 'item_name', columns: 3},
+			{fieldname: 'qty', columns: 2},
+			{fieldname: 'rate', columns: 2}
+		];
+	},
+	onload_post_render: function(frm) {
+		frm.get_field("items").grid.set_multiple_add("item_code", "qty");
+	},
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 	refresh: function(frm) {
 		frm.toggle_enable("item", frm.doc.__islocal);
 		toggle_operations(frm);
@@ -80,18 +93,28 @@ frappe.ui.form.on("BOM", {
 			});
 		}
 
+<<<<<<< HEAD
 		if(frm.doc.docstatus!=0) {
+=======
+		if(frm.doc.docstatus==2) {
+			// show duplicate button when BOM is cancelled,
+			// its not very intuitive
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 			frm.add_custom_button(__("Duplicate"), function() {
 				frm.copy_doc();
 			});
 		}
 	},
+<<<<<<< HEAD
 
+=======
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 	update_cost: function(frm) {
 		return frappe.call({
 			doc: frm.doc,
 			method: "update_cost",
 			freeze: true,
+<<<<<<< HEAD
 			args: {
 				update_parent: true,
 				from_child_bom:false
@@ -155,6 +178,41 @@ cur_frm.cscript.is_default = function(doc) {
 };
 
 var get_bom_material_detail= function(doc, cdt, cdn, scrap_items) {
+=======
+			callback: function(r) {
+				if(!r.exc) frm.refresh_fields();
+			}
+		})
+	}
+});
+
+cur_frm.add_fetch("item", "description", "description");
+cur_frm.add_fetch("item", "image", "image");
+cur_frm.add_fetch("item", "item_name", "item_name");
+cur_frm.add_fetch("item", "stock_uom", "uom");
+
+
+cur_frm.cscript.hour_rate = function(doc, dt, dn) {
+	erpnext.bom.calculate_op_cost(doc);
+	erpnext.bom.calculate_total(doc);
+}
+
+cur_frm.cscript.time_in_mins = cur_frm.cscript.hour_rate;
+
+cur_frm.cscript.item_code = function(doc, cdt, cdn) {
+	get_bom_material_detail(doc, cdt, cdn);
+}
+
+cur_frm.cscript.bom_no	= function(doc, cdt, cdn) {
+	get_bom_material_detail(doc, cdt, cdn);
+}
+
+cur_frm.cscript.is_default = function(doc) {
+	if (doc.is_default) cur_frm.set_value("is_active", 1);
+}
+
+var get_bom_material_detail= function(doc, cdt, cdn) {
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 	var d = locals[cdt][cdn];
 	if (d.item_code) {
 		return frappe.call({
@@ -163,23 +221,32 @@ var get_bom_material_detail= function(doc, cdt, cdn, scrap_items) {
 			args: {
 				'item_code': d.item_code,
 				'bom_no': d.bom_no != null ? d.bom_no: '',
+<<<<<<< HEAD
 				"scrap_items": scrap_items,
+=======
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 				'qty': d.qty
 			},
 			callback: function(r) {
 				d = locals[cdt][cdn];
 				$.extend(d, r.message);
 				refresh_field("items");
+<<<<<<< HEAD
 				refresh_field("scrap_items");
 
 				doc = locals[doc.doctype][doc.name];
 				erpnext.bom.calculate_rm_cost(doc);
 				erpnext.bom.calculate_scrap_materials_cost(doc);
+=======
+				doc = locals[doc.doctype][doc.name];
+				erpnext.bom.calculate_rm_cost(doc);
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 				erpnext.bom.calculate_total(doc);
 			},
 			freeze: true
 		});
 	}
+<<<<<<< HEAD
 };
 
 cur_frm.cscript.qty = function(doc) {
@@ -212,10 +279,30 @@ erpnext.bom.update_cost = function(doc) {
 	erpnext.bom.calculate_scrap_materials_cost(doc);
 	erpnext.bom.calculate_total(doc);
 };
+=======
+}
+
+cur_frm.cscript.qty = function(doc, cdt, cdn) {
+	erpnext.bom.calculate_rm_cost(doc);
+	erpnext.bom.calculate_total(doc);
+}
+
+cur_frm.cscript.rate = function(doc, cdt, cdn) {
+	var d = locals[cdt][cdn];
+	if (d.bom_no) {
+		msgprint(__("You can not change rate if BOM mentioned agianst any item"));
+		get_bom_material_detail(doc, cdt, cdn);
+	} else {
+		erpnext.bom.calculate_rm_cost(doc);
+		erpnext.bom.calculate_total(doc);
+	}
+}
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 
 erpnext.bom.calculate_op_cost = function(doc) {
 	var op = doc.operations || [];
 	doc.operating_cost = 0.0;
+<<<<<<< HEAD
 	doc.base_operating_cost = 0.0;
 
 	for(var i=0;i<op.length;i++) {
@@ -289,6 +376,75 @@ erpnext.bom.calculate_total = function(doc) {
 cur_frm.cscript.validate = function(doc) {
 	erpnext.bom.update_cost(doc);
 };
+=======
+	for(var i=0;i<op.length;i++) {
+		operating_cost = flt(flt(op[i].hour_rate) * flt(op[i].time_in_mins) / 60, 2);
+		frappe.model.set_value('BOM Operation',op[i].name, "operating_cost", operating_cost);
+
+		doc.operating_cost += operating_cost;
+	}
+	refresh_field('operating_cost');
+}
+
+erpnext.bom.calculate_rm_cost = function(doc) {
+	var rm = doc.items || [];
+	total_rm_cost = 0;
+	for(var i=0;i<rm.length;i++) {
+		amt =	flt(rm[i].rate) * flt(rm[i].qty);
+		set_multiple('BOM Item',rm[i].name, {'amount': amt}, 'items');
+		set_multiple('BOM Item',rm[i].name,
+			{'qty_consumed_per_unit': flt(rm[i].qty)/flt(doc.quantity)}, 'items');
+		total_rm_cost += amt;
+	}
+	cur_frm.set_value("raw_material_cost", total_rm_cost);
+}
+
+
+// Calculate Total Cost
+erpnext.bom.calculate_total = function(doc) {
+	total_cost = flt(doc.operating_cost) + flt(doc.raw_material_cost);
+	frappe.model.set_value(doc.doctype, doc.name, "total_cost", total_cost);
+}
+
+
+cur_frm.fields_dict['item'].get_query = function(doc) {
+ 	return{
+		query: "erpnext.controllers.queries.item_query"
+	}
+}
+
+cur_frm.fields_dict['project'].get_query = function(doc, dt, dn) {
+	return{
+		filters:[
+			['Project', 'status', 'not in', 'Completed, Cancelled']
+		]
+	}
+}
+
+cur_frm.fields_dict['items'].grid.get_field('item_code').get_query = function(doc) {
+	return{
+		query: "erpnext.controllers.queries.item_query",
+		filters: [["Item", "name", "!=", cur_frm.doc.item]]
+	}
+}
+
+cur_frm.fields_dict['items'].grid.get_field('bom_no').get_query = function(doc, cdt, cdn) {
+	var d = locals[cdt][cdn];
+	return{
+		filters:{
+			'item': d.item_code,
+			'is_active': 1,
+			'docstatus': 1
+		}
+	}
+}
+
+cur_frm.cscript.validate = function(doc, dt, dn) {
+	erpnext.bom.calculate_op_cost(doc);
+	erpnext.bom.calculate_rm_cost(doc);
+	erpnext.bom.calculate_total(doc);
+}
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 
 frappe.ui.form.on("BOM Operation", "operation", function(frm, cdt, cdn) {
 	var d = locals[cdt][cdn];
@@ -309,7 +465,11 @@ frappe.ui.form.on("BOM Operation", "operation", function(frm, cdt, cdn) {
 				frappe.model.set_value(d.doctype, d.name, "workstation", data.message.workstation);
 			}
 		}
+<<<<<<< HEAD
 	});
+=======
+	})
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 });
 
 frappe.ui.form.on("BOM Operation", "workstation", function(frm, cdt, cdn) {
@@ -322,6 +482,7 @@ frappe.ui.form.on("BOM Operation", "workstation", function(frm, cdt, cdn) {
 			name: d.workstation
 		},
 		callback: function (data) {
+<<<<<<< HEAD
 			frappe.model.set_value(d.doctype, d.name, "base_hour_rate", data.message.hour_rate);
 			frappe.model.set_value(d.doctype, d.name, "hour_rate",
 				flt(flt(data.message.hour_rate) / flt(frm.doc.conversion_rate)), 2);
@@ -336,6 +497,13 @@ frappe.ui.form.on("BOM Item", "qty", function(frm, cdt, cdn) {
 	var d = locals[cdt][cdn];
 	d.stock_qty = d.qty * d.conversion_factor;
 	refresh_field("stock_qty", d.name, d.parentfield);
+=======
+			frappe.model.set_value(d.doctype, d.name, "hour_rate", data.message.hour_rate);
+			erpnext.bom.calculate_op_cost(frm.doc);
+			erpnext.bom.calculate_total(frm.doc);
+		}
+	})
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 });
 
 frappe.ui.form.on("BOM Operation", "operations_remove", function(frm) {
@@ -350,7 +518,11 @@ frappe.ui.form.on("BOM Item", "items_remove", function(frm) {
 
 var toggle_operations = function(frm) {
 	frm.toggle_display("operations_section", cint(frm.doc.with_operations) == 1);
+<<<<<<< HEAD
 };
+=======
+}
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 
 frappe.ui.form.on("BOM", "with_operations", function(frm) {
 	if(!cint(frm.doc.with_operations)) {
@@ -359,6 +531,13 @@ frappe.ui.form.on("BOM", "with_operations", function(frm) {
 	toggle_operations(frm);
 });
 
+<<<<<<< HEAD
 cur_frm.cscript.image = function() {
 	refresh_field("image_view");
 };
+=======
+
+cur_frm.cscript.image = function() {
+	refresh_field("image_view");
+}
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347

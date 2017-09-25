@@ -1,5 +1,8 @@
+<<<<<<< HEAD
 # Warranty Claim
 
+=======
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 If you are selling **Items** under warranty or if you have sold and extended
 service contract like the Annual Maintenance Contract (AMC), your **Customer**
 may call you about an issue or a break-down and give you the Serial No of this
@@ -17,7 +20,11 @@ To create a new **Warranty Claim**:
 
 > Support > Warranty Claim > New Warranty Claim
 
+<<<<<<< HEAD
 ![Warranty Claim](/docs/assets/img/support/warranty-claim.png)
+=======
+![Warranty Claim]({{docs_base_url}}/assets/img/support/warranty-claim.png)
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 
 If a Customer visit is required to address the issue, you can create a new
 Maintenance Visit record from this.

@@ -10,9 +10,15 @@ from erpnext.accounts.doctype.journal_entry.test_journal_entry import make_journ
 
 class TestBudget(unittest.TestCase):		
 	def test_monthly_budget_crossed_ignore(self):
+<<<<<<< HEAD
 		set_total_expense_zero("2013-02-28", "Cost Center")
 
 		budget = make_budget("Cost Center")
+=======
+		set_total_expense_zero("2013-02-28")
+
+		budget = make_budget()
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 		
 		jv = make_journal_entry("_Test Account Cost for Goods Sold - _TC",
 			"_Test Bank - _TC", 40000, "_Test Cost Center - _TC", submit=True)
@@ -22,10 +28,17 @@ class TestBudget(unittest.TestCase):
 			
 		budget.cancel()
 
+<<<<<<< HEAD
 	def test_monthly_budget_crossed_stop1(self):
 		set_total_expense_zero("2013-02-28", "Cost Center")
 
 		budget = make_budget("Cost Center")
+=======
+	def test_monthly_budget_crossed_stop(self):
+		set_total_expense_zero("2013-02-28")
+
+		budget = make_budget()
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 		
 		frappe.db.set_value("Budget", budget.name, "action_if_accumulated_monthly_budget_exceeded", "Stop")
 
@@ -37,6 +50,7 @@ class TestBudget(unittest.TestCase):
 		budget.load_from_db()
 		budget.cancel()
 
+<<<<<<< HEAD
 	def test_monthly_budget_crossed_stop2(self):
 		set_total_expense_zero("2013-02-28", "Project")
 
@@ -56,6 +70,12 @@ class TestBudget(unittest.TestCase):
 		set_total_expense_zero("2013-02-28", "Cost Center")
 
 		budget = make_budget("Cost Center")
+=======
+	def test_yearly_budget_crossed_stop(self):
+		set_total_expense_zero("2013-02-28")
+
+		budget = make_budget()
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 		
 		jv = make_journal_entry("_Test Account Cost for Goods Sold - _TC",
 			"_Test Bank - _TC", 150000, "_Test Cost Center - _TC")
@@ -64,6 +84,7 @@ class TestBudget(unittest.TestCase):
 		
 		budget.cancel()
 
+<<<<<<< HEAD
 	def test_yearly_budget_crossed_stop2(self):
 		set_total_expense_zero("2013-02-28", "Project")
 
@@ -80,6 +101,12 @@ class TestBudget(unittest.TestCase):
 		set_total_expense_zero("2013-02-28", "Cost Center")
 
 		budget = make_budget("Cost Center")
+=======
+	def test_monthly_budget_on_cancellation(self):
+		set_total_expense_zero("2013-02-28")
+
+		budget = make_budget()
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 				
 		jv1 = make_journal_entry("_Test Account Cost for Goods Sold - _TC",
 			"_Test Bank - _TC", 20000, "_Test Cost Center - _TC", submit=True)
@@ -99,6 +126,7 @@ class TestBudget(unittest.TestCase):
 		
 		budget.load_from_db()
 		budget.cancel()
+<<<<<<< HEAD
 
 	def test_monthly_budget_on_cancellation2(self):
 		set_total_expense_zero("2013-02-28", "Project")
@@ -130,6 +158,14 @@ class TestBudget(unittest.TestCase):
 		set_total_expense_zero("2013-02-28", "Cost Center", "_Test Cost Center 2 - _TC")
 		
 		budget = make_budget("Cost Center", "_Test Company - _TC")
+=======
+		
+	def test_monthly_budget_against_group_cost_center(self):
+		set_total_expense_zero("2013-02-28")
+		set_total_expense_zero("2013-02-28", "_Test Cost Center 2 - _TC")
+		
+		budget = make_budget("_Test Company - _TC")
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 		frappe.db.set_value("Budget", budget.name, "action_if_accumulated_monthly_budget_exceeded", "Stop")
 
 		jv = make_journal_entry("_Test Account Cost for Goods Sold - _TC",
@@ -140,6 +176,7 @@ class TestBudget(unittest.TestCase):
 		budget.load_from_db()
 		budget.cancel()
 
+<<<<<<< HEAD
 	def test_monthly_budget_against_parent_group_cost_center(self):
 		cost_center = "_Test Cost Center 3 - _TC"
 
@@ -208,12 +245,33 @@ def make_budget(budget_against=None, cost_center=None):
 		budget.cost_center =cost_center or "_Test Cost Center - _TC"
 	
 	
+=======
+def set_total_expense_zero(posting_date, cost_center=None):
+	existing_expense = get_actual_expense({
+		"account": "_Test Account Cost for Goods Sold - _TC",
+		"cost_center": cost_center or "_Test Cost Center - _TC",
+		"monthly_end_date": posting_date,
+		"company": "_Test Company",
+		"fiscal_year": "_Test Fiscal Year 2013"
+	}, cost_center or "_Test Cost Center - _TC")
+	
+	make_journal_entry("_Test Account Cost for Goods Sold - _TC",
+		"_Test Bank - _TC", -existing_expense, "_Test Cost Center - _TC", submit=True)
+		
+def make_budget(cost_center=None):
+	budget = frappe.new_doc("Budget")
+	budget.cost_center = cost_center or "_Test Cost Center - _TC"
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 	budget.fiscal_year = "_Test Fiscal Year 2013"
 	budget.monthly_distribution = "_Test Distribution"
 	budget.company = "_Test Company"
 	budget.action_if_annual_budget_exceeded = "Stop"
 	budget.action_if_accumulated_monthly_budget_exceeded = "Ignore"
+<<<<<<< HEAD
 	budget.budget_against = budget_against
+=======
+	
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 	budget.append("accounts", {
 		"account": "_Test Account Cost for Goods Sold - _TC",
 		"budget_amount": 100000

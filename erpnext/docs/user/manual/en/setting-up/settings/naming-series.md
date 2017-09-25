@@ -42,6 +42,7 @@ name and the starting point in the “Update Series” section.
 
 See how to set the naming series
 
+<<<<<<< HEAD
 <img class="screenshot" alt="Naming Series" src="/docs/assets/img/setup/settings/naming-series.gif">
 
 {next}
@@ -55,3 +56,9 @@ See how to set the naming series
     Then under Naming Series, we should allow something like
         PO-.YY.MM.-.vendor_id.-.#####
         Resulting in "PO-1503-WN-00001"
+=======
+<img class="screenshot" alt="Naming Series" src="{{docs_base_url}}/assets/img/setup/settings/naming-series.gif">
+
+{next}
+
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347

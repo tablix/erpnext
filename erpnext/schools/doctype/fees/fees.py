@@ -4,6 +4,7 @@
 
 from __future__ import unicode_literals
 from frappe.model.document import Document
+<<<<<<< HEAD
 import frappe, erpnext
 from frappe import _
 from frappe.utils import money_in_words
@@ -108,6 +109,23 @@ class Fees(AccountsController):
 			update_outstanding="Yes", merge_entries=False)
 
 def get_fee_list(doctype, txt, filters, limit_start, limit_page_length=20, order_by="modified"):
+=======
+import frappe
+from frappe import _
+
+class Fees(Document):
+	def validate(self):
+		self.calculate_total()
+		
+	def calculate_total(self):
+		"""Calculates total amount."""
+		self.total_amount = 0
+		for d in self.components:
+			self.total_amount += d.amount
+		self.outstanding_amount = self.total_amount
+
+def get_fee_list(doctype, txt, filters, limit_start, limit_page_length=20):
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
 	user = frappe.session.user
 	student = frappe.db.sql("select name from `tabStudent` where student_email_id= %s", user)
 	if student:

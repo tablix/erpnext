@@ -18,6 +18,7 @@ class CustomerGroup(NestedSet):
 	def validate_name_with_customer(self):
 		if frappe.db.exists("Customer", self.name):
 			frappe.msgprint(_("An Customer exists with same name"), raise_exception=1)
+<<<<<<< HEAD
 
 def get_parent_customer_groups(customer_group):
 	lft, rgt = frappe.db.get_value("Customer Group", customer_group, ['lft', 'rgt'])
@@ -25,3 +26,5 @@ def get_parent_customer_groups(customer_group):
 	return frappe.db.sql("""select name from `tabCustomer Group`
 		where lft <= %s and rgt >= %s
 		order by lft asc""", (lft, rgt), as_dict=True)
+=======
+>>>>>>> ccaba6a395ce8e0526cc059982c83eddcdec9347
